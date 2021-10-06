@@ -290,8 +290,8 @@
                                         </ul>
                                         <!-- Home Version Dropdown End -->
                                     </li>
-                                    <li><a href="about.html">About us</a></li>
-                                    <li><a href="contact.html">contact us</a></li>
+                                    <li><a href="{{URL::to('/about')}}">About us</a></li>
+                                    <li><a href="{{URL::to('/contact')}}">contact us</a></li>
                                 </ul>
                             </nav>
                             <div class="mobile-menu d-block d-lg-none">
