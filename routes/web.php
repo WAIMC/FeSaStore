@@ -23,6 +23,7 @@ Route::get('/',[HomeController::class,'index'])->name('home.index');
 Route::get('/about',[HomeController::class,'about'])->name('about.about');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact.contact');
 
-
+Route::get('/shop',[HomeController::class,'shop'])->name('site.shop');
+Route::get('/wishlish',[HomeController::class,'wishlish'])->name('site.wishlist');
 
 

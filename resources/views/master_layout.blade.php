@@ -261,18 +261,18 @@
                                         </ul>
                                         <!-- Home Version Dropdown End -->
                                     </li>
-                                    <li><a href="shop.html">shop<i class="fa fa-angle-down"></i></a>
+                                    <li><a href="{{route('site.shop')}}">shop<i class="fa fa-angle-down"></i></a>
                                         <!-- Home Version Dropdown Start -->
                                         <ul class="ht-dropdown dropdown-style-two">
                                             <li><a href="product.html">product details</a></li>
                                             <li><a href="compare.html">compare</a></li>
                                             <li><a href="cart.html">cart</a></li>
                                             <li><a href="checkout.html">checkout</a></li>
-                                            <li><a href="wishlist.html">wishlist</a></li>
+                                            <li><a href="{{route('site.wishlist')}}">wishlist</a></li>
                                         </ul>
                                         <!-- Home Version Dropdown End -->
                                     </li>
-                                    <li><a href="blog.html">blog<i class="fa fa-angle-down"></i></a>
+                                    <li><a href="#">blog<i class="fa fa-angle-down"></i></a>
                                         <!-- Home Version Dropdown Start -->
                                         <ul class="ht-dropdown dropdown-style-two">
                                             <li><a href="single-blog.html">blog details</a></li>
@@ -318,7 +318,7 @@
                                             </ul>
                                             <!-- Mobile Menu Dropdown End -->
                                         </li>
-                                        <li><a href="blog.html">Blog</a>
+                                        <li><a href="#">Blog</a>
                                             <!-- Mobile Menu Dropdown Start -->
                                             <ul>
                                                 <li><a href="single-blog.html">blog details</a></li>
