@@ -26,4 +26,6 @@ Route::get('/contact',[HomeController::class,'contact'])->name('contact.contact'
 Route::get('/shop',[HomeController::class,'shop'])->name('site.shop');
 Route::get('/wishlish',[HomeController::class,'wishlish'])->name('site.wishlist');
 
+Route::get('/checkout',[HomeController::class,'checkout'])->name('home.checkout');
+Route::get('/product',[HomeController::class,'product'])->name('home.product');
 
