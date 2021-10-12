@@ -21,4 +21,10 @@ class HomeController extends Controller
     public function wishlish(){
         return view('site.wishlish');
     }
+    public function product(){
+        return view('site.products');
+    }
+    public function checkout(){
+        return view('site.checkout');
+    }
 }
