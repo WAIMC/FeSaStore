@@ -27,4 +27,10 @@ class HomeController extends Controller
     public function checkout(){
         return view('site.checkout');
     }
+    public function blog(){
+        return view('site.blog');
+    }
+    public function blog_details(){
+        return view('site.blog_details');
+    }
 }
