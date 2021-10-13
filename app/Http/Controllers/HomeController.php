@@ -33,4 +33,5 @@ class HomeController extends Controller
     public function blog_details(){
         return view('site.blog_details');
     }
+
 }

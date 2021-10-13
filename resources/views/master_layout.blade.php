@@ -264,10 +264,10 @@
                                     <li><a href="{{route('site.shop')}}">shop<i class="fa fa-angle-down"></i></a>
                                         <!-- Home Version Dropdown Start -->
                                         <ul class="ht-dropdown dropdown-style-two">
-                                            <li><a href="product.html">product details</a></li>
+                                            <li><a href="{{route('home.product')}}">product details</a></li>
                                             <li><a href="compare.html">compare</a></li>
                                             <li><a href="cart.html">cart</a></li>
-                                            <li><a href="checkout.html">checkout</a></li>
+                                            <li><a href="{{route('home.checkout')}}">checkout</a></li>
                                             <li><a href="{{route('site.wishlist')}}">wishlist</a></li>
                                         </ul>
                                         <!-- Home Version Dropdown End -->

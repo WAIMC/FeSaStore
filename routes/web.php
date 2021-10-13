@@ -31,4 +31,3 @@ Route::get('/product',[HomeController::class,'product'])->name('home.product');
 
 Route::get('/blog','HomeController@blog')->name('home.blog');
 Route::get('/blog-details','HomeController@blog_details')->name('home.blog_details');
-
