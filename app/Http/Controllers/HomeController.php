@@ -15,4 +15,23 @@ class HomeController extends Controller
     public function contact(){
         return view('site.contact');
     }
+    public function shop(){
+        return view('site.shop');
+    }
+    public function wishlish(){
+        return view('site.wishlish');
+    }
+    public function product(){
+        return view('site.products');
+    }
+    public function checkout(){
+        return view('site.checkout');
+    }
+    public function blog(){
+        return view('site.blog');
+    }
+    public function blog_details(){
+        return view('site.blog_details');
+    }
+
 }

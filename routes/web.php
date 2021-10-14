@@ -23,6 +23,11 @@ Route::get('/',[HomeController::class,'index'])->name('home.index');
 Route::get('/about',[HomeController::class,'about'])->name('about.about');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact.contact');
 
+Route::get('/shop',[HomeController::class,'shop'])->name('site.shop');
+Route::get('/wishlish',[HomeController::class,'wishlish'])->name('site.wishlist');
 
+Route::get('/checkout',[HomeController::class,'checkout'])->name('home.checkout');
+Route::get('/product',[HomeController::class,'product'])->name('home.product');
 
-
+Route::get('/blog','HomeController@blog')->name('home.blog');
+Route::get('/blog-details','HomeController@blog_details')->name('home.blog_details');
