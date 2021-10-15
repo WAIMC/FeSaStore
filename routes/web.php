@@ -26,8 +26,19 @@ Route::get('/contact',[HomeController::class,'contact'])->name('contact.contact'
 Route::get('/shop',[HomeController::class,'shop'])->name('site.shop');
 Route::get('/wishlish',[HomeController::class,'wishlish'])->name('site.wishlist');
 
+======= vinh_layout
+Route::get('/',[HomeController::class,'shop'])->name('site.shop');
+
+// start vinh
+Route::get('/register',[HomeController::class,'register'])->name('site.register');
+Route::get('/signIn',[HomeController::class,'signIn'])->name('site.signIn');
+Route::get('/forgotPassword',[HomeController::class,'forgotPassword'])->name('site.forgotPassword');
+
+// end vinh
+=======
 Route::get('/checkout',[HomeController::class,'checkout'])->name('home.checkout');
 Route::get('/product',[HomeController::class,'product'])->name('home.product');
+=======dev
 
 Route::get('/blog','HomeController@blog')->name('home.blog');
 Route::get('/blog-details','HomeController@blog_details')->name('home.blog_details');
