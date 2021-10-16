@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function wishlish(){
         return view('site.wishlish');
     }
-======= vinh_layout
+
 
     public function register(){
         return view('site.register');
@@ -38,7 +38,7 @@ class HomeController extends Controller
     public function forgotPassword(){
         return view('site.forgotPassword');
     }
-=======
+
     public function product(){
         return view('site.products');
     }
@@ -52,5 +52,5 @@ class HomeController extends Controller
         return view('site.blog_details');
     }
 
-======= dev
+
 }
