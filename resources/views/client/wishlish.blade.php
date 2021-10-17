@@ -1,5 +1,6 @@
-@extends('master_layout')
-@section('content')
+@extends('client.layouts.master')
+@section('title','Danh sách yêu thích')
+@section('main')
 <div class="breadcrumb-area mt-30">
     <div class="container">
         <div class="breadcrumb">

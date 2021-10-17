@@ -1,5 +1,6 @@
-@extends('master_layout')
-@section('content')
+@extends('client.layouts.master')
+@section('title','Gới thiêuj')
+@section('main')
 <div class="main-page-banner home-3">
     <div class="container">
         <div class="row">

@@ -12,45 +12,45 @@ class HomeController extends Controller
     }
 
     public function about(){
-        return view('site.about');
+        return view('client.pages.about');
     }
 
     public function contact(){
-        return view('site.contact');
+        return view('client.pages.contact');
     }
 
     public function shop(){
-        return view('site.shop');
+        return view('client.products.shop');
     }
 
     public function wishlish(){
-        return view('site.wishlish');
+        return view('client.wishlish');
     }
 
 
     public function register(){
-        return view('site.register');
+        return view('client.register');
     }
 
     public function signIn(){
-        return view('site.signIn');
+        return view('client.signIn');
     }
 
     public function forgotPassword(){
-        return view('site.forgotPassword');
+        return view('client.forgotPassword');
     }
 
     public function product(){
-        return view('site.products');
+        return view('client.products.products');
     }
     public function checkout(){
-        return view('site.checkout');
+        return view('client.carts.checkout');
     }
     public function blog(){
-        return view('site.blog');
+        return view('client.blogs.blog');
     }
     public function blog_details(){
-        return view('site.blog_details');
+        return view('client.blogs.blog_details');
     }
 
 

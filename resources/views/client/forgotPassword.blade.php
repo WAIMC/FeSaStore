@@ -1,5 +1,6 @@
-@extends('master_layout')
-    @section('content')
+@extends('client.layouts.master')
+@section('title','Quyên mật khẩu')
+@section('main')
         <!-- Main Wrapper Start Here -->
         <div class="wrapper">
             <!-- Breadcrumb Start -->

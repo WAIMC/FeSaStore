@@ -15,28 +15,28 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',[App\Http\Controllers\client\HomeController::class,'index'])->name('home.index');
+Route::get('/',[App\Http\Controllers\client\HomeController::class,'index'])->name('client.index');
 
 
-Route::get('/about',[HomeController::class,'about'])->name('about.about');
-Route::get('/contact',[HomeController::class,'contact'])->name('contact.contact');
+Route::get('/about',[App\Http\Controllers\client\HomeController::class,'about'])->name('client.about');
+Route::get('/contact',[App\Http\Controllers\client\HomeController::class,'contact'])->name('client.contact');
 
-Route::get('/shop',[HomeController::class,'shop'])->name('site.shop');
-Route::get('/wishlish',[HomeController::class,'wishlish'])->name('site.wishlist');
+Route::get('/shop',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
+Route::get('/wishlish',[App\Http\Controllers\client\HomeController::class,'wishlish'])->name('client.wishlist');
 
 
-Route::get('/shop',[HomeController::class,'shop'])->name('site.shop');
+Route::get('/shop',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
 
 // start vinh
-Route::get('/register',[HomeController::class,'register'])->name('site.register');
-Route::get('/signIn',[HomeController::class,'signIn'])->name('site.signIn');
-Route::get('/forgotPassword',[HomeController::class,'forgotPassword'])->name('site.forgotPassword');
+Route::get('/register',[App\Http\Controllers\client\HomeController::class,'register'])->name('client.register');
+Route::get('/signIn',[App\Http\Controllers\client\HomeController::class,'signIn'])->name('client.signIn');
+Route::get('/forgotPassword',[App\Http\Controllers\client\HomeController::class,'forgotPassword'])->name('client.forgotPassword');
 
 // end vinh
 
-Route::get('/checkout',[HomeController::class,'checkout'])->name('home.checkout');
-Route::get('/product',[HomeController::class,'product'])->name('home.product');
+Route::get('/checkout',[App\Http\Controllers\client\HomeController::class,'checkout'])->name('client.checkout');
+Route::get('/product',[App\Http\Controllers\client\HomeController::class,'product'])->name('client.product');
 
 
-Route::get('/blog','HomeController@blog')->name('home.blog');
-Route::get('/blog-details','HomeController@blog_details')->name('home.blog_details');
+Route::get('/blog',[App\Http\Controllers\client\HomeController::class,'blog'])->name('client.blog');
+Route::get('/blog-details',[App\Http\Controllers\client\HomeController::class,'blog_details'])->name('client.blog_details');
