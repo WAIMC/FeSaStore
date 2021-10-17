@@ -251,7 +251,7 @@
                         <div class="col-xl-9 col-lg-8 col-md-12 ">
                             <nav class="d-none d-lg-block">
                                 <ul class="header-bottom-list d-flex">
-                                    <li class="active"><a href="index.html">home<i class="fa fa-angle-down"></i></a>
+                                    <li class="active"><a href="{{route('home.index')}}">home<i class="fa fa-angle-down"></i></a>
                                         <!-- Home Version Dropdown Start -->
                                         <ul class="ht-dropdown">
                                             <li><a href="index.html">Home Version 1</a></li>

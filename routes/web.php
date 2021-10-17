@@ -27,7 +27,7 @@ Route::get('/shop',[HomeController::class,'shop'])->name('site.shop');
 Route::get('/wishlish',[HomeController::class,'wishlish'])->name('site.wishlist');
 
 
-Route::get('/',[HomeController::class,'shop'])->name('site.shop');
+Route::get('/shop',[HomeController::class,'shop'])->name('site.shop');
 
 // start vinh
 Route::get('/register',[HomeController::class,'register'])->name('site.register');
