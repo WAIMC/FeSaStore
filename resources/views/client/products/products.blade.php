@@ -22,30 +22,30 @@
                             <!-- Thumbnail Large Image start -->
                             <div class="tab-content">
                                 <div id="thumb1" class="tab-pane fade show active">
-                                    <a data-fancybox="images" href="{{url('public')}}/frontend/img\products\35.jpg"><img src="{{url('public')}}/frontend/img\products\35.jpg" alt="product-view"></a>
+                                    <a data-fancybox="images" href="{{url('public/client')}}/img/products\35.jpg"><img src="{{url('public/client')}}/img/products\35.jpg" alt="product-view"></a>
                                 </div>
                                 <div id="thumb2" class="tab-pane fade">
-                                    <a data-fancybox="images" href="{{url('public')}}/frontend/img\products\13.jpg"><img src="img\products\13.jpg" alt="product-view"></a>
+                                    <a data-fancybox="images" href="{{url('public/client')}}/img/products\13.jpg"><img src="{{url('public/client')}}/img/products\13.jpg" alt="product-view"></a>
                                 </div>
                                 <div id="thumb3" class="tab-pane fade">
-                                    <a data-fancybox="images" href="{{url('public')}}/frontend/img\products\15.jpg"><img src="img\products\15.jpg" alt="product-view"></a>
+                                    <a data-fancybox="images" href="{{url('public/client')}}/img/products\15.jpg"><img src="{{url('public/client')}}/img/products\15.jpg" alt="product-view"></a>
                                 </div>
                                 <div id="thumb4" class="tab-pane fade">
-                                    <a data-fancybox="images" href="{{url('public')}}/frontend/img\products\4.jpg"><img src="img\products\4.jpg" alt="product-view"></a>
+                                    <a data-fancybox="images" href="{{url('public/client')}}/img/products\4.jpg"><img src="{{url('public/client')}}/img/products\4.jpg" alt="product-view"></a>
                                 </div>
                                 <div id="thumb5" class="tab-pane fade">
-                                    <a data-fancybox="images" href="{{url('public')}}/frontend/img\products\5.jpg"><img src="img\products\5.jpg" alt="product-view"></a>
+                                    <a data-fancybox="images" href="{{url('public/client')}}/img/products\5.jpg"><img src="{{url('public/client')}}/img/products\5.jpg" alt="product-view"></a>
                                 </div>
                             </div>
                             <!-- Thumbnail Large Image End -->
                             <!-- Thumbnail Image End -->
                             <div class="product-thumbnail mt-15">
                                 <div class="thumb-menu owl-carousel nav tabs-area" role="tablist">
-                                    <a class="active" data-toggle="tab" href="#thumb1"><img src="{{url('public')}}/frontend/img\products\35.jpg" alt="product-thumbnail"></a>
-                                    <a data-toggle="tab" href="#thumb2"><img src="{{url('public')}}/frontend/img\products\13.jpg" alt="product-thumbnail"></a>
-                                    <a data-toggle="tab" href="#thumb3"><img src="{{url('public')}}/frontend/img\products\15.jpg" alt="product-thumbnail"></a>
-                                    <a data-toggle="tab" href="#thumb4"><img src="{{url('public')}}/frontend/img\products\4.jpg" alt="product-thumbnail"></a>
-                                    <a data-toggle="tab" href="#thumb5"><img src="{{url('public')}}/frontend/img\products\5.jpg" alt="product-thumbnail"></a>
+                                    <a class="active" data-toggle="tab" href="#thumb1"><img src="{{url('public/client')}}/img/products\35.jpg" alt="product-thumbnail"></a>
+                                    <a data-toggle="tab" href="#thumb2"><img src="{{url('public/client')}}/img/products\13.jpg" alt="product-thumbnail"></a>
+                                    <a data-toggle="tab" href="#thumb3"><img src="{{url('public/client')}}/img/products\15.jpg" alt="product-thumbnail"></a>
+                                    <a data-toggle="tab" href="#thumb4"><img src="{{url('public/client')}}/img/products\4.jpg" alt="product-thumbnail"></a>
+                                    <a data-toggle="tab" href="#thumb5"><img src="{{url('public/client')}}/img/products\5.jpg" alt="product-thumbnail"></a>
                                 </div>
                             </div>
                             <!-- Thumbnail image end -->

@@ -204,8 +204,8 @@
                                 <ul class="ht-dropdown dropdown-style-two">
                                     <li><a href="{{route('client.about')}}">contact us</a></li>
                                     <li><a href="{{route('client.register')}}">register</a></li>
-                                    <li><a href="{{route('client.checkout')}}">sign in</a></li>
-                                    <li><a href="forgot-password.html">forgot password</a></li>
+                                    <li><a href="{{route('client.signIn')}}">sign in</a></li>
+                                    <li><a href="{{route('client.forgotPassword')}}">forgot password</a></li>
                                     <li><a href="404.html">404</a></li>
                                 </ul>
                                 <!-- Home Version Dropdown End -->

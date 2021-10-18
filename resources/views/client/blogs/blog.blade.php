@@ -22,7 +22,7 @@
                         <div class="col-lg-6 col-sm-12">
                            <div class="single-latest-blog">
                                <div class="blog-img">
-                                   <a href="single-blog.html"><img src="{{url('public')}}/frontend/img\blog\1.jpg" alt="blog-image"></a>
+                                   <a href="single-blog.html"><img src="{{url('public/client')}}/img/blog\1.jpg" alt="blog-image"></a>
                                </div>
                                <div class="blog-desc">
                                    <h4><a href="single-blog.html">Nhưng đó là lý do tại sao tôi đến.</a></h4>
@@ -43,7 +43,7 @@
                         <div class="col-lg-6 col-sm-12">
                            <div class="single-latest-blog">
                                <div class="blog-img">
-                                   <a href="single-blog.html"><img src="{{url('public')}}/frontend/img\blog\2.jpg" alt="blog-image"></a>
+                                   <a href="single-blog.html"><img src="{{url('public/client')}}/img/blog\2.jpg" alt="blog-image"></a>
                                </div>
                                <div class="blog-desc">
                                    <h4><a href="single-blog.html">Thật vui khi bạn đến ..</a></h4>
@@ -64,7 +64,7 @@
                         <div class="col-lg-6 col-sm-12">
                            <div class="single-latest-blog">
                                <div class="blog-img">
-                                   <a href="single-blog.html"><img src="{{url('public')}}/frontend/img\blog\2.jpg" alt="blog-image"></a>
+                                   <a href="single-blog.html"><img src="{{url('public/client')}}/img/blog\2.jpg" alt="blog-image"></a>
                                </div>
                                <div class="blog-desc">
                                    <h4><a href="single-blog.html">Nhưng đó là lý do tại sao tôi đến.</a></h4>
@@ -85,7 +85,7 @@
                         <div class="col-lg-6 col-sm-12">
                            <div class="single-latest-blog">
                                <div class="blog-img">
-                                   <a href="single-blog.html"><img src="{{url('public')}}/frontend/img\blog\1.jpg" alt="blog-image"></a>
+                                   <a href="single-blog.html"><img src="{{url('public/client')}}/img/blog\1.jpg" alt="blog-image"></a>
                                </div>
                                <div class="blog-desc">
                                    <h4><a href="single-blog.html">Nhưng đó là lý do tại sao tôi đến.</a></h4>
@@ -106,7 +106,7 @@
                         <div class="col-lg-6 col-sm-12">
                            <div class="single-latest-blog">
                                <div class="blog-img">
-                                   <a href="single-blog.html"><img src="{{url('public')}}/frontend/img\blog\1.jpg" alt="blog-image"></a>
+                                   <a href="single-blog.html"><img src="{{url('public/client')}}/img/blog\1.jpg" alt="blog-image"></a>
                                </div>
                                <div class="blog-desc">
                                    <h4><a href="single-blog.html">Nhưng đó là lý do tại sao tôi đến.</a></h4>
@@ -127,7 +127,7 @@
                         <div class="col-lg-6 col-sm-12">
                            <div class="single-latest-blog">
                                <div class="blog-img">
-                                   <a href="single-blog.html"><img src="{{url('public')}}/frontend/img\blog\2.jpg" alt="blog-image"></a>
+                                   <a href="single-blog.html"><img src="{{url('public/client')}}/img/blog\2.jpg" alt="blog-image"></a>
                                </div>
                                <div class="blog-desc">
                                    <h4><a href="single-blog.html">Thật vui khi bạn đến ..</a></h4>
@@ -148,7 +148,7 @@
                         <div class="col-lg-6 col-sm-12">
                            <div class="single-latest-blog">
                                <div class="blog-img">
-                                   <a href="single-blog.html"><img src="{{url('public')}}/frontend/img\blog\2.jpg" alt="blog-image"></a>
+                                   <a href="single-blog.html"><img src="{{url('public/client')}}/img/blog\2.jpg" alt="blog-image"></a>
                                </div>
                                <div class="blog-desc">
                                    <h4><a href="single-blog.html">Thật vui khi bạn đến ..</a></h4>
@@ -169,7 +169,7 @@
                         <div class="col-lg-6 col-sm-12">
                            <div class="single-latest-blog">
                                <div class="blog-img">
-                                   <a href="single-blog.html"><img src="{{url('public')}}/frontend/img\blog\1.jpg" alt="blog-image"></a>
+                                   <a href="single-blog.html"><img src="{{url('public/client')}}/img/blog\1.jpg" alt="blog-image"></a>
                                </div>
                                <div class="blog-desc">
                                    <h4><a href="single-blog.html">Thật vui khi bạn đến ..</a></h4>

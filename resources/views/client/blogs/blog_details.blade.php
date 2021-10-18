@@ -31,7 +31,7 @@
                                 </ul>
                             </div>
                             <div class="col-img mb-30">
-                                <a href="shop.html"><img src="{{url('public')}}/frontend/img\banner\banner-sidebar.jpg" alt="slider-banner"></a>
+                                <a href="shop.html"><img src="{{url('public/client')}}/img/banner\banner-sidebar.jpg" alt="slider-banner"></a>
                             </div>
                             <div class="single-sidebar mb-30">
                                  <h3 class="sidebar-title">khác</h3>
@@ -62,7 +62,7 @@
                     <div class="col-lg-9 order-1 order-lg-2">
                         <div class="single-sidebar-desc mb-all-40">
                             <div class="sidebar-img">
-                                <img src="{{url('public')}}/frontend/img\blog\10.jpg" alt="single-blog-img">
+                                <img src="{{url('public/client')}}/img/blog\10.jpg" alt="single-blog-img">
                             </div>
                             <div class="sidebar-post-content">
                                 <h3 class="sidebar-lg-title">Đây là bài thứ hai cho XipBlog</h3>

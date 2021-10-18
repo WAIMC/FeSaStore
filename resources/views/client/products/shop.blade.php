@@ -158,8 +158,8 @@
                                     <!-- Product Image Start -->
                                     <div class="pro-img">
                                         <a href="product.html">
-                                            <img class="primary-img" src="{{url('public')}}/frontend/img/products\20.jpg" alt="single-product">
-                                            <img class="secondary-img" src="{{url('public')}}/frontend/img/products\19.jpg" alt="single-product">
+                                            <img class="primary-img" src="{{url('public/client')}}/img/products\20.jpg" alt="single-product">
+                                            <img class="secondary-img" src="{{url('public/client')}}/img/products\19.jpg" alt="single-product">
                                         </a>
                                         <div class="label-product l_sale">30<span class="symbol-percent">%</span></div>
                                     </div>
@@ -177,8 +177,8 @@
                                     <!-- Product Image Start -->
                                     <div class="pro-img">
                                         <a href="product.html">
-                                            <img class="primary-img" src="{{url('public')}}/frontend/img/products\2.jpg" alt="single-product">
-                                            <img class="secondary-img" src="{{url('public')}}/frontend/img/products\1.jpg" alt="single-product">
+                                            <img class="primary-img" src="{{url('public/client')}}/img/products\2.jpg" alt="single-product">
+                                            <img class="secondary-img" src="{{url('public/client')}}/img/products\1.jpg" alt="single-product">
                                         </a>
                                     </div>
                                     <!-- Product Image End -->
@@ -195,8 +195,8 @@
                                     <!-- Product Image Start -->
                                     <div class="pro-img">
                                         <a href="product.html">
-                                            <img class="primary-img" src="{{url('public')}}/frontend/img/products\3.jpg" alt="single-product">
-                                            <img class="secondary-img" src="{{url('public')}}/frontend/img/products\4.jpg" alt="single-product">
+                                            <img class="primary-img" src="{{url('public/client')}}/img/products\3.jpg" alt="single-product">
+                                            <img class="secondary-img" src="{{url('public/client')}}/img/products\4.jpg" alt="single-product">
                                         </a>
                                     </div>
                                     <!-- Product Image End -->
@@ -213,8 +213,8 @@
                                     <!-- Product Image Start -->
                                     <div class="pro-img">
                                         <a href="product.html">
-                                            <img class="primary-img" src="{{url('public')}}/frontend/img/products\25.jpg" alt="single-product">
-                                            <img class="secondary-img" src="{{url('public')}}/frontend/img/products\26.jpg" alt="single-product">
+                                            <img class="primary-img" src="{{url('public/client')}}/img/products\25.jpg" alt="single-product">
+                                            <img class="secondary-img" src="{{url('public/client')}}/img/products\26.jpg" alt="single-product">
                                         </a>
                                     </div>
                                     <!-- Product Image End -->
@@ -232,8 +232,8 @@
                                     <!-- Product Image Start -->
                                     <div class="pro-img">
                                         <a href="product.html">
-                                            <img class="primary-img" src="{{url('public')}}/frontend/img/products\41.jpg" alt="single-product">
-                                            <img class="secondary-img" src="{{url('public')}}/frontend/img/products\42.jpg" alt="single-product">
+                                            <img class="primary-img" src="{{url('public/client')}}/img/products\41.jpg" alt="single-product">
+                                            <img class="secondary-img" src="{{url('public/client')}}/img/products\42.jpg" alt="single-product">
                                         </a>
                                     </div>
                                     <!-- Product Image End -->
@@ -250,8 +250,8 @@
                                     <!-- Product Image Start -->
                                     <div class="pro-img">
                                         <a href="product.html">
-                                            <img class="primary-img" src="{{url('public')}}/frontend/img/products\36.jpg" alt="single-product">
-                                            <img class="secondary-img" src="{{url('public')}}/frontend/img/products\35.jpg" alt="single-product">
+                                            <img class="primary-img" src="{{url('public/client')}}/img/products\36.jpg" alt="single-product">
+                                            <img class="secondary-img" src="{{url('public/client')}}/img/products\35.jpg" alt="single-product">
                                         </a>
                                     </div>
                                     <!-- Product Image End -->
@@ -268,8 +268,8 @@
                                     <!-- Product Image Start -->
                                     <div class="pro-img">
                                         <a href="product.html">
-                                            <img class="primary-img" src="{{url('public')}}/frontend/img/products\33.jpg" alt="single-product">
-                                            <img class="secondary-img" src="{{url('public')}}/frontend/img/products\34.jpg" alt="single-product">
+                                            <img class="primary-img" src="{{url('public/client')}}/img/products\33.jpg" alt="single-product">
+                                            <img class="secondary-img" src="{{url('public/client')}}/img/products\34.jpg" alt="single-product">
                                         </a>
                                     </div>
                                     <!-- Product Image End -->
@@ -286,8 +286,8 @@
                                     <!-- Product Image Start -->
                                     <div class="pro-img">
                                         <a href="product.html">
-                                            <img class="primary-img" src="{{url('public')}}/frontend/img/products\31.jpg" alt="single-product">
-                                            <img class="secondary-img" src="{{url('public')}}/frontend/img/products\32.jpg" alt="single-product">
+                                            <img class="primary-img" src="{{url('public/client')}}/img/products\31.jpg" alt="single-product">
+                                            <img class="secondary-img" src="{{url('public/client')}}/img/products\32.jpg" alt="single-product">
                                         </a>
                                     </div>
                                     <!-- Product Image End -->
@@ -305,8 +305,8 @@
                                     <!-- Product Image Start -->
                                     <div class="pro-img">
                                         <a href="product.html">
-                                            <img class="primary-img" src="{{url('public')}}/frontend/img/products\15.jpg" alt="single-product">
-                                            <img class="secondary-img" src="{{url('public')}}/frontend/img/products\16.jpg" alt="single-product">
+                                            <img class="primary-img" src="{{url('public/client')}}/img/products\15.jpg" alt="single-product">
+                                            <img class="secondary-img" src="{{url('public/client')}}/img/products\16.jpg" alt="single-product">
                                         </a>
                                     </div>
                                     <!-- Product Image End -->
@@ -323,8 +323,8 @@
                                     <!-- Product Image Start -->
                                     <div class="pro-img">
                                         <a href="product.html">
-                                            <img class="primary-img" src="{{url('public')}}/frontend/img/products\17.jpg" alt="single-product">
-                                            <img class="secondary-img" src="{{url('public')}}/frontend/img/products\18.jpg" alt="single-product">
+                                            <img class="primary-img" src="{{url('public/client')}}/img/products\17.jpg" alt="single-product">
+                                            <img class="secondary-img" src="{{url('public/client')}}/img/products\18.jpg" alt="single-product">
                                         </a>
                                         <div class="label-product l_sale">30<span class="symbol-percent">%</span></div>
                                     </div>
@@ -342,8 +342,8 @@
                                     <!-- Product Image Start -->
                                     <div class="pro-img">
                                         <a href="product.html">
-                                            <img class="primary-img" src="{{url('public')}}/frontend/img/products\23.jpg" alt="single-product">
-                                            <img class="secondary-img" src="{{url('public')}}/frontend/img/products\24.jpg" alt="single-product">
+                                            <img class="primary-img" src="{{url('public/client')}}/img/products\23.jpg" alt="single-product">
+                                            <img class="secondary-img" src="{{url('public/client')}}/img/products\24.jpg" alt="single-product">
                                         </a>
                                     </div>
                                     <!-- Product Image End -->
@@ -360,8 +360,8 @@
                                     <!-- Product Image Start -->
                                     <div class="pro-img">
                                         <a href="product.html">
-                                            <img class="primary-img" src="{{url('public')}}/frontend/img/products\25.jpg" alt="single-product">
-                                            <img class="secondary-img" src="{{url('public')}}/frontend/img/products\26.jpg" alt="single-product">
+                                            <img class="primary-img" src="{{url('public/client')}}/img/products\25.jpg" alt="single-product">
+                                            <img class="secondary-img" src="{{url('public/client')}}/img/products\26.jpg" alt="single-product">
                                         </a>
                                     </div>
                                     <!-- Product Image End -->
@@ -378,7 +378,7 @@
                     <!-- Product Top End -->                            
                     <!-- Single Banner Start -->
                     <div class="col-img">
-                        <a href="shop.html"><img src="{{url('public')}}/frontend/img/banner\banner-sidebar.jpg" alt="slider-banner"></a>
+                        <a href="shop.html"><img src="{{url('public/client')}}/img/banner\banner-sidebar.jpg" alt="slider-banner"></a>
                     </div>
                     <!-- Single Banner End -->
                 </div>
@@ -435,8 +435,8 @@
                                         <!-- Product Image Start -->
                                         <div class="pro-img">
                                             <a href="product.html">
-                                                <img class="primary-img" src="{{url('public')}}/frontend/img/products\1.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public')}}/frontend/img/products\2.jpg" alt="single-product">
+                                                <img class="primary-img" src="{{url('public/client')}}/img/products\1.jpg" alt="single-product">
+                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\2.jpg" alt="single-product">
                                             </a>
                                             <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="" data-original-title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                         </div>
@@ -468,8 +468,8 @@
                                         <!-- Product Image Start -->
                                         <div class="pro-img">
                                             <a href="product.html">
-                                                <img class="primary-img" src="{{url('public')}}/frontend/img/products\3.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public')}}/frontend/img/products\4.jpg" alt="single-product">
+                                                <img class="primary-img" src="{{url('public/client')}}/img/products\3.jpg" alt="single-product">
+                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\4.jpg" alt="single-product">
                                             </a>
                                             <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="" data-original-title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                         </div>
@@ -502,8 +502,8 @@
                                         <!-- Product Image Start -->
                                         <div class="pro-img">
                                             <a href="product.html">
-                                                <img class="primary-img" src="{{url('public')}}/frontend/img/products\5.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public')}}/frontend/img/products\6.jpg" alt="single-product">
+                                                <img class="primary-img" src="{{url('public/client')}}/img/products\5.jpg" alt="single-product">
+                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\6.jpg" alt="single-product">
                                             </a>
                                             <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="" data-original-title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                         </div>
@@ -535,8 +535,8 @@
                                         <!-- Product Image Start -->
                                         <div class="pro-img">
                                             <a href="product.html">
-                                                <img class="primary-img" src="{{url('public')}}/frontend/img/products\8.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public')}}/frontend/img/products\9.jpg" alt="single-product">
+                                                <img class="primary-img" src="{{url('public/client')}}/img/products\8.jpg" alt="single-product">
+                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\9.jpg" alt="single-product">
                                             </a>
                                             <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="" data-original-title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                         </div>
@@ -569,8 +569,8 @@
                                         <!-- Product Image Start -->
                                         <div class="pro-img">
                                             <a href="product.html">
-                                                <img class="primary-img" src="{{url('public')}}/frontend/img/products\11.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public')}}/frontend/img/products\12.jpg" alt="single-product">
+                                                <img class="primary-img" src="{{url('public/client')}}/img/products\11.jpg" alt="single-product">
+                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\12.jpg" alt="single-product">
                                             </a>
                                             <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="" data-original-title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                         </div>
@@ -602,8 +602,8 @@
                                         <!-- Product Image Start -->
                                         <div class="pro-img">
                                             <a href="product.html">
-                                                <img class="primary-img" src="{{url('public')}}/frontend/img/products\15.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public')}}/frontend/img/products\16.jpg" alt="single-product">
+                                                <img class="primary-img" src="{{url('public/client')}}/img/products\15.jpg" alt="single-product">
+                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\16.jpg" alt="single-product">
                                             </a>
                                             <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="" data-original-title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                         </div>
@@ -636,8 +636,8 @@
                                         <!-- Product Image Start -->
                                         <div class="pro-img">
                                             <a href="product.html">
-                                                <img class="primary-img" src="{{url('public')}}/frontend/img/products\13.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public')}}/frontend/img/products\14.jpg" alt="single-product">
+                                                <img class="primary-img" src="{{url('public/client')}}/img/products\13.jpg" alt="single-product">
+                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\14.jpg" alt="single-product">
                                             </a>
                                             <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="" data-original-title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                         </div>
@@ -669,8 +669,8 @@
                                         <!-- Product Image Start -->
                                         <div class="pro-img">
                                             <a href="product.html">
-                                                <img class="primary-img" src="{{url('public')}}/frontend/img/products\42.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public')}}/frontend/img/products\43.jpg" alt="single-product">
+                                                <img class="primary-img" src="{{url('public/client')}}/img/products\42.jpg" alt="single-product">
+                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\43.jpg" alt="single-product">
                                             </a>
                                             <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="" data-original-title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                         </div>
@@ -702,8 +702,8 @@
                                         <!-- Product Image Start -->
                                         <div class="pro-img">
                                             <a href="product.html">
-                                                <img class="primary-img" src="{{url('public')}}/frontend/img/products\40.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public')}}/frontend/img/products\41.jpg" alt="single-product">
+                                                <img class="primary-img" src="{{url('public/client')}}/img/products\40.jpg" alt="single-product">
+                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\41.jpg" alt="single-product">
                                             </a>
                                             <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="" data-original-title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                         </div>
@@ -736,8 +736,8 @@
                                         <!-- Product Image Start -->
                                         <div class="pro-img">
                                             <a href="product.html">
-                                                <img class="primary-img" src="{{url('public')}}/frontend/img/products\39.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public')}}/frontend/img/products\38.jpg" alt="single-product">
+                                                <img class="primary-img" src="{{url('public/client')}}/img/products\39.jpg" alt="single-product">
+                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\38.jpg" alt="single-product">
                                             </a>
                                             <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="" data-original-title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                         </div>
@@ -770,8 +770,8 @@
                                         <!-- Product Image Start -->
                                         <div class="pro-img">
                                             <a href="product.html">
-                                                <img class="primary-img" src="{{url('public')}}/frontend/img/products\36.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public')}}/frontend/img/products\37.jpg" alt="single-product">
+                                                <img class="primary-img" src="{{url('public/client')}}/img/products\36.jpg" alt="single-product">
+                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\37.jpg" alt="single-product">
                                             </a>
                                             <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="" data-original-title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                         </div>
@@ -804,8 +804,8 @@
                                         <!-- Product Image Start -->
                                         <div class="pro-img">
                                             <a href="product.html">
-                                                <img class="primary-img" src="{{url('public')}}/frontend/img/products\35.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public')}}/frontend/img/products\36.jpg" alt="single-product">
+                                                <img class="primary-img" src="{{url('public/client')}}/img/products\35.jpg" alt="single-product">
+                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\36.jpg" alt="single-product">
                                             </a>
                                             <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="" data-original-title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                         </div>
@@ -844,8 +844,8 @@
                                     <div class="col-lg-4 col-md-5 col-sm-12">
                                         <div class="pro-img">
                                             <a href="product.html">
-                                                <img class="primary-img" src="{{url('public')}}/frontend/img/products\23.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public')}}/frontend/img/products\24.jpg" alt="single-product">
+                                                <img class="primary-img" src="{{url('public/client')}}/img/products\23.jpg" alt="single-product">
+                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\24.jpg" alt="single-product">
                                             </a>
                                             <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="" data-original-title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                              <span class="sticker-new">new</span>
@@ -880,8 +880,8 @@
                                     <div class="col-lg-4 col-md-5 col-sm-12">
                                         <div class="pro-img">
                                             <a href="product.html">
-                                                <img class="primary-img" src="{{url('public')}}/frontend/img/products\30.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public')}}/frontend/img/products\31.jpg" alt="single-product">
+                                                <img class="primary-img" src="{{url('public/client')}}/img/products\30.jpg" alt="single-product">
+                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\31.jpg" alt="single-product">
                                             </a>
                                             <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="" data-original-title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                         </div>
@@ -915,8 +915,8 @@
                                     <div class="col-lg-4 col-md-5 col-sm-12">
                                         <div class="pro-img">
                                             <a href="product.html">
-                                                <img class="primary-img" src="{{url('public')}}/frontend/img/products\41.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public')}}/frontend/img/products\42.jpg" alt="single-product">
+                                                <img class="primary-img" src="{{url('public/client')}}/img/products\41.jpg" alt="single-product">
+                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\42.jpg" alt="single-product">
                                             </a>
                                             <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="" data-original-title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                             <span class="sticker-new">new</span>
@@ -951,8 +951,8 @@
                                     <div class="col-lg-4 col-md-5 col-sm-12">
                                         <div class="pro-img">
                                             <a href="product.html">
-                                                <img class="primary-img" src="{{url('public')}}/frontend/img/products\1.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public')}}/frontend/img/products\2.jpg" alt="single-product">
+                                                <img class="primary-img" src="{{url('public/client')}}/img/products\1.jpg" alt="single-product">
+                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\2.jpg" alt="single-product">
                                             </a>
                                             <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="" data-original-title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                         </div>
@@ -986,8 +986,8 @@
                                     <div class="col-lg-4 col-md-5 col-sm-12">
                                         <div class="pro-img">
                                             <a href="product.html">
-                                                <img class="primary-img" src="{{url('public')}}/frontend/img/products\23.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public')}}/frontend/img/products\24.jpg" alt="single-product">
+                                                <img class="primary-img" src="{{url('public/client')}}/img/products\23.jpg" alt="single-product">
+                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\24.jpg" alt="single-product">
                                             </a>
                                             <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="" data-original-title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                         </div>

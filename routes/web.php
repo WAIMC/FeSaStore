@@ -36,7 +36,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/about',[App\Http\Controllers\client\HomeController::class,'about'])->name('client.about');
     Route::get('/contact',[App\Http\Controllers\client\HomeController::class,'contact'])->name('client.contact');
     Route::get('/shop',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
-    Route::get('/wishlish',[App\Http\Controllers\client\HomeController::class,'wishlish'])->name('client.wishlist');
+    Route::get('/wishlist',[App\Http\Controllers\client\HomeController::class,'wishlish'])->name('client.wishlist');
     Route::get('/shop',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
     Route::get('/register',[App\Http\Controllers\client\HomeController::class,'register'])->name('client.register');
     Route::get('/signIn',[App\Http\Controllers\client\HomeController::class,'signIn'])->name('client.signIn');

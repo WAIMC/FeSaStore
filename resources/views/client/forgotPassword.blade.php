@@ -1,5 +1,5 @@
 @extends('client.layouts.master')
-@section('title','Quyên mật khẩu')
+@section('title','Quên mật khẩu')
 @section('main')
         <!-- Main Wrapper Start Here -->
         <div class="wrapper">
@@ -10,7 +10,7 @@
                         <ul class="d-flex align-items-center">
                             <li><a href="">Trang Chủ</a></li>
                             <li><a href="">Tài Khoản</a></li>
-                            <li class="active"><a href="{{ route('site.forgotPassword') }}">Quyên Mật Khẩu</a></li>
+                            <li class="active"><a href="{{ route('client.forgotPassword') }}">Quyên Mật Khẩu</a></li>
                         </ul>
                     </div>
                 </div>

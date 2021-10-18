@@ -35,7 +35,7 @@
                                 <tr>
                                     <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
                                     <td class="product-thumbnail">
-                                        <a href="#"><img src="{{url('public')}}/frontend/img/products\6.jpg" alt="cart-image"></a>
+                                        <a href="#"><img src="{{url('public/client')}}/img/products\6.jpg" alt="cart-image"></a>
                                     </td>
                                     <td class="product-name"><a href="#">Vestibulum suscipit</a></td>
                                     <td class="product-price"><span class="amount">£165.00</span></td>
@@ -45,7 +45,7 @@
                                 <tr>
                                     <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
                                     <td class="product-thumbnail">
-                                       <a href="#"><img src="{{url('public')}}/frontend/img/products\22.jpg" alt="cart-image"></a>
+                                       <a href="#"><img src="{{url('public/client')}}/img/products\22.jpg" alt="cart-image"></a>
                                     </td>
                                     <td class="product-name"><a href="#">Vestibulum dictum magna</a></td>
                                     <td class="product-price"><span class="amount">£50.00</span></td>

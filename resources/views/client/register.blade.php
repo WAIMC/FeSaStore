@@ -9,7 +9,7 @@
                     <div class="breadcrumb">
                         <ul class="d-flex align-items-center">
                             <li><a href="">Trang Chủ</a></li>
-                            <li class="active"><a href="{{ route('site.register') }}">Đăng Ký</a></li>
+                            <li class="active"><a href="{{ route('client.register') }}">Đăng Ký</a></li>
                         </ul>
                     </div>
                 </div>

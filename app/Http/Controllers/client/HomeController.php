@@ -24,7 +24,7 @@ class HomeController extends Controller
     }
 
     public function wishlish(){
-        return view('client.wishlish');
+        return view('client.wishlist');
     }
 
 

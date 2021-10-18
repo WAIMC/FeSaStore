@@ -9,7 +9,7 @@
                 <div class="vertical-menu mb-all-30">
                     <nav>
                         <ul class="vertical-menu-list">
-                            <li class=""><a href="shop.html"><span><img src="{{url('public')}}/frontend/img\vertical-menu\1.png" alt="menu-icon"></span>Automotive & Motorcycle<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                            <li class=""><a href="shop.html"><span><img src="{{url('public/client')}}/img/vertical-menu\1.png" alt="menu-icon"></span>Automotive & Motorcycle<i class="fa fa-angle-right" aria-hidden="true"></i></a>
 
                                 <ul class="ht-dropdown mega-child">
                                     <li><a href="shop.html">Office chair <i class="fa fa-angle-right"></i></a>
@@ -37,7 +37,7 @@
                                 </ul>
                                 <!-- category submenu end-->
                             </li>
-                            <li><a href="shop.html"><span><img src="{{url('public')}}/frontend/img\vertical-menu\3.png" alt="menu-icon"></span>Sports & Outdoors<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                            <li><a href="shop.html"><span><img src="{{url('public/client')}}/img/vertical-menu\3.png" alt="menu-icon"></span>Sports & Outdoors<i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                 <!-- Vertical Mega-Menu Start -->
                                 <ul class="ht-dropdown megamenu first-megamenu">
                                     <!-- Single Column Start -->
@@ -78,15 +78,15 @@
                                     <!-- Single Column End -->
                                     <!-- Single Megamenu Image Start -->
                                     <li class="megamenu-img">
-                                        <a href="shop.html"><img src="{{url('public')}}/frontend/img\vertical-menu\sub-img1.jpg" alt="menu-image"></a>
-                                        <a href="shop.html"><img src="{{url('public')}}/frontend/img\vertical-menu\sub-img2.jpg" alt="menu-image"></a>
-                                        <a href="shop.html"><img src="{{url('public')}}/frontend/img\vertical-menu\sub-img3.jpg" alt="menu-image"></a>
+                                        <a href="shop.html"><img src="{{url('public/client')}}/img/vertical-menu\sub-img1.jpg" alt="menu-image"></a>
+                                        <a href="shop.html"><img src="{{url('public/client')}}/img/vertical-menu\sub-img2.jpg" alt="menu-image"></a>
+                                        <a href="shop.html"><img src="{{url('public/client')}}/img/vertical-menu\sub-img3.jpg" alt="menu-image"></a>
                                     </li>
                                     <!-- Single Megamenu Image End -->
                                 </ul>
                                 <!-- Vertical Mega-Menu End -->
                             </li>
-                            <li><a href="shop.html"><span><img src="{{url('public')}}/frontend/img\vertical-menu\6.png" alt="menu-icon"></span>Fashion<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                            <li><a href="shop.html"><span><img src="{{url('public/client')}}/img/vertical-menu\6.png" alt="menu-icon"></span>Fashion<i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                 <!-- Vertical Mega-Menu Start -->
                                 <ul class="ht-dropdown megamenu megamenu-two">
                                     <!-- Single Column Start -->
@@ -114,7 +114,7 @@
                                 </ul>
                                 <!-- Vertical Mega-Menu End -->
                             </li>
-                            <li><a href="shop.html"><span><img src="{{url('public')}}/frontend/img\vertical-menu\7.png" alt="menu-icon"></span>Home & Kitchen<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                            <li><a href="shop.html"><span><img src="{{url('public/client')}}/img/vertical-menu\7.png" alt="menu-icon"></span>Home & Kitchen<i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                 <!-- Vertical Mega-Menu Start -->
                                 <ul class="ht-dropdown megamenu megamenu-two">
                                     <!-- Single Column Start -->
@@ -142,7 +142,7 @@
                                 </ul>
                                 <!-- Vertical Mega-Menu End -->
                             </li>
-                            <li><a href="shop.html"><span><img src="{{url('public')}}/frontend/img\vertical-menu\4.png" alt="menu-icon"></span>Phones & Tablets<i class="fa fa-angle-right" aria-hidden="true"></i>
+                            <li><a href="shop.html"><span><img src="{{url('public/client')}}/img/vertical-menu\4.png" alt="menu-icon"></span>Phones & Tablets<i class="fa fa-angle-right" aria-hidden="true"></i>
                                 </a>
                                 <!-- Vertical Mega-Menu Start -->
                                 <ul class="ht-dropdown megamenu megamenu-two">
@@ -171,7 +171,7 @@
                                 </ul>
                                 <!-- Vertical Mega-Menu End -->
                             </li>
-                            <li><a href="shop.html"><span><img src="{{url('public')}}/frontend/img\vertical-menu\6.png" alt="menu-icon"></span>TV & Video<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                            <li><a href="shop.html"><span><img src="{{url('public/client')}}/img/vertical-menu\6.png" alt="menu-icon"></span>TV & Video<i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                 <!-- Vertical Mega-Menu Start -->
                                 <ul class="ht-dropdown megamenu megamenu-two">
                                     <!-- Single Column Start -->
@@ -199,17 +199,17 @@
                                 </ul>
                                 <!-- Vertical Mega-Menu End -->
                             </li>
-                            <li><a href="shop.html"><span><img src="{{url('public')}}/frontend/img\vertical-menu\5.png" alt="menu-icon"></span>Beauty</a>
+                            <li><a href="shop.html"><span><img src="{{url('public/client')}}/img/vertical-menu\5.png" alt="menu-icon"></span>Beauty</a>
                             </li>
-                            <li><a href="shop.html"><span><img src="{{url('public')}}/frontend/img\vertical-menu\8.png" alt="menu-icon"></span>Fruits & Veggies</a></li>
-                            <li><a href="shop.html"><span><img src="{{url('public')}}/frontend/img\vertical-menu\9.png" alt="menu-icon"></span>Computer & Laptop</a></li>
-                            <li><a href="shop.html"><span><img src="{{url('public')}}/frontend/img\vertical-menu\10.png" alt="menu-icon"></span>Meat & Seafood</a></li>
+                            <li><a href="shop.html"><span><img src="{{url('public/client')}}/img/vertical-menu\8.png" alt="menu-icon"></span>Fruits & Veggies</a></li>
+                            <li><a href="shop.html"><span><img src="{{url('public/client')}}/img/vertical-menu\9.png" alt="menu-icon"></span>Computer & Laptop</a></li>
+                            <li><a href="shop.html"><span><img src="{{url('public/client')}}/img/vertical-menu\10.png" alt="menu-icon"></span>Meat & Seafood</a></li>
                             <!-- More Categoies Start -->
                             <li id="cate-toggle" class="category-menu v-cat-menu">
                                 <ul>
                                     <li class="has-sub"><a href="#">More Categories</a>
                                         <ul class="category-sub">
-                                            <li><a href="shop.html"><span><img src="{{url('public')}}/frontend/img\vertical-menu\11.png" alt="menu-icon"></span>Accessories</a></li>
+                                            <li><a href="shop.html"><span><img src="{{url('public/client')}}/img/vertical-menu\11.png" alt="menu-icon"></span>Accessories</a></li>
                                         </ul>
                                     </li>
                                 </ul>
