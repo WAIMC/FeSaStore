@@ -202,7 +202,7 @@
                             <li><a href="#">pages<i class="fa fa-angle-down"></i></a>
                                 <!-- Home Version Dropdown Start -->
                                 <ul class="ht-dropdown dropdown-style-two">
-                                    <li><a href="{{route('client.about')}}">contact us</a></li>
+                                    <li><a href="{{route('client.contact')}}">contact us</a></li>
                                     <li><a href="{{route('client.register')}}">register</a></li>
                                     <li><a href="{{route('client.signIn')}}">sign in</a></li>
                                     <li><a href="{{route('client.forgotPassword')}}">forgot password</a></li>
