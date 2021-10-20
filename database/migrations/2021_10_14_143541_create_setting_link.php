@@ -15,8 +15,8 @@ class CreateSettingLink extends Migration
     {
         Schema::create('setting_link', function (Blueprint $table) {
             $table->increments('id');
-            $table->varchar('config_key');
-            $table->varchar('config_value');
+            $table->string('config_key');
+            $table->string('config_value');
             $table->timestamps();
         });
     }

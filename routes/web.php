@@ -22,6 +22,10 @@ use Illuminate\Support\Facades\Route;
 
     Route::prefix('admin')->group(function(){
         Route::get('/',[App\Http\Controllers\admin\AdminController::class,'index'])->name('admin.index');
+
+        Route::resources([
+            'settingLink'=>admin\SettingLinkController::class
+        ]);
     });
 
 /*

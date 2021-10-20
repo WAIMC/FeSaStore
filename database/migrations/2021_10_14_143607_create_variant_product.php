@@ -16,13 +16,13 @@ class CreateVariantProduct extends Migration
         Schema::create('variant_product', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->integer('product_id')->unsigned();
-            $table->varchar('color');
-            $table->varchar('color_code');
+            $table->string('color');
+            $table->string('color_code');
             $table->double('quantity');
             $table->double('price');
             $table->double('discount');
             $table->text('gallery');
-            $table->tinyint('status');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }
