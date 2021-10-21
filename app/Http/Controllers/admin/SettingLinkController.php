@@ -11,6 +11,11 @@ use Illuminate\Http\Request;
 class SettingLinkController extends Controller
 {
 
+
+     /**
+     * @var SettingLinkInterface|\App\Repositories\Contracts
+     */
+
     protected $setting_link_repo;
 
     public function __construct(SettingLinkInterface $setting_link_repo)

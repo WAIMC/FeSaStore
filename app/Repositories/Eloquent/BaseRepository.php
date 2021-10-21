@@ -2,51 +2,81 @@
 
     namespace App\Repositories\Eloquent;
     
+
+    use App\Repositories\Exceptions\RepositoryException;
     use App\Repositories\Contracts\RepositoryInterface;
+    use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Container\Container as App;
+
 
     abstract class BaseRepository implements RepositoryInterface{
 
         /**
-        *   choose model connect
+
+         * @var App
+         */
+        private $app;
+
+        /**
+        *   @var \Illuminate\Database\Eloquent\Model
+
         */
         protected $model;
 
         /**
-        *   init 
-        */
-        public function __construct()
+
+         * @param App $app
+         * @throws \App\Repositories\Exceptions\RepositoryException
+         */
+        public function __construct(App $app)
         {
+            $this->app = $app;
+
             $this->setModel();
         }
     
         /**
         *   get model connect
+
+        *   @return string
+
         */
         abstract public function getModel();
     
         /**
         *   Set model
         *   @return model
+
+        *   @throws RepositoryException
         */
         public function setModel()
         {
-            $this->model = app()->make(
-                $this->getModel()
-            );
+            // first : $this->model = app()->make($this->getModel());
+            // true : $model = app()->make($this->getModel());
+            $model = $this->app->make($this->getModel());
+            if(!$model instanceof Model)
+                throw new RepositoryException("Class {$this->getModel()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
+            return $this->model = $model->newQuery();
+            
+
         }
         
         /**
         *   get all record
-        *   @return mixed
+
+        *   @return \Illuminate\Database\Eloquent\Collection|static[]
         */ 
         public function getAll()
         {
-            return $this->model->all();
+            return $this->model->get();
+
         }
     
         /**
         *   find a record
-        *   @param available
+
+        *   @param $id
+
         *   @return mixed
         */ 
         public function find($id)
@@ -58,7 +88,9 @@
     
         /**
         *   create record
-        *   @param array
+
+        *   @param array $attributes
+
         *   @return mixed
         */ 
         public function create($attributes = [])
@@ -68,9 +100,11 @@
     
         /**
         *   update record
-        *   @param available
-        *   @param array
-        *   @return mixed
+
+        * @param $id
+        * @param array $attributes
+        * @return bool|mixed
+
         */ 
         public function update($id, $attributes = [])
         {
@@ -85,8 +119,10 @@
     
         /**
         *   delete record
-        *   @param available
-        *   @return mixed
+
+        * @param $id
+        * @return bool
+
         */ 
         public function delete($id)
         {
