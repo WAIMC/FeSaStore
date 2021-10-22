@@ -18,7 +18,7 @@
                     {{-- header Setting Link --}}
                     <div class="row justify-content-between">
                         <div class="col-4">
-                            <h4>Thêm mới link</h4>
+                            <h4>Chỉnh sửa liên kết</h4>
                         </div>
                         <div class="col-4 d-flex justify-content-end">
                             <a href="{{ route('settingLink.index') }}" class="btn btn-outline-dark">
