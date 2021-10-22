@@ -58,8 +58,8 @@
                 throw new RepositoryException("Class {$this->getModel()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
             return $this->model = $model->newQuery();
             
-}
-        
+
+        }
         
         /**
         *   get all record
