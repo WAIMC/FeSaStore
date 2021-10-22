@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\settingLink;
 use App\Repositories\Contracts\SettingLinkInterface;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\Setting\CreateSettingRequest;
+use App\Http\Requests\Setting\UpdateSettingRequest;
 
 class SettingLinkController extends Controller
 {
@@ -30,9 +31,8 @@ class SettingLinkController extends Controller
      */
     public function index()
     {
-        // $data_st = settingLink::all();
-        $data_st = $this->setting_link_repo->getAll();
-        return view('dashboard.settingLinks.index',compact('data_st'));
+        $data = $this->setting_link_repo->paginate(15);
+        return view('dashboard.settingLinks.index',compact('data'));
     }
 
     /**
@@ -42,7 +42,7 @@ class SettingLinkController extends Controller
      */
     public function create()
     {
-        //
+       return view('dashboard.settingLinks.create');
     }
 
     /**
@@ -51,9 +51,10 @@ class SettingLinkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateSettingRequest $request)
     {
-        //
+  $this->setting_link_repo->create($request->all());
+  return redirect()->route('settingLink.index')->with('success', 'Thêm thành công !');
     }
 
     /**
@@ -75,7 +76,7 @@ class SettingLinkController extends Controller
      */
     public function edit(settingLink $settingLink)
     {
-        //
+      return view('dashboard.settingLinks.edit',compact('settingLink'));
     }
 
     /**
@@ -85,9 +86,10 @@ class SettingLinkController extends Controller
      * @param  \App\Models\settingLink  $settingLink
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, settingLink $settingLink)
+    public function update(UpdateSettingRequest $request, settingLink $settingLink)
     {
-        //
+        $this->setting_link_repo->update($settingLink,$request->all());
+        return redirect()->route('settingLink.index')->with('success', 'Cập nhật thành công !');;
     }
 
     /**
@@ -98,6 +100,7 @@ class SettingLinkController extends Controller
      */
     public function destroy(settingLink $settingLink)
     {
-        //
+        $this->setting_link_repo->destroy($settingLink);
+        return redirect()->route('settingLink.index')->with('success', 'Xóa thành công !');;
     }
 }

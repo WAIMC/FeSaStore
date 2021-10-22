@@ -30,14 +30,15 @@
          * @param array $attributes
          * @return mixed
          */
-        public function update($id, $attributes = []);
+        public function update($model, $attributes = []);
 
         /**
          * Delete
          * @param $id
          * @return mixed
          */
-        public function delete($id);
-        
+        public function destroy($model);
+        public function paginate($perPage = 15);
+        public function findBySlug($slug);
     }
 ?>

@@ -58,8 +58,8 @@
                 throw new RepositoryException("Class {$this->getModel()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
             return $this->model = $model->newQuery();
             
-
-        }
+}
+        
         
         /**
         *   get all record
@@ -68,7 +68,7 @@
         */ 
         public function getAll()
         {
-            return $this->model->get();
+          return   $this->model->orderBy('created_at', 'DESC')->get();
 
         }
     
@@ -84,6 +84,16 @@
             $result = $this->model->find($id);
     
             return $result;
+        }
+
+        public function findBySlug($slug)
+        {
+            return $this->model->where('slug', $slug)->first();
+        }
+
+        public function paginate($perPage = 15)
+        {
+            return $this->model->orderBy('created_at', 'DESC')->paginate($perPage);
         }
     
         /**
@@ -106,15 +116,11 @@
         * @return bool|mixed
 
         */ 
-        public function update($id, $attributes = [])
+        public function update($model, $attributes = [])
         {
-            $result = $this->find($id);
-            if ($result) {
-                $result->update($attributes);
-                return $result;
-            }
-    
-            return false;
+            $model->update($attributes);
+            
+            return  $model;
         }
     
         /**
@@ -124,16 +130,9 @@
         * @return bool
 
         */ 
-        public function delete($id)
+        public function destroy($model)
         {
-            $result = $this->find($id);
-            if ($result) {
-                $result->delete();
-    
-                return true;
-            }
-    
-            return false;
+            return $model->delete();
         }
 
     }

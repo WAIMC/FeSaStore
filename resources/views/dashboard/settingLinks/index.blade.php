@@ -4,7 +4,7 @@
 {{-- define item for master layout --}}
 @section('title','Bảng Điều Khiển Quản Trị')
 @section('directory', 'Bảng Điêu Khiển')
-@section('action', 'Trang Chủ')
+@section('action', 'Setting')
 
 {{-- main section for master layout --}}
 @section('main')
@@ -18,15 +18,16 @@
                     {{-- header Setting Link --}}
                     <div class="row justify-content-between">
                         <div class="col-4">
-                            <h4>Setting Link Management</h4>
+                            <h4>Danh sách liên kết</h4>
                         </div>
                         <div class="col-4 d-flex justify-content-end">
                             <a href="{{ route('settingLink.create') }}" class="btn btn-outline-dark">
                                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                                <span>Add Setting Link</span>
+                                <span>Thêm mới liên kết</span>
                             </a>
                         </div>
                     </div>
+                 
 
                     {{-- select by choose --}}
                     <div class="row mt-4 justify-content-between">
@@ -47,7 +48,7 @@
                                     <div class="col-8 m-0 p-0">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-sm border-right-0 rounded-0"
-                                                name="key" id="key" aria-describedby="helpId" placeholder="Search By Name">
+                                                name="key" id="key" aria-describedby="helpId" placeholder="Tìm kiếm theo tên">
                                         </div>
                                     </div>
                                     <div class="col-4 m-0 p-0">
@@ -73,7 +74,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($data_st as $st_link)
+                            @foreach ($data as $st_link)
                                 <tr>
                                     <td scope="row">{{ $st_link->id }}</td>
                                     <td>{{ $st_link->config_key }}</td>
@@ -96,10 +97,10 @@
                 <div class="card-footer text-muted">
                     <div class="row">
                         <div class="col-5">
-                            {{-- <h6>Showing 1 to 10 of {{ $data_st->count() }} entries</h6> --}}
+                            {{-- <h6>Showing 1 to 10 of {{ $data->count() }} entries</h6> --}}
                         </div>
                         <div class="col-7">
-                            {{-- {{ $data_st->appends(request()->all())->links() }} --}}
+                            {{ $data->appends(request()->all())->links() }}
                         </div>
                     </div>
                 </div>
@@ -121,5 +122,16 @@
 
 {{-- customize load js for master layout --}}
 @section('js')
-    
+    <script>
+        $('.btnDelete').click(function(event) {
+        event.preventDefault();
+        var _href = $(this).attr('href');
+        //
+        $('form#formAction').attr('action', _href);
+        if (confirm('Bạn có chắc muốn xóa không ?')) {
+            $('form#formAction').submit();
+
+        }
+    })
+    </script>
 @endsection

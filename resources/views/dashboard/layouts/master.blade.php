@@ -64,6 +64,7 @@
     <section class="content">
 
       <div class="container-fluid">
+       @include('dashboard.partials.message')
         <div class="row">
           <div class="col-12">
 
