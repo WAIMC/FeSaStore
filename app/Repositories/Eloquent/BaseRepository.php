@@ -12,7 +12,6 @@
     abstract class BaseRepository implements RepositoryInterface{
 
         /**
-
          * @var App
          */
         private $app;
@@ -24,7 +23,6 @@
         protected $model;
 
         /**
-
          * @param App $app
          * @throws \App\Repositories\Exceptions\RepositoryException
          */
@@ -37,16 +35,13 @@
     
         /**
         *   get model connect
-
         *   @return string
-
         */
         abstract public function getModel();
     
         /**
         *   Set model
         *   @return model
-
         *   @throws RepositoryException
         */
         public function setModel()
@@ -63,20 +58,17 @@
         
         /**
         *   get all record
-
         *   @return \Illuminate\Database\Eloquent\Collection|static[]
         */ 
         public function getAll()
         {
-          return   $this->model->orderBy('created_at', 'DESC')->get();
+          return $this->model->orderBy('created_at', 'DESC')->get();
 
         }
     
         /**
         *   find a record
-
         *   @param $id
-
         *   @return mixed
         */ 
         public function find($id)
@@ -98,9 +90,7 @@
     
         /**
         *   create record
-
         *   @param array $attributes
-
         *   @return mixed
         */ 
         public function create($attributes = [])
@@ -110,7 +100,6 @@
     
         /**
         *   update record
-
         * @param $id
         * @param array $attributes
         * @return bool|mixed
@@ -125,10 +114,8 @@
     
         /**
         *   delete record
-
         * @param $id
         * @return bool
-
         */ 
         public function destroy($model)
         {

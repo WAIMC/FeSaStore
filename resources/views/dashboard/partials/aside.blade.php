@@ -1,6 +1,12 @@
 {{-- start aside --}}
-<!-- Brand Logo -->
-<a href="../../index3.html" class="brand-link">
+  
+  
+
+  <?php
+    $menus = Config('menu');
+  ?>
+  <!-- Brand Logo -->
+  <a href="../../index3.html" class="brand-link">
     <img src="{{ url('public/dashboard') }}/dist/img/AdminLTELogo.png"
          alt="AdminLTE Logo"
          class="brand-image img-circle elevation-3"
@@ -25,58 +31,31 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-              Dashboard
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="../../index.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Dashboard v1</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="../../index2.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Dashboard v2</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="../../index3.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Dashboard v3</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-              Setting Links
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="{{route('settingLink.create')}}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Add Link</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="{{route('settingLink.index')}}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>List Links</p>
-              </a>
-            </li>
-          </ul>
-        </li>
+        @foreach ($menus as $menu)
+          <li class="nav-item has-treeview">
+            <a href="{{ route($menu['route']) }}" class="nav-link">
+              <i class="nav-icon fas {{ $menu['icon'] }}"></i>
+              <p>
+                {{ $menu['label'] }}
+                @if (isset($menu['items']))
+                    <i class="fas fa-angle-left right"></i>
+                @endif
+              </p>
+            </a>
+            @if (isset($menu['items']))
+              <ul class="nav nav-treeview">
+                @foreach ($menu['items'] as $menu_item)
+                  <li class="nav-item">
+                    <a href="{{ route($menu_item['route']) }}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>{{ $menu_item['label'] }}</p>
+                    </a>
+                  </li>
+                @endforeach
+              </ul>
+            @endif
+          </li>
+        @endforeach
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

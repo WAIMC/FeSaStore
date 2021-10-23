@@ -24,7 +24,8 @@ use Illuminate\Support\Facades\Route;
         Route::get('/',[App\Http\Controllers\admin\AdminController::class,'index'])->name('admin.index');
 
         Route::resources([
-            'settingLink'=>admin\SettingLinkController::class
+            'settingLink'=>admin\SettingLinkController::class,
+            'category'=>admin\CategoryController::class
         ]);
     });
 

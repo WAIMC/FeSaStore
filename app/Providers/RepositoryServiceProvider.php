@@ -14,7 +14,8 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $models = array(
-            'SettingLink',
+            'Category',
+            'SettingLink'
         );
 
         foreach ($models as $model) {
