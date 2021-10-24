@@ -108,9 +108,9 @@ class CategoryController extends Controller
         ];
         $result = $this->category_repo->update($category, $attributes);
         if($result){
-            return redirect()->route('category.edit')->with('success', 'Cập nhập danh mục thành công!');
+            return redirect()->route('category.edit', $category)->with('success', 'Cập nhập danh mục thành công!');
         }else{
-            return redirect()->route('category.edit')->with('error', 'Cập nhập danh mục thất bại!');
+            return redirect()->route('category.edit', $category)->with('error', 'Cập nhập danh mục thất bại!');
         }
     }
 
