@@ -50,12 +50,16 @@
             'icon'=>'fa-list-alt',
             'items'=>[
                 [
-                    'label'=>'Danh Sách Danh Mục',
+
+                    'label'=>'Danh Sách Thương hiệu',
+
                     'route'=>'brand.index',
                     'icon'=>'fa-circle nav-icon'
                 ],
                 [
-                    'label'=>'Thêm Danh Mục',
+
+                    'label'=>'Thêm Thương hiệu mới',
+
                     'route'=>'brand.create',
                     'icon'=>'fa-circle nav-icon'
                 ]
