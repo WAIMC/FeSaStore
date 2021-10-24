@@ -43,6 +43,23 @@
                     'icon'=>'fa-circle nav-icon'
                 ]
             ]
+        ],
+        [
+            'label'=>'Quản lý Thương hiệu ',
+            'route'=>'brand.index',
+            'icon'=>'fa-list-alt',
+            'items'=>[
+                [
+                    'label'=>'Danh Sách Danh Mục',
+                    'route'=>'brand.index',
+                    'icon'=>'fa-circle nav-icon'
+                ],
+                [
+                    'label'=>'Thêm Danh Mục',
+                    'route'=>'brand.create',
+                    'icon'=>'fa-circle nav-icon'
+                ]
+            ]
         ]
 
     ];

@@ -53,7 +53,7 @@
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">@yield('title')</a></li>
               <li class="breadcrumb-item"><a href="#">@yield('directory')</a></li>
-              <li class="breadcrumb-item active">@yield('action')</li>
+              {{-- <li class="breadcrumb-item active">@yield('action')</li> --}}
             </ol>
           </div>
         </div>

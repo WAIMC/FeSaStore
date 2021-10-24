@@ -25,7 +25,8 @@ use Illuminate\Support\Facades\Route;
         Route::get('/file',[App\Http\Controllers\admin\AdminController::class,'file'])->name('admin.file');
         Route::resources([
             'settingLink'=>admin\SettingLinkController::class,
-            'category'=>admin\CategoryController::class
+            'category'=>admin\CategoryController::class,
+            'brand'=>admin\BrandController::class
         ]);
     });
 
