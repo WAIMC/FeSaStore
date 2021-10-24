@@ -11,4 +11,7 @@ class AdminController extends Controller
     {
         return view('dashboard.index');
     }
+    public function file(){
+        return view('dashboard.filemanager.index');
+    }
 }
