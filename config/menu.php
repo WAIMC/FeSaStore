@@ -6,6 +6,11 @@
             'icon' => 'fa-home'
         ],
         [
+            'label' => 'Quản lý file',
+            'route' => 'admin.file',
+            'icon' => 'fa-file'
+        ],
+        [
             'label'=>'Quản lý Danh Mục',
             'route'=>'category.index',
             'icon'=>'fa-list-alt',

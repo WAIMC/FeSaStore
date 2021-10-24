@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
     Route::prefix('admin')->group(function(){
         Route::get('/',[App\Http\Controllers\admin\AdminController::class,'index'])->name('admin.index');
-
+        Route::get('/file',[App\Http\Controllers\admin\AdminController::class,'file'])->name('admin.file');
         Route::resources([
             'settingLink'=>admin\SettingLinkController::class,
             'category'=>admin\CategoryController::class
