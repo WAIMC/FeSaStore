@@ -34,7 +34,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{route('brand.store')}}" method="post">
+                        <form action="{{route('brand.store')}}" method="post"  id="quickForm" novalidate="novalidate">
                         @csrf
                         <div class="form-group">
                           <label for="">Tên thương hiệu</label>
