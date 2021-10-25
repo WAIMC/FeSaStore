@@ -38,8 +38,7 @@
                         @csrf
                         <div class="form-group">
                           <label for="">Tên thương hiệu</label>
-                          <input type="text" name="name" value="{{old("name")}}" class="form-control"@error('name')   is-invalid
-                        @enderror placeholder="Nhập tên thương hiệu" aria-describedby="helpId">
+                          <input type="text" name="name" value="{{old("name")}}" class="form-control @error('name')   is-invalid   @enderror" placeholder="Nhập tên thương hiệu" aria-describedby="helpId">
                               @error('name')
                             <small  class="text-danger">{{$message}}</small> 
                             @enderror
@@ -51,7 +50,7 @@
                                     <button type="button" data-toggle="modal" data-target="#model_file" class="btn btn-primary"><i
                                             class="fas fa-folder-open"></i></i></button>
                                 </span>
-                                <input type="text" readonly name="image" value="{{old("image")}}" id="image" class="form-control">
+                                <input type="text" readonly name="image" value="{{old("image")}}" id="image" class="form-control @error('image')   is-invalid   @enderror">
                               
                             </div>
                             @error('image')

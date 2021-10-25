@@ -64,6 +64,23 @@
                     'icon'=>'fa-circle nav-icon'
                 ]
             ]
+        ],
+        [
+            'label'=>'Quản lý banner ',
+            'route'=>'banner.index',
+            'icon'=>'fa-list-alt',
+            'items'=>[
+                [
+                    'label'=>'Danh Sách banner',
+                    'route'=>'banner.index',
+                    'icon'=>'fa-circle nav-icon'
+                ],
+                [
+                    'label'=>'Thêm mới banner ',
+                    'route'=>'banner.create',
+                    'icon'=>'fa-circle nav-icon'
+                ]
+            ]
         ]
 
     ];

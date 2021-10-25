@@ -3,8 +3,8 @@
 
 {{-- define item for master layout --}}
 @section('title','Bảng Điều Khiển Quản Trị')
-@section('directory', 'Thương hiệu ')
-@section('action', 'Thương hiệu')
+@section('directory', 'Banner ')
+@section('action', 'Banner')
 
 {{-- main section for master layout --}}
 @section('main')
@@ -18,12 +18,12 @@
                     {{-- header Setting Link --}}
                     <div class="row justify-content-between">
                         <div class="col-4">
-                            <h4>Chỉnh sửa thương hiệu</h4>
+                            <h4>Thêm mới banner</h4>
                         </div>
                         <div class="col-4 d-flex justify-content-end">
-                            <a href="{{ route('brand.index') }}" class="btn btn-outline-dark">
+                            <a href="{{ route('banner.index') }}" class="btn btn-outline-dark">
                                 <i class="fa fa-list" aria-hidden="true"></i>
-                                <span>Danh sách liên kết</span>
+                                <span>Danh sách banner</span>
                             </a>
                         </div>
                     </div>
@@ -34,15 +34,22 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{route('brand.update',$brand)}}" method="post">
-                        @csrf @method('PUT')
+                        <form action="{{route('banner.store')}}" method="post"  id="quickForm" novalidate="novalidate">
+                        @csrf
                         <div class="form-group">
-                          <label for="">Tên thương hiệu</label>
-                          <input type="text" name="name" value="{{$brand->name}}" class="form-control @error('name')   is-invalid   @enderror" placeholder="Nhập tên thương hiệu" aria-describedby="helpId">
-                              @error('name')
+                          <label for="">Tiêu đề</label>
+                          <input type="text" name="title" value="{{old("title")}}" class="form-control @error('title')   is-invalid @enderror"placeholder="Nhập tên banner" aria-describedby="helpId">
+                              @error('title')
                             <small  class="text-danger">{{$message}}</small> 
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="">Liên kết</label>
+                            <input type="text" name="link" value="{{old("link")}}" class="form-control @error('link')   is-invalid  @enderror" placeholder="Nhập đường dẫn trỏ đến" aria-describedby="helpId">
+                                @error('link')
+                              <small  class="text-danger">{{$message}}</small> 
+                              @enderror
+                          </div>
                         <div class="form-group">
                             <label for="">Hình ảnh</label>
                             <div class="input-group">
@@ -50,19 +57,17 @@
                                     <button type="button" data-toggle="modal" data-target="#model_file" class="btn btn-primary"><i
                                             class="fas fa-folder-open"></i></i></button>
                                 </span>
-                                <input type="text" readonly name="image" value="{{$brand->logo}}" id="image" class="form-control @error('image')   is-invalid   @enderror">
-                                @error('image')
-                                <small  class="text-danger">{{$message}}</small> 
-                                @enderror
+                                <input type="text" readonly name="image" value="{{old("image")}}" id="image" class="form-control @error('image')   is-invalid  @enderror" >
+                              
                             </div>
-                            @if($brand->logo)
+                            @error('image')
+                            <small  class="text-danger">{{$message}}</small> 
+                            @enderror
                             <div class="col-4 mt-3">
-                                <img class="img w-100" src="{{url('public/uploads')}}/{{ $brand->logo }}" id="show_img" class="mt-2" >
+                                <img class="img w-100" src="" id="show_img" class="mt-2" >
                             </div>
-                            @endif
-                            <input type="hidden" value="{{$brand->id}}" name="id">
                           </div>
-                          <input type="submit" value="Cập nhật" class="btn btn-primary">
+                          <input type="submit" value="Thêm mới" class="btn btn-primary">
                         </form>
                     </div>
                 </div>
