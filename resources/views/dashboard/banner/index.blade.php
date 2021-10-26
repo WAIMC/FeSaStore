@@ -4,7 +4,7 @@
 {{-- define item for master layout --}}
 @section('title','Bảng Điều Khiển Quản Trị')
 @section('directory', 'Banner')
-@section('action', 'Banner')
+@section('action', 'Danh sách Banner')
 
 {{-- main section for master layout --}}
 @section('main')

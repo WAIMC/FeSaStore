@@ -23,7 +23,7 @@ class HomeController extends Controller
         return view('client.products.shop');
     }
 
-    public function wishlish(){
+    public function wishlist(){
         return view('client.wishlist');
     }
 
