@@ -130,7 +130,46 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, product $product)
     {
-        
+        $attributes_product = [
+            'name' => $request->name,
+        	'short_description' => $request->short_description,
+        	'description' => $request->description,
+        	'image' => $request->image,
+        	'status' => $request->status,
+        	'variant' => $request->variant,
+        	'category_id' => $request->category_id,
+        	'brand_id' => $request->brand_id
+        ];
+
+        $result = $this->product_repo->update($product ,$attributes_product);
+
+        if($result){
+            if ($request->variant_attribute !== null) {
+                foreach ($request->variant_attribute as $key_vp => $value_vp) {
+                    $attributes_variant_product = [
+                        'variant_attribute' => $request->variant_attribute[$key_vp],
+                        'quantity' => $request->quantity[$key_vp],
+                        'price' => $request->price[$key_vp],
+                        'discount' => $request->discount[$key_vp],
+                        'gallery' => $request->gallery[$key_vp],
+                        'status' => $request->status,
+                        'product_id' => $product->id
+                    ];
+                    $result_variant = $this->variant_product_repo->create($attributes_variant_product);
+                }
+            }
+            
+        }
+
+        if(isset($result_variant)){
+            if($result && $result_variant){
+                return redirect()->route('product.index')->with('success', 'Cập nhật sản phẩm và biến thể thành công!');
+            }
+        }elseif ($result) {
+            return redirect()->route('product.index')->with('success', 'Cập nhật sản phẩm thành công!');
+        }else{
+            return redirect()->route('product.create')->with('error', 'Thêm mới sản phẩm và biến thể thất bại!');
+        }
     }
 
     /**
@@ -141,6 +180,13 @@ class ProductController extends Controller
      */
     public function destroy(product $product)
     {
-        //
+        if($product->product_variantProduct()->count() > 0)
+            return redirect()->route('product.index')->with('error', 'Xóa Các Biến thể Thuộc Sản Phẩm Này Trước!');
+        else
+            if($this->product_repo->destroy($product))
+                return redirect()->route('product.index')->with('access', 'Xóa Sản Phẩm Thành Công!');
+            else
+                return redirect()->route('product.index')->with('error', 'Xóa Sản Phẩm Không Thành Công!');
+
     }
 }

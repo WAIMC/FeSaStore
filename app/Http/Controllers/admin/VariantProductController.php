@@ -3,11 +3,28 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+
+use App\Http\Requests\VariantProduct\UpdateVariantProductRequest;
 use App\Models\variantProduct;
+use App\Repositories\Contracts\VariantProductInterface;
+
 use Illuminate\Http\Request;
 
 class VariantProductController extends Controller
 {
+
+
+    /**
+    * @var SettingLinkInterface|\App\Repositories\Contracts
+    */
+    protected $variant_product_repo;
+    
+    public function __construct(VariantProductInterface $variant_product_repo)
+    {
+        $this->variant_product_repo = $variant_product_repo;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +32,9 @@ class VariantProductController extends Controller
      */
     public function index()
     {
-        //
+        $data_var = $this->variant_product_repo->paginate(10);
+        return view('dashboard.variantProduct.index', compact('data_var'));
+
     }
 
     /**
@@ -58,7 +77,8 @@ class VariantProductController extends Controller
      */
     public function edit(variantProduct $variantProduct)
     {
-        //
+        return view('dashboard.variantProduct.edit', compact('variantProduct'));
+
     }
 
     /**
@@ -68,9 +88,24 @@ class VariantProductController extends Controller
      * @param  \App\Models\variantProduct  $variantProduct
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, variantProduct $variantProduct)
+
+    public function update(UpdateVariantProductRequest $request, variantProduct $variantProduct)
     {
-        //
+        $attributes = [
+            'variant_attribute'=>$request->variant_attribute,
+            'quantity'=>$request->quantity,
+            'price'=>$request->price,
+            'discount'=>$request->discount,
+            'gallery'=>$request->gallery,
+            'status'=>$request->status,
+            'product_id'=>$request->product_id
+
+        ];
+        if($this->variant_product_repo->update($variantProduct, $attributes)){
+            return redirect()->route('variantProduct.index')->with('success', 'Cập nhật biến thể thành công!');
+        }else{
+            return redirect()->route('variantProduct.edit', compact('variantProduct'))->with('error', 'Cập nhật biến thể thất bại');
+        }
     }
 
     /**
@@ -81,6 +116,10 @@ class VariantProductController extends Controller
      */
     public function destroy(variantProduct $variantProduct)
     {
-        //
+        if($this->variant_product_repo->destroy($variantProduct)){
+            return redirect()->route('variantProduct.index')->with('success', 'Xóa biến thể thành công!');
+        }else{
+            return redirect()->route('variantProduct.index')->with('error', 'Xóa biến thể không thành công!');
+        }
     }
 }

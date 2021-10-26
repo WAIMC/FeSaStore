@@ -13,7 +13,9 @@
             <div class="card shadow">
 
                 <div class="card-header">
-                    <h4 class="text-center">Sửa Phẩm Mới</h4>
+
+                    <h4 class="text-center">Sửa Sản Phẩm</h4>
+
                 </div>
                 <div class="card-body">
                     <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data" id="formInsert">
@@ -119,57 +121,64 @@
                             </div>
                         </div>
 
-                        @if ($product->product_variantProduct->count() > 0)
-                            <h3 class="text-danger">Vui lòng xóa hết các thuộc tính sản phẩm trước khi sửa!</h3>
-                        @else
-                            <div class="">
-                                <div class="row">
-                                    <h4 class="col-12">Thuộc Tính Sản Phẩm (Tối đa 2 thuộc tính)</h4>
-                                    <hr>
-                                </div>
-                                <div class="shadow rounded field_wrapper">
-                                    <div class="row m-auto attribute">
-                                        <div class="col-5">
-                                            <div class="form-group">
-                                            <label for="name_att">Tên Thuộc Tính</label>
-                                            <input type="text" name="name_att[]" id="name_att" placeholder="Tên Thuộc Tính vd: Kích Cỡ nhập -> size" 
-                                            class="form-control @error('name_att')
-                                                    is-invalid
-                                                @enderror">
-                                            @error('name_att')
-                                                <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
-                                            @enderror
+
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center">
+                                <button class="btn btn-sm btn-secondary" id="show_hide_atri">CLick để sửa hoặc không sửa thuộc tính</button>
+                            </div>
+                            <div class="col-12" id="info_attri">
+                                @if ($product->product_variantProduct->count() > 0)
+                                    <h3 class="text-danger">Vui lòng xóa hết các thuộc tính sản phẩm trước khi sửa!</h3>
+                                @else
+                                    <div class="">
+                                        <div class="row">
+                                            <h4 class="col-12">Thuộc Tính Sản Phẩm (Tối đa 2 thuộc tính)</h4>
+                                            <hr>
+                                        </div>
+                                        <div class="shadow rounded field_wrapper">
+                                            <div class="row m-auto attribute">
+                                                <div class="col-5">
+                                                    <div class="form-group">
+                                                    <label for="name_att">Tên Thuộc Tính</label>
+                                                    <input type="text" name="name_att[]" id="name_att" placeholder="Tên Thuộc Tính vd: Kích Cỡ nhập -> size" 
+                                                    class="form-control @error('name_att')
+                                                            is-invalid
+                                                        @enderror">
+                                                    @error('name_att')
+                                                        <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
+                                                    @enderror
+                                                    </div>
+                                                </div>
+                                            <div class="col-5">
+                                                <div class="form-group">
+                                                    <label for="attri">Thuộc Tính</label>
+                                                    <input type="text" name="attri[]" id="attri" placeholder="Nhâp Thuộc Tính vd: sm, md, lg -> sm|md|lg" class="form-control 
+                                                        @error('attri')
+                                                            is-invalid
+                                                        @enderror">
+                                                    @error('attri')
+                                                        <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <a href="javascript:void(0);" class="add_button" title="Thêm Thuộc Tính"> <i class="fa fa-plus-circle" style="font-size: 30px;line-height: 86px" aria-hidden="true"></i></a>
+                                            </div>
                                             </div>
                                         </div>
-                                    <div class="col-5">
-                                        <div class="form-group">
-                                            <label for="attri">Thuộc Tính</label>
-                                            <input type="text" name="attri[]" id="attri" placeholder="Nhâp Thuộc Tính vd: sm, md, lg -> sm|md|lg" class="form-control 
-                                                @error('attri')
-                                                    is-invalid
-                                                @enderror">
-                                            @error('attri')
-                                                <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
-                                            @enderror
+                                        <div class="row m-2 d-flex justify-content-center">
+                                            <button type="button" class="btn btn-dark btnMerge ml-2">Kết Hợp Các Thuộc Tính!</button>
                                         </div>
                                     </div>
-                                    <div class="col-2">
-                                        <a href="javascript:void(0);" class="add_button" title="Thêm Thuộc Tính"> <i class="fa fa-plus-circle" style="font-size: 30px;line-height: 86px" aria-hidden="true"></i></a>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class="row m-2">
-                                    <input type="hidden" name="variant">
-                                    <button type="button" class="btn btn-dark btnMerge ml-2">Kết Hợp Các Thuộc Tính!</button>
-                                </div>
+                                @endif
                             </div>
-                        @endif
-                        
+                        </div>
 
                         <div class=" variant_product"></div>
-                        
+                        <input type="hidden" name="variant" value="{{ $product->variant }}">
                         <div class="row mt-5">
-                            <button type="button" class="btn btn-primary btnInsert">Thêm Mới</button>
+                            <button type="button" class="btn btn-primary" id="btnInsert">Cập Nhật</button>
+
                         </div>
                         
                     </form>
@@ -258,6 +267,13 @@
             }
         })
 
+
+        // show and hide atribute
+        $('#show_hide_atri').click(function (e) { 
+            e.preventDefault();
+            $('#info_attri').toggle();
+        });
+
         // modal image
         $('#upload_image').on('hide.bs.modal', function(e) {
             var _link = $('input#image').val();
@@ -266,7 +282,9 @@
         });
 
         // insert conformation
-        $('.btnInsert').click(function(e) {
+
+        $('#btnInsert').click(function(e) {
+
             e.preventDefault();
             Swal.fire({
                 title: 'Bạn Có Chắc Chắn?',

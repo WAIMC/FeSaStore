@@ -124,9 +124,11 @@ class CategoryController extends Controller
     {
         if($category->categoryChildren()->count() > 0)
             return redirect()->route('category.index')->with('error', 'Xóa Các Danh Mục Thuộc Danh Mục Này Trước!');
+        else if($category->category_product->count() > 0)
+            return redirect()->route('category.index')->with('error', 'Xóa Các Sản Phẩm Thuộc Danh Mục Này Trước!');
         else
             if($this->category_repo->destroy($category))
-                return redirect()->route('category.index')->with('access', 'Xóa Danh Mục Thành Công!');
+                return redirect()->route('category.index')->with('success', 'Xóa Danh Mục Thành Công!');
             else
                 return redirect()->route('category.index')->with('error', 'Xóa Danh Mục Không Thành Công!');
     }

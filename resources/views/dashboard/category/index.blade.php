@@ -67,12 +67,12 @@
                         <thead class="">
                             <tr>
                                 <th>ID</th>
-                                <th>Name Category</th>
-                                <th>Parent ID</th>
-                                <th>Slug</th>
-                                <th>Total Product</th>
-                                <th>Create Date</th>
-                                <th>Action</th>
+                                <th>Tên Danh Mục</th>
+                                <th>Thuộc Danh Mục</th>
+                                <th>Liên Kết</th>
+                                <th>Tổng Sản Phẩm</th>
+                                <th>Ngày Tạo</th>
+                                <th>Hành Động</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -82,7 +82,7 @@
                                     <td>{{ $dt_cate->name }}</td>
                                     <td>{{ $dt_cate->parent_id }}</td>
                                     <td>{{ $dt_cate->slug }}</td>
-                                    <td></td>
+                                    <td>{{ $dt_cate->category_product->count() }}</td>
                                     <td>{{ $dt_cate->created_at->format('d-m-Y') }}</td>
                                     <td>
                                         <a href="{{ route('category.edit', $dt_cate->id) }}" class="btn btn-info">

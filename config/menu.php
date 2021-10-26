@@ -62,6 +62,18 @@
             ]
         ],
         [
+            'label'=>'Quản lý Biến Thể',
+            'route'=>'variantProduct.index',
+            'icon'=>'fa-project-diagram',
+            'items'=>[
+                [
+                    'label'=>'Danh Sách Biến Thể',
+                    'route'=>'variantProduct.index',
+                    'icon'=>'fa-circle nav-icon'
+                ]
+            ]
+        ],
+        [
             'label'=>'Quản lý Thương hiệu ',
             'route'=>'brand.index',
             'icon'=>'fa-list-alt',

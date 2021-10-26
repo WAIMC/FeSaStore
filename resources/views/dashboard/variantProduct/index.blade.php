@@ -3,8 +3,8 @@
 
 {{-- define item for master layout --}}
 @section('title','Bảng Điều Khiển')
-@section('directory', 'Danh Mục Sản Phẩm')
-@section('action', 'Danh Sách Sản Phẩm')
+@section('directory', 'Danh Mục Biến Thể')
+@section('action', 'Danh Sách Biến Thể')
 
 {{-- main section for master layout --}}
 @section('main')
@@ -18,14 +18,14 @@
                     {{-- header Setting Link --}}
                     <div class="row justify-content-between">
                         <div class="col-4">
-                            <h4>Danh sách sản phẩm</h4>
+                            <h4>Danh sách biến thể</h4>
                         </div>
-                        <div class="col-4 d-flex justify-content-end">
-                            <a href="{{ route('category.create') }}" class="btn btn-outline-dark">
+                        {{-- <div class="col-4 d-flex justify-content-end">
+                            <a href="{{ route('variantProduct.create') }}" class="btn btn-outline-dark">
                                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                                <span>Thêm mới sản phẩm</span>
+                                <span>Thêm mới biến thể</span>
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                  
 
@@ -66,40 +66,35 @@
                     <table class="table table-striped table-bordered table-hover text-center">
                         <thead class="">
                             <tr>
-                                <th>Ảnh</th>
-                                <th>Tên Sản Phẩm</th>
-                                <th>Thể Loại</th>
-                                <th>Thương Hiệu</th>
-                                <th>Biến Thể</th>
+                                <th>Thuộc Tính Biến Thể</th>
+                                <th>Số Lượng</th>
+                                <th>Giá \ Giảm Giá</th>
                                 <th>Trạng Thái</th>
+                                <th>ID Sản Phẩm</th>
                                 <th>Ngày Tạo</th>
                                 <th>Hành Động</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($data_pro as $pro)
+                            @foreach ($data_var as $var)
                                 <tr>
-                                    <td scope="row"><img src="{{ url('public/uploads/'. $pro->image) }}" alt="" width="100px" height="100px" ></td>
-                                    <td>{{ $pro->name }}</td>
-                                    <td>{{ $pro->product_category->name }}</td>
-                                    <td><img src="{{ url('public/uploads/'. $pro->product_brand->logo) }}" alt="" width="100px" height="100px" ></td>
-                                    <td>{{ $pro->variant }}</td>
-
+                                    <td scope="row">{{ $var->variant_attribute }}</td>
+                                    <td>{{ $var->quantity }}</td>
+                                    <td> <span class="badge badge-primary">{{ $var->price }}đ</span> | <span class="badge badge-danger">{{ $var->discount }}đ</span> </td>
                                     <td>
-                                        @if ($pro->status == 0)
-                                            <span class="badge badge-primary">Hiện</span>
+                                        @if ( $var->status==0)
+                                            <span class='badge badge-danger'>Không Đại Diện</span>
                                         @else
-                                            <span class="badge badge-dark">Ẩn</span>
+                                            <span class='badge badge-primary'>Đại Diện</span>
                                         @endif
                                     </td>
-
-                                    <td>{{ $pro->created_at->format('d-m-Y') }}</td>
+                                    <td>{{ $var->product_id }}</td>
+                                    <td>{{ $var->created_at->format('d-m-Y') }}</td>
                                     <td>
-                                        <a href="{{ route('product.edit', $pro->id) }}" class="btn btn-info">
+                                        <a href="{{ route('variantProduct.edit', $var->id) }}" class="btn btn-info">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="{{ route('product.destroy', $pro->id) }}"
-                                            class="btn btn-danger btnDelete">
+                                        <a href="{{ route('variantProduct.destroy', $var->id) }}" class="btn btn-danger btnDelete">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </a>
                                     </td>
@@ -111,10 +106,10 @@
                 <div class="card-footer text-muted">
                     <div class="row">
                         <div class="col-5">
-                            <h6>Xem 1 đến 10 của {{ $data_pro->count() }} hàng</h6>
+                            <h6>Xem 1 đến 10 của {{ $data_var->count() }} hàng</h6>
                         </div>
                         <div class="col-7">
-                            {{ $data_pro->appends(request()->all())->links() }}
+                            {{ $data_var->appends(request()->all())->links() }}
                         </div>
                     </div>
                 </div>

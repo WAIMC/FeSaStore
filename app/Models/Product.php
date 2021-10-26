@@ -61,12 +61,6 @@ class Product extends Model
     //         $query = $query->where('id_category',request()->searchCategory);
     //     }
     //     return $query;
-    // } 
-
-    // check product exits in variant 
-    // public function product_variantProduct()
-    // {
-    //     return $this->hasMany(VariantProduct::class,'id_product','id');
     // }
 
     // get review (comment, rating star,..)

@@ -94,18 +94,16 @@
             })
         })
 
-        var list_category = {!! json_encode($list_category->toArray()) !!}
+        // selected parent category
         var category = {!! json_encode($category) !!}
-
-        list_category.forEach(element => {
-            if(element['id'] == category['id']){
-                if(element['parent_id'] == 0){
-                    $('#parent_id option #current').attr('selected', 'selected')
-                }else{
-                    $('#parent_id option[value=' + element['parent_id'] + ']').attr('selected', 'selected')
-                }
+        $('#parent_id option').each(function () {  
+            if($(this).val() == category['parent_id']){
+                $(this).attr('selected', 'selected');
+            } 
+            if($(this).val() == category['id']){
+                $(this).remove();
             }
-        });
+        })
 
         // show alert insert
         $('.btnEdit').click(function(e) {
@@ -123,8 +121,8 @@
                 if (result.isConfirmed) {
                     $('form#formEdit').submit();
                     Swal.fire(
-                        'Đã Thêm!',
-                        'Dữ liệu của bạn đã được thêm.',
+                        'Đang Thêm!',
+                        'Dữ liệu của bạn đang được thêm.',
                         'success'
                     );
                 }

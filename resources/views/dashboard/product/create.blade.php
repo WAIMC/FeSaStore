@@ -32,6 +32,19 @@
                                     @enderror
                                 </div>
 
+
+                                <div class="form-inline">
+                                    <label for="">Trạng Thái :  &nbsp;</label>
+                                    <div class="custom-control custom-radio mr-2">
+                                        <input class="custom-control-input" type="radio" id="show" name="status" value="0" checked>
+                                        <label for="show" class="custom-control-label">Hiện</label>
+                                    </div>
+                                    <div class="custom-control custom-radio mr-2">
+                                        <input class="custom-control-input" type="radio" id="hide" name="status" value="1">
+                                        <label for="hide" class="custom-control-label">Ẩn</label>
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="short_description">Mô Tả Ngắn</label>
                                     <textarea name="short_description" id="short_description" aria-describedby="short_description" class="form-control 
@@ -62,7 +75,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-    
+
                                 <div class="form-group mt-2">
                                     <label for="image">Hình Ảnh</label>
                                     <div class="row">
@@ -85,23 +98,13 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="">
-                                        <img src="" id="show_image" width="100%" alt="">
+                                    <div class="row d-flex justify-content-center">
+                                        <img src="" id="show_image" width="100px" height="100px" alt="">
                                     </div>
                                 </div>
                                 
-                                <div class="mt-2"><label for="">Trạng Thái</label></div>
-                                <div class="form-inline">
-                                    <div class="custom-control custom-radio mr-2">
-                                        <input class="custom-control-input" type="radio" id="Special" name="status" value="0">
-                                        <label for="Special" class="custom-control-label">Ẩn</label>
-                                    </div>
-                                    <div class="custom-control custom-radio mr-2">
-                                        <input class="custom-control-input" type="radio" id="Normal" name="status" value="1"
-                                            checked>
-                                        <label for="Normal" class="custom-control-label">Hiện</label>
-                                    </div>
-                                </div>
+                               
+
     
                             </div>
                         </div>
@@ -380,8 +383,32 @@
                                         @enderror
                                     </div>
 
+
+                                    <div class="form-group">
+                                        <label for="quantity">Số Lượng</label>
+                                        <input type="number" name="quantity[]" id="quantity" placeholder="Số Lượng" required class="form-control
+                                        @error('quantity')
+                                        is-invalid
+                                        @enderror">
+                                        @error('quantity')
+                                            <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+
                                 </div>
                                 <div class="col-6">
+                                        
+                                    <div><label for="">Trạng Thái : &nbsp; </label></div>
+                                    <div class="form-inline">
+                                        <div class="custom-control custom-radio mr-2">
+                                            <input class="custom-control-input" type="radio" id="show_${i}" name="status_${i}" value="0" checked='checked'>
+                                            <label for="show_${i}" class="custom-control-label">Hiện</label>
+                                        </div>
+                                        <div class="custom-control custom-radio mr-2">
+                                            <input class="custom-control-input" type="radio" id="hide_${i}" name="status_${i}" value="1">
+                                            <label for="hide_modal_gallery${i}" class="custom-control-label">Ẩn</label>
+                                        </div>
+                                    </div>
 
                                     <div class="form-group">
                                         <label for="list_modal_gallery_${i}">Bộ Sưu Tập Ảnh</label>
@@ -406,30 +433,6 @@
                                         </div>
                                         <div class="row" id="show_modal_gallery_${i}">
                                         </div>
-                                    </div>
-                                        
-                                    <div class="form-inline">
-                                        <div><label for="">Trạng Thái : &nbsp; </label></div>
-                                        <div class="custom-control custom-radio mr-2">
-                                            <input class="custom-control-input" type="radio" id="hide_${i}" name="status_${i}" value="0">
-                                            <label for="hide_${i}" class="custom-control-label">Ẩn</label>
-                                        </div>
-                                        <div class="custom-control custom-radio mr-2">
-                                            <input class="custom-control-input" type="radio" id="show_${i}" name="status_${i}" value="1"
-                                                checked='checked'>
-                                            <label for="show_modal_gallery${i}" class="custom-control-label">Hiện</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="quantity">Số Lượng</label>
-                                        <input type="number" name="quantity" id="quantity[]" placeholder="Số Lượng" required class="form-control
-                                        @error('quantity')
-                                          is-invalid
-                                        @enderror">
-                                        @error('quantity')
-                                            <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
-                                        @enderror
                                     </div>
 
                                 </div>
@@ -475,13 +478,17 @@
                                     for (let img = 0; img < _args.length; img++) {
                                         let _url = "{{ url('public/uploads') }}" + "/" + _args[img];
                                         _html += "<div class='col-sm-4'>";
-                                        _html += "<img src='" + _url + "' alt='' width='100%' >";
+
+                                        _html += "<img src='" + _url + "' alt='' width='100%' height='100px' >";
+
                                         _html += "</div>";
                                     };
                                 } else {
                                     let _url = "{{ url('public/uploads') }}" + "/" + _links;
                                     _html += "<div class='col-sm-4'>";
-                                    _html += "<img src='" + _url + "' alt='' width='100%' >";
+
+                                    _html += "<img src='" + _url + "' alt='' width='100%' height='100px' >";
+
                                     _html += "</div>";
                                 }
                                 $('#show_'+_id).html(_html);
@@ -531,8 +538,33 @@
                                             @enderror
                                         </div>
 
+
+                                        <div class="form-group">
+                                            <label for="quantity">Số Lượng</label>
+                                            <input type="number" name="quantity[]" id="quantity" placeholder="Số Lượng" required
+                                                class="form-control @error('quantity')
+                                                    is-invalid
+                                                @enderror">
+                                                @error('gallery')
+                                                    <small id="quantity"
+                                                        class="invalid-feedback form-text text-danger">{{ $message }}</small>
+                                                @enderror
+                                        </div>
+
                                     </div>
                                     <div class="col-6">
+
+                                        <div><label for="">Trạng Thái : &nbsp; </label></div>
+                                        <div class="form-inline">
+                                            <div class="custom-control custom-radio mr-2">
+                                                <input class="custom-control-input" type="radio" id="show_${i}" name="status_${i}" value="0" checked>
+                                                <label for="show_${i}" class="custom-control-label">Hiện</label>
+                                            </div>
+                                            <div class="custom-control custom-radio mr-2">
+                                                <input class="custom-control-input" type="radio" id="hide_${i}" name="status_${i}" value="1">
+                                                <label for="hide_modal_gallery${i}" class="custom-control-label">Ẩn</label>
+                                            </div>
+                                        </div>
 
                                         <div class="form-group">
                                             <label for="list_modal_gallery_${i}">Bộ Sưu Tập Ảnh</label>
@@ -557,31 +589,6 @@
                                             </div>
                                             <div class="row" id="show_modal_gallery_${i}">
                                             </div>
-                                        </div>
-                                            
-                                        <div class="form-inline">
-                                            <div><label for="">Trạng Thái : &nbsp; </label></div>
-                                            <div class="custom-control custom-radio mr-2">
-                                                <input class="custom-control-input" type="radio" id="hide_${i}" name="status_${i}" value="0">
-                                                <label for="hide_${i}" class="custom-control-label">Ẩn</label>
-                                            </div>
-                                            <div class="custom-control custom-radio mr-2">
-                                                <input class="custom-control-input" type="radio" id="show_${i}" name="status_${i}" value="1"
-                                                    checked>
-                                                <label for="show_modal_gallery${i}" class="custom-control-label">Hiện</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="quantity">Số Lượng</label>
-                                            <input type="number" name="quantity[]" id="quantity" placeholder="Số Lượng" required
-                                                class="form-control @error('quantity')
-                                                    is-invalid
-                                                @enderror">
-                                                @error('gallery')
-                                                    <small id="quantity"
-                                                        class="invalid-feedback form-text text-danger">{{ $message }}</small>
-                                                @enderror
                                         </div>
 
                                     </div>
@@ -627,13 +634,17 @@
                                         for (let img = 0; img < _args.length; img++) {
                                             let _url = "{{ url('public/uploads') }}" + "/" + _args[img];
                                             _html += "<div class='col-sm-4'>";
-                                            _html += "<img src='" + _url + "' alt='' width='100%' >";
+
+                                            _html += "<img src='" + _url + "' alt='' width='100%' height='100px' >";
+
                                             _html += "</div>";
                                         };
                                     } else {
                                         let _url = "{{ url('public/uploads') }}" + "/" + _links;
                                         _html += "<div class='col-sm-4'>";
-                                        _html += "<img src='" + _url + "' alt='' width='100%' >";
+
+                                        _html += "<img src='" + _url + "' alt='' width='100%' height='100px' >";
+
                                         _html += "</div>";
                                     }
                                     $('#show_'+_id).html(_html);
