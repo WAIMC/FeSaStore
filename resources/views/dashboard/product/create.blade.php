@@ -104,7 +104,6 @@
                                 </div>
                                 
                                
-
     
                             </div>
                         </div>
@@ -382,7 +381,6 @@
                                             <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-
 
                                     <div class="form-group">
                                         <label for="quantity">Số Lượng</label>

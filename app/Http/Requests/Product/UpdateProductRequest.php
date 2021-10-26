@@ -56,7 +56,6 @@ class UpdateProductRequest extends FormRequest
             'discount.required'=>'Giảm giá sản phẩm không được bỏ trống!',
             'gallery.required'=>'Danh sách ảnh không được bỏ trống!',
             'quantity.required'=>'Số lượng không được bỏ trống!',
-            
 
         ];
     }
