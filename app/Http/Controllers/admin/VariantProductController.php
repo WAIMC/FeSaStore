@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 class VariantProductController extends Controller
 {
 
-
     /**
     * @var SettingLinkInterface|\App\Repositories\Contracts
     */
@@ -24,7 +23,6 @@ class VariantProductController extends Controller
         $this->variant_product_repo = $variant_product_repo;
     }
 
-
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +32,6 @@ class VariantProductController extends Controller
     {
         $data_var = $this->variant_product_repo->paginate(10);
         return view('dashboard.variantProduct.index', compact('data_var'));
-
     }
 
     /**
@@ -78,7 +75,6 @@ class VariantProductController extends Controller
     public function edit(variantProduct $variantProduct)
     {
         return view('dashboard.variantProduct.edit', compact('variantProduct'));
-
     }
 
     /**

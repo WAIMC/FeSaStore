@@ -27,10 +27,10 @@ use Illuminate\Support\Facades\Route;
             'settingLink'=>admin\SettingLinkController::class,
             'category'=>admin\CategoryController::class,
             'product'=>admin\ProductController::class,
+            'brand'=>admin\BrandController::class,
             'banner'=>admin\BannerController::class,
             'variantProduct'=>admin\VariantProductController::class,
-            'brand'=>admin\BrandController::class
-        ]);
+            ]);
     });
 
 /*
