@@ -96,7 +96,6 @@
 
         var list_category = {!! json_encode($list_category->toArray()) !!}
         var category = {!! json_encode($category) !!}
-        console.log(category['id']);
 
         list_category.forEach(element => {
             if(element['id'] == category['id']){

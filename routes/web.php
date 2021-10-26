@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Route;
         Route::resources([
             'settingLink'=>admin\SettingLinkController::class,
             'category'=>admin\CategoryController::class,
+            'product'=>admin\ProductController::class,
             'brand'=>admin\BrandController::class,
             'banner'=>admin\BannerController::class
         ]);

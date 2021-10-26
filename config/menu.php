@@ -45,6 +45,23 @@
             ]
         ],
         [
+            'label'=>'Quản lý Sản Phẩm',
+            'route'=>'product.index',
+            'icon'=>'fa-project-diagram',
+            'items'=>[
+                [
+                    'label'=>'Danh Sách Sản Phẩm',
+                    'route'=>'product.index',
+                    'icon'=>'fa-circle nav-icon'
+                ],
+                [
+                    'label'=>'Thêm Sản Phẩm',
+                    'route'=>'product.create',
+                    'icon'=>'fa-circle nav-icon'
+                ]
+            ]
+        ],
+        [
             'label'=>'Quản lý Thương hiệu ',
             'route'=>'brand.index',
             'icon'=>'fa-list-alt',
