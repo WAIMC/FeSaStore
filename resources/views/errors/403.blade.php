@@ -1,20 +1,20 @@
 
 @extends('dashboard.layouts.error')
 {{-- define item for page error --}}
-@section('title','404 Không Tìm Thấy')
+@section('title','403 Không được phép')
 
 @section('main')
     <!-- Main content -->
     <section class="content">
         <div class="error-page">
-          <h2 class="headline text-warning"> 404</h2>
+          <h2 class="headline text-lightblue"> 403</h2>
 
           <div class="error-content">
-            <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Trang này không tìm thấy.</h3>
+            <h3><i class="fas fa-exclamation-triangle text-lightblue"></i> Oops! Trang này Không cho phép.</h3>
 
             <p>
-                Chúng tôi không thể tìm kiếm trang bạn đang tìm kiếm.
-              Trong khi đó, bạn có thể <a href="./">trở lại</a> hoặc tìm thử tìm kiếm form.
+                Chúng tôi không thể cho phép trang bạn đang tìm kiếm.
+              Trong khi đó, bạn có thể<a href="./">Trở lại</a> hoặc thử tìm kiếm.
             </p>
 
             <form class="search-form">
@@ -22,7 +22,7 @@
                 <input type="text" name="search" class="form-control" placeholder="Tìm Kiếm">
 
                 <div class="input-group-append">
-                  <button type="submit" name="submit" class="btn btn-warning"><i class="fas fa-search"></i>
+                  <button type="submit" name="submit" class="btn btn-text-lightblue"><i class="fas fa-search"></i>
                   </button>
                 </div>
               </div>

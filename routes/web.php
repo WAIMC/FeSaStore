@@ -19,10 +19,18 @@ use Illuminate\Support\Facades\Route;
 /*
     Start route admin
 */ 
+    Route::get('/Admin/Login',[App\Http\Controllers\admin\Auth\loginController::class,'login'])->name('admin.login');
+    Route::post('/Admin/Login',[App\Http\Controllers\admin\Auth\loginController::class,'postLogin'])->name('admin.login');
 
-    Route::prefix('admin')->group(function(){
+    Route::get('/Admin/Register',[App\Http\Controllers\admin\Auth\RegisterController::class,'register'])->name('admin.register');
+    Route::post('Admin/Register',[App\Http\Controllers\admin\Auth\RegisterController::class,'postRegister'])->name('admin.register');
+
+
+    Route::prefix('admin')->middleware('adminAuth')->group(function(){
         Route::get('/',[App\Http\Controllers\admin\AdminController::class,'index'])->name('admin.index');
         Route::get('/file',[App\Http\Controllers\admin\AdminController::class,'file'])->name('admin.file');
+        Route::post('/Admin/Logout',[App\Http\Controllers\admin\Auth\loginController::class,'logout'])->name('admin.logout');
+
         Route::resources([
             'settingLink'=>admin\SettingLinkController::class,
             'category'=>admin\CategoryController::class,
@@ -57,3 +65,7 @@ use Illuminate\Support\Facades\Route;
 /*
     End route client
 */ 
+
+// Auth::routes();
+
+// Route::get('/home', ['as' => 'login', App\Http\Controllers\HomeController::class, 'index'])->name('home');
