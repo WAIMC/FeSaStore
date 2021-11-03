@@ -35,6 +35,54 @@
             return $option;
         }
 
+        /**
+        *   show list menu parent and children for desktop
+        *   @return string
+        */ 
+        public function showMenuDesktop($menus, $parent_id = 0){
+            $list_menu = '';
+            foreach ($menus as $key_menu => $value_menu) {
+                if($value_menu->parent_id == $parent_id){
+                    if($value_menu->categoryChildren->count() > 0){
+                        $list_menu .= "<li class=''><a href=''><span><i class='fa fa-dot-circle-o' aria-hidden='true' style='position: unset'></i></span>".$value_menu->name."<i class='fa fa-angle-right' aria-hidden='true'></i></a>";
+                        $list_menu .="<ul class='ht-dropdown mega-child'>";
+                        unset($menus[$key_menu]);
+                        $list_menu .= $this->showMenuDesktop($menus, $value_menu->id);
+                        $list_menu .= "</ul></li>";
+                    }else{
+                        $list_menu .= "<li class=''><a href=''><span><i class='fa fa-dot-circle-o' aria-hidden='true' style='position: unset'></i></span>".$value_menu->name."</a></li>";
+                        unset($menus[$key_menu]);
+                    }
+                   
+                }
+            }
+            return $list_menu;
+        }        
+
+        /**
+        *   show list menu parent and children for mobile
+        *   @return string
+        */ 
+        public function showMenuMobile($menus, $parent_id = 0){
+            $list_menu_mobile = '';
+            foreach ($menus as $key_menu => $value_menu) {
+                if($value_menu->parent_id == $parent_id){
+                    if($value_menu->categoryChildren->count() > 0){
+                        $list_menu_mobile .= "<li class='has-sub'><a href=''>".$value_menu->name."</a>";
+                        $list_menu_mobile .="<ul class='category-sub'>";
+                        unset($menus[$key_menu]);
+                        $list_menu_mobile .= $this->showMenuMobile($menus, $value_menu->id);
+                        $list_menu_mobile .= "</ul></li>";
+                    }else{
+                        $list_menu_mobile .= "<li class=''><a href=''>".$value_menu->name."</a></li>";
+                        unset($menus[$key_menu]);
+                    }
+                   
+                }
+            }
+            return $list_menu_mobile;
+        }        
+
     }
 
 ?>

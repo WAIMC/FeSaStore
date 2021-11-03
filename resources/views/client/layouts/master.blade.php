@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>FESA | @yield('title') </title>
+    <title>FESA Shop | @yield('title') </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
     <link rel="shortcut icon" href="{{url('public/client')}}/img/favicon.ico">
@@ -48,7 +48,7 @@
 
     <!-- Main Wrapper Start Here -->
     <div class="wrapper">
-       <!-- Banner Popup Start -->
+        <!-- Banner Popup Start -->
         <div class="popup_banner">
             <span class="popup_off_banner">×</span>
             <div class="banner_popup_area">
@@ -56,35 +56,35 @@
             </div>
         </div>
         <!-- Banner Popup End -->
-       <!-- Newsletter Popup Start -->
+        <!-- Newsletter Popup Start -->
         <div class="popup_wrapper">
             <div class="test">
-                <span class="popup_off">Close</span>
+                <span class="popup_off">Đóng</span>
                 <div class="subscribe_area text-center mt-60">
-                    <h2>Newsletter</h2>
-                    <p>Subscribe to the Truemart mailing list to receive updates on new arrivals, special offers and other discount information.</p>
+                    <h2>Thư Mới</h2>
+                    <p>Theo dõi danh sách gửi thư FeSa Shop để nhận thông tin cập nhật về hàng mới, ưu đãi đặc biệt và thông tin giảm giá khác.</p>
                     <div class="subscribe-form-group">
                         <form action="#">
-                            <input autocomplete="off" type="text" name="message" id="message" placeholder="Enter your email address">
-                            <button type="submit">subscribe</button>
+                            <input autocomplete="off" type="text" name="message" id="message" placeholder="Nhập Email Của Bạn!">
+                            <button type="submit">Đăng Ký</button>
                         </form>
                     </div>
                     <div class="subscribe-bottom mt-15">
                         <input type="checkbox" id="newsletter-permission">
-                        <label for="newsletter-permission">Don't show this popup again</label>
+                        <label for="newsletter-permission">Không hiển thị lại cửa sổ bật lên này</label>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Newsletter Popup End -->
 
-        <!-- Main Header Area Start Here -->
-        <header>
-       @include('client.partials.header')
-        </header>
-        <!-- Main Header Area End Here -->
+        {{-- header start--}}
+        @include('client.partials.header')
+        {{-- header end --}}
   
+        {{-- main content start  --}}
         @yield('main')
+        {{-- main content end --}}
 
         <!-- Support Area Start Here -->
         <div class="support-area bdr-top">
@@ -95,7 +95,7 @@
                             <i class="lnr lnr-gift"></i>
                         </div>
                         <div class="support-desc">
-                            <h6>Great Value</h6>
+                            <h6>Giá Trị Lớn</h6>
                             <span>Nunc id ante quis tellus faucibus dictum in eget.</span>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                             <i class="lnr lnr-rocket"></i>
                         </div>
                         <div class="support-desc">
-                            <h6>Worlwide Delivery</h6>
+                            <h6>Giao hàng trên toàn Đà Nẵng</h6>
                             <span>Quisque posuere enim augue, in rhoncus diam dictum non</span>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
                            <i class="lnr lnr-lock"></i>
                         </div>
                         <div class="support-desc">
-                            <h6>Safe Payment</h6>
+                            <h6>Thanh Toán An Toàn</h6>
                             <span>Duis suscipit elit sem, sed mattis tellus accumsan.</span>
                         </div>
                     </div>
@@ -122,7 +122,7 @@
                            <i class="lnr lnr-enter-down"></i>
                         </div>
                         <div class="support-desc">
-                            <h6>Shop Confidence</h6>
+                            <h6>Sự tự tin mua sắm</h6>
                             <span>Faucibus dictum suscipit eget metus. Duis  elit sem, sed.</span>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                            <i class="lnr lnr-users"></i>
                         </div>
                         <div class="support-desc">
-                            <h6>24/7 Help Center</h6>
+                            <h6>24/7 Hỗ Trợ</h6>
                             <span>Quisque posuere enim augue, in rhoncus diam dictum non.</span>
                         </div>
                     </div>
@@ -140,11 +140,11 @@
             <!-- Container End -->
         </div>
         <!-- Support Area End Here -->
-        <!-- Footer Area Start Here -->
-        <footer class="off-white-bg2 pt-95 bdr-top pt-sm-55">
-       @include('client.partials.footer')
-        </footer>
-        <!-- Footer Area End Here -->
+        
+        {{-- footer area start --}}
+        @include('client.partials.footer')
+        {{-- footer area end --}}
+
         <!-- Quick View Content Start -->
         <div class="main-product-thumbnail quick-thumb-content">
             <div class="container">
@@ -224,10 +224,10 @@
                                                 <form action="#">
                                                     <input class="quantity mr-40" type="number" min="1" value="1">
                                                 </form>
-                                                <a class="add-cart" href="cart.html">add to cart</a>
+                                                <a class="add-cart" href="cart.html">Thêm Vào Giỏ Hàng</a>
                                             </div>
                                             <div class="pro-ref mt-15">
-                                                <p><span class="in-stock"><i class="ion-checkmark-round"></i> IN STOCK</span></p>
+                                                <p><span class="in-stock"><i class="ion-checkmark-round"></i> Trong Kho</span></p>
                                             </div>
                                         </div>
                                     </div>
@@ -238,7 +238,7 @@
                             <div class="custom-footer">
                                 <div class="socila-sharing">
                                     <ul class="d-flex">
-                                        <li>share</li>
+                                        <li>Chia Sẻ</li>
                                         <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                                         <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                                         <li><a href="#"><i class="fa fa-google-plus-official" aria-hidden="true"></i></a></li>

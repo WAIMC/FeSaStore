@@ -117,7 +117,7 @@
         <img src="{{ url('public/dashboard')}}/dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2" alt="User Image">
         <span class="d-none d-md-inline">{{ Auth::guard('adminAuth')->user()->name }}</span>
       </a>
-      <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right show" style="left: inherit; right: 0px;">
+      <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right hide" style="left: inherit; right: 0px;">
         <!-- User image -->
         <li class="user-header bg-gradient-primary">
           <img src="{{ url('public/dashboard')}}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
