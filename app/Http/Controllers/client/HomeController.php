@@ -22,6 +22,10 @@ class HomeController extends Controller
     protected $brand_repo;
     protected $banner_repo;
     protected $setting_link_repo;
+    protected $menus_desktop;
+    protected $menus_mobile;
+    protected $all_category;
+
     
     public function __construct(ProductInterface $product_repo, VariantProductInterface $variant_product_repo, CategoryInterface $cate_repo, BrandInterface $brand_repo, BannerInterface $banner_repo, SettingLinkInterface $setting_link_repo)
     {
@@ -31,6 +35,16 @@ class HomeController extends Controller
         $this->brand_repo = $brand_repo;
         $this->banner_repo = $banner_repo;
         $this->setting_link_repo = $setting_link_repo;
+
+        // load list menu category start
+        $this->all_category = $this->cate_repo->getAll();
+        // show category menu desktop
+        $this->menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
+        // show category menu mobile
+        $this->menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
+        // load list menu category end
+        
+        view()->share(['all_category' => $this->all_category,'menus_desktop' => $this->menus_desktop, 'menus_mobile' => $this->menus_mobile]);
     }
 
     /**
@@ -38,139 +52,53 @@ class HomeController extends Controller
      *   
      */ 
     public function index(){
-        
         $all_product = $this->product_repo->getAll();
         $all_brand = $this->brand_repo->getAll();
         $all_banner = $this->banner_repo->getAll();
         $all_setting_link = $this->setting_link_repo->getAll();
-        // default load menu start
-        $all_category = $this->cate_repo->getAll();
-            // show menu desktop
-            $menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
-            // show menu mobile
-            $menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
-        // default load menu end
-        
-        return view('client.index', compact('all_category', 'all_product', 'all_brand', 'all_banner', 'all_setting_link', 'menus_desktop', 'menus_mobile'));
+        return view('client.index', compact('all_product', 'all_brand', 'all_banner', 'all_setting_link'));
     }
 
     public function about(){
-        // default load menu start
-        $all_category = $this->cate_repo->getAll();
-            // show menu desktop
-            $menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
-            // show menu mobile
-            $menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
-        // default load menu end
-        return view('client.pages.about', compact('all_category', 'menus_desktop', 'menus_mobile'));
+        return view('client.pages.about');
     }
 
     public function contact(){
-        // default load menu start
-        $all_category = $this->cate_repo->getAll();
-            // show menu desktop
-            $menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
-            // show menu mobile
-            $menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
-        // default load menu end
-        return view('client.pages.contact', compact('all_category', 'menus_desktop', 'menus_mobile'));
+        return view('client.pages.contact');
     }
 
     public function shop(){
-        // default load menu start
-        $all_category = $this->cate_repo->getAll();
-            // show menu desktop
-            $menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
-            // show menu mobile
-            $menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
-        // default load menu end
-        return view('client.products.shop', compact('all_category', 'menus_desktop', 'menus_mobile'));
+        return view('client.products.shop');
     }
 
     public function wishlist(){
-        // default load menu start
-        $all_category = $this->cate_repo->getAll();
-            // show menu desktop
-            $menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
-            // show menu mobile
-            $menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
-        // default load menu end
-        return view('client.wishlist', compact('all_category', 'menus_desktop', 'menus_mobile'));
+        return view('client.wishlist');
     }
 
 
     public function register(){
-        // default load menu start
-        $all_category = $this->cate_repo->getAll();
-            // show menu desktop
-            $menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
-            // show menu mobile
-            $menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
-        // default load menu end
-        return view('client.register', compact('all_category', 'menus_desktop', 'menus_mobile'));
+        return view('client.register');
     }
 
     public function signIn(){
-        // default load menu start
-        $all_category = $this->cate_repo->getAll();
-            // show menu desktop
-            $menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
-            // show menu mobile
-            $menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
-        // default load menu end
-        return view('client.signIn', compact('all_category', 'menus_desktop', 'menus_mobile'));
+        return view('client.signIn');
     }
 
     public function forgotPassword(){
-        // default load menu start
-        $all_category = $this->cate_repo->getAll();
-            // show menu desktop
-            $menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
-            // show menu mobile
-            $menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
-        // default load menu end
-        return view('client.forgotPassword', compact('all_category', 'menus_desktop', 'menus_mobile'));
+        return view('client.forgotPassword');
     }
 
     public function product(){
-        // default load menu start
-        $all_category = $this->cate_repo->getAll();
-            // show menu desktop
-            $menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
-            // show menu mobile
-            $menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
-        // default load menu end
-        return view('client.products.products', compact('all_category', 'menus_desktop', 'menus_mobile'));
+        return view('client.products.products');
     }
     public function checkout(){
-        // default load menu start
-        $all_category = $this->cate_repo->getAll();
-            // show menu desktop
-            $menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
-            // show menu mobile
-            $menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
-        // default load menu end
-        return view('client.carts.checkout', compact('all_category', 'menus_desktop', 'menus_mobile'));
+        return view('client.carts.checkout');
     }
     public function blog(){
-        // default load menu start
-        $all_category = $this->cate_repo->getAll();
-            // show menu desktop
-            $menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
-            // show menu mobile
-            $menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
-        // default load menu end
-        return view('client.blogs.blog', compact('all_category', 'menus_desktop', 'menus_mobile'));
+        return view('client.blogs.blog');
     }
     public function blog_details(){
-        // default load menu start
-        $all_category = $this->cate_repo->getAll();
-            // show menu desktop
-            $menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
-            // show menu mobile
-            $menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
-        // default load menu end
-        return view('client.blogs.blog_details', compact('all_category', 'menus_desktop', 'menus_mobile'));
+        return view('client.blogs.blog_details');
     }
 
 

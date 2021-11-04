@@ -272,7 +272,7 @@
                 <div class="vertical-menu mb-all-30">
                     <nav>
                         <ul class="vertical-menu-list" id="list_category">
-
+                            
                             {!! $menus_desktop !!}
                             
                             <!-- More Categoies Start -->
