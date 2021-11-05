@@ -174,7 +174,7 @@
                             <li><a href="{{route('client.blog')}}">Bài Viết<i class="fa fa-angle-down"></i></a>
                                 <!-- Home Version Dropdown Start -->
                                 <ul class="ht-dropdown dropdown-style-two">
-                                    <li><a href="{{route('client.blog_details')}}">blog details</a></li>
+                                    {{-- <li><a href="{{route('client.blog_details')}}">blog details</a></li> --}}
                                 </ul>
                                 <!-- Home Version Dropdown End -->
                             </li>

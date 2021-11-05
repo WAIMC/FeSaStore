@@ -110,7 +110,28 @@
                     'icon'=>'fa-circle nav-icon'
                 ]
             ]
-        ]
+        ],
+        [
+            'label'=>'Quản lý bài viết',
+            'route'=>'blog.index',
+            'icon'=>'fa-list-alt',
+            'items'=>[
+                [
+
+                    'label'=>'Danh mục bài viết',
+
+                    'route'=>'categoryblog.index',
+                    'icon'=>'fa-circle nav-icon'
+                ],
+                [
+
+                    'label'=>'Danh sách bài viết',
+
+                    'route'=>'blog.index',
+                    'icon'=>'fa-circle nav-icon'
+                ]
+            ]
+        ],
 
     ];
 ?>

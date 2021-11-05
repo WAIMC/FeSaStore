@@ -9,6 +9,8 @@ use App\Repositories\Contracts\CategoryInterface;
 use App\Repositories\Contracts\ProductInterface;
 use App\Repositories\Contracts\SettingLinkInterface;
 use App\Repositories\Contracts\VariantProductInterface;
+use App\Repositories\Contracts\CategoryBlogInterface;
+use App\Repositories\Contracts\BlogInterface;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,12 +24,10 @@ class HomeController extends Controller
     protected $brand_repo;
     protected $banner_repo;
     protected $setting_link_repo;
-    protected $menus_desktop;
-    protected $menus_mobile;
-    protected $all_category;
+    protected $categoryblog;
+    protected $blogs;
+    public function __construct(CategoryBlogInterface $categoryblog,BlogInterface $blogs,ProductInterface $product_repo, VariantProductInterface $variant_product_repo, CategoryInterface $cate_repo, BrandInterface $brand_repo, BannerInterface $banner_repo, SettingLinkInterface $setting_link_repo)
 
-    
-    public function __construct(ProductInterface $product_repo, VariantProductInterface $variant_product_repo, CategoryInterface $cate_repo, BrandInterface $brand_repo, BannerInterface $banner_repo, SettingLinkInterface $setting_link_repo)
     {
         $this->product_repo = $product_repo;
         $this->variant_product_repo = $variant_product_repo;
@@ -35,7 +35,8 @@ class HomeController extends Controller
         $this->brand_repo = $brand_repo;
         $this->banner_repo = $banner_repo;
         $this->setting_link_repo = $setting_link_repo;
-
+        $this->categoryblog=$categoryblog;
+        $this->blogs=$blogs;
         // load list menu category start
         $this->all_category = $this->cate_repo->getAll();
         // show category menu desktop
@@ -45,6 +46,7 @@ class HomeController extends Controller
         // load list menu category end
         
         view()->share(['all_category' => $this->all_category,'menus_desktop' => $this->menus_desktop, 'menus_mobile' => $this->menus_mobile]);
+
     }
 
     /**
@@ -95,11 +97,28 @@ class HomeController extends Controller
         return view('client.carts.checkout');
     }
     public function blog(){
-        return view('client.blogs.blog');
-    }
-    public function blog_details(){
-        return view('client.blogs.blog_details');
-    }
 
+        $blogs=$this->blogs->paginate(10);
+        $categoryblog=$this->categoryblog->getCategoryBlogActive();
+        return view('client.blogs.blog', compact('all_category', 'menus_desktop', 'menus_mobile','blogs','categoryblog'));
+    }
+    public function blog_details($slug){
+        $blog=$this->blogs->findBySlug($slug);
+        $categoryblog=$this->categoryblog->getCategoryBlogActive();
+        return view('client.blogs.blog_details', compact('blog','categoryblog','all_category', 'menus_desktop', 'menus_mobile'));
+    }
+    public function categoryblog($slug){
+        // default load menu start
+        $all_category = $this->cate_repo->getAll();
+            // show menu desktop
+            $menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
+            // show menu mobile
+            $menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
+        // default load menu end
+        $blogs=$this->categoryblog->findBySlug($slug);
+        $categoryblog=$this->categoryblog->getCategoryBlogActive();
+        return view('client.blogs.blog', compact('blogs','categoryblog','all_category', 'menus_desktop', 'menus_mobile'));
+    }
+ 
 
 }

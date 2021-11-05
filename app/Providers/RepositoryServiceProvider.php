@@ -15,6 +15,8 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $models = array(
             'Category',
+            'CategoryBlog',
+            'Blog',
             'SettingLink',
             'Product',
             'VariantProduct',

@@ -37,7 +37,9 @@ use Illuminate\Support\Facades\Route;
             'product'=>admin\ProductController::class,
             'banner'=>admin\BannerController::class,
             'variantProduct'=>admin\VariantProductController::class,
-            'brand'=>admin\BrandController::class
+            'brand'=>admin\BrandController::class,
+            'blog'=>admin\BlogController::class,
+            'categoryblog'=>admin\CategoryBlogController::class
         ]);
     });
 
@@ -61,8 +63,9 @@ use Illuminate\Support\Facades\Route;
     Route::get('/checkout',[App\Http\Controllers\client\HomeController::class,'checkout'])->name('client.checkout');
     Route::get('/product',[App\Http\Controllers\client\HomeController::class,'product'])->name('client.product');
     Route::get('/blog',[App\Http\Controllers\client\HomeController::class,'blog'])->name('client.blog');
-    Route::get('/blog-details',[App\Http\Controllers\client\HomeController::class,'blog_details'])->name('client.blog_details');
-/*
+    Route::get('/blog-details/{slug}',[App\Http\Controllers\client\HomeController::class,'blog_details'])->name('client.blog_details');
+    Route::get('/blog/category/{slug}',[App\Http\Controllers\client\HomeController::class,'categoryblog'])->name('client.cateblog');
+    /*
     End route client
 */ 
 
