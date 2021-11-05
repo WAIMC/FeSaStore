@@ -24,7 +24,7 @@
                             <div class="single-sidebar latest-pro mb-30">
                                 <h3 class="sidebar-title">Danh mục bài viết</h3>
                                 <ul class="sidbar-style">
-                                    @foreach ($categoryblog as $item)
+                                    @foreach ($modelcategoryblog as $item)
                                         <li><a href="{{route('client.cateblog',$item->slug)}}">{{$item->name}}</a></li>
                                     @endforeach
                                     

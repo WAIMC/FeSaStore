@@ -43,9 +43,15 @@ class HomeController extends Controller
         $this->menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
         // show category menu mobile
         $this->menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
-        // load list menu category end
-        
-        view()->share(['all_category' => $this->all_category,'menus_desktop' => $this->menus_desktop, 'menus_mobile' => $this->menus_mobile]);
+        // load list menu category blog 
+       
+      
+        view()->share(
+            ['all_category' => $this->all_category,
+             'menus_desktop' => $this->menus_desktop,
+             'menus_mobile' => $this->menus_mobile,
+             'modelcategoryblog'=>$this->categoryblog->getCategoryBlogActive(),
+            ]);
 
     }
 
@@ -97,27 +103,16 @@ class HomeController extends Controller
         return view('client.carts.checkout');
     }
     public function blog(){
-
         $blogs=$this->blogs->paginate(10);
-        $categoryblog=$this->categoryblog->getCategoryBlogActive();
-        return view('client.blogs.blog', compact('all_category', 'menus_desktop', 'menus_mobile','blogs','categoryblog'));
+        return view('client.blogs.blog', compact('blogs'));
     }
     public function blog_details($slug){
         $blog=$this->blogs->findBySlug($slug);
-        $categoryblog=$this->categoryblog->getCategoryBlogActive();
-        return view('client.blogs.blog_details', compact('blog','categoryblog','all_category', 'menus_desktop', 'menus_mobile'));
+        return view('client.blogs.blog_details', compact('blog'));
     }
     public function categoryblog($slug){
-        // default load menu start
-        $all_category = $this->cate_repo->getAll();
-            // show menu desktop
-            $menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
-            // show menu mobile
-            $menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
-        // default load menu end
         $blogs=$this->categoryblog->findBySlug($slug);
-        $categoryblog=$this->categoryblog->getCategoryBlogActive();
-        return view('client.blogs.blog', compact('blogs','categoryblog','all_category', 'menus_desktop', 'menus_mobile'));
+        return view('client.blogs.blog', compact('blogs'));
     }
  
 

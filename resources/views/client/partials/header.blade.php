@@ -174,7 +174,9 @@
                             <li><a href="{{route('client.blog')}}">Bài Viết<i class="fa fa-angle-down"></i></a>
                                 <!-- Home Version Dropdown Start -->
                                 <ul class="ht-dropdown dropdown-style-two">
-                                    {{-- <li><a href="{{route('client.blog_details')}}">blog details</a></li> --}}
+                                    @foreach ($modelcategoryblog as $item)
+                                        <li><a href="{{route('client.blog_details',$item->slug)}}">{{$item->name}}</a></li>  
+                                    @endforeach
                                 </ul>
                                 <!-- Home Version Dropdown End -->
                             </li>
