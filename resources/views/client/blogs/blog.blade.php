@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="breadcrumb">
                     <ul class="d-flex align-items-center">
-                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="{{route('client.index')}}">Trang chủ</a></li>
                         <li class="active"><a href="blog">Bài viết</a></li>
                     </ul>
                 </div>
