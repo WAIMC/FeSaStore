@@ -57,9 +57,11 @@ use Illuminate\Support\Facades\Route;
     Route::get('/shop',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
     Route::get('/wishlist',[App\Http\Controllers\client\HomeController::class,'wishlish'])->name('client.wishlist');
     Route::get('/shop',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
-    Route::get('/register',[App\Http\Controllers\client\HomeController::class,'register'])->name('client.register');
-    Route::get('/signIn',[App\Http\Controllers\client\HomeController::class,'signIn'])->name('client.signIn');
-    Route::get('/forgotPassword',[App\Http\Controllers\client\HomeController::class,'forgotPassword'])->name('client.forgotPassword');
+// route user
+    Route::get('/register',[App\Http\Controllers\admin\Auth\loginController::class,'register'])->name('client.register');
+    Route::get('/login',[App\Http\Controllers\client\Auth\loginController::class,'login'])->name('client.login');
+    Route::get('/forgotPassword',[App\Http\Controllers\admin\Auth\loginController::class,'forgotPassword'])->name('client.forgotPassword');
+ //end
     Route::get('/checkout',[App\Http\Controllers\client\HomeController::class,'checkout'])->name('client.checkout');
     Route::get('/product',[App\Http\Controllers\client\HomeController::class,'product'])->name('client.product');
     Route::get('/blog',[App\Http\Controllers\client\HomeController::class,'blog'])->name('client.blog');

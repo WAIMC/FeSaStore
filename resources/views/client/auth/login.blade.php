@@ -10,7 +10,7 @@
                     <ul class="d-flex align-items-center">
                         <li><a href="">Trang Chủ</a></li>
                         <li><a href="">Tài Khoản</a></li>
-                        <li class="active"><a href="{{ route('site.signIn') }}">Liên Hệ Với Chúng Tôi</a></li>
+                        <li class="active"><a href="{{ route('client.login') }}">Liên Hệ Với Chúng Tôi</a></li>
                     </ul>
                 </div>
             </div>

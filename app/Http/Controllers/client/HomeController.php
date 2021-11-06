@@ -37,21 +37,6 @@ class HomeController extends Controller
         $this->setting_link_repo = $setting_link_repo;
         $this->categoryblog=$categoryblog;
         $this->blogs=$blogs;
-        // load list menu category start
-        $this->all_category = $this->cate_repo->getAll();
-        // show category menu desktop
-        $this->menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
-        // show category menu mobile
-        $this->menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
-        // load list menu category blog 
-       
-      
-        view()->share(
-            ['all_category' => $this->all_category,
-             'menus_desktop' => $this->menus_desktop,
-             'menus_mobile' => $this->menus_mobile,
-             'modelcategoryblog'=>$this->categoryblog->getCategoryBlogActive(),
-            ]);
 
     }
 

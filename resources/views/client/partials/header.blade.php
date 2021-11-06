@@ -31,7 +31,7 @@
                     <li><a href="#">Tài Khoản<i class="lnr lnr-chevron-down"></i></a>
                         <!-- Dropdown Start -->
                         <ul class="ht-dropdown">
-                            <li><a href="{{route('client.signIn')}}">Đăng Nhập</a></li>
+                            <li><a href="{{route('client.login')}}">Đăng Nhập</a></li>
                             <li><a href="{{route('client.register')}}">Đăng Ký</a></li>
                         </ul>
                         <!-- Dropdown End -->
@@ -175,7 +175,7 @@
                                 <!-- Home Version Dropdown Start -->
                                 <ul class="ht-dropdown dropdown-style-two">
                                     @foreach ($modelcategoryblog as $item)
-                                        <li><a href="{{route('client.blog_details',$item->slug)}}">{{$item->name}}</a></li>  
+                                        <li><a href="{{route('client.cateblog',$item->slug)}}">{{$item->name}}</a></li>  
                                     @endforeach
                                 </ul>
                                 <!-- Home Version Dropdown End -->
@@ -185,7 +185,7 @@
                                 <ul class="ht-dropdown dropdown-style-two">
                                     <li><a href="{{route('client.contact')}}">contact us</a></li>
                                     <li><a href="{{route('client.register')}}">register</a></li>
-                                    <li><a href="{{route('client.signIn')}}">sign in</a></li>
+                                    <li><a href="{{route('client.login')}}">sign in</a></li>
                                     <li><a href="{{route('client.forgotPassword')}}">forgot password</a></li>
                                     <li><a href="404.html">404</a></li>
                                 </ul>
@@ -219,17 +219,19 @@
                                     </ul>
                                     <!-- Mobile Menu Dropdown End -->
                                 </li>
-                                <li><a href="{{route('client.index')}}">Bài Viết</a>
+                                <li><a href="{{route('client.blog')}}">Bài Viết</a>
                                     <!-- Mobile Menu Dropdown Start -->
                                     <ul>
-                                        <li><a href="{{route('client.index')}}">blog details</a></li>
+                                        @foreach ($modelcategoryblog as $item)
+                                        <li><a href="{{route('client.cateblog',$item->slug)}}">{{$item->name}}</a></li>  
+                                    @endforeach
                                     </ul>
                                     <!-- Mobile Menu Dropdown End -->
                                 </li>
                                 <li><a href="#">pages</a>
                                     <!-- Mobile Menu Dropdown Start -->
                                     <ul>
-                                        <li><a href="{{route('client.signIn')}}">register</a></li>
+                                        <li><a href="{{route('client.login')}}">register</a></li>
                                         <li><a href="{{route('client.checkout')}}">sign in</a></li>
                                         <li><a href="forgot-password.html">forgot password</a></li>
                                         <li><a href="404.html">404</a></li>
