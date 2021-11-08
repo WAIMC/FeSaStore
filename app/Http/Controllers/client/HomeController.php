@@ -51,28 +51,7 @@ class HomeController extends Controller
         $this->setting_link_repo = $setting_link_repo;
         $this->categoryblog=$categoryblog;
         $this->blogs=$blogs;
-        $this->all_variant_pro = $all_variant_pro;
 
-        // load list menu category start
-        $this->all_category = $this->cate_repo->getAll();
-            // show category menu desktop
-            $this->menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
-            // show category menu mobile
-            $this->menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
-        // load list menu category end
-
-        // load all product for show modal product
-        $this->all_product = $this->product_repo->getAll();
-        // load all variant for show modal variant
-        $this->all_variant_pro = $this->all_variant_pro->getAll();
-        
-        view()->share([
-            'all_category' => $this->all_category,
-            'menus_desktop' => $this->menus_desktop, 
-            'menus_mobile' => $this->menus_mobile, 
-            'all_product' => $this->all_product, 
-            'all_variant_pro' => $this->all_variant_pro
-        ]);
     }
 
     /**
