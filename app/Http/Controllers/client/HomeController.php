@@ -131,17 +131,16 @@ class HomeController extends Controller
         
         return view('client.carts.checkout');
     }
+    
     public function blog(){ 
         return view('client.blogs.blog');
     }
-    public function blog_details(){
-        $blogs=$this->blogs->paginate(10);
-        return view('client.blogs.blog', compact('blogs'));
-    }
+
     public function blog_details($slug){
         $blog=$this->blogs->findBySlug($slug);
         return view('client.blogs.blog_details', compact('blog'));
     }
+    
     public function categoryblog($slug){
         $blogs=$this->categoryblog->findBySlug($slug);
         return view('client.blogs.blog', compact('blogs'));
