@@ -53,14 +53,6 @@ class HomeController extends Controller
         $this->blogs=$blogs;
         $this->all_variant_pro = $all_variant_pro;
 
-        // load list menu category start
-        $this->all_category = $this->cate_repo->getAll();
-            // show category menu desktop
-            $this->menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
-            // show category menu mobile
-            $this->menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
-        // load list menu category end
-
         // load all product for show modal product
         $this->all_product = $this->product_repo->getAll();
         // load all variant for show modal variant
@@ -131,11 +123,10 @@ class HomeController extends Controller
         
         return view('client.carts.checkout');
     }
-    
-    public function blog(){ 
-        return view('client.blogs.blog');
+    public function blog(){
+        $blogs=$this->blogs->paginate(10);
+        return view('client.blogs.blog', compact('blogs'));
     }
-
     public function blog_details($slug){
         $blog=$this->blogs->findBySlug($slug);
         return view('client.blogs.blog_details', compact('blog'));
