@@ -21,7 +21,7 @@
                             <h4>Danh sách sản phẩm</h4>
                         </div>
                         <div class="col-4 d-flex justify-content-end">
-                            <a href="{{ route('category.create') }}" class="btn btn-outline-dark">
+                            <a href="{{ route('product.create') }}" class="btn btn-outline-dark">
                                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
                                 <span>Thêm mới sản phẩm</span>
                             </a>

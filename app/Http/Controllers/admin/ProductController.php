@@ -140,7 +140,6 @@ class ProductController extends Controller
         	'category_id' => $request->category_id,
         	'brand_id' => $request->brand_id
         ];
-
         $result = $this->product_repo->update($product ,$attributes_product);
 
         if($result){
@@ -168,7 +167,7 @@ class ProductController extends Controller
         }elseif ($result) {
             return redirect()->route('product.index')->with('success', 'Cập nhật sản phẩm thành công!');
         }else{
-            return redirect()->route('product.create')->with('error', 'Thêm mới sản phẩm và biến thể thất bại!');
+            return redirect()->route('product.edit')->with('error', 'Thêm mới sản phẩm và biến thể thất bại!');
         }
     }
 
