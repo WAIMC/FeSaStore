@@ -163,7 +163,7 @@
                             <li><a href="{{route('client.shop')}}">Cửa Hàng<i class="fa fa-angle-down"></i></a>
                                 <!-- Home Version Dropdown Start -->
                                 <ul class="ht-dropdown dropdown-style-two">
-                                    <li><a href="{{route('client.product')}}">product details</a></li>
+                                    <li><a href="">product details</a></li>
                                     <li><a href="compare.html">So Sánh Sản Phẩm</a></li>
                                     <li><a href="cart.html">Giỏ Hàng</a></li>
                                     <li><a href="{{route('client.checkout')}}">Thủ Tục Thanh Toán</a></li>

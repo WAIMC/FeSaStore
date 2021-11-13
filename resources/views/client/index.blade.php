@@ -40,7 +40,7 @@
                     <div class="single-product">
                         <!-- Product Image Start -->
                         <div class="pro-img">
-                            <a href="product.html">
+                            <a href="{{ route('client.productDetail', $item_pro->id)}}">
                                 <img class="primary-img" src="{{url('public/uploads/'.$item_pro->image)}}" alt="single-product">
                                 <img class="secondary-img" src="{{url('public/uploads/'.$item_pro->image)}}" alt="single-product">
                             </a>
@@ -51,7 +51,7 @@
                         <!-- Product Content Start -->
                         <div class="pro-content">
                             <div class="pro-info">
-                                <h4><a href="product.html">{{ $item_pro->name }}</a></h4>
+                                <h4><a href="{{ route('client.productDetail', $item_pro->id)}}">{{ $item_pro->name }}</a></h4>
                                 @if ($item_pro->product_variantProduct->first()->price > $item_pro->product_variantProduct->first()->discount)
                                     <p><span class="price">${{$item_pro->product_variantProduct->first()->discount}}</span><del class="prev-price">${{$item_pro->product_variantProduct->first()->price}}</del></p>
                                     <div class="label-product l_sale">{{ 100-($item_pro->product_variantProduct->first()->price/100*$item_pro->product_variantProduct->first()->discount) }}<span class="symbol-percent">%</span></div>
@@ -167,7 +167,7 @@
                                         <div class="single-product mt-20">
                                             <!-- Product Image Start -->
                                             <div class="pro-img">
-                                                <a href="product.html">
+                                                <a href="{{ route('client.productDetail', $tab_pro_arrival->id)}}">
                                                     <img class="primary-img" src="{{url('public/uploads/'.$all_product->first()->image)}}" alt="single-product">
                                                     <img class="secondary-img" src="{{url('public/uploads/'.$all_product->first()->image)}}" alt="single-product">
                                                 </a>
@@ -177,7 +177,7 @@
                                             <!-- Product Content Start -->
                                             <div class="pro-content">
                                                 <div class="pro-info">
-                                                    <h4><a href="product.html">{{ $all_product->first()->name }}</a></h4>
+                                                    <h4><a href="{{ route('client.productDetail', $tab_pro_arrival->id)}}">{{ $all_product->first()->name }}</a></h4>
                                                     @php
                                                         $product_content_price = $all_product->first()->product_variantProduct->first()->price;
                                                         $product_content_discount = $all_product->first()->product_variantProduct->first()->discount;
@@ -212,7 +212,7 @@
                                             <div class="single-product">
                                                 <!-- Product Image Start -->
                                                 <div class="pro-img">
-                                                    <a href="product.html">
+                                                    <a href="{{ route('client.productDetail', $single_pro_first->id)}}">
                                                         <img class="primary-img" src="{{url('public/uploads/'.$single_pro_first->image)}}" alt="single-product">
                                                         <img class="secondary-img" src="{{url('public/uploads/'.$single_pro_first->image)}}" alt="single-product">
                                                     </a>
@@ -222,7 +222,7 @@
                                                 <!-- Product Content Start -->
                                                 <div class="pro-content">
                                                     <div class="pro-info">
-                                                        <h4><a href="product.html">{{$single_pro_first->name}}</a></h4>
+                                                        <h4><a href="{{ route('client.productDetail', $single_pro_first->id)}}">{{$single_pro_first->name}}</a></h4>
                                                         @if ($single_pro_first->product_variantProduct->first()->price > $single_pro_first->product_variantProduct->first()->discount)
                                                             <p><span class="price">${{$single_pro_first->product_variantProduct->first()->discount}}</span><del class="prev-price">${{$single_pro_first->product_variantProduct->first()->price}}</del></p>
                                                             <div class="label-product l_sale">{{ 100-($single_pro_first->product_variantProduct->first()->price/100*$single_pro_first->product_variantProduct->first()->discount)}}<span class="symbol-percent">%</span></div>    
@@ -249,7 +249,7 @@
                                                 <div class="single-product">
                                                     <!-- Product Image Start -->
                                                     <div class="pro-img">
-                                                        <a href="product.html">
+                                                        <a href="{{ route('client.productDetail', $item_pro->id)}}">
                                                             <img class="primary-img" src="{{url('public/uploads/'.$single_pro_secound->image)}}" alt="single-product">
                                                             <img class="secondary-img" src="{{url('public/uploads/'.$single_pro_secound->image)}}" alt="single-product">
                                                         </a>
@@ -259,7 +259,7 @@
                                                     <!-- Product Content Start -->
                                                     <div class="pro-content">
                                                         <div class="pro-info">
-                                                            <h4><a href="product.html">{{$single_pro_secound->name}}</a></h4>
+                                                            <h4><a href="{{ route('client.productDetail', $item_pro->id)}}">{{$single_pro_secound->name}}</a></h4>
                                                             @if ($single_pro_secound->product_variantProduct->first()->price > $single_pro_secound->product_variantProduct->first()->discount)
                                                                 <p><span class="price">${{$single_pro_secound->product_variantProduct->first()->discount}}</span><del class="prev-price">${{$single_pro_secound->product_variantProduct->first()->price}}</del></p>
                                                                 <div class="label-product l_sale">{{ 100-($single_pro_secound->product_variantProduct->first()->price/100*$single_pro_secound->product_variantProduct->first()->discount)}}<span class="symbol-percent">%</span></div>    
@@ -329,7 +329,7 @@
                                     <div class="single-product">
                                         <!-- Product Image Start -->
                                         <div class="pro-img">
-                                            <a href="product.html">
+                                            <a href="{{ route('client.productDetail', $tab_best->id)}}">
                                                 <img class="primary-img" src="{{url('public/uploads/'.$best_pro->image)}}" alt="single-product">
                                                 <img class="secondary-img" src="{{url('public/uploads/'.$best_pro->image)}}" alt="single-product">
                                             </a>
@@ -339,7 +339,7 @@
                                         <!-- Product Content Start -->
                                         <div class="pro-content">
                                             <div class="pro-info">
-                                                <h4><a href="product.html">{{ $best_pro->name }}</a></h4>
+                                                <h4><a href="{{ route('client.productDetail', $tab_best->id)}}">{{ $best_pro->name }}</a></h4>
                                                 <p><span class="price">${{ $best_pro->product_variantProduct->first()->discount }}</span></p>
                                             </div>
                                             <div class="pro-actions">
@@ -372,86 +372,33 @@
     <div class="blog-area ptb-95 off-white-bg ptb-sm-55">
         <div class="container">
             <div class="like-product-area"> 
-                <h2 class="section-ttitle2 mb-30">Latest Blog Post </h2>
+                <h2 class="section-ttitle2 mb-30">Bài Viết Gần Đây</h2>
            <!-- Latest Blog Active Start Here -->
            <div class="latest-blog-active owl-carousel">
-               <!-- Single Blog Start -->
-               <div class="single-latest-blog">
-                   <div class="blog-img">
-                       <a href="single-blog.html"><img src="{{url('public/client')}}/img/blog\1.jpg" alt="blog-image"></a>
-                   </div>
-                   <div class="blog-desc">
-                       <h4><a href="single-blog.html">At wisi enim ad minim veniam.</a></h4>
-                        <ul class="meta-box d-flex">
-                            <li><a href="#">By Truemart</a></li>
-                        </ul>
-                        <p>Aenean vestibulum pretium enim vitae , non commodo urna volutpat . Pellentesque vel lacus  eget est d...</p>
-                        <a class="readmore" href="single-blog.html">Read More</a>
-                   </div>
-                   <div class="blog-date">
-                        <span>28</span>
-                        June
-                    </div>
-               </div>
-               <!-- Single Blog End -->
-               <!-- Single Blog Start -->
-               <div class="single-latest-blog">
-                   <div class="blog-img">
-                       <a href="single-blog.html"><img src="{{url('public/client')}}/img/blog\2.jpg" alt="blog-image"></a>
-                   </div>
-                   <div class="blog-desc">
-                       <h4><a href="single-blog.html">Dt wisi enim ad minim veniam.</a></h4>
-                        <ul class="meta-box d-flex">
-                            <li><a href="#">By Truemart</a></li>
-                        </ul>
-                        <p>Aenean vestibulum pretium enim vitae , non commodo urna volutpat . Pellentesque vel lacus  eget est d...</p>
-                        <a class="readmore" href="single-blog.html">Read More</a>
-                   </div>
-                   <div class="blog-date">
-                        <span>28</span>
-                        June
-                    </div>
-               </div>
-               <!-- Single Blog End -->
-               <!-- Single Blog Start -->
-               <div class="single-latest-blog">
-                   <div class="blog-img">
-                       <a href="single-blog.html"><img src="{{url('public/client')}}/img/blog\1.jpg" alt="blog-image"></a>
-                   </div>
-                   <div class="blog-desc">
-                       <h4><a href="single-blog.html">At wisi enim ad minim veniam.</a></h4>
-                        <ul class="meta-box d-flex">
-                            <li><a href="#">By Truemart</a></li>
-                        </ul>
-                        <p>Aenean vestibulum pretium enim vitae , non commodo urna volutpat . Pellentesque vel lacus  eget est d...</p>
-                        <a class="readmore" href="single-blog.html">Read More</a>
-                   </div>
-                   <div class="blog-date">
-                        <span>28</span>
-                        June
-                    </div>
-               </div>
-               <!-- Single Blog End -->
-               <!-- Single Blog Start -->
-               <div class="single-latest-blog">
-                   <div class="blog-img">
-                       <a href="single-blog.html"><img src="{{url('public/client')}}/img/blog\2.jpg" alt="blog-image"></a>
-                   </div>
-                   <div class="blog-desc">
-                       <h4><a href="single-blog.html">Dt wisi enim ad minim veniam.</a></h4>
-                        <ul class="meta-box d-flex">
-                            <li><a href="#">By Truemart</a></li>
-                        </ul>
-                        <p>Aenean vestibulum pretium enim vitae , non commodo urna volutpat . Pellentesque vel lacus  eget est d...</p>
-                        <a class="readmore" href="single-blog.html">Read More</a>
-                   </div>
-                   <div class="blog-date">
-                        <span>28</span>
-                        June
-                    </div>
-               </div>
-               <!-- Single Blog End -->
-
+               {{-- get all blog active --}}
+                @foreach ($modelcategoryblog as $category_blog)
+                    @foreach ($category_blog->getblog as $blog)
+                        <!-- Single Blog Start -->
+                        <div class="single-latest-blog">
+                            <div class="blog-img">
+                                <a href="{{ route('client.blog_details', $blog->slug) }}"><img src="{{ url('public/uploads/', $blog->image) }}" alt="blog-image"></a>
+                            </div>
+                            <div class="blog-desc">
+                                <h4><a href="{{ route('client.blog_details', $blog->slug) }}">{{$blog->title}}</a></h4>
+                                <ul class="meta-box d-flex">
+                                    <li><a href="#">{{ $blog->getauthor->name }}</a></li>
+                                </ul>
+                                <p>{!! $blog->content !!}</p>
+                                <a class="readmore" href="{{ route('client.blog_details', $blog->slug) }}">Đọc Thêm</a>
+                            </div>
+                            <div class="blog-date">
+                                <span>{{ $blog->created_at->format('d') }}</span>
+                                Tháng {{ $blog->created_at->format('m') }}
+                            </div>
+                        </div>
+                        <!-- Single Blog End -->
+                    @endforeach
+                @endforeach
            </div>
            <!-- Latest Blog Active End Here -->
             </div>

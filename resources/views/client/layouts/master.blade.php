@@ -168,6 +168,13 @@
                                         <!-- Thumbnail Image End -->
                                         <div class="product-thumbnail mt-20">
                                             <div class="thumb-menu owl-carousel nav tabs-area quick_view_thumb_menu_gallery" role="tablist">
+                                                <a class="active" data-toggle="tab" href="#thumb0"><img src="" alt="product-thumbnail"></a>
+                                                <a data-toggle="tab" href="#thumb1"><img src="" alt="product-thumbnail"></a>
+                                                <a data-toggle="tab" href="#thumb2"><img src="" alt="product-thumbnail"></a>
+                                                <a data-toggle="tab" href="#thumb3"><img src="" alt="product-thumbnail"></a>
+                                                <a data-toggle="tab" href="#thumb4"><img src="" alt="product-thumbnail"></a>
+                                                <a data-toggle="tab" href="#thumb5"><img src="" alt="product-thumbnail"></a>
+                                                <a data-toggle="tab" href="#thumb6"><img src="" alt="product-thumbnail"></a>
                                             </div>
                                         </div>
                                         <!-- Thumbnail image end -->
@@ -378,7 +385,6 @@
                 var quick_view_thumb_gallery = '';
                 var quick_view_thumb_menu_gallery = '';
                 var active_thumb = '';
-                var active_menu_thumb = '';
                 var num_thumb = 0;
                 // set color for button when click
                 $('input:radio[name="attr_0"]').parent().removeClass('bg-primary');
@@ -399,18 +405,13 @@
                             // fill gallery
                             var gallery = JSON.parse(var_pro['gallery']);
                             gallery.forEach(each_gallery => {
-                                if(num_thumb == 0){
-                                    active_thumb = 'show active';
-                                    active_menu_thumb = 'active';
-                                }
-                                quick_view_thumb_gallery +=`<div id="thumb${num_thumb}" class="tab-pane fade ">
+                                num_thumb == 0 ? active_thumb = 'show active' : active_thumb = '';
+                                quick_view_thumb_gallery +=`<div id="thumb${num_thumb}" class="tab-pane fade ${active_thumb}">
                                                                 <a data-fancybox="images" href="{{url('public/uploads')}}/${each_gallery}">
                                                                     <img src="{{url('public/uploads')}}/${each_gallery}" alt="product-view">
                                                                 </a>
                                                             </div>`;
-                                quick_view_thumb_menu_gallery +=`<a class="" data-toggle="tab" href="#thumb${num_thumb}">
-                                                                    <img src="{{url('public/uploads')}}/${each_gallery}" alt="product-thumbnail">
-                                                                </a>`;
+                                $(".quick_view_thumb_menu_gallery a[href='#thumb"+num_thumb+"'] img").attr("src", "{{url('public/uploads')}}/"+each_gallery);
                                 num_thumb++;
                             });
                         }
@@ -425,18 +426,13 @@
                         // fill gallery
                         var gallery = JSON.parse(var_pro['gallery']);
                         gallery.forEach(each_gallery => {
-                            if(num_thumb == 0){
-                                active_thumb = 'show active';
-                                active_menu_thumb = 'active';
-                            }
-                            quick_view_thumb_gallery +=`<div id="thumb${num_thumb}" class="tab-pane fade ">
+                            num_thumb == 0 ? active_thumb = 'show active' : active_thumb = '';
+                            quick_view_thumb_gallery +=`<div id="thumb${num_thumb}" class="tab-pane fade ${active_thumb}">
                                                             <a data-fancybox="images" href="{{url('public/uploads')}}/${each_gallery}">
                                                                 <img src="{{url('public/uploads')}}/${each_gallery}" alt="product-view">
                                                             </a>
                                                         </div>`;
-                            quick_view_thumb_menu_gallery +=`<a class="" data-toggle="tab" href="#thumb${num_thumb}">
-                                                                <img src="{{url('public/uploads')}}/${each_gallery}" alt="product-thumbnail">
-                                                            </a>`;
+                            $(".quick_view_thumb_menu_gallery a[href='#thumb"+num_thumb+"'] img").attr("src", "{{url('public/uploads')}}/"+each_gallery);
                             num_thumb++;
                         });
                     }
@@ -446,11 +442,12 @@
                     var percent_discount = 100-(price/100*discount);
                     $('.qv_price').html("<span class='prev-price'>"+price+"</span><span class='price'>$"+discount+"</span><span class='saving-price'>save "+percent_discount+"%</span>");
                 }
-
                 $('.qv_price').html("<span class='price'>$"+price+"</span>");
+
                 // fill gallery
+                //$('.quick_view_thumb_menu_gallery').html(quick_view_thumb_menu_gallery);
                 $('.quick_view_thumb_gallery').html(quick_view_thumb_gallery);
-                $('.quick_view_thumb_menu_gallery').html(quick_view_thumb_menu_gallery);
+                
             }
             
         });

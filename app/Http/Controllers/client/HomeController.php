@@ -5,12 +5,11 @@ namespace App\Http\Controllers\client;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\BannerInterface;
 use App\Repositories\Contracts\BrandInterface;
-use App\Repositories\Contracts\CategoryInterface;
-use App\Repositories\Contracts\ProductInterface;
 use App\Repositories\Contracts\SettingLinkInterface;
-use App\Repositories\Contracts\VariantProductInterface;
 use App\Repositories\Contracts\CategoryBlogInterface;
 use App\Repositories\Contracts\BlogInterface;
+use App\Repositories\Contracts\CategoryInterface;
+use App\Repositories\Contracts\ProductInterface;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -18,61 +17,31 @@ class HomeController extends Controller
     /**
     * @var Interface|\App\Repositories\Contracts
     */
+    protected $category_repo;
     protected $product_repo;
-    protected $variant_product_repo;
-    protected $cate_repo;
     protected $brand_repo;
     protected $banner_repo;
     protected $setting_link_repo;
     protected $categoryblog;
     protected $blogs;
-    protected $menus_desktop;
-    protected $menus_mobile;
-    protected $all_category;
-    protected $all_product;
-    protected $all_variant_pro;
     
     public function __construct(
-      CategoryBlogInterface $categoryblog,
-      BlogInterface $blogs,
-      ProductInterface $product_repo,
-      VariantProductInterface $variant_product_repo, 
-      CategoryInterface $cate_repo, 
-      BrandInterface $brand_repo, 
-      BannerInterface $banner_repo, 
-      SettingLinkInterface $setting_link_repo,
-      VariantProductInterface $all_variant_pro)
+        CategoryInterface $category_repo,
+        ProductInterface $product_repo,
+        CategoryBlogInterface $categoryblog,
+        BlogInterface $blogs,
+        BrandInterface $brand_repo, 
+        BannerInterface $banner_repo, 
+        SettingLinkInterface $setting_link_repo
+    )
     {
+        $this->category_repo = $category_repo;
         $this->product_repo = $product_repo;
-        $this->variant_product_repo = $variant_product_repo;
-        $this->cate_repo = $cate_repo;
         $this->brand_repo = $brand_repo;
         $this->banner_repo = $banner_repo;
         $this->setting_link_repo = $setting_link_repo;
         $this->categoryblog=$categoryblog;
         $this->blogs=$blogs;
-        $this->all_variant_pro = $all_variant_pro;
-
-        // load list menu category start
-        $this->all_category = $this->cate_repo->getAll();
-            // show category menu desktop
-            $this->menus_desktop = $this->cate_repo->showMenuDesktop($this->cate_repo->getAll());
-            // show category menu mobile
-            $this->menus_mobile = $this->cate_repo->showMenuMobile($this->cate_repo->getAll());
-        // load list menu category end
-
-        // load all product for show modal product
-        $this->all_product = $this->product_repo->getAll();
-        // load all variant for show modal variant
-        $this->all_variant_pro = $this->all_variant_pro->getAll();
-        
-        view()->share([
-            'all_category' => $this->all_category,
-            'menus_desktop' => $this->menus_desktop, 
-            'menus_mobile' => $this->menus_mobile, 
-            'all_product' => $this->all_product, 
-            'all_variant_pro' => $this->all_variant_pro
-        ]);
     }
 
     /**
@@ -83,7 +52,7 @@ class HomeController extends Controller
         $all_brand = $this->brand_repo->getAll();
         $all_banner = $this->banner_repo->getAll();
         $all_setting_link = $this->setting_link_repo->getAll();
-        $paginate_cate = $this->cate_repo->paginate(7);
+        $paginate_cate = $this->category_repo->paginate(7);
         return view('client.index', compact('all_brand', 'all_banner', 'all_setting_link', 'paginate_cate'));
     }
 
@@ -97,9 +66,15 @@ class HomeController extends Controller
         return view('client.pages.contact');
     }
 
-    public function shop(){
-        
-        return view('client.products.shop');
+    public function shop(Request $request){
+        // (product)->(has:category)->(has:variant)->(price or date)->(between price)->paginate(12)
+        $data_paginate_product = $this->product_repo->searchProduct($request);
+        return view('client.products.shop', compact('data_paginate_product'));
+    }
+
+    public function productDetail($product_id){
+        $data_product_detail = $this->product_repo->find($product_id);
+        return view('client.products.productDetail', compact('data_product_detail'));
     }
 
     public function wishlist(){
@@ -123,10 +98,7 @@ class HomeController extends Controller
         return view('client.forgotPassword');
     }
 
-    public function product(){
-        
-        return view('client.products.products');
-    }
+    
     public function checkout(){
         
         return view('client.carts.checkout');
