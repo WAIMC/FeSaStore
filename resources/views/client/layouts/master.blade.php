@@ -37,6 +37,11 @@
     <link rel="stylesheet" href="{{url('public/client')}}/css/responsive.css">
      <!-- style css -->
      @yield('css')
+     <style>
+         #list_category{
+    display: none ;
+}
+     </style>
     <!-- Modernizer js -->
     <script src="{{url('public/client')}}/js/vendor\modernizr-3.5.0.min.js"></script>
 </head>

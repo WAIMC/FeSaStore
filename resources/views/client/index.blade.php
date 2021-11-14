@@ -463,7 +463,12 @@
 @endsection
 
 @section('css')
+           <style>
+         #list_category{
+    display: block !important;
+}
     
+    </style>
 @endsection
 
 {{-- load js for index --}}
