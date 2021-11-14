@@ -1,0 +1,66 @@
+<?php
+
+namespace App\Repositories\Eloquent;
+
+use App\Repositories\Contracts\UserInterface;
+use App\Repositories\Eloquent\BaseRepository;
+use DB;
+use Carbon\Carbon;
+use App\Models\User;
+use Mail;
+use Hash;
+use Illuminate\Support\Str;
+
+class UserRepository extends BaseRepository implements UserInterface
+{
+
+    /**
+     *   choose model connect
+     *   @return model
+     */
+    public function getModel()
+    {
+        return \App\Models\User::class;
+    }
+
+    public function SendMail($email)
+    {
+       
+        if(User::where('email',$email)->first()){
+            $token = Str::random(64);
+
+            DB::table('password_resets')->insert([
+                'email' => $email,
+                'token' => $token,
+                'created_at' => Carbon::now()
+            ]);
+    
+            Mail::send('client.email.forgetPassword', ['token' => $token, 'email' => $email], function ($message) use ($email) {
+                $message->from('Tan874979@gmail.com');
+                $message->to($email);
+                $message->subject('Reset Password');
+            });
+        }
+      
+    }
+    public function ResetPassword($email, $token,$password)
+    {
+        $updatePassword = DB::table('password_resets')
+            ->where([
+                'email' => $email,
+                'token' => $token
+            ])
+            ->first();
+
+        if (!$updatePassword) {
+            return redirect()->back()->with('error', 'Invalid token!');
+        }else{
+            $user = User::where('email', $email)
+            ->update(['password' => Hash::make($password)]);
+
+        DB::table('password_resets')->where(['email' => $email])->delete();
+        }
+
+      
+    }
+}

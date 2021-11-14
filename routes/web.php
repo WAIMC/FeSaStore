@@ -58,9 +58,19 @@ use Illuminate\Support\Facades\Route;
     Route::get('/productDetail/{product_id}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
     Route::get('/wishlist',[App\Http\Controllers\client\HomeController::class,'wishlish'])->name('client.wishlist');
 // route user
-    Route::get('/register',[App\Http\Controllers\admin\Auth\loginController::class,'register'])->name('client.register');
+    Route::get('/register',[App\Http\Controllers\client\Auth\RegisterController::class,'register'])->name('client.register');
+    Route::post('/register',[App\Http\Controllers\client\Auth\RegisterController::class,'postRegister']);
+
     Route::get('/login',[App\Http\Controllers\client\Auth\loginController::class,'login'])->name('client.login');
-    Route::get('/forgotPassword',[App\Http\Controllers\admin\Auth\loginController::class,'forgotPassword'])->name('client.forgotPassword');
+    Route::post('/login',[App\Http\Controllers\client\Auth\loginController::class,'postLogin']);
+    Route::get('/logout',[App\Http\Controllers\client\Auth\loginController::class,'logout'])->name('client.logout');
+
+    Route::get('forget-password', [App\Http\Controllers\client\Auth\ForgotPasswordController::class, 'showForgetPasswordForm'])->name('client.forgotPassword');
+    Route::post('forget-password', [App\Http\Controllers\client\Auth\ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('client.forget.password.post'); 
+    Route::get('reset-password/{token}', [App\Http\Controllers\client\Auth\ForgotPasswordController::class, 'showResetPasswordForm'])->name('client.reset.password.get');
+    Route::post('reset-password', [App\Http\Controllers\client\Auth\ForgotPasswordController::class, 'submitResetPasswordForm'])->name('client.reset.password.post');
+
+
  //end
     Route::get('/checkout',[App\Http\Controllers\client\HomeController::class,'checkout'])->name('client.checkout');
     Route::get('/blog',[App\Http\Controllers\client\HomeController::class,'blog'])->name('client.blog');
