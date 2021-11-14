@@ -61,7 +61,8 @@ use Illuminate\Support\Facades\Route;
     Route::post('/contact',[App\Http\Controllers\client\HomeController::class,'post_contact'])->name('client.post_contact');
 
     // route user
-    Route::get('/register',[App\Http\Controllers\admin\Auth\loginController::class,'register'])->name('client.register');
+    Route::get('/register',[App\Http\Controllers\client\Auth\RegisterController::class,'register'])->name('client.register');
+    Route::post('/register',[App\Http\Controllers\client\Auth\RegisterController::class,'postRegister']);
 
     Route::get('/login',[App\Http\Controllers\client\Auth\loginController::class,'login'])->name('client.login');
     Route::post('/login',[App\Http\Controllers\client\Auth\loginController::class,'postLogin']);
