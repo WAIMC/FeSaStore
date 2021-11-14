@@ -58,15 +58,9 @@ use Illuminate\Support\Facades\Route;
     Route::get('/productDetail/{product_id}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
     Route::get('/wishlist',[App\Http\Controllers\client\HomeController::class,'wishlish'])->name('client.wishlist');
 // route user
-    Route::get('/register',[App\Http\Controllers\client\Auth\RegisterController::class,'register'])->name('client.register');
-    Route::post('/register',[App\Http\Controllers\client\Auth\RegisterController::class,'postRegister']);
-
+    Route::get('/register',[App\Http\Controllers\admin\Auth\loginController::class,'register'])->name('client.register');
     Route::get('/login',[App\Http\Controllers\client\Auth\loginController::class,'login'])->name('client.login');
-    Route::post('/login',[App\Http\Controllers\client\Auth\loginController::class,'postLogin']);
-    Route::get('/logout',[App\Http\Controllers\client\Auth\loginController::class,'logout'])->name('client.logout');
-    Route::get('/forgotpassword',[App\Http\Controllers\client\Auth\ForgotPasswordController::class,'forgotPassword'])->name('client.forgotPassword');
-    Route::post('/password/email', [App\Http\Controllers\client\Auth\ForgotPasswordController::class,'sendResetLinkEmail'])->name('password.email');
-
+    Route::get('/forgotPassword',[App\Http\Controllers\admin\Auth\loginController::class,'forgotPassword'])->name('client.forgotPassword');
  //end
     Route::get('/checkout',[App\Http\Controllers\client\HomeController::class,'checkout'])->name('client.checkout');
     Route::get('/blog',[App\Http\Controllers\client\HomeController::class,'blog'])->name('client.blog');

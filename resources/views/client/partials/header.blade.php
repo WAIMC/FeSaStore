@@ -21,23 +21,18 @@
                     </li>
                     <li><span>Currency</span><a href="#"> USD $ <i class="lnr lnr-chevron-down"></i></a>
                         <!-- Dropdown Start -->
-                        {{-- <ul class="ht-dropdown">
+                        <ul class="ht-dropdown">
                             <li><a href="#">&#36; USD</a></li>
                             <li><a href="#"> € Euro</a></li>
                             <li><a href="#">&#163; Pound Sterling</a></li>
-                        </ul> --}}
+                        </ul>
                         <!-- Dropdown End -->
                     </li>
                     <li><a href="#">Tài Khoản<i class="lnr lnr-chevron-down"></i></a>
                         <!-- Dropdown Start -->
                         <ul class="ht-dropdown">
-                            @if (Auth::guard()->user())
-                            <li><a href="{{route('client.login')}}">Thông tin tài khoản</a></li>
-                            @else
                             <li><a href="{{route('client.login')}}">Đăng Nhập</a></li>
                             <li><a href="{{route('client.register')}}">Đăng Ký</a></li>
-                            @endif
-                           
                         </ul>
                         <!-- Dropdown End -->
                     </li> 
@@ -130,14 +125,7 @@
                             </li>
                             <li><a href="#"><i class="lnr lnr-heart"></i><span class="my-cart"><span>Danh Sách</span><span>Ưa Thích (0)</span></span></a>
                             </li>
-                            <li><a href="#"><i class="lnr lnr-user"></i></a>
-                                @if (Auth::guard()->user())
-                                <span class="my-cart">   {{Auth::guard()->user()->last_name}} <br>
-                                    <a  href="{{route('client.logout')}}">Đăng xuất</a></span>
-                                    @else  
-                                    <a href="{{route('client.login')}}">    <span class="my-cart">  <strong>Đăng nhập </strong> /<span><span> Ở Đây</span></span></a>
-                            @endif
-                            
+                            <li><a href="#"><i class="lnr lnr-user"></i><span class="my-cart"><span> <strong>Đăng Nhập</strong> /</span><span> Ở Đây</span></span></a>
 
 
 

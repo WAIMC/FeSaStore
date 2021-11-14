@@ -67,7 +67,7 @@ class loginController extends Controller
         if(
             Auth::guard()->attempt(['email' => request()->email, 'password' => request()->password], request()->has('remember'))
         ){
-            return redirect()->route('client.index');
+            return redirect()->route('admin.index');
         }
         return redirect()->back()->with('error','Đăng nhập thất bại, thử lại!');
     }
@@ -77,7 +77,7 @@ class loginController extends Controller
         if(auth()->guard()->logout()){        
             Session::flush();
             Sessioin::put('success','Đăng Xuất thành công!');        
-            return redirect(route('client.login'));
+            return redirect(route('admin.login'));
         }
         return redirect()->back()->with('error', 'Đăng xuất thất bại!');
     }

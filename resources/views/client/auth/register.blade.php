@@ -15,26 +15,6 @@
                 </div>
                 <!-- Container End -->
             </div>
-            <div class="row">
-                <div class="col-12">
-                  @if (Session::has('success'))
-                      <div class="alert alert-success  alert-dismissible fade show" role="alert">
-                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">×</span>
-                          </button>
-                          {{ Session::get('success') }}
-                      </div>
-                  @endif
-                  @if (Session::has('error'))
-                      <div class="alert alert-danger  alert-dismissible fade show" role="alert">
-                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">×</span>
-                          </button>
-                          {{ Session::get('error') }}
-                      </div>
-                  @endif
-                </div>
-              </div>
             <!-- Breadcrumb End -->
         <!-- Register Account Start -->
             <div class="register-account ptb-100 ptb-sm-60">
@@ -50,45 +30,31 @@
                     <!-- Row End -->
                     <div class="row">
                         <div class="col-sm-12">
-                            <form class="form-register" action="" method="POST">
-                                @csrf
+                            <form class="form-register" action="#">
                                 <fieldset>
                                     <legend>Thông tin cá nhân của bạn</legend>
                                     <div class="form-group d-md-flex align-items-md-center">
                                         <label class="control-label col-md-2" for="f-name"><span class="require">*</span>Họ</label>
                                         <div class="col-md-10">
-                                            <input type="text" name="first_name" value="{{old('first_name')}}" class="form-control" id="f-name" placeholder="Họ">
-                                            @error('first_name')
-                                            <small  class="text-danger">{{$message}}</small> 
-                                            @enderror
+                                            <input type="text" class="form-control" id="f-name" placeholder="Họ">
                                         </div>
-                                       
                                     </div>
                                     <div class="form-group d-md-flex align-items-md-center">
                                         <label class="control-label col-md-2" for="l-name"><span class="require">*</span>Tên</label>
                                         <div class="col-md-10">
-                                            <input type="text" value="{{old('last_name')}}" name="last_name" class="form-control" id="l-name" placeholder="Tên">
-                                            @error('last_name')
-                                            <small  class="text-danger">{{$message}}</small> 
-                                            @enderror
+                                            <input type="text" class="form-control" id="l-name" placeholder="Tên">
                                         </div>
                                     </div>
                                     <div class="form-group d-md-flex align-items-md-center">
-                                        <label class="control-label col-md-2" for="email"><span class="require">*</span>Email</label>
+                                        <label class="control-label col-md-2" for="email"><span class="require">*</span>Nhập địa chỉ email của bạn vào đây ...</label>
                                         <div class="col-md-10">
-                                            <input type="email" value="{{old('email')}}" name="email" class="form-control" id="email" placeholder="Nhập địa chỉ email của bạn vào đây ...">
+                                            <input type="email" class="form-control" id="email" placeholder="Nhập địa chỉ email của bạn vào đây ...">
                                         </div>
                                     </div>
                                     <div class="form-group d-md-flex align-items-md-center">
                                         <label class="control-label col-md-2" for="number"><span class="require">*</span> Điện thoại</label>
                                         <div class="col-md-10">
-                                            <input type="text" name="phonenumber"value="{{old('phonenumber')}}"  class="form-control" id="number" placeholder=" Điện thoại">
-                                        </div>
-                                    </div>
-                                    <div class="form-group d-md-flex align-items-md-center">
-                                        <label class="control-label col-md-2" for="number"><span class="require">*</span> Địa chỉ</label>
-                                        <div class="col-md-10">
-                                            <input type="text" name="address"value="{{old('address')}}"  class="form-control" id="number" placeholder=" Địa chỉ">
+                                            <input type="email" class="form-control" id="number" placeholder=" Điện thoại">
                                         </div>
                                     </div>
                                 </fieldset>
@@ -97,23 +63,17 @@
                                     <div class="form-group d-md-flex align-items-md-center">
                                         <label class="control-label col-md-2" for="pwd"><span class="require">*</span>Mật khẩu:</label>
                                         <div class="col-md-10">
-                                            <input type="password"name="password" class="form-control" id="pwd" placeholder="Mật khẩu">
-                                            @error('password')
-                                            <small  class="text-danger">{{$message}}</small> 
-                                            @enderror
+                                            <input type="password" class="form-control" id="pwd" placeholder="Mật khẩu">
                                         </div>
                                     </div>
                                     <div class="form-group d-md-flex align-items-md-center">
                                         <label class="control-label col-md-2" for="pwd-confirm"><span class="require">*</span>Xác nhận mật khẩu</label>
                                         <div class="col-md-10">
-                                            <input type="password" name="pwd_confirm" class="form-control" id="pwd-confirm" placeholder="Xác nhận mật khẩu">
-                                            @error('pwd_confirm')
-                                            <small  class="text-danger">{{$message}}</small> 
-                                            @enderror
+                                            <input type="password" class="form-control" id="pwd-confirm" placeholder="Xác nhận mật khẩu">
                                         </div>
                                     </div>
                                 </fieldset>
-                                {{-- <fieldset class="newsletter-input">
+                                <fieldset class="newsletter-input">
                                     <legend>Bản tin</legend>
                                     <div class="form-group d-md-flex align-items-md-center">
                                         <label class="col-md-2 control-label">Đặt mua</label>
@@ -122,11 +82,11 @@
                                             <label class="radio-inline"><input type="radio" name="optradio">Không</label>
                                         </div>
                                     </div>
-                                </fieldset> --}}
+                                </fieldset>
                                 <div class="terms">
                                     <div class="float-md-right">
                                         <span>Tôi đã đọc và đồng ý với <a href="#" class="agree"><b>Chính sách quyền riêng tư</b></a></span>
-                                        <input type="checkbox" required name="agree" value="1"> &nbsp;
+                                        <input type="checkbox" name="agree" value="1"> &nbsp;
                                         <input type="submit" value="Tiếp Tục" class="return-customer-btn">
                                     </div>
                                 </div>
