@@ -244,7 +244,7 @@
                                                 <span class="sticker-new">new</span>
                                             </div>
                                             <!-- Single Product End -->
-                                            @if ($single_pro_secound)
+                                            @if (isset($single_pro_secound))
                                                  <!-- Single Product Start -->
                                                 <div class="single-product">
                                                     <!-- Product Image Start -->

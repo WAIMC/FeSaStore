@@ -11,6 +11,7 @@ use App\Repositories\Contracts\BlogInterface;
 use App\Repositories\Contracts\CategoryInterface;
 use App\Repositories\Contracts\ProductInterface;
 use Illuminate\Http\Request;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -114,6 +115,20 @@ class HomeController extends Controller
     public function categoryblog($slug){
         $blogs=$this->categoryblog->findBySlug($slug);
         return view('client.blogs.blog', compact('blogs'));
+    }
+
+    public function post_contact(Request $request){
+
+        Mail::send('email.contact',[
+            'name' => $request->name,
+            'content' => $request->content,
+        ],function($mail) use($request){
+            $mail->to('fesastorefpoly@gmail.com',$request->name);
+            $mail->from($request->email);
+            $mail->subject('Thư góp ý của khách hàng FesaStore');
+        }) ;
+
+        return view('client.pages.contact');
     }
  
 

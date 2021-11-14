@@ -162,27 +162,12 @@
                 <div class="col-xl-9 col-lg-8 col-md-12 ">
                     <nav class="d-none d-lg-block">
                         <ul class="header-bottom-list d-flex">
-                            <li class="active"><a href="{{route('client.index')}}">Trang Chủ<i class="fa fa-angle-down"></i></a>
+                            <li class="active"><a href="{{route('client.index')}}">Trang Chủ</a>
                                 <!-- Home Version Dropdown Start -->
-                                <ul class="ht-dropdown">
-                                    <li><a href="{{route('client.index')}}">Home Version 1</a></li>
-                                    {{-- <li><a href="index-2.html">Home Version 2</a></li>
-                                    <li><a href="index-3.html">Home Version 3</a></li>
-                                    <li><a href="index-4.html">Home Version 4</a></li> --}}
-                                </ul>
                                 <!-- Home Version Dropdown End -->
                             </li>
-                            <li><a href="{{route('client.shop')}}">Cửa Hàng<i class="fa fa-angle-down"></i></a>
-                                <!-- Home Version Dropdown Start -->
-                                <ul class="ht-dropdown dropdown-style-two">
-                                    <li><a href="">product details</a></li>
-                                    <li><a href="compare.html">So Sánh Sản Phẩm</a></li>
-                                    <li><a href="cart.html">Giỏ Hàng</a></li>
-                                    <li><a href="{{route('client.checkout')}}">Thủ Tục Thanh Toán</a></li>
-                                    <li><a href="{{route('client.wishlist')}}">Danh Sách Ưa Thích</a></li>
-                                </ul>
-                                <!-- Home Version Dropdown End -->
-                            </li>
+                            <li><a href="{{route('client.about')}}">Giới Thiệu</a></li>
+                            <li><a href="{{route('client.shop')}}">Cửa Hàng</a></li>
                             <li><a href="{{route('client.blog')}}">Bài Viết<i class="fa fa-angle-down"></i></a>
                                 <!-- Home Version Dropdown Start -->
                                 <ul class="ht-dropdown dropdown-style-two">
@@ -192,18 +177,6 @@
                                 </ul>
                                 <!-- Home Version Dropdown End -->
                             </li>
-                            <li><a href="#">pages<i class="fa fa-angle-down"></i></a>
-                                <!-- Home Version Dropdown Start -->
-                                <ul class="ht-dropdown dropdown-style-two">
-                                    <li><a href="{{route('client.contact')}}">contact us</a></li>
-                                    <li><a href="{{route('client.register')}}">register</a></li>
-                                    <li><a href="{{route('client.login')}}">sign in</a></li>
-                                    <li><a href="{{route('client.forgotPassword')}}">forgot password</a></li>
-                                    <li><a href="404.html">404</a></li>
-                                </ul>
-                                <!-- Home Version Dropdown End -->
-                            </li>
-                            <li><a href="{{route('client.about')}}">Giới Thiệu</a></li>
                             <li><a href="{{route('client.contact')}}">Liên Hệ</a></li>
                         </ul>
                     </nav>

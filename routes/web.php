@@ -54,12 +54,14 @@ use Illuminate\Support\Facades\Route;
     Route::get('/',[App\Http\Controllers\client\HomeController::class,'index'])->name('client.index');
     Route::get('/about',[App\Http\Controllers\client\HomeController::class,'about'])->name('client.about');
     Route::get('/contact',[App\Http\Controllers\client\HomeController::class,'contact'])->name('client.contact');
-    Route::get('/shop',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
     Route::get('/productDetail/{product_id}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
     Route::get('/wishlist',[App\Http\Controllers\client\HomeController::class,'wishlish'])->name('client.wishlist');
-// route user
-    Route::get('/register',[App\Http\Controllers\client\Auth\RegisterController::class,'register'])->name('client.register');
-    Route::post('/register',[App\Http\Controllers\client\Auth\RegisterController::class,'postRegister']);
+
+    Route::get('/shop',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
+    Route::post('/contact',[App\Http\Controllers\client\HomeController::class,'post_contact'])->name('client.post_contact');
+
+    // route user
+    Route::get('/register',[App\Http\Controllers\admin\Auth\loginController::class,'register'])->name('client.register');
 
     Route::get('/login',[App\Http\Controllers\client\Auth\loginController::class,'login'])->name('client.login');
     Route::post('/login',[App\Http\Controllers\client\Auth\loginController::class,'postLogin']);
