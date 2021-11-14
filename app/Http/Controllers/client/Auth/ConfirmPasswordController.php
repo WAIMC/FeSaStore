@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin\Auth;
+namespace App\Http\Controllers\client\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -36,6 +36,6 @@ class ConfirmPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('adminAuth');
+        $this->middleware('auth');
     }
 }
