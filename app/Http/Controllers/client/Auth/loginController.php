@@ -39,7 +39,7 @@ class loginController extends Controller
             ]
         );
         if(
-            Auth::guard()->attempt(['email' => request()->email, 'password' => request()->password], request()->has('remember'))
+            Auth::guard('cus')->attempt(['email' => request()->email, 'password' => request()->password], request()->has('remember'))
         ){
             return redirect()->route('client.index');
         }
@@ -48,7 +48,7 @@ class loginController extends Controller
 
     public function logout(Request $request)
     {
-        if(auth()->guard()->logout()){        
+        if(auth()->guard('cus')->logout()){        
             Session::flush();
             Sessioin::put('success','Đăng Xuất thành công!');        
             return redirect(route('client.login'));

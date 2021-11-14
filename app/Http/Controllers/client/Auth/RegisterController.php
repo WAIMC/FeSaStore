@@ -44,7 +44,7 @@ class RegisterController extends Controller
             [
                 'first_name'=>'required|string|max:10',
                 'last_name'=>'required|string|max:10',
-                'email'=>'required|string|max:255|email|unique:users',
+                'email'=>'required|string|max:255|email|unique:customer',
                 'password' => ['required', 'string', 'min:8'],
                 'pwd_confirm' => ['same:password'],
             ],

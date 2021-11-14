@@ -32,7 +32,7 @@ class ForgotPasswordController extends Controller
       public function submitForgetPasswordForm(Request $request)
       {
           $request->validate([
-              'email' => 'required|email|exists:users,email',
+              'email' => 'required|email|exists:Customer,email',
           ] ,[
             'email.required'=>'Không để email trống!',
             'email.email'=>'Nhập dữ liệu không phải email!',
@@ -61,7 +61,7 @@ class ForgotPasswordController extends Controller
       public function submitResetPasswordForm(Request $request)
       {
           $request->validate([
-              'email' => 'required|email|exists:users,email',
+              'email' => 'required|email|exists:Customer,email',
               'password' => 'required|string|min:8|confirmed',
           ],
           [
