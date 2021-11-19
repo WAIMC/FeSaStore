@@ -14,6 +14,7 @@
     </div>
     <div class="main-shop-page pt-100 pb-100 ptb-sm-60">
         <div class="container">
+            <form id="form_search">
             <!-- Row End -->
             <div class="row">
                 <!-- Sidebar Shopping Option Start -->
@@ -21,7 +22,7 @@
                     <div class="sidebar">
                         <!-- Sidebar Electronics Categorie Start -->
                         <div class="electronics mb-40">
-                            <h3 class="sidebar-title">Electronics</h3>
+                            <h3 class="sidebar-title">Danh Mục</h3>
                             <div id="shop-cate-toggle" class="category-menu sidebar-menu sidbar-style">
                                 <ul>
                                     {!! $menus_mobile !!}
@@ -32,10 +33,27 @@
                         <!-- Sidebar Electronics Categorie End -->
                         <!-- Price Filter Options Start -->
                         <div class="search-filter mb-40">
-                            <h3 class="sidebar-title">filter by price</h3>
+                            <h3 class="sidebar-title">Lọc Giá</h3>
                             <form action="#" class="sidbar-style">
-                                <div id="slider-range" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 85%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 85%;"></span></div>
-                                <input type="text" id="amount" class="amount-range" readonly="">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <div id="slider-range" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                                        <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 85%;">
+                                        </div>
+                                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span>
+                                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 85%;"></span>
+                                    </div>
+                                    <input type="text" id="amount" class="amount-range" readonly="">
+                                    <input type="hidden" name="start_price" value="{{ old('start_price') }}" id="start_price">
+                                    <input type="hidden" name="end_price" value="{{ old('end_price') }}" id="end_price">
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="d-flex align-content-start">
+                                            <button type="button" id="fillter_price" class="btn btn-secondary">Lọc</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                             </form>
                         </div>
                         <!-- Price Filter Options End -->
@@ -363,21 +381,17 @@
                         <div class="main-toolbar-sorter clearfix">
                             <div class="toolbar-sorter d-flex align-items-center">
                                 <label>Sắp Xếp:</label>
-                                <select class="sorter wide" style="display: none;" name='' id="soft_by_type">
+                                <select class="sorter wide" style="display: none;" name="search_name" id="soft_by_name">
                                     <option value="Position">Relevance</option>
-                                    <option value="DESC" data-na="name" selected="">Tên, A tới Z</option>
-                                    <option value="ASC" data-na="name" selected="">Tên, Z tới A</option>
-                                    <option value="ASC" data-na="price" selected="">Giá thấp đến cao</option>
-                                    <option value="DESC" data-na="price"  selected="">Giá cao đến thấp</option>
+                                    <option value="DESC" selected>Tên, A tới Z</option>
+                                    <option value="ASC" >Tên, Z tới A</option>
                                 </select>
                                 <div class="nice-select sorter wide" tabindex="0">
-                                    <span class="current">Giá cao đến thấp</span>
-                                    <ul class="list" >
+                                    <span class="current">Sắp xếp tên</span>
+                                    <ul class="list" id="data_soft_by_name">
                                         <li data-value="Position" class="option">Relevance</li>
                                         <li data-value="DESC" class="option">Tên, A tới Z</li>
                                         <li data-value="ASC" class="option">Tên, Z tới A</li>
-                                        <li data-value="ASC" class="option">Giá thấp đến cao</li>
-                                        <li data-value="DESC" class="option">Giá cao đến thấp</li>
                                     </ul>
                                 </div>
                             </div>
@@ -387,7 +401,7 @@
                         <div class="main-toolbar-sorter clearfix">
                             <div class="toolbar-sorter d-flex align-items-center">
                                 <label>Hiển Thị:</label>
-                                <select class="sorter wide" style="display: none;">
+                                <select class="sorter wide" style="display: none;" name="paginate" id="soft_by_paginate">
                                     <option value="12">12</option>
                                     <option value="25">25</option>
                                     <option value="50">50</option>
@@ -397,13 +411,14 @@
                                 <div class="nice-select sorter wide" tabindex="0">
                                     <span class="current">12</span>
                                     <ul class="list">
-                                        <li data-value="12" class="option selected">12</li>
+                                        <li data-value="12" class="option">12</li>
                                         <li data-value="25" class="option">25</li>
                                         <li data-value="50" class="option">50</li>
                                         <li data-value="75" class="option">75</li>
                                         <li data-value="100" class="option">100</li>
                                     </ul>
                                 </div>
+                                <!-- Row End -->
                             </div>
                         </div>
                         <!-- Toolbar Short Area End -->
@@ -415,45 +430,51 @@
                             <div id="grid-view" class="tab-pane fade show active">
                                 <div class="row">
                                     @foreach ($data_paginate_product as $shop_grid_pro)
-                                        <!-- Single Product Start -->
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                            <div class="single-product">
-                                                <!-- Product Image Start -->
-                                                <div class="pro-img">
-                                                    <a href="{{ route('client.productDetail', $shop_grid_pro->id)}}">
-                                                        <img class="primary-img" src="{{url('public/uploads')}}/{{$shop_grid_pro->image}}" alt="single-product">
-                                                        <img class="secondary-img" src="{{url('public/uploads')}}/{{$shop_grid_pro->image}}" alt="single-product">
-                                                    </a>
-                                                    <a href="#" class="quick_view" data-toggle="modal" data-target="{{$shop_grid_pro->id}}" title="" data-original-title="Xem Nhanh"><i class="lnr lnr-magnifier"></i></a>
-                                                </div>
-                                                <!-- Product Image End -->
-                                                <!-- Product Content Start -->
-                                                <div class="pro-content">
-                                                    <div class="pro-info">
-                                                        <h4><a href="{{ route('client.productDetail', $shop_grid_pro->id)}}">{{$shop_grid_pro->name}}</a></h4>
-                                                        @if ($shop_grid_pro->product_variantProduct->first()->price > $shop_grid_pro->product_variantProduct->first()->discount)
-                                                            <p>
-                                                                <span class="price">${{$shop_grid_pro->product_variantProduct->first()->discount}}</span>
-                                                                <del class="prev-price">${{$shop_grid_pro->product_variantProduct->first()->price}}</del></p>
-                                                            <div class="label-product l_sale">{{ 100-($shop_grid_pro->product_variantProduct->first()->price/100*$shop_grid_pro->product_variantProduct->first()->discount) }}<span class="symbol-percent">%</span></div>
-                                                        @else
-                                                        <span class="price">${{$shop_grid_pro->product_variantProduct->first()->discount}}</span></p>
-                                                        @endif
+                                        @php
+                                            $start_price = isset(request()->start_price) ? request()->start_price : $all_variant_pro->min('price');
+                                            $end_price = isset(request()->end_price) ? request()->end_price : $all_variant_pro->max('price');
+                                        @endphp
+                                        @if ($shop_grid_pro->product_variantProduct->first()->price >= $start_price &&  $shop_grid_pro->product_variantProduct->first()->price <= $end_price)
+                                             <!-- Single Product Start -->
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+                                                <div class="single-product">
+                                                    <!-- Product Image Start -->
+                                                    <div class="pro-img">
+                                                        <a href="{{ route('client.productDetail', $shop_grid_pro->id)}}">
+                                                            <img class="primary-img" src="{{url('public/uploads')}}/{{$shop_grid_pro->image}}" alt="single-product">
+                                                            <img class="secondary-img" src="{{url('public/uploads')}}/{{$shop_grid_pro->image}}" alt="single-product">
+                                                        </a>
+                                                        <a href="#" class="quick_view" data-toggle="modal" data-target="{{$shop_grid_pro->id}}" title="" data-original-title="Xem Nhanh"><i class="lnr lnr-magnifier"></i></a>
                                                     </div>
-                                                    <div class="pro-actions">
-                                                        <div class="actions-primary">
-                                                            <a href="cart.html" title="" data-original-title="Thêm Vào Giỏ Hàng"> + Thêm Vào Giỏ Hàng</a>
+                                                    <!-- Product Image End -->
+                                                    <!-- Product Content Start -->
+                                                    <div class="pro-content">
+                                                        <div class="pro-info">
+                                                            <h4><a href="{{ route('client.productDetail', $shop_grid_pro->id)}}">{{$shop_grid_pro->name}}</a></h4>
+                                                            @if ($shop_grid_pro->product_variantProduct->first()->price > $shop_grid_pro->product_variantProduct->first()->discount)
+                                                                <p>
+                                                                    <span class="price">${{$shop_grid_pro->product_variantProduct->first()->discount}}</span>
+                                                                    <del class="prev-price">${{$shop_grid_pro->product_variantProduct->first()->price}}</del></p>
+                                                                <div class="label-product l_sale">{{ 100-($shop_grid_pro->product_variantProduct->first()->price/100*$shop_grid_pro->product_variantProduct->first()->discount) }}<span class="symbol-percent">%</span></div>
+                                                            @else
+                                                            <span class="price">${{$shop_grid_pro->product_variantProduct->first()->discount}}</span></p>
+                                                            @endif
                                                         </div>
-                                                        <div class="actions-secondary">
-                                                            <a href="compare.html" title="" data-original-title="So Sánh"><i class="lnr lnr-sync"></i> <span>Thêm Vào So Sánh</span></a>
-                                                            <a href="wishlist.html" title="" data-original-title="Ưa Thích"><i class="lnr lnr-heart"></i> <span>Thêm Vào Danh Sách ưa Thích</span></a>
+                                                        <div class="pro-actions">
+                                                            <div class="actions-primary">
+                                                                <a href="cart.html" title="" data-original-title="Thêm Vào Giỏ Hàng"> + Thêm Vào Giỏ Hàng</a>
+                                                            </div>
+                                                            <div class="actions-secondary">
+                                                                <a href="compare.html" title="" data-original-title="So Sánh"><i class="lnr lnr-sync"></i> <span>Thêm Vào So Sánh</span></a>
+                                                                <a href="wishlist.html" title="" data-original-title="Ưa Thích"><i class="lnr lnr-heart"></i> <span>Thêm Vào Danh Sách ưa Thích</span></a>
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <!-- Product Content End -->
                                                 </div>
-                                                <!-- Product Content End -->
                                             </div>
-                                        </div>
-                                        <!-- Single Product End -->
+                                            <!-- Single Product End -->
+                                        @endif
                                     @endforeach
                                 </div>
                                 <!-- Row End -->
@@ -461,46 +482,53 @@
                             <!-- #grid view End -->
                             <div id="list-view" class="tab-pane fade">
                                 @foreach ($data_paginate_product as $shop_list_pro)
-                                    <!-- Single Product Start -->
-                                    <div class="single-product"> 
-                                        <div class="row">        
-                                            <!-- Product Image Start -->
-                                            <div class="col-lg-4 col-md-5 col-sm-12">
-                                                <div class="pro-img">
-                                                    <a href="{{ route('client.productDetail', $shop_list_pro->id)}}">
-                                                        <img class="primary-img" src="{{url('public/uploads')}}/{{$shop_list_pro->image}}" alt="single-product">
-                                                        <img class="secondary-img" src="{{url('public/uploads')}}/{{$shop_list_pro->image}}" alt="single-product">
-                                                    </a>
-                                                    <a href="#" class="quick_view" data-toggle="modal" data-target="{{$shop_list_pro->id}}" title="" data-original-title="Xem Nhanh"><i class="lnr lnr-magnifier"></i></a>
-                                                    <span class="sticker-new">Mới</span>
+                                    @php
+                                        $list_start_price = isset(request()->start_price) ? request()->start_price : $all_variant_pro->min('price');
+                                        $list_end_price = isset(request()->end_price) ? request()->end_price : $all_variant_pro->max('price');
+                                    @endphp
+                                    @if ($shop_list_pro->product_variantProduct->first()->price >= $list_start_price && $shop_list_pro->product_variantProduct->first()->price <= $list_end_price)
+                                        <!-- Single Product Start -->
+                                        <div class="single-product"> 
+                                            <div class="row">        
+                                                <!-- Product Image Start -->
+                                                <div class="col-lg-4 col-md-5 col-sm-12">
+                                                    <div class="pro-img">
+                                                        <a href="{{ route('client.productDetail', $shop_list_pro->id)}}">
+                                                            <img class="primary-img" src="{{url('public/uploads')}}/{{$shop_list_pro->image}}" alt="single-product">
+                                                            <img class="secondary-img" src="{{url('public/uploads')}}/{{$shop_list_pro->image}}" alt="single-product">
+                                                        </a>
+                                                        <a href="#" class="quick_view" data-toggle="modal" data-target="{{$shop_list_pro->id}}" title="" data-original-title="Xem Nhanh"><i class="lnr lnr-magnifier"></i></a>
+                                                        <span class="sticker-new">Mới</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <!-- Product Image End -->
-                                            <!-- Product Content Start -->
-                                            <div class="col-lg-8 col-md-7 col-sm-12">
-                                                <div class="pro-content hot-product2">
-                                                    <h4><a href="{{ route('client.productDetail', $shop_list_pro->id)}}">{{$shop_list_pro->name}}</a></h4>
-                                                    @if ($shop_list_pro->product_variantProduct->first()->price > $shop_list_pro->product_variantProduct->first()->discount)
-                                                        <p><span class="price">${{$shop_list_pro->product_variantProduct->first()->discount}}</span></p>
-                                                    @else
-                                                        <p><span class="price">${{$shop_list_pro->product_variantProduct->first()->price}}</span></p>
-                                                    @endif
-                                                    <p> {!! $shop_list_pro->short_description !!}</p>
-                                                    <div class="pro-actions">
-                                                        <div class="actions-primary">
-                                                            <a href="cart.html" title="" data-original-title="Thêm Vào Giỏ Hàng"> + Thêm Vào Giỏ Hàng</a>
-                                                        </div>
-                                                        <div class="actions-secondary">
-                                                            <a href="compare.html" title="" data-original-title="So Sánh"><i class="lnr lnr-sync"></i> <span>Thêm Vào So Sánh</span></a>
-                                                            <a href="wishlist.html" title="" data-original-title="Ưa Thích"><i class="lnr lnr-heart"></i> <span>Thêm Vào Danh Mục Ưa Thích</span></a>
+                                                <!-- Product Image End -->
+                                                <!-- Product Content Start -->
+                                                <div class="col-lg-8 col-md-7 col-sm-12">
+                                                    <div class="pro-content hot-product2">
+                                                        <h4><a href="{{ route('client.productDetail', $shop_list_pro->id)}}">{{$shop_list_pro->name}}</a></h4>
+                                                        @if ($shop_list_pro->product_variantProduct->first()->price > $shop_list_pro->product_variantProduct->first()->discount)
+                                                            <p><span class="price">${{$shop_list_pro->product_variantProduct->first()->discount}}</span></p>
+                                                        @else
+                                                            <p><span class="price">${{$shop_list_pro->product_variantProduct->first()->price}}</span></p>
+                                                        @endif
+                                                        <p> {!! $shop_list_pro->short_description !!}</p>
+                                                        <div class="pro-actions">
+                                                            <div class="actions-primary">
+                                                                <a href="cart.html" title="" data-original-title="Thêm Vào Giỏ Hàng"> + Thêm Vào Giỏ Hàng</a>
+                                                            </div>
+                                                            <div class="actions-secondary">
+                                                                <a href="compare.html" title="" data-original-title="So Sánh"><i class="lnr lnr-sync"></i> <span>Thêm Vào So Sánh</span></a>
+                                                                <a href="wishlist.html" title="" data-original-title="Ưa Thích"><i class="lnr lnr-heart"></i> <span>Thêm Vào Danh Mục Ưa Thích</span></a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <!-- Product Content End -->
                                             </div>
                                             <!-- Product Content End -->
                                         </div>
-                                    </div>
-                                    <!-- Single Product End -->
+                                        <!-- Single Product End -->
+                                    @endif
                                 @endforeach
                             </div>
                             <!-- #list view End -->
@@ -519,11 +547,11 @@
                 </div>
                 <!-- product Categorie List End -->
             </div>
+            </form>
             <!-- Row End -->
         </div>
         <!-- Container End -->
     </div>
-    <form action="" method="post" id="formPost"></form>
 @endsection
 
 @section('css')
@@ -533,12 +561,44 @@
 {{-- load js for index --}}
 @section('js')
     <script>
-        // selected and post soft-by-type
-        $('#soft_by_type').change(function (e) { 
-            e.preventDefault();
-            alert($(this).attr('data-na'));
-            // $('#formPost').submit();
-            // $(this).addClass('selected');
+        // set value slier ranger
+        $(function () {
+            $('#slider-range').slider({
+                range: true,
+                min: {!! $all_variant_pro->min('price') !!},
+                max: {!! $all_variant_pro->max('price') !!},
+                values: [0, 2000],
+                create: function() {
+                    $("#amount").val("$"+min+" - $"+max);
+                },
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                    var mi = ui.values[0];
+                    var mx = ui.values[1];
+                    $('#start_price').val(ui.values[0]);
+                    $('#end_price').val(ui.values[1]);
+                }
+            })
         });
+        
+        $('#fillter_price').click(function (e) { 
+            e.preventDefault();
+            $('form#form_search').submit();
+        });
+
+
+        // selected and post soft name
+        $('#soft_by_name').change(function (e) { 
+            e.preventDefault();
+            $('form#form_search').submit();
+            
+        });
+
+        // selected and post soft name
+        $('#soft_by_paginate').change(function (e) { 
+            e.preventDefault();
+            $('form#form_search').submit();
+        });
+
     </script>
 @endsection

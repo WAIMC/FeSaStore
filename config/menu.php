@@ -11,6 +11,35 @@
             'icon' => 'fa-file'
         ],
         [
+            'label'=>'Quản lý Phân Quyền',
+            'route'=>'decentralize.index',
+            'icon'=>'fa-list-alt',
+            'items'=>[
+                [
+                    'label'=>'Danh Sách Phân Quyền',
+                    'route'=>'decentralize.index',
+                    'icon'=>'fa-circle nav-icon'
+                ]
+            ]
+        ],
+        [
+            'label'=>'Quản lý Vai Trò',
+            'route'=>'role.index',
+            'icon'=>'fa-list-alt',
+            'items'=>[
+                [
+                    'label'=>'Danh Sách Vai Trò',
+                    'route'=>'role.index',
+                    'icon'=>'fa-circle nav-icon'
+                ],
+                [
+                    'label'=>'Thêm Vai Trò',
+                    'route'=>'role.create',
+                    'icon'=>'fa-circle nav-icon'
+                ]
+            ]
+        ],
+        [
             'label'=>'Quản lý Danh Mục',
             'route'=>'category.index',
             'icon'=>'fa-list-alt',

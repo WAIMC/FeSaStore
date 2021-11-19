@@ -32,29 +32,33 @@
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
         @foreach ($menus as $menu)
-          <li class="nav-item has-treeview">
-            <a href="{{ route($menu['route']) }}" class="nav-link">
-              <i class="nav-icon fas {{ $menu['icon'] }}"></i>
-              <p>
-                {{ $menu['label'] }}
-                @if (isset($menu['items']))
-                    <i class="fas fa-angle-left right"></i>
-                @endif
-              </p>
-            </a>
-            @if (isset($menu['items']))
-              <ul class="nav nav-treeview">
-                @foreach ($menu['items'] as $menu_item)
-                  <li class="nav-item">
-                    <a href="{{ route($menu_item['route']) }}" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>{{ $menu_item['label'] }}</p>
-                    </a>
-                  </li>
-                @endforeach
-              </ul>
-            @endif
-          </li>
+          @if (Auth::guard('adminAuth')->user()->can($menu['route']))
+            <li class="nav-item has-treeview">
+              <a href="{{ route($menu['route']) }}" class="nav-link">
+                <i class="nav-icon fas {{ $menu['icon'] }}"></i>
+                <p>
+                  {{ $menu['label'] }}
+                  @if (isset($menu['items']))
+                      <i class="fas fa-angle-left right"></i>
+                  @endif
+                </p>
+              </a>
+              @if (isset($menu['items']))
+                <ul class="nav nav-treeview">
+                  @foreach ($menu['items'] as $menu_item)
+                    @if (Auth::guard('adminAuth')->user()->can($menu_item['route']))
+                      <li class="nav-item">
+                        <a href="{{ route($menu_item['route']) }}" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>{{ $menu_item['label'] }}</p>
+                        </a>
+                      </li>
+                    @endif
+                  @endforeach
+                </ul>
+              @endif
+            </li>
+          @endif
         @endforeach
       </ul>
     </nav>
