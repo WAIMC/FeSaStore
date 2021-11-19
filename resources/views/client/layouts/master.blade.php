@@ -35,6 +35,19 @@
     <link rel="stylesheet" href="{{url('public/client')}}/style.css">
     <!-- Responsive css -->
     <link rel="stylesheet" href="{{url('public/client')}}/css/responsive.css">
+    <!-- JavaScript -->
+   <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
      <!-- style css -->
      @yield('css')
      <style>
@@ -455,6 +468,53 @@
                 
             }
             
+        });
+    </script>
+     <script>
+        $('#add-cart').click(function(e) {
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'get',
+                url:  '{{url('')}}/cart/add/'+$("input[name=id_variant]").val(),
+                data: {
+                    quantity: $("input[name=quantity]").val(),
+                    id: $("input[name=id_variant]").val()
+                },
+                success: function(response) {
+                    $('#cart-box-width').empty();
+                    $('#cart-box-width').html(response);
+                    $('.total-pro').text($('#quantity_cart').val());
+                    alertify.success('Đã thêm vào giỏ hàng');
+                },
+                error: (error) => {
+                    console.log(JSON.stringify(error));
+                }
+            })
+
+
+        });
+
+        $('#cart-box-width').on('click','.ion-close',function(e) {
+            console.log($(this).data('id'));
+            $.ajax({
+                type: 'get',
+                url:  '{{url('')}}/cart/removelist/'+$(this).data('id'),
+                success: function(response) {
+                    $('#cart-box-width').empty();
+                    $('#cart-box-width').html(response);
+                    $('.total-pro').text($('#quantity_cart').val());
+                    alertify.success('Đã xóa khỏi giỏ hàng');
+                },
+                error: (error) => {
+                    console.log(JSON.stringify(error));
+                }
+            })
         });
     </script>
 </body>

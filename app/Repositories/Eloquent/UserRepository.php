@@ -51,7 +51,7 @@ class UserRepository extends BaseRepository implements UserInterface
         if (!$updatePassword) {
             return redirect()->back()->with('error', 'Invalid token!');
         }else{
-            $user = Customer::where('email', $email)
+            $user = $this->getModel()::where('email', $email)
             ->update(['password' => Hash::make($password)]);
 
         DB::table('password_resets')->where(['email' => $email])->delete();

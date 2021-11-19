@@ -76,6 +76,19 @@ use Illuminate\Support\Facades\Route;
 
 
  //end
+//cart
+ Route::prefix('cart')->group(function () {
+    Route::get('/', [App\Http\Controllers\client\CartController::class, 'view'])->name('cart.view');
+    Route::get('add/{id}', [App\Http\Controllers\client\CartController::class, 'add'])->name('cart.add');
+    Route::get('removelist/{id}', [App\Http\Controllers\client\CartController::class, 'remove']);
+    Route::get('remove/{id}', [App\Http\Controllers\client\CartController::class, 'removelistcart'])->name('cart.remove');
+    Route::get('update', [App\Http\Controllers\client\CartController::class, 'update'])->name('cart.update');
+    Route::get('clear', [App\Http\Controllers\client\CartController::class, 'clear'])->name('cart.clear');
+    Route::get('checkout', [App\Http\Controllers\client\CartController::class, 'checkout'])->name('cart.checkout')->middleware('cus');
+    Route::post('checkout', [App\Http\Controllers\client\CartController::class, 'PostCheckout'])->name('cart.postcheckout')->middleware('cus');
+});
+
+//end
     Route::get('/checkout',[App\Http\Controllers\client\HomeController::class,'checkout'])->name('client.checkout');
     Route::get('/blog',[App\Http\Controllers\client\HomeController::class,'blog'])->name('client.blog');
     Route::get('/blog-details/{slug}',[App\Http\Controllers\client\HomeController::class,'blog_details'])->name('client.blog_details');

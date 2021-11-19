@@ -79,54 +79,47 @@
                 <div class="col-lg-4 col-md-12">
                     <div class="cart-box mt-all-30">
                         <ul class="d-flex justify-content-lg-end justify-content-center align-items-center">
-                            <li><a href="#"><i class="lnr lnr-cart"></i><span class="my-cart"><span class="total-pro">2</span><span>Giỏ Hàng</span></span></a>
-                                <ul class="ht-dropdown cart-box-width">
+                            <li><a href="{{route('cart.view')}}"><i class="lnr lnr-cart"></i><span class="my-cart"><span class="total-pro">{{ $cart->total_quantity }}</span><span>Giỏ Hàng</span></span></a>
+                                @if (isset($cart))
+                                <ul class="ht-dropdown cart-box-width" id="cart-box-width">
                                     <li>
-                                        <!-- Cart Box Start -->
-                                        <div class="single-cart-box">
+                                      
+                                          @foreach ($cart->items as $item)
+                                          <div class="single-cart-box cartqickview{{$item['id']}}" >
                                             <div class="cart-img">
-                                                <a href="#"><img src="{{url('public/client')}}/img/products\1.jpg" alt="cart-image"></a>
-                                                <span class="pro-quantity">1X</span>
+                                                <a href="#"><img src="{{url('public/uploads')}}/{{$item['image']}}" alt="{{$item['name']}}"></a>
+                                                <span class="pro-quantity">X{{$item['quantity']}}</span>
                                             </div>
                                             <div class="cart-content">
-                                                <h6><a href="{{route('client.index')}}">Printed Summer Red </a></h6>
-                                                <span class="cart-price">27.45</span>
-                                                <span>Size: S</span>
-                                                <span>Color: Yellow</span>
+                                                <h6><a href="{{route('client.index')}}">{{$item['name']}}</a></h6>
+                                                <span class="cart-price">{{ number_format($item['price'])}} VND</span>
+                                                <span>Thuộc tính: {{$item['attr']}}</span>
+                                               
                                             </div>
-                                            <a class="del-icone" href="#"><i class="ion-close"></i></a>
+                                            <a class="del-icone" href="#"><i class="ion-close"data-id="{{$item['id']}}"></i></a>
                                         </div>
-                                        <!-- Cart Box End -->
+                                          @endforeach  
+                                     
                                         <!-- Cart Box Start -->
-                                        <div class="single-cart-box">
-                                            <div class="cart-img">
-                                                <a href="#"><img src="{{url('public/client')}}/img/products\2.jpg" alt="cart-image"></a>
-                                                <span class="pro-quantity">1X</span>
-                                            </div>
-                                            <div class="cart-content">
-                                                <h6><a href="{{route('client.index')}}">Printed Round Neck</a></h6>
-                                                <span class="cart-price">45.00</span>
-                                                <span>Size: XL</span>
-                                                <span>Color: Green</span>
-                                            </div>
-                                            <a class="del-icone" href="#"><i class="ion-close"></i></a>
-                                        </div>
+                                       
                                         <!-- Cart Box End -->
+                                
                                         <!-- Cart Footer Inner Start -->
                                         <div class="cart-footer">
                                            <ul class="price-content">
-                                               <li>Subtotal <span>$57.95</span></li>
+                                               {{-- <li>Subtotal <span>$57.95</span></li>
                                                <li>Shipping <span>$7.00</span></li>
-                                               <li>Taxes <span>$0.00</span></li>
-                                               <li>Total <span>$64.95</span></li>
+                                               <li>Taxes <span>$0.00</span></li> --}}
+                                               <li>Tổng tiền <span>{{number_format($cart->total_price) }} VND</span></li>
                                            </ul>
                                             <div class="cart-actions text-center">
-                                                <a class="cart-checkout" href="{{route('client.checkout')}}">Checkout</a>
+                                                <a class="cart-checkout" href="{{route('cart.view')}}">Giỏ hàng</a>
                                             </div>
                                         </div>
                                         <!-- Cart Footer Inner End -->
                                     </li>
                                 </ul>
+                                @endif
                             </li>
                             <li><a href="#"><i class="lnr lnr-heart"></i><span class="my-cart"><span>Danh Sách</span><span>Ưa Thích (0)</span></span></a>
                             </li>

@@ -7,7 +7,7 @@ use App\Repositories\Contracts\CategoryBlogInterface;
 use App\Repositories\Contracts\CategoryInterface;
 use App\Repositories\Contracts\ProductInterface;
 use App\Repositories\Contracts\VariantProductInterface;
-
+use App\Helper\CartHelper;
 class CategoryComposer
 {
 
@@ -51,6 +51,7 @@ class CategoryComposer
             'all_product' => $this->product_repo->getAll(), 
             'all_variant_pro' => $this->variant_product_repo->getAll(),
             'modelcategoryblog'=>$this->categoryblog->getCategoryBlogActive(),
+            'cart'=>new CartHelper(),
            ]);
        
     }

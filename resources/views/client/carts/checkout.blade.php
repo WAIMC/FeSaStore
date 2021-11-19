@@ -5,8 +5,8 @@
             <div class="container">
                 <div class="breadcrumb">
                     <ul class="d-flex align-items-center">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="active"><a href="checkout.html">Checkout</a></li>
+                        <li><a href="{{route('client.index')}}">Trang chủ</a></li>
+                        <li class="active"><a href="#">Thanh toán</a></li>
                     </ul>
                 </div>
             </div>
@@ -17,34 +17,6 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="coupon-accordion">
-                            <!-- ACCORDION START -->
-                            <h3>Phản hồi của khách hàng? <span id="showlogin">Đăng nhập</span></h3>
-                            <div id="checkout-login" class="coupon-content">
-                                <div class="coupon-info">
-                                    <p class="coupon-text"></p>
-                                    <form action="#">
-                                        <p class="form-row-first">
-                                            <label>Email <span class="required">*</span></label>
-                                            <input type="text">
-                                        </p>
-                                        <p class="form-row-last">
-                                            <label>Mật khẩu  <span class="required">*</span></label>
-                                            <input type="text">
-                                        </p>
-                                        <p class="form-row">
-                                            <input type="submit" value="Login">
-                                            <label>
-											<input type="checkbox">
-											 Ghi nhớ tài khoản 
-										</label>
-                                        </p>
-                                        <p class="lost-password">
-                                            <a href="#">Quên mật khẩu?</a>
-                                        </p>
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- ACCORDION END -->
                             <!-- ACCORDION START -->
                             <h3>Dùng phiếu giảm giá? <span id="showcoupon">Bấm vào đây để nhập mã của bạn</span></h3>
                             <div id="checkout_coupon" class="coupon-checkout-content">
@@ -67,12 +39,13 @@
         <!-- checkout-area start -->
         <div class="checkout-area pb-100 pt-15 pb-sm-60">
             <div class="container">
-                <div class="row">
+                <form action="{{route('cart.postcheckout')}}" method="POST" class="row">
+                    @csrf
                     <div class="col-lg-6 col-md-6">
                         <div class="checkbox-form mb-sm-40">
                             <h3>Thông tin chi tiết</h3>
                             <div class="row">
-                                <div class="col-md-12">
+                                {{-- <div class="col-md-12">
                                     <div class="country-select clearfix mb-30">
                                         <label>Quốc gia <span class="required">*</span></label>
                                         <select class="wide">
@@ -81,67 +54,74 @@
                                             <option value="volvo">Thái Lan</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-6">
                                     <div class="checkout-form-list mb-sm-30">
-                                        <label>Tên <span class="required">*</span></label>
-                                        <input type="text" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="checkout-form-list mb-30">
                                         <label>Họ <span class="required">*</span></label>
-                                        <input type="text" placeholder="">
+                                        <input type="text" value="{{Auth::guard('cus')->user()->first_name}}" name="first_name" placeholder="">
+                                        @error('first_name')
+                                        <small  class="text-danger">{{$message}}</small> 
+                                        @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="checkout-form-list mb-30">
-                                        <label>Tên công ty</label>
-                                        <input type="text" placeholder="">
+                                        <label>Tên <span class="required">*</span></label>
+                                        <input type="text" value="{{Auth::guard('cus')->user()->last_name}}" name="last_name" placeholder="">
+                                        @error('last_name')
+                                        <small  class="text-danger">{{$message}}</small> 
+                                        @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                               
+                                <div class="col-md-12 mb-30">
                                     <div class="checkout-form-list">
-                                        <label>Địa chỉ <span class="required">*</span></label>
-                                        <input type="text" placeholder="Tên đường">
+                                        <label>Xã / Thị Trấn <span class="required">*</span></label>
+                                        <input type="text" name="xa" placeholder="Tên đường">
+                                        @error('xa')
+                                        <small  class="text-danger">{{$message}}</small> 
+                                        @enderror
+                                    </div>
+                                </div>
+                              
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list mb-30">
+                                        <label>Huyện <span class="required">*</span></label>
+                                        <input type="text" name="huyen" placeholder="">
+                                        @error('huyen')
+                                        <small  class="text-danger">{{$message}}</small> 
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <div class="checkout-form-list mtb-30">
-                                        <input type="text" placeholder="Căn hộ,...">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
                                     <div class="checkout-form-list mb-30">
-                                        <label>Thị trấn / Thành phố <span class="required">*</span></label>
-                                        <input type="text" placeholder="">
+                                        <label>Tỉnh / Thành phố <span class="required">*</span></label>
+                                        <input type="text" name="tinh" placeholder="">
+                                        @error('tinh')
+                                        <small  class="text-danger">{{$message}}</small> 
+                                        @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="checkout-form-list mb-30">
-                                        <label>Huyện / Quận <span class="required">*</span></label>
-                                        <input type="text" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="checkout-form-list mb-30">
-                                        <label>Mã bưu điện / Zip <span class="required">*</span></label>
-                                        <input type="text" placeholder="">
-                                    </div>
-                                </div>
+                            
                                 <div class="col-md-6">
                                     <div class="checkout-form-list mb-30">
                                         <label>Email <span class="required">*</span></label>
-                                        <input type="email" placeholder="">
+                                        <input type="email" value="{{Auth::guard('cus')->user()->email}}" value="email" name="email" placeholder="">
+                                        @error('email')
+                                        <small  class="text-danger">{{$message}}</small> 
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="checkout-form-list mb-30">
                                         <label>Số điện thoại  <span class="required">*</span></label>
-                                        <input type="text" placeholder="">
+                                        <input type="text" value="{{Auth::guard('cus')->user()->phonenumber}}" name="phone" placeholder="">
+                                        @error('phone')
+                                        <small  class="text-danger">{{$message}}</small> 
+                                        @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                {{-- <div class="col-md-12">
                                     <div class="checkout-form-list create-acc mb-30">
                                         <input id="cbox" type="checkbox">
                                         <label>Tạo tài khoản mới?</label>
@@ -151,10 +131,10 @@
                                         <label>Mật khẩu tài khoản  <span class="required">*</span></label>
                                         <input type="password" placeholder="password">
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="different-address">
-                                <div class="ship-different-title">
+                                {{-- <div class="ship-different-title">
                                     <h3>
                                         <label>Gửi đến một địa chỉ khác?</label>
                                         <input id="ship-box" type="checkbox">
@@ -232,11 +212,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="order-notes">
                                     <div class="checkout-form-list">
                                         <label>Ghi chú đơn hàng</label>
-                                        <textarea id="checkout-mess" cols="30" rows="10" placeholder="Ghi chú về đơn hàng của bạn."></textarea>
+                                        <textarea id="checkout-mess" name="note" cols="30" rows="10" placeholder="Ghi chú về đơn hàng của bạn."></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -250,35 +230,33 @@
                                     <thead>
                                         <tr>
                                             <th class="product-name">Sản phẩm</th>
-                                            <th class="product-total">Số lượng</th>
+                                            <th class="product-total">Thành tiền</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="cart_item">
-                                            <td class="product-name">
-                                                Giá mỗi sản phẩm <span class="product-quantity"> × 1</span>
-                                            </td>
-                                            <td class="product-total">
-                                                <span class="amount">£165.00</span>
-                                            </td>
-                                        </tr>
-                                        <tr class="cart_item">
-                                            <td class="product-name">
-                                                Thuế <span class="product-quantity"> × 1</span>
-                                            </td>
-                                            <td class="product-total">
-                                                <span class="amount">£50.00</span>
-                                            </td>
-                                        </tr>
+                                        @if (isset($cart))
+                                            @foreach ($cart->items as $item)
+                                            <tr class="cart_item">
+                                                <td class="product-name">
+                                                   {{$item['name']}} <span class="product-quantity"> × {{$item['quantity']}}</span>
+                                                </td>
+                                                <td class="product-total">
+                                                    <span class="amount">{{number_format($item['price']*$item['quantity']) }}</span>
+                                                </td>
+                                            </tr> 
+                                            @endforeach
+                                        @endif
+                                        
+                                        
                                     </tbody>
                                     <tfoot>
-                                        <tr class="cart-subtotal">
+                                        {{-- <tr class="cart-subtotal">
                                             <th>Tổng giỏ hàng</th>
-                                            <td><span class="amount">£215.00</span></td>
-                                        </tr>
+                                            <td><span class="amount">{{$cart->total_price}}</span></td>
+                                        </tr> --}}
                                         <tr class="order-total">
                                             <th>Tổng đơn hàng</th>
-                                            <td><span class=" total amount">£215.00</span>
+                                            <td><span class=" total amount">{{$cart->total_price}} VND</span>
                                             </td>
                                         </tr>
                                     </tfoot>
@@ -333,67 +311,15 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="wc-proceed-to-checkout">
+                        <button type="submit" class="btn btn-info">Đặt hàng</button>
+                    </div>
+                </form>
+                
             </div>
+          
         </div>
         <!-- checkout-area end -->
-        <!-- Support Area Start Here -->
-        <div class="support-area bdr-top">
-            <div class="container">
-                <div class="d-flex flex-wrap text-center">
-                    <div class="single-support">
-                        <div class="support-icon">
-                            <i class="lnr lnr-gift"></i>
-                        </div>
-                        <div class="support-desc">
-                            <h6>Great Value</h6>
-                            <span>Nunc id ante quis tellus faucibus dictum in eget.</span>
-                        </div>
-                    </div>
-                    <div class="single-support">
-                        <div class="support-icon">
-                            <i class="lnr lnr-rocket"></i>
-                        </div>
-                        <div class="support-desc">
-                            <h6>Worlwide Delivery</h6>
-                            <span>Quisque posuere enim augue, in rhoncus diam dictum non</span>
-                        </div>
-                    </div>
-                    <div class="single-support">
-                        <div class="support-icon">
-                           <i class="lnr lnr-lock"></i>
-                        </div>
-                        <div class="support-desc">
-                            <h6>Safe Payment</h6>
-                            <span>Duis suscipit elit sem, sed mattis tellus accumsan.</span>
-                        </div>
-                    </div>
-                    <div class="single-support">
-                        <div class="support-icon">
-                           <i class="lnr lnr-enter-down"></i>
-                        </div>
-                        <div class="support-desc">
-                            <h6>Shop Confidence</h6>
-                            <span>Faucibus dictum suscipit eget metus. Duis  elit sem, sed.</span>
-                        </div>
-                    </div>
-                    <div class="single-support">
-                        <div class="support-icon">
-                           <i class="lnr lnr-users"></i>
-                        </div>
-                        <div class="support-desc">
-                            <h6>24/7 Help Center</h6>
-                            <span>Quisque posuere enim augue, in rhoncus diam dictum non.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Container End -->
-        </div>
-        <!-- Support Area End Here -->
-        <!-- Footer Area Start Here -->
-        <footer class="off-white-bg2 pt-95 bdr-top pt-sm-55">
-            <!-- Footer Top Start -->
-            <div class="footer-top">
-                <div class="container">
+   
+      
 @endsection
