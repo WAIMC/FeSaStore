@@ -162,12 +162,9 @@
                 <div class="col-xl-9 col-lg-8 col-md-12 ">
                     <nav class="d-none d-lg-block">
                         <ul class="header-bottom-list d-flex">
-                            <li class="active"><a href="{{route('client.index')}}">Trang Chủ</a>
-                                <!-- Home Version Dropdown Start -->
-                                <!-- Home Version Dropdown End -->
-                            </li>
-                            <li><a href="{{route('client.about')}}">Giới Thiệu</a></li>
+                            <li class="active"><a href="{{route('client.index')}}">Trang Chủ</a></li>
                             <li><a href="{{route('client.shop')}}">Cửa Hàng</a></li>
+                            <li><a href="{{route('client.about')}}">Giới Thiệu</a></li>
                             <li><a href="{{route('client.blog')}}">Bài Viết<i class="fa fa-angle-down"></i></a>
                                 <!-- Home Version Dropdown Start -->
                                 <ul class="ht-dropdown dropdown-style-two">
@@ -253,7 +250,7 @@
 </header>
 <!-- Main Header Area End Here -->
 <!-- Categorie Menu & Slider Area Start Here -->
-<div class="main-page-banner ">
+<div class="main-page-banner pb-50 off-white-bg">
     <div class="container">
         <div class="row">
             <!-- Vertical Menu Start Here -->

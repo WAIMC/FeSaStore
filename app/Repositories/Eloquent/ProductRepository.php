@@ -2,8 +2,8 @@
 
     namespace App\Repositories\Eloquent;
 
-
-    use App\Repositories\Contracts\ProductInterface;
+use App\Models\VariantProduct;
+use App\Repositories\Contracts\ProductInterface;
     use App\Repositories\Eloquent\BaseRepository;
     
     
@@ -22,12 +22,9 @@
         public function searchProduct($request)
         {
             // check type and soft by date to filter
-            if(isset($request->price)){
-                $softType = 'price';
-                $softBy = $request->price; 
-            }elseif(isset($request->name)){
+            if(isset($request->search_name)){
                 $softType = 'name';
-                $softBy = $request->name;
+                $softBy = $request->search_name;
             }elseif(isset($request->created_at)){
                 $softType = 'created_at';
                 $softBy = $request->created_at;
@@ -36,16 +33,18 @@
                 $softBy = 'DESC';
             }
             // check price and paginate to filter
-            // $min_price =  isset($request->min_price) ? $request->min_price : $this->getModel()->product_variantProduct()->first()->min('price');
-            // $max_price = isset($request->max_price) ? $request->max_price : $this->getModel()->product_variantProduct()->first()->max('price');
+            $min_price =  isset($request->start_price) ? $request->start_price : VariantProduct::min('price');
+            $max_price = isset($request->end_price) ? $request->end_price : VariantProduct::max('price');
             $paginate = isset($request->paginate) ? $request->paginate : 12;
 
-            return $this->getModel()::orderBy($softType, $softBy)
+            $model_search = $this->getModel()::orderBy($softType, $softBy)
                                         ->SearchCategory()
                                         // ->product_variantProduct()
                                         // ->first()
                                         // ->whereBetween('price', [$min_price, $max_price])
                                         ->paginate($paginate);
+            
+            return $model_search;
         }
 
     }
