@@ -6,7 +6,7 @@
 
     interface ProductInterface extends RepositoryInterface{
 
-        
+        public function searchProduct($request);
     }
 
 ?>

@@ -50,7 +50,7 @@
                         $list_menu .= $this->showMenuDesktop($menus, $value_menu->id);
                         $list_menu .= "</ul></li>";
                     }else{
-                        $list_menu .= "<li class=''><a href=''><span><i class='fa fa-dot-circle-o' aria-hidden='true' style='position: unset'></i></span>".$value_menu->name."</a></li>";
+                        $list_menu .= "<li class=''><a href='".route('client.shop',['searchCategory'=>$value_menu->id])."'><span><i class='fa fa-dot-circle-o' aria-hidden='true' style='position: unset'></i></span>".$value_menu->name."</a></li>";
                         unset($menus[$key_menu]);
                     }
                    
@@ -74,7 +74,7 @@
                         $list_menu_mobile .= $this->showMenuMobile($menus, $value_menu->id);
                         $list_menu_mobile .= "</ul></li>";
                     }else{
-                        $list_menu_mobile .= "<li class=''><a href=''>".$value_menu->name."</a></li>";
+                        $list_menu_mobile .= "<li class=''><a href='".route('client.shop',['searchCategory'=>$value_menu->id])."'>".$value_menu->name."</a></li>";
                         unset($menus[$key_menu]);
                     }
                    

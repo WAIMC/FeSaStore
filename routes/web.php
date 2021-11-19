@@ -54,20 +54,32 @@ use Illuminate\Support\Facades\Route;
     Route::get('/',[App\Http\Controllers\client\HomeController::class,'index'])->name('client.index');
     Route::get('/about',[App\Http\Controllers\client\HomeController::class,'about'])->name('client.about');
     Route::get('/contact',[App\Http\Controllers\client\HomeController::class,'contact'])->name('client.contact');
-    Route::get('/shop',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
+    Route::get('/productDetail/{product_id}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
     Route::get('/wishlist',[App\Http\Controllers\client\HomeController::class,'wishlish'])->name('client.wishlist');
+
     Route::get('/shop',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
-// route user
-    Route::get('/register',[App\Http\Controllers\admin\Auth\loginController::class,'register'])->name('client.register');
+    Route::post('/contact',[App\Http\Controllers\client\HomeController::class,'post_contact'])->name('client.post_contact');
+
+    // route user
+    Route::get('/register',[App\Http\Controllers\client\Auth\RegisterController::class,'register'])->name('client.register');
+    Route::post('/register',[App\Http\Controllers\client\Auth\RegisterController::class,'postRegister']);
+
     Route::get('/login',[App\Http\Controllers\client\Auth\loginController::class,'login'])->name('client.login');
-    Route::get('/forgotPassword',[App\Http\Controllers\admin\Auth\loginController::class,'forgotPassword'])->name('client.forgotPassword');
+    Route::post('/login',[App\Http\Controllers\client\Auth\loginController::class,'postLogin']);
+    Route::get('/logout',[App\Http\Controllers\client\Auth\loginController::class,'logout'])->name('client.logout');
+
+    Route::get('forget-password', [App\Http\Controllers\client\Auth\ForgotPasswordController::class, 'showForgetPasswordForm'])->name('client.forgotPassword');
+    Route::post('forget-password', [App\Http\Controllers\client\Auth\ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('client.forget.password.post'); 
+    Route::get('reset-password/{token}', [App\Http\Controllers\client\Auth\ForgotPasswordController::class, 'showResetPasswordForm'])->name('client.reset.password.get');
+    Route::post('reset-password', [App\Http\Controllers\client\Auth\ForgotPasswordController::class, 'submitResetPasswordForm'])->name('client.reset.password.post');
+
+
  //end
     Route::get('/checkout',[App\Http\Controllers\client\HomeController::class,'checkout'])->name('client.checkout');
-    Route::get('/product',[App\Http\Controllers\client\HomeController::class,'product'])->name('client.product');
     Route::get('/blog',[App\Http\Controllers\client\HomeController::class,'blog'])->name('client.blog');
     Route::get('/blog-details/{slug}',[App\Http\Controllers\client\HomeController::class,'blog_details'])->name('client.blog_details');
     Route::get('/blog/category/{slug}',[App\Http\Controllers\client\HomeController::class,'categoryblog'])->name('client.cateblog');
-    /*
+/*
     End route client
 */ 
 

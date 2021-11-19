@@ -21,18 +21,23 @@
                     </li>
                     <li><span>Currency</span><a href="#"> USD $ <i class="lnr lnr-chevron-down"></i></a>
                         <!-- Dropdown Start -->
-                        <ul class="ht-dropdown">
+                        {{-- <ul class="ht-dropdown">
                             <li><a href="#">&#36; USD</a></li>
                             <li><a href="#"> € Euro</a></li>
                             <li><a href="#">&#163; Pound Sterling</a></li>
-                        </ul>
+                        </ul> --}}
                         <!-- Dropdown End -->
                     </li>
                     <li><a href="#">Tài Khoản<i class="lnr lnr-chevron-down"></i></a>
                         <!-- Dropdown Start -->
                         <ul class="ht-dropdown">
+                            @if (Auth::guard('cus')->user())
+                            <li><a href="{{route('client.login')}}">Thông tin tài khoản</a></li>
+                            @else
                             <li><a href="{{route('client.login')}}">Đăng Nhập</a></li>
                             <li><a href="{{route('client.register')}}">Đăng Ký</a></li>
+                            @endif
+                           
                         </ul>
                         <!-- Dropdown End -->
                     </li> 
@@ -125,7 +130,14 @@
                             </li>
                             <li><a href="#"><i class="lnr lnr-heart"></i><span class="my-cart"><span>Danh Sách</span><span>Ưa Thích (0)</span></span></a>
                             </li>
-                            <li><a href="#"><i class="lnr lnr-user"></i><span class="my-cart"><span> <strong>Đăng Nhập</strong> /</span><span> Ở Đây</span></span></a>
+                            <li><a href="#"><i class="lnr lnr-user"></i></a>
+                                @if (Auth::guard('cus')->user())
+                                <span class="my-cart">   {{Auth::guard('cus')->user()->last_name}} <br>
+                                    <a  href="{{route('client.logout')}}">Đăng xuất</a></span>
+                                    @else  
+                                    <a href="{{route('client.login')}}">    <span class="my-cart">  <strong>Đăng nhập </strong> /<span><span> Ở Đây</span></span></a>
+                            @endif
+                            
 
 
 
@@ -150,27 +162,12 @@
                 <div class="col-xl-9 col-lg-8 col-md-12 ">
                     <nav class="d-none d-lg-block">
                         <ul class="header-bottom-list d-flex">
-                            <li class="active"><a href="{{route('client.index')}}">Trang Chủ<i class="fa fa-angle-down"></i></a>
+                            <li class="active"><a href="{{route('client.index')}}">Trang Chủ</a>
                                 <!-- Home Version Dropdown Start -->
-                                <ul class="ht-dropdown">
-                                    <li><a href="{{route('client.index')}}">Home Version 1</a></li>
-                                    {{-- <li><a href="index-2.html">Home Version 2</a></li>
-                                    <li><a href="index-3.html">Home Version 3</a></li>
-                                    <li><a href="index-4.html">Home Version 4</a></li> --}}
-                                </ul>
                                 <!-- Home Version Dropdown End -->
                             </li>
-                            <li><a href="{{route('client.shop')}}">Cửa Hàng<i class="fa fa-angle-down"></i></a>
-                                <!-- Home Version Dropdown Start -->
-                                <ul class="ht-dropdown dropdown-style-two">
-                                    <li><a href="{{route('client.product')}}">product details</a></li>
-                                    <li><a href="compare.html">So Sánh Sản Phẩm</a></li>
-                                    <li><a href="cart.html">Giỏ Hàng</a></li>
-                                    <li><a href="{{route('client.checkout')}}">Thủ Tục Thanh Toán</a></li>
-                                    <li><a href="{{route('client.wishlist')}}">Danh Sách Ưa Thích</a></li>
-                                </ul>
-                                <!-- Home Version Dropdown End -->
-                            </li>
+                            <li><a href="{{route('client.about')}}">Giới Thiệu</a></li>
+                            <li><a href="{{route('client.shop')}}">Cửa Hàng</a></li>
                             <li><a href="{{route('client.blog')}}">Bài Viết<i class="fa fa-angle-down"></i></a>
                                 <!-- Home Version Dropdown Start -->
                                 <ul class="ht-dropdown dropdown-style-two">
@@ -180,18 +177,6 @@
                                 </ul>
                                 <!-- Home Version Dropdown End -->
                             </li>
-                            <li><a href="#">pages<i class="fa fa-angle-down"></i></a>
-                                <!-- Home Version Dropdown Start -->
-                                <ul class="ht-dropdown dropdown-style-two">
-                                    <li><a href="{{route('client.contact')}}">contact us</a></li>
-                                    <li><a href="{{route('client.register')}}">register</a></li>
-                                    <li><a href="{{route('client.login')}}">sign in</a></li>
-                                    <li><a href="{{route('client.forgotPassword')}}">forgot password</a></li>
-                                    <li><a href="404.html">404</a></li>
-                                </ul>
-                                <!-- Home Version Dropdown End -->
-                            </li>
-                            <li><a href="{{route('client.about')}}">Giới Thiệu</a></li>
                             <li><a href="{{route('client.contact')}}">Liên Hệ</a></li>
                         </ul>
                     </nav>
@@ -268,7 +253,7 @@
 </header>
 <!-- Main Header Area End Here -->
 <!-- Categorie Menu & Slider Area Start Here -->
-<div class="main-page-banner pb-50 off-white-bg">
+<div class="main-page-banner ">
     <div class="container">
         <div class="row">
             <!-- Vertical Menu Start Here -->

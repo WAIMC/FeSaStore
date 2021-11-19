@@ -243,32 +243,23 @@
 <div class="contact-area ptb-100 ptb-sm-60">
     <div class="container">
         <h3 class="mb-20">Liên hệ</h3>
-        <p class="text-capitalize mb-20"></p>
-        <form id="contact-form" class="contact-form" action="mail.php" method="post">
+        <p class="text-capitalize mb-20">Mọi góp ý của khách hàng nhằm đem đến cho chúng tôi cải thiện chất lượng tốt hơn. Vui lòng điền đầy đủ thông tin bên dưới: </p>
+        <form id="contact-form" class="contact-form" action="" method="post">
+            @csrf
             <div class="address-wrapper row">
-                <div class="col-md-12">
-                    <div class="address-fname">
-                        <input class="form-control" type="text" name="name" placeholder="Tên">
-                    </div>
-                </div>
                 <div class="col-md-6">
                     <div class="address-email">
-                        <input class="form-control" type="email" name="email" placeholder="Email">
+                        <input class="form-control" type="text"  name="name" placeholder="Họ và tên ..." required>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="address-web">
-                        <input class="form-control" type="text" name="website" placeholder="Website">
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="address-subject">
-                        <input class="form-control" type="text" name="subject" placeholder="Subject">
+                        <input class="form-control" type="text" name="email" placeholder="Email ..." required>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="address-textarea">
-                        <textarea name="message" class="form-control" placeholder="Nội dung"></textarea>
+                        <textarea name="content" class="form-control" placeholder="Nội dung góp ý ..." required></textarea>
                     </div>
                 </div>
             </div>
