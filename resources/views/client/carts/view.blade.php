@@ -106,7 +106,6 @@
                     <!-- Row End -->
                 </form>
                 <!-- Form End -->
-                @endif
                 @if (Session::has('success'))
               <div class="alert alert-success  alert-dismissible fade show" role="alert">
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -114,9 +113,11 @@
                   </button>
                   {{ Session::get('success') }}
               </div>
-              @else
-              <h5 class="text-center"> Giỏ hàng của bạn đang trống</h5>
           @endif
+          @else
+          <h5>Giỏ hàng của bạn đang trống</h5>
+                @endif
+                
             </div>
         
         </div>

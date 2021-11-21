@@ -125,7 +125,7 @@
                             </li>
                             <li><a href="#"><i class="lnr lnr-user"></i></a>
                                 @if (Auth::guard('cus')->user())
-                                <span class="my-cart">   {{Auth::guard('cus')->user()->last_name}} <br>
+                                <span class="my-cart">   {{Auth::guard('cus')->user()->name}} <br>
                                     <a  href="{{route('client.logout')}}">Đăng xuất</a></span>
                                     @else  
                                     <a href="{{route('client.login')}}">    <span class="my-cart">  <strong>Đăng nhập </strong> /<span><span> Ở Đây</span></span></a>
@@ -243,7 +243,7 @@
 </header>
 <!-- Main Header Area End Here -->
 <!-- Categorie Menu & Slider Area Start Here -->
-<div class="main-page-banner pb-50 off-white-bg">
+<div class="main-page-banner  off-white-bg">
     <div class="container">
         <div class="row">
             <!-- Vertical Menu Start Here -->
