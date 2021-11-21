@@ -173,43 +173,14 @@
                     <div class="mobile-menu d-block d-lg-none">
                         <nav>
                             <ul>
-                                <li><a href="{{route('client.index')}}">Trang Chủ</a>
-                                    <!-- Home Version Dropdown Start -->
-                                    <ul>
-                                        <li><a href="{{route('client.index')}}">Home Version 1</a></li>
-                                        <li><a href="index-2.html">Home Version 2</a></li>
-                                        <li><a href="index-3.html">Home Version 3</a></li>
-                                        <li><a href="index-4.html">Home Version 4</a></li>
-                                    </ul>
-                                    <!-- Home Version Dropdown End -->
-                                </li>
-                                <li><a href="">Cửa Hàng</a>
-                                    <!-- Mobile Menu Dropdown Start -->
-                                    <ul>
-                                        <li><a href="{{route('client.index')}}">product details</a></li>
-                                        <li><a href="compare.html">So Sánh Sản Phẩm</a></li>
-                                        <li><a href="cart.html">Giỏ Hàng</a></li>
-                                        <li><a href="{{route('client.checkout')}}">Thủ Tục Thanh Toán</a></li>
-                                        <li><a href="{{route('client.index')}}">Danh Sách Ưa Thích</a></li>
-                                    </ul>
-                                    <!-- Mobile Menu Dropdown End -->
-                                </li>
+                                <li><a href="{{route('client.index')}}">Trang Chủ</a> </li>
+                                <li><a href="">Cửa Hàng</a>      </li>
                                 <li><a href="{{route('client.blog')}}">Bài Viết</a>
                                     <!-- Mobile Menu Dropdown Start -->
                                     <ul>
                                         @foreach ($modelcategoryblog as $item)
                                         <li><a href="{{route('client.cateblog',$item->slug)}}">{{$item->name}}</a></li>  
                                     @endforeach
-                                    </ul>
-                                    <!-- Mobile Menu Dropdown End -->
-                                </li>
-                                <li><a href="#">pages</a>
-                                    <!-- Mobile Menu Dropdown Start -->
-                                    <ul>
-                                        <li><a href="{{route('client.login')}}">register</a></li>
-                                        <li><a href="{{route('client.checkout')}}">sign in</a></li>
-                                        <li><a href="forgot-password.html">forgot password</a></li>
-                                        <li><a href="404.html">404</a></li>
                                     </ul>
                                     <!-- Mobile Menu Dropdown End -->
                                 </li>
@@ -228,7 +199,7 @@
     <!-- Mobile Vertical Menu Start Here -->
     <div class="container d-block d-lg-none">
         <div class="vertical-menu mt-30">
-            <span class="categorie-title mobile-categorei-menu">Cửa Hàng by Categories</span>
+            <span class="categorie-title mobile-categorei-menu">Mua sắm theo danh mục</span>
             <nav>  
                 <div id="cate-mobile-toggle" class="category-menu sidebar-menu sidbar-style mobile-categorei-menu-list menu-hidden ">
                     <ul>
