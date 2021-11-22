@@ -63,7 +63,7 @@ class RegisterController extends Controller
         if($this->users->create([
             'name' => $request->name,
             'email' => $request->email,
-            'phonenumber' => $request->phonenumber,
+            'phone' => $request->phone,
             'address' => $request->address,
             'password' => Hash::make($request->password),
         ])){

@@ -21,7 +21,7 @@ protected $table='customer';
         'name',
         'password',
         'address',
-        'phonenumber',
+        'phone',
         'email',
         'status'
     ];

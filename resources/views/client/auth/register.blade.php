@@ -74,8 +74,8 @@
                                     <div class="form-group d-md-flex align-items-md-center">
                                         <label class="control-label col-md-2" for="number"><span class="require">*</span> Điện thoại</label>
                                         <div class="col-md-10">
-                                            <input type="text" name="phonenumber"value="{{old('phonenumber')}}"  class="form-control" id="number" placeholder=" Điện thoại">
-                                            @error('phonenumber')
+                                            <input type="text" name="phone"value="{{old('phone')}}"  class="form-control" id="number" placeholder=" Điện thoại">
+                                            @error('phone')
                                             <small  class="text-danger">{{$message}}</small> 
                                             @enderror
                                         </div>
