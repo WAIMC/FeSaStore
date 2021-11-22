@@ -233,7 +233,7 @@
                                                     <input class="quantity mr-40 qv_quantity" name="quantity" type="number" min="1" value="1">
                                                 </form>
                                                 <a class="add-cart" href="#" id="add-cart">Thêm Vào Giỏ Hàng</a>
-                                                <input type="text" name="id_variant" id="id_variant">
+                                                <input type="hidden" name="id_variant" id="id_variant">
                                             </div>
                                             <div class="pro-ref mt-15">
                                                 <p><span class="in-stock"><i class="ion-checkmark-round"></i> Trong Kho</span></p>

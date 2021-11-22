@@ -29,7 +29,7 @@
          <li>Tổng tiền <span>{{number_format($cart->total_price) }} VND</span></li>
      </ul>
       <div class="cart-actions text-center">
-          <a class="cart-checkout" href="{{route('client.checkout')}}">Thanh toán</a>
+        <a class="cart-checkout" href="{{route('cart.view')}}">Giỏ hàng</a>
       </div>
   </div>
   <input type="hidden" id="quantity_cart" value="{{$cart->total_quantity}}">
