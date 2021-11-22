@@ -54,7 +54,7 @@
             <div class="row align-items-center no-gutters">
                 <div class="col-lg-3 col-md-12">
                     <div class="logo mb-all-30">
-                        <a href="{{route('client.index')}}"><img src="{{url('public/client')}}/img/logo\logo.png" alt="logo-image"></a>
+                        <a href="{{route('client.index')}}"><img src="{{url('public/client')}}/img/logo/logo_final.png" alt="logo-image" with="214px" height="58px"></a>
                     </div>
                 </div>
                 <!-- Categorie Search Box Start Here -->
@@ -137,10 +137,6 @@
                                     @else  
                                     <a href="{{route('client.login')}}">    <span class="my-cart">  <strong>Đăng nhập </strong> /<span><span> Ở Đây</span></span></a>
                             @endif
-                            
-
-
-
                             </li>
                         </ul>
                     </div>
@@ -180,27 +176,9 @@
                     <div class="mobile-menu d-block d-lg-none">
                         <nav>
                             <ul>
-                                <li><a href="{{route('client.index')}}">Trang Chủ</a>
-                                    <!-- Home Version Dropdown Start -->
-                                    <ul>
-                                        <li><a href="{{route('client.index')}}">Home Version 1</a></li>
-                                        <li><a href="index-2.html">Home Version 2</a></li>
-                                        <li><a href="index-3.html">Home Version 3</a></li>
-                                        <li><a href="index-4.html">Home Version 4</a></li>
-                                    </ul>
-                                    <!-- Home Version Dropdown End -->
-                                </li>
-                                <li><a href="">Cửa Hàng</a>
-                                    <!-- Mobile Menu Dropdown Start -->
-                                    <ul>
-                                        <li><a href="{{route('client.index')}}">product details</a></li>
-                                        <li><a href="compare.html">So Sánh Sản Phẩm</a></li>
-                                        <li><a href="cart.html">Giỏ Hàng</a></li>
-                                        <li><a href="{{route('client.checkout')}}">Thủ Tục Thanh Toán</a></li>
-                                        <li><a href="{{route('client.index')}}">Danh Sách Ưa Thích</a></li>
-                                    </ul>
-                                    <!-- Mobile Menu Dropdown End -->
-                                </li>
+                                <li><a href="{{route('client.index')}}">Trang Chủ</a></li>
+                                <li><a href="{{route('client.shop')}}">Cửa Hàng</a></li>
+                                <li><a href="{{route('client.about')}}">Giới Thiệu</a></li>
                                 <li><a href="{{route('client.blog')}}">Bài Viết</a>
                                     <!-- Mobile Menu Dropdown Start -->
                                     <ul>
@@ -210,18 +188,7 @@
                                     </ul>
                                     <!-- Mobile Menu Dropdown End -->
                                 </li>
-                                <li><a href="#">pages</a>
-                                    <!-- Mobile Menu Dropdown Start -->
-                                    <ul>
-                                        <li><a href="{{route('client.login')}}">register</a></li>
-                                        <li><a href="{{route('client.checkout')}}">sign in</a></li>
-                                        <li><a href="forgot-password.html">forgot password</a></li>
-                                        <li><a href="404.html">404</a></li>
-                                    </ul>
-                                    <!-- Mobile Menu Dropdown End -->
-                                </li>
-                                <li><a href="{{route('client.index')}}">Giới Thiệu</a></li>
-                                <li><a href="{{route('client.about')}}">Liên Hệ</a></li>
+                                <li><a href="{{route('client.contact')}}">Liên Hệ</a></li>
                             </ul>
                         </nav>
                     </div>
