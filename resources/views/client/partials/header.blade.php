@@ -54,7 +54,7 @@
             <div class="row align-items-center no-gutters">
                 <div class="col-lg-3 col-md-12">
                     <div class="logo mb-all-30">
-                        <a href="{{route('client.index')}}"><img src="{{url('public/client')}}/img/logo\logo.png" alt="logo-image"></a>
+                        <a href="{{route('client.index')}}"><img src="{{url('public/client')}}/img/logo/logo_final.png" alt="logo-image" with="214px" height="58px"></a>
                     </div>
                 </div>
                 <!-- Categorie Search Box Start Here -->
@@ -130,10 +130,6 @@
                                     @else  
                                     <a href="{{route('client.login')}}">    <span class="my-cart">  <strong>Đăng nhập </strong> /<span><span> Ở Đây</span></span></a>
                             @endif
-                            
-
-
-
                             </li>
                         </ul>
                     </div>
@@ -173,8 +169,9 @@
                     <div class="mobile-menu d-block d-lg-none">
                         <nav>
                             <ul>
-                                <li><a href="{{route('client.index')}}">Trang Chủ</a> </li>
-                                <li><a href="">Cửa Hàng</a>      </li>
+                                <li><a href="{{route('client.index')}}">Trang Chủ</a></li>
+                                <li><a href="{{route('client.shop')}}">Cửa Hàng</a></li>
+                                <li><a href="{{route('client.about')}}">Giới Thiệu</a></li>
                                 <li><a href="{{route('client.blog')}}">Bài Viết</a>
                                     <!-- Mobile Menu Dropdown Start -->
                                     <ul>
@@ -184,8 +181,7 @@
                                     </ul>
                                     <!-- Mobile Menu Dropdown End -->
                                 </li>
-                                <li><a href="{{route('client.index')}}">Giới Thiệu</a></li>
-                                <li><a href="{{route('client.about')}}">Liên Hệ</a></li>
+                                <li><a href="{{route('client.contact')}}">Liên Hệ</a></li>
                             </ul>
                         </nav>
                     </div>

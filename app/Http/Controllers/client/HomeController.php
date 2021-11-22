@@ -112,6 +112,7 @@ class HomeController extends Controller
         $blog=$this->blogs->findBySlug($slug);
         return view('client.blogs.blog_details', compact('blog'));
     }
+    
     public function categoryblog($slug){
         $blogs=$this->categoryblog->findBySlug($slug);
         return view('client.blogs.blog', compact('blogs'));
