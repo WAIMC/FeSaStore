@@ -42,19 +42,16 @@ class RegisterController extends Controller
        
         $request->validate(
             [
-                'first_name'=>'required|string|max:10',
-                'last_name'=>'required|string|max:10',
+                'name'=>'required|string|max:35',
                 'email'=>'required|string|max:255|email|unique:customer',
                 'password' => ['required', 'string', 'min:8'],
                 'pwd_confirm' => ['same:password'],
             ],
             [
-                'first_name.required'=>'không để họ và tên trống!',
-                'first_name.string'=>'Họ và tên khác chuỗi!',
-                'first_name.max'=>'Họ và tên tối đa 10 kí tự',
-                'last_name.required'=>'không để họ và tên trống!',
-                'last_name.string'=>'Họ và tên khác chuỗi!',
-                'last_name.max'=>'Họ và tên tối đa 10 kí tự',
+                
+                'name.required'=>'không để họ và tên trống!',
+                'name.string'=>'Họ và tên khác chuỗi!',
+                'name.max'=>'Họ và tên tối đa 35 kí tự',
                 'email.required'=>'Không để email trống!',
                 'email.email'=>'Nhập dữ liệu không phải email!',
                 'email.unique'=>'Email đã tồn tại!',
@@ -64,10 +61,9 @@ class RegisterController extends Controller
             ],
         );
         if($this->users->create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
+            'name' => $request->name,
             'email' => $request->email,
-            'phonenumber' => $request->phonenumber,
+            'phone' => $request->phone,
             'address' => $request->address,
             'password' => Hash::make($request->password),
         ])){

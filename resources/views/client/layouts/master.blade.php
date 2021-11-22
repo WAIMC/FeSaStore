@@ -35,6 +35,19 @@
     <link rel="stylesheet" href="{{url('public/client')}}/style.css">
     <!-- Responsive css -->
     <link rel="stylesheet" href="{{url('public/client')}}/css/responsive.css">
+    <!-- JavaScript -->
+   <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
      <!-- style css -->
      @yield('css')
      <style>
@@ -217,9 +230,10 @@
                                             </div> --}}
                                             <div class="box-quantity d-flex">
                                                 <form action="#">
-                                                    <input class="quantity mr-40 qv_quantity" type="number" min="1" value="1">
+                                                    <input class="quantity mr-40 qv_quantity" name="quantity" type="number" min="1" value="1">
                                                 </form>
-                                                <a class="add-cart" href="cart.html">Thêm Vào Giỏ Hàng</a>
+                                                <a class="add-cart" href="#" id="add-cart">Thêm Vào Giỏ Hàng</a>
+                                                <input type="hidden" name="id_variant" id="id_variant">
                                             </div>
                                             <div class="pro-ref mt-15">
                                                 <p><span class="in-stock"><i class="ion-checkmark-round"></i> Trong Kho</span></p>
@@ -391,6 +405,7 @@
                 var quick_view_thumb_menu_gallery = '';
                 var active_thumb = '';
                 var num_thumb = 0;
+                var id_variant = '';
                 // set color for button when click
                 $('input:radio[name="attr_0"]').parent().removeClass('bg-primary');
                 $('input:radio[name="attr_0"]:checked').parent().addClass('bg-primary');
@@ -406,6 +421,7 @@
                         if(var_pro['product_id'] == product_id && var_pro['variant_attribute'] === merge_attri){
                             price = var_pro['price'];
                             discount = var_pro['discount'];
+                            id_variant = var_pro['id'];
                             $('.qv_quantity').attr('max', var_pro['quantity']);
                             // fill gallery
                             var gallery = JSON.parse(var_pro['gallery']);
@@ -428,6 +444,7 @@
                         price = var_pro['price'];
                         discount = var_pro['discount'];
                         $('.qv_quantity').attr('max', var_pro['quantity']);
+                        id_variant = var_pro['id'];
                         // fill gallery
                         var gallery = JSON.parse(var_pro['gallery']);
                         gallery.forEach(each_gallery => {
@@ -451,10 +468,60 @@
 
                 // fill gallery
                 //$('.quick_view_thumb_menu_gallery').html(quick_view_thumb_menu_gallery);
+                 $("#id_variant").attr('value',id_variant) ;
+                 console.log($("input[name=id_variant]").val());
                 $('.quick_view_thumb_gallery').html(quick_view_thumb_gallery);
                 
             }
             
+        });
+    </script>
+     <script>
+        $('#add-cart').click(function(e) {
+            e.preventDefault();
+          console.log($("input[name=id_variant]").val());
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'get',
+                url:  '{{url('')}}/cart/add/'+$("input[name=id_variant]").val(),
+                data: {
+                    quantity: $("input[name=quantity]").val(),
+                    id: $("input[name=id_variant]").val()
+                },
+                success: function(response) {
+                    $('#cart-box-width').empty();
+                    $('#cart-box-width').html(response);
+                    $('.total-pro').text($('#quantity_cart').val());
+                    alertify.success('Đã thêm vào giỏ hàng');
+                },
+                error: (error) => {
+                    console.log(JSON.stringify(error));
+                }
+            })
+
+
+        });
+
+        $('#cart-box-width').on('click','.ion-close',function(e) {
+            console.log($(this).data('id'));
+            $.ajax({
+                type: 'get',
+                url:  '{{url('')}}/cart/removelist/'+$(this).data('id'),
+                success: function(response) {
+                    $('#cart-box-width').empty();
+                    $('#cart-box-width').html(response);
+                    $('.total-pro').text($('#quantity_cart').val());
+                    alertify.success('Đã xóa khỏi giỏ hàng');
+                },
+                error: (error) => {
+                    console.log(JSON.stringify(error));
+                }
+            })
         });
     </script>
 </body>

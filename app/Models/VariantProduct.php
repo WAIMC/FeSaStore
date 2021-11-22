@@ -26,6 +26,9 @@ class VariantProduct extends Model
         'update_at'
     ];
 
+    public function getProduct(){
+        return $this->hasOne(Product::class,'id','product_id');
+    }
     // connect get data product by foreign key : 1-n
     // public function product_category()
     // {
