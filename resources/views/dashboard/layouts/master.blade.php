@@ -19,8 +19,13 @@
   <link rel="stylesheet" href="{{ url('public/dashboard') }}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ url('public/dashboard') }}/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{ url('public/dashboard') }}/plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style>    .table td, .table th {
+ vertical-align: middle !important;
+}
+</style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <!-- Site wrapper -->
@@ -46,10 +51,7 @@
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            {{-- <h1>@yield('action')</h1> --}}
-          </div>
-          <div class="col-sm-6">
+          <div class="col-sm-12">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">@yield('title')</a></li>
               <li class="breadcrumb-item"><a href="#">@yield('directory')</a></li>
@@ -106,7 +108,7 @@
 <script src="{{ url('public/dashboard') }}/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ url('public/dashboard') }}/dist/js/demo.js"></script>
-
+<script src="{{ url('public/dashboard') }}/plugins/summernote/summernote-bs4.min.js"></script>
 {{-- js master layout --}}
 @yield('js')
 

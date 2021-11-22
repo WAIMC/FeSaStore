@@ -14,12 +14,20 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $models = array(
+            'Admin',
+            'AdminRole',
+            'Role',
             'Category',
+            'CategoryBlog',
+            'Blog',
             'SettingLink',
             'Product',
             'VariantProduct',
             'Brand',
-            'Banner'
+            'Banner',
+            'User',
+            'Order',
+            'OrderDetail',
         );
 
         foreach ($models as $model) {

@@ -80,7 +80,7 @@
                                  @foreach ($data as $banner)
                                 <tr>
                                     
-                                    <td> <img src="{{url('public/uploads')}}/{{ $banner->image }}" alt="{{ $banner->name }}" height="100" > </td>
+                                    <td> <img src="{{url('public/uploads')}}/{{ $banner->image }}" alt="{{ $banner->name }}" > </td>
                                     <td>{{ $banner->title }}</td>
                                     <td>{{ $banner->link }}</td>
                                     <td>

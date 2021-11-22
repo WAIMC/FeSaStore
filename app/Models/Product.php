@@ -46,22 +46,22 @@ class Product extends Model
     }
 
     // search name with function scope
-    // public function scopeSearch($query)
-    // {
-    //     if(request()->key){
-    //         $query = $query->where('name','like',"%".request()->key."%");
-    //     }
-    //     return $query;
-    // }
+    public function scopeSearch($query)
+    {
+        if(request()->key){
+            $query = $query->where('name','like',"%".request()->key."%");
+        }
+        return $query;
+    }
 
     // search all product in category choose
-    // public function scopeSearchCategory($query)
-    // {
-    //     if(request()->searchCategory){
-    //         $query = $query->where('id_category',request()->searchCategory);
-    //     }
-    //     return $query;
-    // }
+    public function scopeSearchCategory($query)
+    {
+        if(request()->searchCategory){
+            $query = $query->where('category_id',request()->searchCategory);
+        }
+        return $query;
+    }
 
     // get review (comment, rating star,..)
     // public function product_review()
