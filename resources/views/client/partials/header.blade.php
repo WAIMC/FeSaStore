@@ -210,7 +210,7 @@
 </header>
 <!-- Main Header Area End Here -->
 <!-- Categorie Menu & Slider Area Start Here -->
-<div class="main-page-banner  off-white-bg">
+<div class="main-page-banner pb-50 off-white-bg">
     <div class="container">
         <div class="row">
             <!-- Vertical Menu Start Here -->
