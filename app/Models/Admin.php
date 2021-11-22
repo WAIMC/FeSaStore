@@ -46,9 +46,6 @@ class Admin extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-<<<<<<< HEAD
-
-=======
     // get data from AdminRole table
     public function adminRole()
     {
@@ -82,5 +79,4 @@ class Admin extends Authenticatable implements MustVerifyEmail
         return in_array($route,$this->routes()) ? true : false;
     }
     
->>>>>>> fadf6e64bbee1bd37b25d44d0e5fd3a603a8738e
 }
