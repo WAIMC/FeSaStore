@@ -75,7 +75,7 @@
                                     <input type="hidden" name="id_variant" id="id_variant">
                                     <div class="pro-actions mt-1">
                                         <div class="actions-primary">
-                                            <a href="#" id="add-cart" title="thêm" data-original-title="Thêm vào giỏ hàng">
+                                            <a href="#" id="add_cart_detail" title="thêm" data-original-title="Thêm vào giỏ hàng">
                                                 + Thêm vào giỏ hàng</a>
                                         </div>
                                         <div class="actions-secondary">
@@ -279,7 +279,7 @@
                             </div>
                             <div class="pro-actions">
                                 <div class="actions-primary">
-                                    <a href="#" title="Thêm vào giỏ hàng"> + Thêm vào giỏ hàng</a>
+                                    <a href="#"  class="quick_view" data-toggle="modal" data-target="{{ $realted_pro->id }}" title="Thêm vào giỏ hàng"> + Thêm vào giỏ hàng</a>
                                 </div>
                                 <div class="actions-secondary">
                                     <a href="compare.html" title="So Sánh"><i class="lnr lnr-sync"></i> <span>Thêm Vào So
@@ -478,5 +478,36 @@
             }
 
         });
+
+        $('#add_cart_detail').click(function(e) {
+            e.preventDefault();
+          console.log($("input[name=id_variant]").val());
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'get',
+                url:  '{{url('')}}/cart/add/'+$("input[name=id_variant]").val(),
+                data: {
+                    quantity: $("input[name=quantity]").val(),
+                    id: $("input[name=id_variant]").val()
+                },
+                success: function(response) {
+                    $('#cart-box-width').empty();
+                    $('#cart-box-width').html(response);
+                    $('.total-pro').text($('#quantity_cart').val());
+                    alertify.success('Đã thêm vào giỏ hàng');
+                },
+                error: (error) => {
+                    console.log(JSON.stringify(error));
+                }
+            })
+
+
+        });
+
     </script>
 @endsection

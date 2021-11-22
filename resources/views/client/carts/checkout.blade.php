@@ -55,19 +55,11 @@
                                         </select>
                                     </div>
                                 </div> --}}
-                                <div class="col-md-6">
-                                    <div class="checkout-form-list mb-sm-30">
-                                        <label>Họ <span class="required">*</span></label>
-                                        <input type="text" value="{{Auth::guard('cus')->user()->first_name}}" name="first_name" placeholder="">
-                                        @error('first_name')
-                                        <small  class="text-danger">{{$message}}</small> 
-                                        @enderror
-                                    </div>
-                                </div>
+                             
                                 <div class="col-md-6">
                                     <div class="checkout-form-list mb-30">
-                                        <label>Tên <span class="required">*</span></label>
-                                        <input type="text" value="{{Auth::guard('cus')->user()->last_name}}" name="last_name" placeholder="">
+                                        <label>Họ và tên <span class="required">*</span></label>
+                                        <input type="text" value="{{Auth::guard('cus')->user()->name}}" name="last_name" placeholder="">
                                         @error('last_name')
                                         <small  class="text-danger">{{$message}}</small> 
                                         @enderror

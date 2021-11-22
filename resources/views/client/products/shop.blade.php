@@ -462,7 +462,7 @@
                                                         </div>
                                                         <div class="pro-actions">
                                                             <div class="actions-primary">
-                                                                <a href="cart.html" title="" data-original-title="Thêm Vào Giỏ Hàng"> + Thêm Vào Giỏ Hàng</a>
+                                                                <a href="#" title="Thêm vào giỏ hàng" data-original-title="Thêm Vào Giỏ Hàng"  class="quick_view" data-toggle="modal" data-target="{{$shop_grid_pro->id}}"> + Thêm Vào Giỏ Hàng</a>
                                                             </div>
                                                             <div class="actions-secondary">
                                                                 <a href="compare.html" title="" data-original-title="So Sánh"><i class="lnr lnr-sync"></i> <span>Thêm Vào So Sánh</span></a>
@@ -514,7 +514,7 @@
                                                         <p> {!! $shop_list_pro->short_description !!}</p>
                                                         <div class="pro-actions">
                                                             <div class="actions-primary">
-                                                                <a href="cart.html" title="" data-original-title="Thêm Vào Giỏ Hàng"> + Thêm Vào Giỏ Hàng</a>
+                                                                <a href="#" title="" data-original-title="Thêm Vào Giỏ Hàng"  class="quick_view" data-toggle="modal" data-target="{{$shop_list_pro->id}}"> + Thêm Vào Giỏ Hàng</a>
                                                             </div>
                                                             <div class="actions-secondary">
                                                                 <a href="compare.html" title="" data-original-title="So Sánh"><i class="lnr lnr-sync"></i> <span>Thêm Vào So Sánh</span></a>
