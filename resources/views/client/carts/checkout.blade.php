@@ -56,11 +56,11 @@
                                     </div>
                                 </div> --}}
                              
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="checkout-form-list mb-30">
                                         <label>Họ và tên <span class="required">*</span></label>
-                                        <input type="text" value="{{Auth::guard('cus')->user()->name}}" name="last_name" placeholder="">
-                                        @error('last_name')
+                                        <input type="text" value="{{Auth::guard('cus')->user()->name}}" name="name" placeholder="">
+                                        @error('name')
                                         <small  class="text-danger">{{$message}}</small> 
                                         @enderror
                                     </div>
@@ -69,7 +69,7 @@
                                 <div class="col-md-12 mb-30">
                                     <div class="checkout-form-list">
                                         <label>Xã / Thị Trấn <span class="required">*</span></label>
-                                        <input type="text" name="xa" placeholder="Tên đường">
+                                        <input type="text" name="xa" placeholder="Tên xa">
                                         @error('xa')
                                         <small  class="text-danger">{{$message}}</small> 
                                         @enderror
