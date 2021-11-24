@@ -80,10 +80,52 @@
                                             @enderror
                                         </div>
                                     </div>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>Địa chỉ nhận hàng</legend>
                                     <div class="form-group d-md-flex align-items-md-center">
-                                        <label class="control-label col-md-2" for="number"><span class="require">*</span> Địa chỉ</label>
+                                        <label class="control-label col-md-2" for="pwd"><span class="require">*</span>Tỉnh/thành phố:</label>
                                         <div class="col-md-10">
-                                            <input type="text" name="address"value="{{old('address')}}"  class="form-control" id="number" placeholder=" Địa chỉ">
+                                           <div class="country-select clearfix ">
+                                            <select class=" form-select tinh" name="tinh"  >
+                                            </select>
+                                            @error('tinh')
+                                            <small  class="text-danger">{{$message}}</small> 
+                                            @enderror
+                                        </div>
+                                        </div>
+                                    </div>
+                                       <div class="form-group d-md-flex align-items-md-center">
+                                        <label class="control-label col-md-2" for="pwd"><span class="require">*</span>Quận/huyện:</label>
+                                        <div class="col-md-10">
+                                            <div class="country-select clearfix ">
+                                        <select class=" form-select huyen" name="huyen" >
+                                        </select>
+                                        @error('huyen')
+                                        <small  class="text-danger">{{$message}}</small> 
+                                        @enderror
+                                    </div>
+                                        </div>
+                                    </div>
+                                       <div class="form-group d-md-flex align-items-md-center">
+                                        <label class="control-label col-md-2" for="pwd"><span class="require">*</span>Xã/phường:</label>
+                                        <div class="col-md-10">
+                                           <div class="country-select clearfix " >
+                                        <select class=" form-select xa"name="xa">
+                                        </select>
+                                        @error('xa')
+                                        <small  class="text-danger">{{$message}}</small> 
+                                        @enderror
+                                    </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group d-md-flex align-items-md-center">
+                                        <label class="control-label col-md-2" for="thon"><span class="require">*</span>Địa chỉ(số nhà)</label>
+                                        <div class="col-md-10">
+                                            <input type="text" name="thon" class="form-control" id="thon" placeholder="Địa chỉ(số nhà)">
+                                            @error('thon')
+                                            <small  class="text-danger">{{$message}}</small> 
+                                            @enderror
                                         </div>
                                     </div>
                                 </fieldset>
@@ -108,21 +150,12 @@
                                         </div>
                                     </div>
                                 </fieldset>
-                                {{-- <fieldset class="newsletter-input">
-                                    <legend>Bản tin</legend>
-                                    <div class="form-group d-md-flex align-items-md-center">
-                                        <label class="col-md-2 control-label">Đặt mua</label>
-                                        <div class="col-md-10 radio-button">
-                                            <label class="radio-inline"><input type="radio" name="optradio">Có</label>
-                                            <label class="radio-inline"><input type="radio" name="optradio">Không</label>
-                                        </div>
-                                    </div>
-                                </fieldset> --}}
+                               
                                 <div class="terms">
                                     <div class="float-md-right">
                                         <span>Tôi đã đọc và đồng ý với <a href="#" class="agree"><b>Chính sách quyền riêng tư</b></a></span>
                                         <input type="checkbox" required name="agree" value="1"> &nbsp;
-                                        <input type="submit" value="Tiếp Tục" class="return-customer-btn">
+                                        <input type="submit" id="submit-form" value="Tiếp Tục" class="return-customer-btn">
                                     </div>
                                 </div>
                             </form>
@@ -135,3 +168,102 @@
             <!-- Register Account End -->
 
     @endsection
+    @section('js')
+<script>
+
+    $.get(
+          ' https://provinces.open-api.vn/api/?depth=2',
+                function(res){
+                    content=`<option selected>Chọn tỉnh thành phố</option>`;
+                res.forEach(item => {
+                
+                    content+=`
+                    <option value="${item.code}">${item.name}</option>
+                    `;
+
+                });
+            
+                $('.tinh').html(content);
+                }
+            ) ; 
+      
+    $('.tinh').change(function (e) { 
+      e.preventDefault();
+        code=$('.tinh').val();
+       $.get(
+           `https://provinces.open-api.vn/api/p/${code}/?depth=2`,
+    
+            function(res){
+                content=`<option selected>Chọn Quận/huyện</option>`;
+             res.districts.forEach(item => {
+                 content+=`
+                 <option value="${item.code}">${item.name}</option>
+                 `;
+
+             });
+           
+             $('.huyen').html(content);
+            }
+        ) ;
+      
+  });
+     
+  $('.huyen').change(function (e) { 
+      e.preventDefault();
+     var code=$('.huyen').val();
+       $.get(
+           `https://provinces.open-api.vn/api/d/${code}?depth=2`,
+    
+            function(res){
+              console.log(res);
+                content=`<option selected>Chọn Xã/phường</option>`;
+             res.wards.forEach(item => {
+                 content+=`
+                 <option value="${item.code}">${item.name}</option>
+                 `;
+
+             });
+           
+             $('.xa').html(content);
+            }
+        ) ;
+      
+ 
+  });
+  $('#submit-form').click(function(e) {
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: "{{ route('client.Postregister') }}",
+                method: 'post',
+                data: {
+                    name: $("input[name=name]").val(),
+                    email: $("input[name=email]").val(),
+                    phone: $("input[name=phone]").val(),
+                    email: $("input[name=email]").val(),
+                    thon: $("input[name=thon]").val(),
+                    password: $("input[name=password]").val(),
+                    pwd_confirm: $("input[name=pwd_confirm]").val(),
+                    tinh:$( ".tinh option:selected" ).text(),
+                    huyen:$( ".huyen option:selected" ).text(),
+                    xa:$( ".xa option:selected" ).text(),
+                },
+                success: function(result) {
+                    alertify.success('Đã đăng ký thành công');
+                    window.location="{{ route('client.login') }}";
+                }
+                ,
+                error: function(result) {
+                    alertify.error('Đã đăng ký thất bại');
+                  location.reload();
+                }
+
+
+        })
+    });
+</script>
+@endsection

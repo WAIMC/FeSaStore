@@ -6,20 +6,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Helper\CartHelper;
 use App\Repositories\Contracts\OrderDetailInterface;
-use App\Repositories\Contracts\OrderInterface;
+use App\Repositories\Contracts\CartInterface;
 use App\Repositories\Contracts\VariantProductInterface;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Cart\CheckoutRequest;
 class CartController extends Controller
 {
     protected $orders;
-    protected $orderdetails;
-    protected $pro;
-    public function __construct(OrderDetailInterface $orderdetails, OrderInterface $orders,VariantProductInterface $pro)
+
+    public function __construct(CartInterface $orders)
     {
-        $this->orderdetails = $orderdetails;
+       
         $this->orders = $orders;
-        $this->pro = $pro;
+        
     }
     public function view()
     {
@@ -53,7 +52,7 @@ class CartController extends Controller
     public function PostCheckout(CheckoutRequest $request)
     { 
         $id=Auth::guard('cus')->user()->id;  
-       $this->orders->checkout($request->name ,$request->email,$request->phone,$request->xa.", ".$request->huyen.", ".$request->tinh,$request->note,$id);
+       $this->orders->checkout($request->name ,$request->email,$request->phone,$request->address,$request->note,$id);
            return redirect()->route('cart.view')->with('success','Đặt hàng thành công');
        
 

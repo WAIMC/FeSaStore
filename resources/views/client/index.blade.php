@@ -61,7 +61,7 @@
                             </div>
                             <div class="pro-actions">
                                 <div class="actions-primary">
-                                    <a href="#" class="quick_view" title="Add to Cart" data-toggle="modal" data-target="{{$item_pro->id}}" > + Add To Cart</a>
+                                    <a href="#" class="quick_view" title="Thêm vào giỏ hàng" data-toggle="modal" data-target="{{$item_pro->id}}" > + Thêm vào giỏ hàng</a>
                                 </div>
                                 <div class="actions-secondary">
                                     <a href="compare.html" title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
@@ -232,7 +232,7 @@
                                                     </div>
                                                     <div class="pro-actions">
                                                         <div class="actions-primary">
-                                                            <a href="#" class="quick_view" data-toggle="modal" data-target="{{$single_pro_first->id}}" title="Add to Cart"> + Add To Cart</a>
+                                                            <a href="#" class="quick_view" data-toggle="modal" data-target="{{$single_pro_first->id}}" title="Thêm vào giỏ hàng"> + Thêm vào giỏ hàng</a>
                                                         </div>
                                                         <div class="actions-secondary">
                                                             <a href="compare.html" title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
@@ -269,7 +269,7 @@
                                                         </div>
                                                         <div class="pro-actions">
                                                             <div class="actions-primary">
-                                                                <a href="#" title="Add to Cart"> + Add To Cart</a>
+                                                                <a href="#" title="Thêm vào giỏ hàng"> + Thêm vào giỏ hàng</a>
                                                                 <a href="#" class="quick_view" data-toggle="modal" data-target="{{$single_pro_secound->id}}" title="Thêm vào giỏ hàng">+ Đặt hàng</a>
                                                             </div>
                                                             <div class="actions-secondary">
@@ -345,7 +345,7 @@
                                             </div>
                                             <div class="pro-actions">
                                                 <div class="actions-primary">
-                                                    <a href="#" data-toggle="modal" data-target="{{$best_pro->id}}" title="Add to Cart"> + Add To Cart</a>
+                                                    <a href="#" data-toggle="modal" data-target="{{$best_pro->id}}" title="Thêm vào giỏ hàng"> + Thêm vào giỏ hàng</a>
                                                 </div>
                                                 <div class="actions-secondary">
                                                     <a href="compare.html" title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>

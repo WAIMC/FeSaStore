@@ -5,8 +5,9 @@
     use App\Repositories\Contracts\RepositoryInterface;
 
     interface OrderInterface extends RepositoryInterface{
-        public function checkout($name,$email,$phone,$address,$note,$customer_id);
-     
+
+     public function showOrderDetail($id);
+     public function updateStatus($order);
     }
 
 ?>

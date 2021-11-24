@@ -19,4 +19,17 @@ class Order extends Model
     	'status',
     	'customer_id'
     ];
+    public function orderDetail(){
+        return $this->hasMany(OrderDetail::class,'order_id','id');
+    }
+    public function getVarriant(){
+        return $this->belongsToMany(VariantProduct::class, 'order_detail', 'order_id', 'variant_product_id');
+
+    }
+    public function scopeSearch($query){
+        if(request()->date_from && request()->date_to){
+            $query=$query->whereBetween('created_at',[request()->date_from,request()->date_to]);
+        }
+        return $query;
+    }
 }

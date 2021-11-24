@@ -26,6 +26,7 @@ class RepositoryServiceProvider extends ServiceProvider
             'Brand',
             'Banner',
             'User',
+            'Cart',
             'Order',
             'OrderDetail',
             'Comment',
