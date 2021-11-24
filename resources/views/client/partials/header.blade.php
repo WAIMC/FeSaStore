@@ -121,7 +121,8 @@
                                 </ul>
                                 @endif
                             </li>
-                            <li><a href="#"><i class="lnr lnr-heart"></i><span class="my-cart"><span>Danh Sách</span><span>Ưa Thích (0)</span></span></a>
+                            <li><a href="{{route('wishlist.view')}}"><i class="lnr lnr-heart"></i><span class="my-cart"><span class="total-wish">{{ $wishlist->total_quantity }}</span><span>Yêu thích</span></span></a>
+              
                             </li>
                             <li><a href="#"><i class="lnr lnr-user"></i></a>
                                 @if (Auth::guard('cus')->user())
