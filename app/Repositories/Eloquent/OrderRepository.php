@@ -17,6 +17,7 @@
             return \App\Models\Order::class;
         }
   
+
         public function showOrderDetail($id){
             $data=$this->getModel()::join('order_detail', 'order.id', '=', 'order_detail.order_id')
             ->join('variant_product', 'order_detail.variant_product_id', '=', 'variant_product.id')
@@ -33,7 +34,7 @@
                          $product=VariantProduct::find($ord->variant_product_id);
                          $product->quantity+=$ord->quantity;
                          $product->update(['quantity'=> $product->quantity]);
-                     }             
+                     }       
             }
           return $order->update(['status'=>request()->status]);
 

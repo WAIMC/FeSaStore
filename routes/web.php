@@ -67,7 +67,7 @@ use Illuminate\Support\Facades\Route;
     
     // route user
     Route::get('/register',[App\Http\Controllers\client\Auth\RegisterController::class,'register'])->name('client.register');
-    Route::post('/register',[App\Http\Controllers\client\Auth\RegisterController::class,'postRegister']);
+    Route::post('/register',[App\Http\Controllers\client\Auth\RegisterController::class,'postRegister'])->name('client.Postregister');
 
     Route::get('/login',[App\Http\Controllers\client\Auth\loginController::class,'login'])->name('client.login');
     Route::post('/login',[App\Http\Controllers\client\Auth\loginController::class,'postLogin']);

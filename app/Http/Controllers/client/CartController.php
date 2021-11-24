@@ -52,7 +52,7 @@ class CartController extends Controller
     public function PostCheckout(CheckoutRequest $request)
     { 
         $id=Auth::guard('cus')->user()->id;  
-       $this->orders->checkout($request->name ,$request->email,$request->phone,$request->xa.", ".$request->huyen.", ".$request->tinh,$request->note,$id);
+       $this->orders->checkout($request->name ,$request->email,$request->phone,$request->address,$request->note,$id);
            return redirect()->route('cart.view')->with('success','Đặt hàng thành công');
        
 
