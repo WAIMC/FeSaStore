@@ -56,7 +56,7 @@
                                             <div class="buttons-cart">
                                             {{-- <form action="{{ route('cart.add') }}" id="form-add" method="post"> --}}
                                                 @csrf
-                                                <input type="hidden" class="quantity mr-15 " name="quantity" type="number" value="1">
+                                                <input type="hidden" class="quantity mr-15 " name="quantity" type="number" value="{{$item['quantity'] }}">
                                                 <input type="hidden" value="{{$item['id'] }}" name="id_variant" id="id_variant">
                                                     <div class="actions-primary">
                                                         <a href="#" id="add_cart_detail" title="thêm" data-original-title="Thêm vào giỏ hàng">
