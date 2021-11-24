@@ -6,20 +6,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Helper\CartHelper;
 use App\Repositories\Contracts\OrderDetailInterface;
-use App\Repositories\Contracts\OrderInterface;
+use App\Repositories\Contracts\CartInterface;
 use App\Repositories\Contracts\VariantProductInterface;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Cart\CheckoutRequest;
 class CartController extends Controller
 {
     protected $orders;
-    protected $orderdetails;
-    protected $pro;
-    public function __construct(OrderDetailInterface $orderdetails, OrderInterface $orders,VariantProductInterface $pro)
+
+    public function __construct(CartInterface $orders)
     {
-        $this->orderdetails = $orderdetails;
+       
         $this->orders = $orders;
-        $this->pro = $pro;
+        
     }
     public function view()
     {

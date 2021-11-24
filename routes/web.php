@@ -43,6 +43,10 @@ use Illuminate\Support\Facades\Route;
             'role'=>admin\RoleController::class,
             'decentralize'=>admin\DecentralizeController::class,
         ]);
+
+        Route::resource('order', admin\OrderController::class)->only([
+            'index', 'show', 'update', 'destroy'
+        ]);
     });
 
 /*
