@@ -80,7 +80,7 @@ class AdminController extends Controller
         $data = request()->all();
         $from_date = request()->from_date;
         $to_date = request()->to_date;
-        $get =  OrderDetail::WhereBetween('created_at',[$from_date, $to_date])->orderBy('created_at','ASC')->get();
+        $get =  $this->order_detail_repo->get_date_between($from_date, $to_date);
         foreach ($get as $key => $value) {
             $chartData[] = array(
                 'name'=>$value->name,
@@ -91,6 +91,6 @@ class AdminController extends Controller
                 'profit'=> ($value->quantity*$value->price)*0.3
             ); 
         }
-        echo $data = json_encode($chartData);
+        echo $data = json_encode($get);
     }
 }

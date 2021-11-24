@@ -233,11 +233,12 @@
         all_brand.forEach(brand => {
           labels_brand[brand['id']] = {'name_brand' : brand['name'], 'quantity' : 0 };
           all_product.forEach(pro => {
-            if(brand['id'] == pro['id']){
+            if(pro['id'] == brand['id']){
               labels_brand[brand['id']]['quantity'] += 1 ;
             }
           });
-        });
+        }); 
+        console.log(labels_brand);
 
         labels_brand.forEach(data_brand => {
           name_brand.push(data_brand['name_brand']);
@@ -395,20 +396,19 @@
         $("#searchChart").click(function (e) { 
           e.preventDefault();
           var _token = $('input[name="_token"]').val();
-            var fromDate = $('input[name="fromDate"]').val();
-            var toDate = $('input[name="toDate"]').val();
-            $.ajax({
-                type: "POST",
-                url: "{{route('admin.filter_chart_by_date')}}",
-                data: {fromDate : fromDate, toDate : toDate, _token : _token},
-                dataType:"JSON",
-                success: function (data) {
-                    chart.setData(data);
-                },
-                error: function (data, textStatus, errorThrown) {
-                    console.log(errorThrown);
-                },
-            });
+          var from_date = $('input[name="fromDate"]').val();
+          var to_date = $('input[name="toDate"]').val();
+          $.ajax({
+            url: "{{ route('admin.filter_chart_by_date') }}",
+            type:'POST',
+            data: {_token : _token, from_date : from_date, to_date : to_date},
+            success: function(data) {
+              chart.setData(data);
+            },
+            error: function (data, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+          });
         });
 
         function chart30day() {
@@ -423,16 +423,15 @@
             var _token = $('input[name="_token"]').val();
 
             $.ajax({
-                type: "POST",
-                url: "{{route('admin.filter_chart_by_date')}}",
-                data: {from_date : setYMD2, to_date : setYMD, _token : _token},
-                dataType:"JSON",
-                success: function (data) {
-                    chart.setData(data);
-                },
-                error: function (data, textStatus, errorThrown) {
-                    console.log(errorThrown);
-                },
+              url: "{{ route('admin.filter_chart_by_date') }}",
+              type:'POST',
+              data: {_token : _token, from_date : setYMD2, to_date : setYMD},
+              success: function(data) {
+                chart.setData(data);
+              },
+              error: function (data, textStatus, errorThrown) {
+                  console.log(errorThrown);
+              }
             });
         };
 
