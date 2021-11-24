@@ -13,4 +13,8 @@ class OrderDetail extends Model
     [
         'name',	'quantity',	'price',	'variant_product_id',	'order_id'
     ];
+ public function getVariant(){
+     return $this->hasOne(VariantProduct::class,'id','variant_product_id');
+ }
+
 }

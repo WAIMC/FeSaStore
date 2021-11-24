@@ -45,17 +45,7 @@
                         <div class="checkbox-form mb-sm-40">
                             <h3>Thông tin chi tiết</h3>
                             <div class="row">
-                                {{-- <div class="col-md-12">
-                                    <div class="country-select clearfix mb-30">
-                                        <label>Quốc gia <span class="required">*</span></label>
-                                        <select class="wide">
-                                            <option value="volvo">Việt Nam</option>
-                                            <option value="volvo">Lào </option>
-                                            <option value="volvo">Thái Lan</option>
-                                        </select>
-                                    </div>
-                                </div> --}}
-                             
+ 
                                 <div class="col-md-12">
                                     <div class="checkout-form-list mb-30">
                                         <label>Họ và tên <span class="required">*</span></label>
@@ -65,36 +55,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                               
-                                <div class="col-md-12 mb-30">
-                                    <div class="checkout-form-list">
-                                        <label>Xã / Thị Trấn <span class="required">*</span></label>
-                                        <input type="text" name="xa" placeholder="Tên xa">
-                                        @error('xa')
-                                        <small  class="text-danger">{{$message}}</small> 
-                                        @enderror
-                                    </div>
-                                </div>
-                              
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list mb-30">
-                                        <label>Huyện <span class="required">*</span></label>
-                                        <input type="text" name="huyen" placeholder="">
-                                        @error('huyen')
-                                        <small  class="text-danger">{{$message}}</small> 
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list mb-30">
-                                        <label>Tỉnh / Thành phố <span class="required">*</span></label>
-                                        <input type="text" name="tinh" placeholder="">
-                                        @error('tinh')
-                                        <small  class="text-danger">{{$message}}</small> 
-                                        @enderror
-                                    </div>
-                                </div>
-                            
+          
                                 <div class="col-md-6">
                                     <div class="checkout-form-list mb-30">
                                         <label>Email <span class="required">*</span></label>
@@ -104,107 +65,27 @@
                                         @enderror
                                     </div>
                                 </div>
+                               
                                 <div class="col-md-6">
                                     <div class="checkout-form-list mb-30">
                                         <label>Số điện thoại  <span class="required">*</span></label>
-                                        <input type="text" value="{{Auth::guard('cus')->user()->phonenumber}}" name="phone" placeholder="">
+                                        <input type="text" value="{{Auth::guard('cus')->user()->phone}}" name="phone" placeholder="">
                                         @error('phone')
                                         <small  class="text-danger">{{$message}}</small> 
                                         @enderror
                                     </div>
                                 </div>
-                                {{-- <div class="col-md-12">
-                                    <div class="checkout-form-list create-acc mb-30">
-                                        <input id="cbox" type="checkbox">
-                                        <label>Tạo tài khoản mới?</label>
-                                    </div>
-                                    <div id="cbox_info" class="checkout-form-list create-accounts mb-25">
-                                        <p class="mb-10">Tạo tài khoản bằng cách nhập thông tin bên dưới. Nếu bạn là khách hàng cũ, vui lòng đăng nhập ở đầu trang.</p>
-                                        <label>Mật khẩu tài khoản  <span class="required">*</span></label>
-                                        <input type="password" placeholder="password">
-                                    </div>
-                                </div> --}}
                             </div>
-                            <div class="different-address">
-                                {{-- <div class="ship-different-title">
-                                    <h3>
-                                        <label>Gửi đến một địa chỉ khác?</label>
-                                        <input id="ship-box" type="checkbox">
-                                    </h3>
-                                </div>
-                                <div id="ship-box-info">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="country-select clearfix mb-30">
-                                                <label>Quốc gia <span class="required">*</span></label>
-                                                <select class="wide">
-                                                    <option value="volvo">Việt Nam</option>
-                                                    <option value="volvo">Lào </option>
-                                                    <option value="volvo">Thái Lan</option>
-                                               </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="checkout-form-list mb-30">
-                                                <label>Họ <span class="required">*</span></label>
-                                                <input type="text" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="checkout-form-list mb-30">
-                                                <label>Tên <span class="required">*</span></label>
-                                                <input type="text" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list mb-30">
-                                                <label>Tên công ty</label>
-                                                <input type="text" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list mb-30">
-                                                <label>Địa chỉ <span class="required">*</span></label>
-                                                <input type="text" placeholder="Tên đường">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list mb-30">
-                                                <input type="text" placeholder="Căn hộ,...">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list mb-30">
-                                                <label>Thị trấn / Thành phố <span class="required">*</span></label>
-                                                <input type="text" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="checkout-form-list mb-30">
-                                                <label>Huyện / Quận <span class="required">*</span></label>
-                                                <input type="text" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="checkout-form-list mb-30">
-                                                <label>Mã bưu điện / Zip <span class="required">*</span></label>
-                                                <input type="text" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="checkout-form-list mb-30">
-                                                <label>Email <span class="required">*</span></label>
-                                                <input type="email" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="checkout-form-list mb-30">
-                                                <label>Số điện thoại  <span class="required">*</span></label>
-                                                <input type="text" placeholder="">
-                                            </div>
-                                        </div>
+                            <div class="different-address ">
+                                <div class="order-notes mb-30">
+                                    <div class="checkout-form-list">
+                                        <label>Địa chỉ nhận hàng</label>
+                                        <textarea id="checkout-mess" name="address" cols="20" rows="5" placeholder="Ghi chú về đơn hàng của bạn.">{{Auth::guard('cus')->user()->address}}</textarea>
+                                        @error('address')
+                                        <small  class="text-danger">{{$message}}</small> 
+                                        @enderror
                                     </div>
-                                </div> --}}
+                                </div>
                                 <div class="order-notes">
                                     <div class="checkout-form-list">
                                         <label>Ghi chú đơn hàng</label>
@@ -313,5 +194,69 @@
         </div>
         <!-- checkout-area end -->
    
+    
+@endsection
+
+@section('js')
+<script>
+
+    $.get(
+          ' https://provinces.open-api.vn/api/?depth=2',
+                function(res){
+                    content=`<option selected>Chọn tỉnh thành phố</option>`;
+                res.forEach(item => {
+                
+                    content+=`
+                    <option value="${item.code}">${item.name}</option>
+                    `;
+
+                });
+            
+                $('.tinh').html(content);
+                }
+            ) ; 
       
+    $('.tinh').change(function (e) { 
+      e.preventDefault();
+        code=$('.tinh').val();
+       $.get(
+           `https://provinces.open-api.vn/api/p/${code}/?depth=2`,
+    
+            function(res){
+                content=`<option selected>Chọn Quận/huyện</option>`;
+             res.districts.forEach(item => {
+                 content+=`
+                 <option value="${item.code}">${item.name}</option>
+                 `;
+
+             });
+           
+             $('.huyen').html(content);
+            }
+        ) ;
+      
+  });
+ // console.log(code);
+      $('.huyen').change(function (e) { 
+      e.preventDefault();
+     var code=$('.huyen').val();
+       $.get(
+           `https://provinces.open-api.vn/api/d/${code}?depth=2`,
+    
+            function(res){
+              console.log( res);
+                content=`<option selected>Chọn Xã/phường</option>`;
+             res.wards.forEach(item => {
+                 content+=`
+                 <option value="${item.code}">${item.name}</option>
+                 `;
+
+             });
+           
+             $('.xa').html(content);
+            }
+        ) ;
+      
+  });
+</script>
 @endsection

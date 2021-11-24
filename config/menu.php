@@ -161,6 +161,12 @@
                 ]
             ]
         ],
+          [
+            'label'=>'Quản lý đơn hàng',
+            'route'=>'order.index',
+            'icon'=>'fas fa-shopping-cart',
+           
+        ],
 
     ];
 ?>

@@ -26,8 +26,8 @@ class RepositoryServiceProvider extends ServiceProvider
             'Brand',
             'Banner',
             'User',
+            'Cart',
             'Order',
-            'OrderDetail',
         );
 
         foreach ($models as $model) {

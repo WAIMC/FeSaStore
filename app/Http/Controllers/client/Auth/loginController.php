@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Repositories\Contracts\UserInterface;
-
+use App\Http\Requests\UserRequest\LoginRequest;
 class loginController extends Controller
 {
     protected $users;
@@ -21,23 +21,8 @@ class loginController extends Controller
         return view('client.auth.login');
     }
 
-    public function postLogin(Request $request)
+    public function postLogin(LoginRequest $request)
     {
-        $request->validate(
-            [
-                'email'=>'required|string|max:255|email',
-                'password' => 'required|string|min:8'
-            ],
-            [
-                'email.required'=>'Email không được để trống1',
-                'email.email'=>'Email không đúng định dạng!',
-                'password.min'=>'Mật khẩu phải nhiều hơn 8 ký tự!'
-                ,
-                'password.required'=>'Mật khẩu phải là kiều chuỗi!'
-                ,
-                'password.string'=>'Mật khẩu không được bỏ trống!'
-            ]
-        );
         if(
             Auth::guard('cus')->attempt(['email' => request()->email, 'password' => request()->password], request()->has('remember'))
         ){
@@ -46,7 +31,7 @@ class loginController extends Controller
         return redirect()->back()->with('error','Đăng nhập thất bại, thử lại!');
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
         if(auth()->guard('cus')->logout()){        
             Session::flush();

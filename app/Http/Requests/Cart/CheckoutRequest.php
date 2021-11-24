@@ -25,9 +25,7 @@ class CheckoutRequest extends FormRequest
     {
         return [
             'name'=>'required|string',
-            'xa'=>'required',
-            'huyen'=>'required',
-            'tinh'=>'required',
+            'address'=>'required',
             'email'=>'required|email',
             'phone'=>'required',
            
@@ -38,9 +36,7 @@ class CheckoutRequest extends FormRequest
         return [
             'name.required' =>'Họ không được để trống !',
             'name.string' =>'Họ phải là chuỗi !',
-            'xa.required' =>'Xã không được để trống !',
-            'huyen.required' =>'Huyện không được để trống !',
-            'tinh.required' =>'Tỉnh không được để trống !',
+            'address.required' =>'Địa chỉ không được để trống !',
             'phone.required' =>'Điện thoại không được để trống !',
             'email.required' =>'Email không được để trống !',
             'email.email' =>'Email không đúng định dạng !',

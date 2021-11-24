@@ -34,20 +34,20 @@ NOTE: main.js, All custom script and plugin activation script in this file.
     
 ================================================*/
 
-(function ($) {
+(function($) {
     "use Strict";
     /*--------------------------
     1. Newsletter Popup
     ---------------------------*/
-    setTimeout(function () {
+    setTimeout(function() {
         $('.popup_wrapper').css({
             "opacity": "1",
             "visibility": "visible"
         });
-        $('.popup_off').on('click', function () {
+        $('.popup_off').on('click', function() {
             $(".popup_wrapper").fadeOut(500);
         })
-    },700000);
+    }, 700000);
 
     /*----------------------------
     2. Mobile Menu Activation
@@ -68,14 +68,14 @@ NOTE: main.js, All custom script and plugin activation script in this file.
     /*----------------------------
     4.1 Vertical-Menu Activation
     -----------------------------*/
-    $('.categorie-title,.mobile-categorei-menu').on('click', function () {
+    $('.categorie-title,.mobile-categorei-menu').on('click', function() {
         $('.vertical-menu-list,.mobile-categorei-menu-list').slideToggle();
     });
 
     /*------------------------------
      4.2 Category menu Activation
     ------------------------------*/
-    $('#cate-toggle li.has-sub>a,#cate-mobile-toggle li.has-sub>a,#shop-cate-toggle li.has-sub>a').on('click', function () {
+    $('#cate-toggle li.has-sub>a,#cate-mobile-toggle li.has-sub>a,#shop-cate-toggle li.has-sub>a').on('click', function() {
         $(this).removeAttr('href');
         var element = $(this).parent('li');
         if (element.hasClass('open')) {
@@ -96,16 +96,16 @@ NOTE: main.js, All custom script and plugin activation script in this file.
     /*----------------------------
     4.3 Checkout Page Activation
     -----------------------------*/
-    $('#showlogin').on('click', function () {
+    $('#showlogin').on('click', function() {
         $('#checkout-login').slideToggle();
     });
-    $('#showcoupon').on('click', function () {
+    $('#showcoupon').on('click', function() {
         $('#checkout_coupon').slideToggle();
     });
-    $('#cbox').on('click', function () {
+    $('#cbox').on('click', function() {
         $('#cbox_info').slideToggle();
     });
-    $('#ship-box').on('click', function () {
+    $('#ship-box').on('click', function() {
         $('#ship-box-info').slideToggle();
     });
 
@@ -236,12 +236,12 @@ NOTE: main.js, All custom script and plugin activation script in this file.
             }
         }
     })
-    
+
     /*----------------------------------------------------
     8. Electronics Product Activation
     -----------------------------------------------------*/
     $('.electronics-pro-active')
-        .on('changed.owl.carousel initialized.owl.carousel', function (event) {
+        .on('changed.owl.carousel initialized.owl.carousel', function(event) {
             $(event.target)
                 .find('.owl-item').removeClass('last')
                 .eq(event.item.index + event.page.size - 1).addClass('last');
@@ -271,7 +271,7 @@ NOTE: main.js, All custom script and plugin activation script in this file.
         })
 
     $('.electronics-pro-active2')
-        .on('changed.owl.carousel initialized.owl.carousel', function (event) {
+        .on('changed.owl.carousel initialized.owl.carousel', function(event) {
             $(event.target)
                 .find('.owl-item').removeClass('last')
                 .eq(event.item.index + event.page.size - 1).addClass('last');
@@ -299,7 +299,7 @@ NOTE: main.js, All custom script and plugin activation script in this file.
                 }
             }
         })
-    
+
     /*----------------------------------------------------
     9. Best Seller Product Activation
     -----------------------------------------------------*/
@@ -357,7 +357,7 @@ NOTE: main.js, All custom script and plugin activation script in this file.
             }
         }
     })
-    
+
     /*----------------------------------------------------
     10. Like Product Activation
     -----------------------------------------------------*/
@@ -392,7 +392,7 @@ NOTE: main.js, All custom script and plugin activation script in this file.
     /*----------------------------------------------------
     11. Second Hot Deal Product Activation
     -----------------------------------------------------*/
-    $('.second-hot-deal-active').on('changed.owl.carousel initialized.owl.carousel', function (event) {
+    $('.second-hot-deal-active').on('changed.owl.carousel initialized.owl.carousel', function(event) {
         $(event.target)
             .find('.owl-item').removeClass('last')
             .eq(event.item.index + event.page.size - 1).addClass('last');
@@ -448,7 +448,7 @@ NOTE: main.js, All custom script and plugin activation script in this file.
             }
         }
     })
-        
+
     /*----------------------------------------------------
     12. New Product Tow For Home-2 Activation
     -----------------------------------------------------*/
@@ -504,17 +504,17 @@ NOTE: main.js, All custom script and plugin activation script in this file.
             }
         }
     })
-    $('.thumb-menu a').on('click', function () {
+    $('.thumb-menu a').on('click', function() {
         $('.thumb-menu a').removeClass('active');
     })
-    
+
     /*----------------------------
     14. Countdown Js Activation
     -----------------------------*/
-    $('[data-countdown]').each(function () {
+    $('[data-countdown]').each(function() {
         var $this = $(this),
             finalDate = $(this).data('countdown');
-        $this.countdown(finalDate, function (event) {
+        $this.countdown(finalDate, function(event) {
             $this.html(event.strftime('<div class="count"><p>%D</p> <span>Days</span></div><div class="count"><p>%H</p> <span>Hours</span></div><div class="count"><p>%M</p> <span>Mins</span></div><div class="count"> <p>%S</p> <span>Secs</span></div>'));
         });
     });
@@ -537,19 +537,19 @@ NOTE: main.js, All custom script and plugin activation script in this file.
     /*----------------------------
     16. Sticky-Menu Activation
     ------------------------------ */
-    $(window).scroll(function () {
+    $(window).scroll(function() {
         if ($(this).scrollTop() > 300) {
             $('.header-sticky').addClass("sticky");
         } else {
             $('.header-sticky').removeClass("sticky");
         }
     });
-    
+
     /*----------------------------
     17. Nice Select Activation
-    ------------------------------ */
-    $('select').niceSelect();
-    
+    ------------------------------  $('select').niceSelect(); */
+
+
     /*----------------------------
     18. Price Slider Activation
     -----------------------------*/
@@ -558,20 +558,20 @@ NOTE: main.js, All custom script and plugin activation script in this file.
         min: 0,
         max: 100,
         values: [0, 85],
-    slide: function( event, ui ) {
-        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-      }
+        slide: function(event, ui) {
+            $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+        }
     });
-    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+    $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+        " - $" + $("#slider-range").slider("values", 1));
 
 
 
     /*--------------------------
          banner colse Popup
     ---------------------------*/
-        $('.popup_off_banner').on('click', function () {
-            $(".popup_banner").fadeOut(500);
-        })
+    $('.popup_off_banner').on('click', function() {
+        $(".popup_banner").fadeOut(500);
+    })
 
 })(jQuery);
