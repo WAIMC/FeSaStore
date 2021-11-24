@@ -6,6 +6,8 @@
 
     interface OrderDetailInterface extends RepositoryInterface{
 
+        // filter chart by date 
+        public function get_date_between($from_date, $to_date);
      
     }
 

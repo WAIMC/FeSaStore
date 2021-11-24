@@ -28,6 +28,8 @@ class RepositoryServiceProvider extends ServiceProvider
             'User',
             'Order',
             'OrderDetail',
+            'Comment',
+            'Customer'
         );
 
         foreach ($models as $model) {

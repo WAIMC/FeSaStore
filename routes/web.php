@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 
     Route::prefix('admin')->middleware('adminAuth')->group(function(){
         Route::get('/',[App\Http\Controllers\admin\AdminController::class,'index'])->name('admin.index');
+        Route::post('/filter_chart_by_date',[App\Http\Controllers\admin\AdminController::class, 'filter_chart_by_date'])->name('admin.filter_chart_by_date');
         Route::get('/file',[App\Http\Controllers\admin\AdminController::class,'file'])->name('admin.file');
         Route::post('/Admin/Logout',[App\Http\Controllers\admin\Auth\loginController::class,'logout'])->name('admin.logout');
 
@@ -42,6 +43,9 @@ use Illuminate\Support\Facades\Route;
             'categoryblog'=>admin\CategoryBlogController::class,
             'role'=>admin\RoleController::class,
             'decentralize'=>admin\DecentralizeController::class,
+            'comment'=>admin\CommentController::class,
+            'order'=>admin\OrderController::class,
+            'customer'=>admin\CustomerController::class,
         ]);
     });
 

@@ -67,6 +67,8 @@
                                             $name_managerment = 'Vai Trò';
                                         }elseif ($route == 'decentralize') {
                                             $name_managerment = 'Phân Quyền';
+                                        }elseif ($route == 'slider') {
+                                            $name_managerment = 'slider';
                                         }
                                     @endphp
                                         <div class="card card-dark col-4 card_{{$route}}">
