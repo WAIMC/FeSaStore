@@ -603,6 +603,18 @@ span.total-pro {
   text-align: center;
 }
 
+span.total-wish {
+    background: #00483d none repeat scroll 0 0;
+    border-radius: 10px;
+    color: #fff;
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    margin-top: 3px;
+    min-width: 30px;
+    text-align: center;
+  }
+
 .single-cart-box,
 .price-content {
     border-bottom: 1px solid #ededed;
