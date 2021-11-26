@@ -476,6 +476,9 @@
             
         });
     </script>
+
+
+
      <script>
         $('#add-cart').click(function(e) {
             e.preventDefault();
@@ -524,6 +527,8 @@
             })
         });
     </script>
+
+
 </body>
 
 </html>

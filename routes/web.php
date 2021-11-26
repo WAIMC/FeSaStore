@@ -64,7 +64,6 @@ use Illuminate\Support\Facades\Route;
     Route::get('/',[App\Http\Controllers\client\HomeController::class,'index'])->name('client.index');
     Route::get('/shop',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
     Route::get('/productDetail/{product_id}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
-    Route::get('/wishlist',[App\Http\Controllers\client\HomeController::class,'wishlish'])->name('client.wishlist');
     Route::get('/about',[App\Http\Controllers\client\HomeController::class,'about'])->name('client.about');
     Route::get('/contact',[App\Http\Controllers\client\HomeController::class,'contact'])->name('client.contact');
     Route::post('/contact',[App\Http\Controllers\client\HomeController::class,'post_contact'])->name('client.post_contact');
@@ -97,6 +96,23 @@ use Illuminate\Support\Facades\Route;
 });
 
 //end
+
+//wishlist
+Route::prefix('wishlist')->group(function () {
+    Route::get('/', [App\Http\Controllers\client\WishlistController::class, 'view'])->name('wishlist.view');
+    Route::get('add/{id}', [App\Http\Controllers\client\WishlistController::class, 'add'])->name('wishlist.add');
+    Route::get('removelist/{id}', [App\Http\Controllers\client\WishlistController::class, 'remove']);
+    Route::get('remove/{id}', [App\Http\Controllers\client\WishlistController::class, 'removelistwishlist'])->name('wishlist.remove');
+    Route::get('update', [App\Http\Controllers\client\WishlistController::class, 'update'])->name('wishlist.update');
+    Route::get('clear', [App\Http\Controllers\client\WishlistController::class, 'clear'])->name('wishlist.clear');
+    Route::get('checkout', [App\Http\Controllers\client\WishlistController::class, 'checkout'])->name('wishlist.checkout')->middleware('cus');
+    Route::post('checkout', [App\Http\Controllers\client\WishlistController::class, 'PostCheckout'])->name('wishlist.postcheckout')->middleware('cus');
+});
+
+//end
+
+
+
     Route::get('/checkout',[App\Http\Controllers\client\HomeController::class,'checkout'])->name('client.checkout');
     Route::get('/blog',[App\Http\Controllers\client\HomeController::class,'blog'])->name('client.blog');
     Route::get('/blog-details/{slug}',[App\Http\Controllers\client\HomeController::class,'blog_details'])->name('client.blog_details');

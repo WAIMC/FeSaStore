@@ -30,6 +30,7 @@ class AdminController extends Controller
     protected $product_repo;
     protected $brand_repo;
     protected $blog_repo;
+
     
     public function __construct(
         OrderInterface $order_repo,

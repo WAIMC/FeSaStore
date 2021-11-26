@@ -87,12 +87,6 @@ class HomeController extends Controller
         return view('client.products.productDetail', compact('data_product_detail'));
     }
 
-    public function wishlist(){
-        
-        return view('client.wishlist');
-    }
-
-
     public function register(){
         
         return view('client.register');

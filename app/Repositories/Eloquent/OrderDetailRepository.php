@@ -6,6 +6,7 @@
     use App\Repositories\Eloquent\BaseRepository;
     use Carbon\Carbon;
 
+
     class OrderDetailRepository extends BaseRepository implements OrderDetailInterface{
         
         /**

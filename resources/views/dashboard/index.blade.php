@@ -391,6 +391,7 @@
           });
         }); 
 
+
         labels_brand.forEach(data_brand => {
           name_brand.push(data_brand['name_brand']);
           quantity_brand.push(data_brand['quantity'])
