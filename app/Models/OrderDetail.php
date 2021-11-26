@@ -11,10 +11,15 @@ class OrderDetail extends Model
     protected $table='order_detail';
     protected $fillable=
     [
-        'name',	'quantity',	'price',	'variant_product_id',	'order_id'
+        'name',
+        'quantity',
+        'price',
+        'variant_product_id',
+        'order_id'
     ];
- public function getVariant(){
-     return $this->hasOne(VariantProduct::class,'id','variant_product_id');
- }
+    
+    public function getVariant(){
+        return $this->hasOne(VariantProduct::class,'id','variant_product_id');
+    }
 
 }

@@ -30,7 +30,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data_cate = $this->category_repo->paginate(10);
+        $data_cate = $this->category_repo->getAll();
         return view('dashboard.category.index', compact('data_cate'));
     }
 
@@ -75,7 +75,7 @@ class CategoryController extends Controller
      */
     public function show(category $category)
     {
-        //
+        dd($category);
     }
 
     /**

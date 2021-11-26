@@ -53,7 +53,16 @@ class HomeController extends Controller
         $all_brand = $this->brand_repo->getAll();
         $all_banner = $this->banner_repo->getAll();
         $all_setting_link = $this->setting_link_repo->getAll();
-        $paginate_cate = $this->category_repo->paginate(7);
+
+        $get_category_children = []; 
+        // get category children haven't children
+        foreach ($this->category_repo->getAll() as $cat) {
+            if($cat->categoryChildren()->count() == 0){
+                array_push($get_category_children, $cat);
+            }
+        }
+        $paginate_cate = array_slice($get_category_children, 0, 5, true);
+
         return view('client.index', compact('all_brand', 'all_banner', 'all_setting_link', 'paginate_cate'));
     }
 

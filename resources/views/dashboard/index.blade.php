@@ -142,7 +142,7 @@
               </div>
             </div>
             <div class="card-body">
-              <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+              <canvas id="donutChart" style="min-height: 241px; height: 241px; max-height: 241px; max-width: 100%;"></canvas>
             </div>
             <!-- /.card-body -->
           </div>
@@ -200,6 +200,158 @@
             <!-- /.card -->
         </div>
       </div>
+      <div class="row">
+        <div class="col-7">
+          {{-- latest Order Start --}}
+          <div class="card">
+            <div class="card-header border-transparent">
+              <h3 class="card-title">Đơn Hàng Gần Đây</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table m-0">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Khách Hàng</th>
+                    <th>Tổng Tiền</th>
+                    <th>Trạng Thái</th>
+                    <th>Ngày Đặt</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($all_order as $recent_order)
+                      <tr>
+                        <td><a href="{{route('order.show', $recent_order->id)}}"> #{{ $recent_order->id }} </a></td>
+                        <td> {{ $recent_order->name }} </td>
+                        <td>
+                          @php
+                              $total = 0;
+                          @endphp
+                          @foreach ($recent_order->orderDetail as $get_total)
+                              @php
+                                $total += $get_total->quantity * $get_total->price;
+                              @endphp
+                          @endforeach
+                          {{ number_format($total) }} VNĐ
+                        </td>
+                        <td>
+                          @if ($recent_order->status == 0)
+                            <span class="badge badge-warning">Đang Xác Nhận</span> 
+                          @elseif ($recent_order->status == 1)
+                            <span class="badge badge-success">Đang Giao</span>
+                          @elseif ($recent_order->status == 2)
+                            <span class="badge badge-info">Hoàn Thành</span>
+                          @elseif ($recent_order->status == 3)
+                          <span class="badge badge-danger">Đã Hủy</span>
+                          @endif
+                        </td>
+                        <td>
+                          {{ $recent_order->created_at->format('d-m-Y') }}
+                        </td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.table-responsive -->
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer clearfix">
+              <a href="{{route('order.index')}}" class="btn btn-sm btn-secondary float-right">Xem Tất Cả Đơn Hàng</a>
+            </div>
+            <!-- /.card-footer -->
+          </div>
+          {{-- lastest Order End --}}
+        </div>
+        <div class="col-5">
+          {{-- related Product start --}}
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Sản Phẩm Thêm Gần Đây</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+              <ul class="products-list product-list-in-card pl-2 pr-2">
+                @foreach ($all_product as $related_pro)
+                  <li class="item">
+                    <div class="product-img">
+                      <img src="{{ url('public/uploads') }}/{{ $related_pro->image }}" alt="Ảnh Sản Phẩm" class="img-size-50">
+                    </div>
+                    <div class="product-info">
+                      <a href="javascript:void(0)" class="product-title"> {{ $related_pro->name }}
+                        <span class="badge badge-warning float-right"> {{ $related_pro->product_variantProduct->first()->price }} VNĐ</span></a>
+                      <span class="product-description">
+                        {{ $related_pro->short_desciption }}
+                      </span>
+                    </div>
+                  </li>
+                @endforeach
+              </ul>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer text-center">
+              <a href="{{ route('product.index') }}" class="uppercase">Xem Tất Cả Sản Phẩm</a>
+            </div>
+            <!-- /.card-footer -->
+          </div>
+          {{-- related Product end --}}
+          {{-- related Blog start --}}
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Bài Viết Thêm Gần Đây</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+              <ul class="products-list product-list-in-card pl-2 pr-2">
+                @foreach ($all_blog as $related_blog)
+                  <li class="item">
+                    <div class="product-img">
+                      <img src="{{ url('public/uploads') }}/{{ $related_blog->image }}" alt="Ảnh Sản Phẩm" class="img-size-50">
+                    </div>
+                    <div class="product-info">
+                      <a href="javascript:void(0)" class="product-title"> {{ $related_blog->title }}
+                        <span class="badge badge-warning float-right"> Tác Giả : {{ $related_blog->getauthor->name }} </span></a>
+                      <span class="product-description">
+                        {!! $related_blog->content !!}
+                      </span>
+                    </div>
+                  </li>
+                @endforeach
+              </ul>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer text-center">
+              <a href="{{ route('blog.index') }}" class="uppercase">Xem Tất Cả Bài Viết</a>
+            </div>
+            <!-- /.card-footer -->
+          </div>
+          {{-- related Blog end --}}
     </div>
 @endsection
 
@@ -213,7 +365,7 @@
 
 {{-- customize load js for master layout --}}
 @section('js')
-    {{-- js here --}}
+  {{-- js here --}}
   <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -233,12 +385,11 @@
         all_brand.forEach(brand => {
           labels_brand[brand['id']] = {'name_brand' : brand['name'], 'quantity' : 0 };
           all_product.forEach(pro => {
-            if(pro['id'] == brand['id']){
+            if(pro['brand_id'] == brand['id']){
               labels_brand[brand['id']]['quantity'] += 1 ;
             }
           });
         }); 
-        console.log(labels_brand);
 
         labels_brand.forEach(data_brand => {
           name_brand.push(data_brand['name_brand']);
@@ -382,15 +533,18 @@
         chart30day();
 
         var chart = new Morris.Area({
-          element: 'chart',
-          lineColor:['#819C79','#FC8710','#FF6541','#A4ADD3','#766B56'],
-          pointColor:['#ffffff'],
-          pointStrokeColor:['black'],
-          parseTime:false,
-          xkey: 'created_at',
-          ykeys: ['price','quantity','sales','profit'],
-          labels: ['price','quantity','sales','profit']
-        });
+                      element: 'chart',
+                      lineColor:['#819C79','#FC8710','#FF6541','#A4ADD3','#766B56'],
+                      pointColor:['#ffffff'],
+                      pointStrokeColor:['black'],
+                      parseTime:false,
+                      xkey: 'created_at',
+                      ykeys: ['quantity', 'price', 'sales', 'profit'],
+                      labels: ['Số Lượng', 'Giá', 'Doanh Số', 'Lợi Nhuận']
+                    });
+        
+                    // chart.setData([{"name":"test bug","quantity":2,"price":100,"created_at":"2021-11-26","sales":200,"profit":60},
+                    // {"name":"test bug","quantity":2,"price":100,"created_at":"2021-11-26","sales":200,"profit":60}]);
 
         // search chart with date
         $("#searchChart").click(function (e) { 
@@ -434,15 +588,6 @@
               }
             });
         };
-
-        // //INITIALIZE SPARKLINE CHARTS
-        // var sparkline1 = new Sparkline($('#sparkline-1')[0], { width: 240, height: 70, lineColor: '#92c1dc', endColor: '#92c1dc' })
-        // var sparkline2 = new Sparkline($('#sparkline-2')[0], { width: 240, height: 70, lineColor: '#f56954', endColor: '#f56954' })
-        // var sparkline3 = new Sparkline($('#sparkline-3')[0], { width: 240, height: 70, lineColor: '#3af221', endColor: '#3af221' })
-
-        // sparkline1.draw([1000, 1200, 920, 927, 931, 1027, 819, 930, 1021])
-        // sparkline2.draw([515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921])
-        // sparkline3.draw([15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21])
 
         /**
         * End Filter Chart

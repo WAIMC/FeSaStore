@@ -31,7 +31,7 @@ class SettingLinkController extends Controller
      */
     public function index()
     {
-        $data = $this->setting_link_repo->paginate(15);
+        $data = $this->setting_link_repo->getAll();
         return view('dashboard.settingLinks.index',compact('data'));
     }
 
