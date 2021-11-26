@@ -34,7 +34,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{route('settingLink.store')}}" method="post">
+                        <form action="{{route('settingLink.store')}}" method="post" id="formInsert">
                         @csrf
                         <div class="form-group">
                           <label for="">Tên liên kết</label>
@@ -50,7 +50,7 @@
                             <small  class="text-danger">{{$message}}</small> 
                             @enderror
                           </div>
-                          <input type="submit" value="Thêm mới" class="btn btn-primary">
+                          <input type="submit" value="Thêm mới" class="btn btn-primary btnInsert">
                         </form>
                     </div>
                 </div>
@@ -70,5 +70,8 @@
 
 {{-- customize load js for master layout --}}
 @section('js')
-    
+    {{-- swal --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- load crud js for project --}}
+    <script src="{{ url('public/dashboard') }}/setup-project/setup-crud.js"></script>
 @endsection

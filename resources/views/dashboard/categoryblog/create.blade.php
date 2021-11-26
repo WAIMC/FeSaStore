@@ -11,11 +11,8 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow">
-
                 {{-- card hearder --}}
                 <div class="card-header">
-
-                    {{-- header Setting Link --}}
                     <div class="row justify-content-between">
                         <div class="col-4">
                             <h4>Thêm mới danh mục </h4>
@@ -27,35 +24,31 @@
                             </a>
                         </div>
                     </div>
-                       
-                    {{-- select by choose --}}
-                  
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12">
-                        <form action="{{route('categoryblog.store')}}" method="post"  id="quickForm" novalidate="novalidate">
-                        @csrf
-                        <div class="form-group">
-                          <label for="">Tên danh mục</label>
-                          <input type="text" name="name" value="{{old("name")}}" class="form-control @error('name')   is-invalid @enderror"placeholder="Nhập tên categoryblog" aria-describedby="helpId">
-                              @error('name')
-                            <small  class="text-danger">{{$message}}</small> 
-                            @enderror
+                  </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <form action="{{route('categoryblog.store')}}" method="post" id="formInsert" novalidate="novalidate">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="">Tên danh mục</label>
+                                    <input type="text" name="name" value="{{old("name")}}" class="form-control @error('name') is-invalid @enderror" placeholder="Nhập tên categoryblog" aria-describedby="helpId">
+                                    @error('name')
+                                        <small class="text-danger">{{$message}}</small> 
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Mô tả</label>
+                                    <textarea class="form-control" name="description" id="" rows="3"> {{ old("description") }} </textarea>
+                                    @error('description')
+                                        <small  class="text-danger">{{$message}}</small> 
+                                    @enderror
+                                </div>
+                                <input type="submit" value="Thêm mới" class="btn btn-primary btnInsert">
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <label for="">Mô tả</label>
-                            <textarea class="form-control" name="description" id="" rows="3">{{old("description")}}</textarea>
-                                @error('description')
-                              <small  class="text-danger">{{$message}}</small> 
-                              @enderror
-                          </div>
-                    
-                          <input type="submit" value="Thêm mới" class="btn btn-primary">
-                        </form>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>
@@ -71,10 +64,13 @@
 
 {{-- customize load js for master layout --}}
 @section('js')
+    {{-- swal --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- load crud js for project --}}
+    <script src="{{ url('public/dashboard') }}/setup-project/setup-crud.js"></script>
     <script>
          $('#model_file').on('hide.bs.modal', event => {
             var _link = $('input#image').val();
-
             var _img = "{{ url('public/uploads') }}" + '/' + _link;
             if (_img && _link) {
                 $('img#show_img').attr('src', _img);
@@ -82,8 +78,6 @@
             }else{
                 $('img#show_img').attr('display', 'none');
             }
-
-
         });
     </script>
 @endsection

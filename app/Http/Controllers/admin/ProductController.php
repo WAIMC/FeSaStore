@@ -38,7 +38,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data_pro = $this->product_repo->paginate(10);
+        $data_pro = $this->product_repo->getAll();
         return view('dashboard.product.index', compact('data_pro'));
     }
 

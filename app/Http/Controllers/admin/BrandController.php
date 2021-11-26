@@ -19,12 +19,12 @@ class BrandController extends Controller
     protected $brands;
     public function __construct(BrandInterface $brands)
     {
-        $this->brands=$brands;
+        $this->brands = $brands;
     }
     public function index()
     {
-        $data=$this->brands->paginate(10);
-       return view('dashboard.brand.index',compact('data'));
+        $data = $this->brands->getAll();
+       return view('dashboard.brand.index', compact('data'));
     }
 
     /**

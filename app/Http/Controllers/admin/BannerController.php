@@ -15,7 +15,7 @@ class BannerController extends Controller
 
     public function __construct(BannerInterface $banners)
     {
-        $this->banners=$banners;
+        $this->banners = $banners;
     }
 
     /**
@@ -25,8 +25,8 @@ class BannerController extends Controller
      */
     public function index()
     {
-        $data=$this->banners->paginate(10);
-        return view('dashboard.banner.index',compact('data'));
+        $data = $this->banners->getAll();
+        return view('dashboard.banner.index', compact('data'));
     }
 
     /**

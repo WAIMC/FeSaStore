@@ -31,8 +31,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $show_paginate = isset(request()->show) ? request()->show : 10;
-        $data_role = $this->role_repo->paginate($show_paginate);
+        $data_role = $this->role_repo->getAll();
         return view('dashboard.role.index',compact('data_role'));
     }
 

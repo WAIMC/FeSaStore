@@ -11,18 +11,14 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow">
-
                 <div class="card-header">
-
                     <h4 class="text-center">Sửa Sản Phẩm</h4>
-
                 </div>
                 <div class="card-body">
-                    <form  method="POST" action="{{ route('product.update',$product->id) }}" enctype="multipart/form-data" id="formEdit">
+                    <form method="POST" action="{{ route('product.update',$product->id) }}" enctype="multipart/form-data" id="formEdit">
                         @csrf @method('PUT')
                         <div class="row">
                             <div class="col-9">
-    
                                 <div class="form-group">
                                     <label for="name">Tên Sản Phẩm</label>
                                     <input type="text" name="name" id="name" aria-describedby="name" placeholder="Tên Sản Phẩm"
@@ -33,7 +29,6 @@
                                         <small id="name" class="invalid-feedback form-text text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-
                                 <div class="form-group">
                                     <label for="short_description">Mô Tả Ngắn</label>
                                     <textarea name="short_description" id="short_description" aria-describedby="short_description" class="form-control 
@@ -45,17 +40,14 @@
                                             class="invalid-feedback form-text text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-    
                             </div>
                             <div class="col-3">
-    
                                 <div class="form-group">
                                     <label for="category_id">Thể Loại</label>
                                     <select class="form-control" name="category_id" id="category_id">
                                         {!! $options !!}
                                     </select>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="brand_id">Thương Hiệu</label>
                                     <select class="form-control" name="brand_id" id="brand_id">
@@ -64,7 +56,6 @@
                                         @endforeach
                                     </select>
                                 </div>
-    
                                 <div class="form-group mt-2">
                                     <label for="image">Hình Ảnh</label>
                                     <div class="row">
@@ -91,7 +82,6 @@
                                         <img src="{{ url('public/uploads/'. $product->image) }}" id="show_image" width="100%" alt="">
                                     </div>
                                 </div>
-                                
                                 <div class="mt-2"><label for="">Trạng Thái</label></div>
                                 <div class="form-inline">
                                     <div class="custom-control custom-radio mr-2">
@@ -103,10 +93,8 @@
                                         <label for="Normal" class="custom-control-label">Hiện</label>
                                     </div>
                                 </div>
-    
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col-12 form-group">
                                 <label for="description">Mô Tả Chi Tiết</label>
@@ -120,8 +108,6 @@
                                 @enderror
                             </div>
                         </div>
-
-
                         <div class="row">
                             <div class="col-12 d-flex justify-content-center">
                                 <button class="btn btn-sm btn-secondary" id="show_hide_atri">CLick để sửa hoặc không sửa thuộc tính</button>
@@ -173,11 +159,10 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class=" variant_product"></div>
                         <input type="hidden" name="variant" value="{{ $product->variant }}">
                         <div class="row mt-5">
-                            <button type="button" class="btn btn-primary btnInsert">Cập Nhật</button>
+                            <button type="button" class="btn btn-primary btnEdit">Cập Nhật</button>
                         </div>
                         
                     </form>
@@ -229,6 +214,8 @@
     <script src="{{ url('public/dashboard') }}/plugins/summernote/summernote-bs4.min.js"></script>
     {{-- swal --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- load crud js for project --}}
+    <script src="{{ url('public/dashboard') }}/setup-project/setup-crud.js"></script>
     <script>
         $(document).ready(function () {
             //  summernote description
@@ -279,30 +266,6 @@
                 var _link = $('input#image').val();
                 var _image = "{{ url('public/uploads') }}" + "/" + _link;
                 $('#show_image').attr('src', _image);
-            });
-
-            // insert conformation
-            $('.btnInsert').click(function(e) {
-                e.preventDefault();
-                Swal.fire({
-                    title: 'Bạn Có Chắc Chắn?',
-                    text: "Bạn Không Thể Hoàn Tác Chức Năng!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Có, Thêm nó!',
-                    cancelButtonText: "Không, hủy nó!",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $('form#formEdit').submit();
-                        Swal.fire(
-                            'Đang Thêm Mới!',
-                            'Dữ Liệu Đang Được Thêm.',
-                            'success'
-                        );
-                    }
-                });
             });
 
             // insert variant product
@@ -370,7 +333,7 @@
                 var attri = $('input[name^=attri]').map(function(idx, elem) {
                     return $(elem).val();
                 }).get();
-
+                
                 // check value vull
                 if (name_attribute.includes('') == true || attri.includes('') == true) {
                     alert("Vui lòng điền đủ thông tin thuộc tính.");
@@ -383,7 +346,6 @@
                     });
                 }
                 
-
                 
                 var i = 0;
                 var fill_variant = '';

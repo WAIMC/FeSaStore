@@ -11,11 +11,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow">
-
-                {{-- card hearder --}}
                 <div class="card-header">
-
-                    {{-- header Setting Link --}}
                     <div class="row justify-content-between">
                         <div class="col-4">
                             <h4>Chỉnh sửa danh mục</h4>
@@ -27,45 +23,41 @@
                             </a>
                         </div>
                     </div>
-                       
-                    {{-- select by choose --}}
-                  
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12">
-                        <form action="{{route('categoryblog.update',$categoryblog)}}" method="post">
-                        @csrf @method('PUT')
-                        <div class="form-group">
-                            <label for="">Tên danh mục</label>
-                            <input type="text" name="name" value="{{$categoryblog->name}}" class="form-control @error('name')   is-invalid @enderror"placeholder="Nhập tên categoryblog" aria-describedby="helpId">
-                                @error('name')
-                              <small  class="text-danger">{{$message}}</small> 
-                              @enderror
-                          </div>
-                          <div class="form-group">
-                              <label for="">Mô tả</label>
-                              <textarea class="form-control" name="description" id="" rows="3">{{$categoryblog->description}}</textarea>
-                                  @error('description')
-                                <small  class="text-danger">{{$message}}</small> 
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Trạng thái</label>
-                                <div class="form-control">
-                                    <input type="radio" id="inlineRadio1" @if ($categoryblog->status == 1)checked="" @endif value="1" name="status">
-                                    <label for="inlineRadio1"> Ẩn </label>
-                                    <input @if ($categoryblog->status == 0)checked="" @endif type="radio" id="inlineRadio2" value="0" name="status">
-                                    <label for="inlineRadio2"> Hiện </label>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <form action="{{route('categoryblog.update',$categoryblog)}}" method="post" id="formEdit">
+                                @csrf @method('PUT')
+                                <div class="form-group">
+                                    <label for="">Tên danh mục</label>
+                                    <input type="text" name="name" value="{{$categoryblog->name}}" class="form-control @error('name') is-invalid @enderror" placeholder="Nhập tên categoryblog" aria-describedby="helpId">
+                                    @error('name')
+                                        <small  class="text-danger">{{$message}}</small> 
+                                    @enderror
                                 </div>
-                
-                            </div>
-                            <input type="hidden" name="id" value="{{$categoryblog->id}}">
-                            <input type="submit" value="Cập nhật" class="btn btn-primary">
-                          </form>
+                                <div class="form-group">
+                                    <label for="">Mô tả</label>
+                                    <textarea class="form-control" name="description" id="" rows="3">{{$categoryblog->description}}</textarea>
+                                    @error('description')
+                                        <small  class="text-danger">{{$message}}</small> 
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>Trạng thái</label>
+                                    <div class="form-control">
+                                        <input type="radio" id="inlineRadio1" @if ($categoryblog->status == 1) checked="" @endif value="1" name="status">
+                                        <label for="inlineRadio1"> Ẩn </label>
+                                        <input @if ($categoryblog->status == 0)checked="" @endif type="radio" id="inlineRadio2" value="0" name="status">
+                                        <label for="inlineRadio2"> Hiện </label>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="id" value="{{$categoryblog->id}}">
+                                <input type="submit" value="Cập nhật" class="btn btn-primary btnEdit">
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>
@@ -81,10 +73,13 @@
 
 {{-- customize load js for master layout --}}
 @section('js')
+    {{-- swal --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- load crud js for project --}}
+    <script src="{{ url('public/dashboard') }}/setup-project/setup-crud.js"></script>
     <script>
          $('#model_file').on('hide.bs.modal', event => {
             var _link = $('input#image').val();
-
             var _img = "{{ url('public/uploads') }}" + '/' + _link;
             if (_img && _link) {
                 $('img#show_img').attr('src', _img);
@@ -92,8 +87,6 @@
             }else{
                 $('img#show_img').attr('display', 'none');
             }
-
-
         });
     </script>
 @endsection

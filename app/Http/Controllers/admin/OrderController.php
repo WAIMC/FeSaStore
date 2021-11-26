@@ -12,11 +12,11 @@ class OrderController extends Controller
     protected $orderdetail;
    public function __construct(OrderInterface $orders)
    {
-       $this->order=$orders;
+       $this->order = $orders;
    }
    public function index(){
-       $data=$this->order->paginate(8);
-       return view('dashboard.order.index',compact('data'));
+       $data = $this->order->getAll();
+       return view('dashboard.order.index', compact('data'));
    }
 
    public function show($order)

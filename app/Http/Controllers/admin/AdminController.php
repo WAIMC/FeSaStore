@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\OrderDetail;
 use App\Repositories\Contracts\AdminInterface;
+use App\Repositories\Contracts\BlogInterface;
 use App\Repositories\Contracts\BrandInterface;
 use App\Repositories\Contracts\CommentInterface;
 use App\Repositories\Contracts\OrderInterface;
@@ -28,6 +29,8 @@ class AdminController extends Controller
     protected $customer_repo;
     protected $product_repo;
     protected $brand_repo;
+    protected $blog_repo;
+
     
     public function __construct(
         OrderInterface $order_repo,
@@ -35,7 +38,8 @@ class AdminController extends Controller
         CommentInterface $comment_repo,
         CustomerInterface $customer_repo,
         ProductInterface $product_repo,
-        BrandInterface $brand_repo
+        BrandInterface $brand_repo,
+        BlogInterface $blog_repo
     )
     {
         $this->order_repo = $order_repo;
@@ -44,6 +48,7 @@ class AdminController extends Controller
         $this->customer_repo = $customer_repo;
         $this->product_repo = $product_repo;
         $this->brand_repo = $brand_repo;
+        $this->blog_repo = $blog_repo;
     }
 
     // /**
@@ -63,34 +68,36 @@ class AdminController extends Controller
         $all_customer = $this->customer_repo->getAll();
         $all_product = $this->product_repo->getAll();
         $all_brand = $this->brand_repo->getAll();
+        $all_blog = $this->blog_repo->getAll();
         return view('dashboard.index', compact(
                                                 'all_order',
                                                 'all_comment',
                                                 'all_customer',
                                                 'all_product',
-                                                'all_brand'
+                                                'all_brand',
+                                                'all_blog'
                                             ));
     }
+
     public function file(){
         return view('dashboard.filemanager.index');
     }
 
     public function filter_chart_by_date(Request $request)
     {
-        $data = request()->all();
         $from_date = request()->from_date;
         $to_date = request()->to_date;
-        $get =  $this->order_detail_repo->get_date_between($from_date, $to_date);
+        $get = $this->order_detail_repo->get_date_between($from_date, $to_date);
         foreach ($get as $key => $value) {
             $chartData[] = array(
-                'name'=>$value->name,
-                'quantity'=>$value->quantity,
-                'price'=>$value->price,
-                'created_at'=> $value->created_at->format('Y-m-d'),
-                'sales'=>$value->quantity*$value->price,
-                'profit'=> ($value->quantity*$value->price)*0.3
+                'name' => $value->name,
+                'quantity' => $value->quantity,
+                'price' => $value->price,
+                'created_at' => $value->created_at->format('Y-m-d'),
+                'sales' => $value->quantity*$value->price,
+                'profit' => ($value->quantity*$value->price)*0.3
             ); 
         }
-        echo $data = json_encode($get);
+        echo $data = json_encode($chartData);
     }
 }
