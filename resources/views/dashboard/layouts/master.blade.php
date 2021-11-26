@@ -103,8 +103,14 @@
 <script src="{{ url('public/dashboard') }}/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ url('public/dashboard') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="{{ url('public/dashboard') }}/plugins/chart.js/Chart.min.js"></script>
 <!-- overlayScrollbars -->
 <script src="{{ url('public/dashboard') }}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- jQuery Knob -->
+<script src="{{ url('public/dashboard') }}/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- Sparkline -->
+<script src="{{ url('public/dashboard') }}/plugins/sparklines/sparkline.js"></script>
 <!-- AdminLTE App -->
 <script src="{{ url('public/dashboard') }}/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->

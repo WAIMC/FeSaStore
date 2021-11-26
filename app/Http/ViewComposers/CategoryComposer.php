@@ -8,6 +8,7 @@ use App\Repositories\Contracts\CategoryInterface;
 use App\Repositories\Contracts\ProductInterface;
 use App\Repositories\Contracts\VariantProductInterface;
 use App\Helper\CartHelper;
+use App\Helper\WishlistHelper;
 class CategoryComposer
 {
 
@@ -52,6 +53,7 @@ class CategoryComposer
             'all_variant_pro' => $this->variant_product_repo->getAll(),
             'modelcategoryblog'=>$this->categoryblog->getCategoryBlogActive(),
             'cart'=>new CartHelper(),
+            'wishlist'=> new WishlistHelper() 
            ]);
        
     }

@@ -444,3 +444,16 @@ Background variation set
 .bdr-top{
   border-top:1px solid #ddd;
 }
+
+.style-contact{
+    padding-bottom: 15px;
+    font-size: 15px;
+}
+.style-contact i{
+    border: 1px solid #ababab;
+    border-radius: 50%;
+    width: 23px;
+    height: 23px;
+    text-align: center;
+    line-height: 23px;
+}

@@ -78,10 +78,16 @@
                                             <a href="#" id="add_cart_detail" title="thêm" data-original-title="Thêm vào giỏ hàng">
                                                 + Thêm vào giỏ hàng</a>
                                         </div>
+                                    </div>
+                                {{-- </form> --}}
+
+                                {{-- <form action="{{ route('wishlist.add') }}" id="form-add" method="post"> --}}
+                                    @csrf
+                                    <input type="hidden" class="quantity mr-15 " name="quantity" type="number" value="1">
+                                    <input type="hidden" name="id_variant" id="id_variant">
+                                    <div class="pro-actions mt-1">
                                         <div class="actions-secondary">
-                                            <a href="compare.html" title="" data-original-title="Thêm vào so sánh"><i
-                                                    class="lnr lnr-sync"></i> <span>Thêm vào so sánh</span></a>
-                                            <a href="wishlist.html" title=""
+                                            <a href="#" id="add_wishlist" title=""
                                                 data-original-title="Thêm danh sách yêu thích"><i
                                                     class="lnr lnr-heart"></i> <span>Thêm danh sách yêu thích</span></a>
                                         </div>
@@ -504,9 +510,43 @@
                 error: (error) => {
                     console.log(JSON.stringify(error));
                 }
-            })
+            });
+        });
 
 
+        $('#add_wishlist').click(function(e) {
+            e.preventDefault();
+          console.log($("input[name=id_variant]").val());
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'get',
+                url:  '{{url('')}}/wishlist/add/'+$("input[name=id_variant]").val(),
+                data: {
+                    quantity: 1,
+                    id: $("input[name=id_variant]").val()
+                },
+                success: function(response) {
+                    
+                    $('.total-wish').text(response);
+                    setTimeout(() => {
+                        console.log($('#quantity_wishlist').val()) ;
+                        $('#quantity_wishlist').val();
+                    }, 1000);
+
+
+                  
+             
+                    alertify.success('Đã thêm vào danh sách yêu thích');
+                },
+                error: (error) => {
+                    console.log(JSON.stringify(error));
+                }
+            });
         });
 
     </script>
