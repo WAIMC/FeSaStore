@@ -191,6 +191,27 @@
                 ]
             ]
         ],
+        [
+            'label'=>'Quản lý bình luận',
+            'route'=>'blog.index',
+            'icon'=>'fa-list-alt',
+            'items'=>[
+                [
+
+                    'label'=>'Bình luận bài viết',
+
+                    'route'=>'commentblog.index',
+                    'icon'=>'fa-circle nav-icon'
+                ],
+                [
+
+                    'label'=>'Bình luận sản phẩm',
+
+                    'route'=>'comment.index',
+                    'icon'=>'fa-circle nav-icon'
+                ]
+            ]
+        ],
           [
             'label'=>'Quản lý đơn hàng',
             'route'=>'order.index',

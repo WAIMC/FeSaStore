@@ -433,7 +433,7 @@
                                 <ul class="meta-box d-flex">
                                     <li><a href="#">{{ $blog->getauthor->name }}</a></li>
                                 </ul>
-                                <p>{!! $blog->content !!}</p>
+                                <p>{!! $blog->description !!}</p>
                                 <a class="readmore" href="{{ route('client.blog_details', $blog->slug) }}">Đọc Thêm</a>
                             </div>
                             <div class="blog-date">

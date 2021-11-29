@@ -10,6 +10,8 @@ use App\Repositories\Contracts\CategoryBlogInterface;
 use App\Repositories\Contracts\BlogInterface;
 use App\Repositories\Contracts\CategoryInterface;
 use App\Repositories\Contracts\ProductInterface;
+use App\Repositories\Contracts\CommentInterface;
+use App\Repositories\Contracts\CommentBlogInterface;
 use App\Repositories\Contracts\SliderInterface;
 use App\Repositories\Contracts\OrderInterface;
 
@@ -28,6 +30,9 @@ class HomeController extends Controller
     protected $setting_link_repo;
     protected $categoryblog;
     protected $blogs;
+    protected $comment;
+    protected $commentblog;
+
     protected $slider_repo;
     protected $order_repo;
     
@@ -40,6 +45,8 @@ class HomeController extends Controller
         BrandInterface $brand_repo, 
         BannerInterface $banner_repo, 
         SettingLinkInterface $setting_link_repo,
+        CommentInterface $comment,
+        CommentBlogInterface $commentblog,
         SliderInterface $slider_repo,
         OrderInterface $order_repo
 
@@ -51,6 +58,8 @@ class HomeController extends Controller
         $this->setting_link_repo = $setting_link_repo;
         $this->categoryblog=$categoryblog;
         $this->blogs=$blogs;
+        $this->comment=$comment;
+        $this->commentblog = $commentblog;
         $this->slider_repo = $slider_repo;
         $this->order_repo = $order_repo;
     }
@@ -103,7 +112,15 @@ class HomeController extends Controller
 
     public function productDetail($product_id){
         $data_product_detail = $this->product_repo->find($product_id);
-        return view('client.products.productDetail', compact('data_product_detail'));
+        $get_all_comment = $this->comment->FindComment($product_id);
+        $data_comment = [] ;
+        foreach ($get_all_comment as $key) {
+           if($key->product_id == $product_id){
+                array_push($data_comment, $key);
+           }
+        }
+         // dd($data_comment);
+        return view('client.products.productDetail', compact('data_product_detail','data_comment'));
     }
 
     public function register(){
@@ -132,7 +149,14 @@ class HomeController extends Controller
     }
     public function blog_details($slug){
         $blog=$this->blogs->findBySlug($slug);
-        return view('client.blogs.blog_details', compact('blog'));
+        $get_all_commentblog = $this->commentblog->FindCommentBlog($blog->id);
+        $data_commentblog = [] ;
+        foreach ($get_all_commentblog as $key) {
+           if($key->blog_id == $blog->id){
+                array_push($data_commentblog, $key);
+           }
+        }
+        return view('client.blogs.blog_details', compact('blog','data_commentblog'));
     }
     
     public function categoryblog($slug){

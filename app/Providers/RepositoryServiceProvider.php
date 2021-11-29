@@ -31,7 +31,8 @@ class RepositoryServiceProvider extends ServiceProvider
             'Order',
             'OrderDetail',
             'Comment',
-            'Customer'
+            'Customer',
+            'CommentBlog'
         );
 
         foreach ($models as $model) {

@@ -24,10 +24,10 @@ class AdminMiddleware
             return redirect()->route('admin.login');
         }
 
-        $name = $request->route()->getName();
-        if(Auth::guard('adminAuth')->user()->cant($name)){
-            abort(403,'Unauthorized');
-        }
+        // $name = $request->route()->getName();
+        // if(Auth::guard('adminAuth')->user()->cant($name)){
+        //     abort(403,'Unauthorized');
+        // }
         
         return $next($request);
     }

@@ -4,9 +4,9 @@
 
     use App\Repositories\Contracts\RepositoryInterface;
 
-    interface CommentInterface extends RepositoryInterface{
+    interface CommentBlogInterface extends RepositoryInterface{
 
-        public function FindComment($id);
+        public function FindCommentBlog($id);
     }
 
 ?>

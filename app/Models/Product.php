@@ -45,6 +45,11 @@ class Product extends Model
         return $this->hasMany(VariantProduct::class, 'product_id', 'id');
     }
 
+    public function comment()
+    {
+        return $this->hasMany(Comment::class, 'product_id', 'id');
+    }
+
     // search name with function scope
     public function scopeSearch($query)
     {

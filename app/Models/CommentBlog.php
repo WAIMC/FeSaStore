@@ -5,22 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class CommentBlog extends Model
 {
     use HasFactory;
 
     // using table comment , if doesn't declare $table default table is directory + s : ex categories
-    protected $table = 'comment';
+    protected $table = 'comment_blog';
 
     // create_at and update_at default realtime, doesn't sent data blank to field
     public $timestamps = true;
 
-    // containing all those fields of table
+    // containing all those fields of tableC
     protected $fillable = [
         'parent_id',
     	'comment',
     	'status',
-    	'product_id',
+    	'blog_id',
     	'customer_id'
     ];
 
@@ -34,7 +34,7 @@ class Comment extends Model
         return $this->hasOne(Customer::class,'id','customer_id');
     }
 
-    public function pro(){
-        return $this->hasOne(Product::class,'id','product_id');
+    public function blog(){
+        return $this->hasOne(blog::class,'id','blog_id');
     }
 }
