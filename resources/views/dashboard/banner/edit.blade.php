@@ -24,34 +24,43 @@
                             </a>
                         </div>
                     </div>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12">
-                            <form action="{{route('banner.update', $banner->id)}}" method="post" id="formEdit">
-                                @csrf @method('PUT')
-                                <div class="form-group">
-                                    <label for="">Tiêu đề</label>
-                                    <input type="text" name="title" value="{{$banner->title}}" class="form-control  @error('title') is-invalid @enderror"  placeholder="Nhập tên banner" aria-describedby="helpId">
-                                    @error('title')
-                                        <small class="text-danger">{{$message}}</small> 
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Liên kết</label>
-                                    <input type="text" name="link" value="{{$banner->link}}" class="form-control @error('link')   is-invalid  @enderror" placeholder="Nhập đường dẫn trỏ đến" aria-describedby="helpId">
-                                    @error('link')
-                                        <small  class="text-danger">{{$message}}</small> 
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label>Trạng thái</label>
-                                    <div class="form-control">
-                                        <input type="radio" id="inlineRadio1" @if ($banner->status == 1)checked="" @endif value="1" name="status">
-                                        <label for="inlineRadio1"> Ẩn </label>
-                                        <input @if ($banner->status == 0)checked="" @endif type="radio" id="inlineRadio2" value="0" name="status">
-                                        <label for="inlineRadio2"> Hiện </label>
-                                    </div>
+                       
+                    {{-- select by choose --}}
+                  
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <form action="{{route('banner.update',$banner)}}" method="post">
+                        @csrf @method('PUT')
+                        <div class="form-group">
+                            <label for="">Tiêu đề</label>
+                            <input type="text" name="title" value="{{$banner->title}}" class="form-control  @error('title')   is-invalid   @enderror"  placeholder="Nhập tên banner" aria-describedby="helpId">
+                                @error('title')
+                              <small  class="text-danger">{{$message}}</small> 
+                              @enderror
+                          </div>
+                          <div class="form-group">
+                              <label for="">Liên kết</label>
+                              <input type="text" name="link" value="{{$banner->link}}" class="form-control @error('link')   is-invalid  @enderror" placeholder="Nhập đường dẫn trỏ đến" aria-describedby="helpId">
+                                  @error('link')
+                                <small  class="text-danger">{{$message}}</small> 
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                            <label for="">vị trí</label>
+                            <input type="text" name="position" value="{{$banner->position}}" class="form-control @error('link')   is-invalid  @enderror" placeholder="Nhập đường dẫn trỏ đến" aria-describedby="helpId">
+                                @error('position')
+                              <small  class="text-danger">{{$message}}</small> 
+                              @enderror
+                          </div>
+                            <div class="form-group">
+                                <label>Trạng thái</label>
+                                <div class="form-control">
+                                    <input type="radio" id="inlineRadio1" @if ($banner->status == 1)checked="" @endif value="1" name="status">
+                                    <label for="inlineRadio1"> Ẩn </label>
+                                    <input @if ($banner->status == 0)checked="" @endif type="radio" id="inlineRadio2" value="0" name="status">
+                                    <label for="inlineRadio2"> Hiện </label>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Hình ảnh</label>

@@ -31,11 +31,11 @@
             </div>
             <div class="card-body">
     <!-- Default box -->
-    <div class="box">
+    <div class="box" >
         <div class="box-header with-border">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="container123  col-md-6"   style="">
+            <div class="row" >
+                <div class="col-md-12" id="tblCustomers" >
+                    <div class="container123  col-md-6">
                         <h4></h4>
                         <table class="table table-bordered">
                             <thead>
@@ -72,7 +72,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <table id="myTable" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                    <table id="myTable" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info" id="invoice">
                         <thead>
                         <tr role="row">
                             <th class="sorting col-md-1" >STT</th>
@@ -123,6 +123,9 @@
                     </div>
                 </div>
                 </form>
+                <input type="button" class="btn btn-primary" id="btnExport" value="Print-PDF" onclick="Export()" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
             </div>
         </div>
     </div>
@@ -130,4 +133,20 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+        function Export() {
+            html2canvas(document.getElementById('tblCustomers'), {
+                onrendered: function (canvas) {
+                    var data = canvas.toDataURL();
+                    var docDefinition = {
+                        content: [{
+                            image: data,
+                            width: 500
+                        }]
+                    };
+                    pdfMake.createPdf(docDefinition).download("Hóa đơn.pdf");
+                }
+            });
+        }
+    </script>
 @endsection

@@ -10,6 +10,9 @@ use App\Repositories\Contracts\CategoryBlogInterface;
 use App\Repositories\Contracts\BlogInterface;
 use App\Repositories\Contracts\CategoryInterface;
 use App\Repositories\Contracts\ProductInterface;
+use App\Repositories\Contracts\SliderInterface;
+use App\Repositories\Contracts\OrderInterface;
+
 use Illuminate\Http\Request;
 use Mail;
 
@@ -25,6 +28,9 @@ class HomeController extends Controller
     protected $setting_link_repo;
     protected $categoryblog;
     protected $blogs;
+    protected $slider_repo;
+    protected $order_repo;
+    
     
     public function __construct(
         CategoryInterface $category_repo,
@@ -33,9 +39,11 @@ class HomeController extends Controller
         BlogInterface $blogs,
         BrandInterface $brand_repo, 
         BannerInterface $banner_repo, 
-        SettingLinkInterface $setting_link_repo
-    )
-    {
+        SettingLinkInterface $setting_link_repo,
+        SliderInterface $slider_repo,
+        OrderInterface $order_repo
+
+    ){
         $this->category_repo = $category_repo;
         $this->product_repo = $product_repo;
         $this->brand_repo = $brand_repo;
@@ -43,6 +51,8 @@ class HomeController extends Controller
         $this->setting_link_repo = $setting_link_repo;
         $this->categoryblog=$categoryblog;
         $this->blogs=$blogs;
+        $this->slider_repo = $slider_repo;
+        $this->order_repo = $order_repo;
     }
 
     /**
@@ -52,8 +62,9 @@ class HomeController extends Controller
     public function index(){
         $all_brand = $this->brand_repo->getAll();
         $all_banner = $this->banner_repo->getAll();
+        $all_slider = $this->slider_repo->getAll();
         $all_setting_link = $this->setting_link_repo->getAll();
-
+        $all_order = $this->order_repo->getAll();
         $get_category_children = []; 
         // get category children haven't children
         foreach ($this->category_repo->getAll() as $cat) {
@@ -62,8 +73,16 @@ class HomeController extends Controller
             }
         }
         $paginate_cate = array_slice($get_category_children, 0, 5, true);
-
-        return view('client.index', compact('all_brand', 'all_banner', 'all_setting_link', 'paginate_cate'));
+        return view('client.index',
+                    compact(
+                        'all_brand', 
+                        'all_banner',
+                        'all_slider', 
+                        'all_setting_link', 
+                        'paginate_cate',
+                        'all_order'
+                        )
+                    );
     }
 
     public function about(){

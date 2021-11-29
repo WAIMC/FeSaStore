@@ -24,7 +24,8 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/Admin/Register',[App\Http\Controllers\admin\Auth\RegisterController::class,'register'])->name('admin.register');
     Route::post('Admin/Register',[App\Http\Controllers\admin\Auth\RegisterController::class,'postRegister'])->name('admin.register');
-
+    
+    //Route::post('xu-li-don-hang/{id}',[])
 
     Route::prefix('admin')->middleware('adminAuth')->group(function(){
         Route::get('/',[App\Http\Controllers\admin\AdminController::class,'index'])->name('admin.index');
@@ -39,6 +40,8 @@ use Illuminate\Support\Facades\Route;
             'banner'=>admin\BannerController::class,
             'variantProduct'=>admin\VariantProductController::class,
             'brand'=>admin\BrandController::class,
+            'order'=>admin\OrderController::class,
+            'slider'=>admin\SliderController::class,
             'blog'=>admin\BlogController::class,
             'categoryblog'=>admin\CategoryBlogController::class,
             'role'=>admin\RoleController::class,
@@ -47,11 +50,9 @@ use Illuminate\Support\Facades\Route;
             'order'=>admin\OrderController::class,
             'customer'=>admin\CustomerController::class,
         ]);
-
-        Route::resource('order', admin\OrderController::class)->only([
-            'index', 'show', 'update', 'destroy'
-        ]);
+        
     });
+    
 
 /*
     End route admin

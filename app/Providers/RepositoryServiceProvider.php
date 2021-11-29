@@ -25,6 +25,7 @@ class RepositoryServiceProvider extends ServiceProvider
             'VariantProduct',
             'Brand',
             'Banner',
+            'Slider',
             'User',
             'Cart',
             'Order',

@@ -67,11 +67,7 @@
     <!-- Main Wrapper Start Here -->
     <div class="wrapper">
         <!-- Banner Popup Start -->
-        <div class="popup_banner">
-            <span class="popup_off_banner">×</span>
-            <div class="banner_popup_area">
-                    <img src="{{url('public/client')}}/img/banner\pop-banner.jpg" alt="">
-            </div>
+       
         </div>
         <!-- Banner Popup End -->
         <!-- Newsletter Popup Start -->

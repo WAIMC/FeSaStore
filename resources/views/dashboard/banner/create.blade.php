@@ -41,8 +41,25 @@
                                 <label for="">Liên kết</label>
                                 <input type="text" name="link" value="{{old("link")}}" class="form-control @error('link') is-invalid @enderror" placeholder="Nhập đường dẫn trỏ đến" aria-describedby="helpId">
                                 @error('link')
-                                    <small class="text-danger">{{$message}}</small> 
-                                @enderror
+                              <small  class="text-danger">{{$message}}</small> 
+                              @enderror
+                          </div>
+                          <div class="form-group">
+                            <label for="">vị trí</label>
+                            <input type="" name="position" value="{{old("position")}}" class="form-control @error('link')   is-invalid  @enderror" placeholder="Nhập đường dẫn trỏ đến" aria-describedby="helpId">
+                                @error('position')
+                              <small  class="text-danger">{{$message}}</small> 
+                              @enderror
+                          </div>
+                        <div class="form-group">
+                            <label for="">Hình ảnh</label>
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <button type="button" data-toggle="modal" data-target="#model_file" class="btn btn-primary"><i
+                                            class="fas fa-folder-open"></i></i></button>
+                                </span>
+                                <input type="text" readonly name="image" value="{{old('image')}}" id="image" class="form-control @error('image')   is-invalid  @enderror" >
+                              
                             </div>
                             <div class="form-group">
                                 <label for="">Hình ảnh</label>
@@ -52,7 +69,7 @@
                                             <i class="fas fa-folder-open"></i>
                                         </button>
                                     </span>
-                                    <input type="text" readonly name="image" value="{{old("image")}}" id="image" class="form-control @error('image') is-invalid @enderror" >
+                                    <input type="text" readonly name="image" value="{{old('image')}}" id="image" class="form-control @error('image') is-invalid @enderror" >
                                 </div>
                                 @error('image')
                                     <small  class="text-danger">{{$message}}</small> 

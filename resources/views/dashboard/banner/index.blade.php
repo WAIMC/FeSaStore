@@ -35,8 +35,9 @@
                                 <th>Tên banner</th>
                                 <th>Liên kết</th>
                                 <th>Trạng thái</th>
+                                <th>Vị trí</th>
                                 <th>Ngày tạo</th>
-                                <th></th>
+                                <th>Thao tác</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,6 +52,7 @@
                                             {{ $banner->status==0 ? 'Hiển thị' : 'Ẩn' }}
                                         </span>
                                     </td>
+                                    <td>{{ $banner->position}}</td>
                                     <td>{{ $banner->created_at->format('d-m-Y') }}</td>
                                     <td>
                                         <a href="{{ route('banner.edit', $banner->id) }}" class="btn btn-info">

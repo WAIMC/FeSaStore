@@ -6,8 +6,10 @@
         <div class="slider-wrapper theme-default">
             <!-- Slider Background  Image Start-->
             <div id="slider" class="nivoSlider">
-                <a href="shop.html"><img src="{{url('public/client')}}/img/slider\4.jpg" data-thumb="img/slider/1.jpg" alt="" title="#htmlcaption"></a>
-                <a href="shop.html"><img src="{{url('public/client')}}/img/slider\3.jpg" data-thumb="img/slider/2.jpg" alt="" title="#htmlcaption2"></a>
+             @foreach($all_slider as $sl)
+                <a href="shop.html"><img src="{{url('public/uploads')}}/{{$sl->image}}" data-thumb="{{url('public/uploads')}}/{{$sl->image}}" alt="" title="#htmlcaption"></a>
+                <a href="shop.html"><img src="{{url('public/uploads')}}/{{$sl->image}}" data-thumb="{{url('public/uploads')}}/{{$sl->image}}" alt="" title="#htmlcaption2"></a>
+             @endforeach
             </div>
             <!-- Slider Background  Image Start-->
         </div>
@@ -19,7 +21,13 @@
     <div class="image-banner pb-50 off-white-bg">
         <div class="container">
             <div class="col-img">
-                <a href="#"><img src="{{url('public/client')}}/img/banner\h1-banner.jpg" alt="image banner"></a>
+             <a href="#">
+                @foreach($all_banner as $bn)
+                @if($bn->position == "brand_banner")
+                 <img src="{{url('public/uploads')}}/{{$bn->image}}" data-thumb="{{url('public/uploads')}}/{{$bn->image}}" >
+                 @endif
+                @endforeach
+            </a> 
             </div>
         </div>
         <!-- Container End -->
@@ -85,38 +93,70 @@
     <div class="big-banner mt-100 pb-85 mt-sm-60 pb-sm-45">
         <div class="container banner-2">
             <div class="banner-box">
+                @foreach($all_banner as $bn)
+                @if($bn->position == "big_banner1")
                 <div class="col-img">
-                    <a href="#"><img src="{{url('public/client')}}/img/banner\banner3-1.jpg" alt="banner 3"></a>
+                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
                 </div>
+                @endif
+                @endforeach
+                @foreach($all_banner as $bn)
+                @if($bn->position == "big_banner2")
                 <div class="col-img">
-                    <a href="#"><img src="{{url('public/client')}}/img/banner\banner3-2.jpg" alt="banner 3"></a>
+                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
                 </div>
+                @endif
+                @endforeach
             </div>
             <div class="banner-box">
+            @foreach($all_banner as $bn)
+                @if($bn->position == "big_banner3")
                 <div class="col-img">
-                    <a href="#"><img src="{{url('public/client')}}/img/banner\banner3-3.jpg" alt="banner 3"></a>
+                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
                 </div>
+                @endif
+                @endforeach
             </div>
             <div class="banner-box">
+            @foreach($all_banner as $bn)
+                @if($bn->position == "big_banner4")
                 <div class="col-img">
-                    <a href="#"><img src="{{url('public/client')}}/img/banner\banner3-4.jpg" alt="banner 3"></a>
+                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
                 </div>
+                @endif
+                @endforeach
+                @foreach($all_banner as $bn)
+                @if($bn->position == "big_banner5")
                 <div class="col-img">
-                    <a href="#"><img src="{{url('public/client')}}/img/banner\banner3-5.jpg" alt="banner 3"></a>
+                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
                 </div>
+                @endif
+                @endforeach
             </div>
             <div class="banner-box">
+            @foreach($all_banner as $bn)
+                @if($bn->position == "big_banner6")
                 <div class="col-img">
-                    <a href="#"><img src="{{url('public/client')}}/img/banner\banner3-6.jpg" alt="banner 3"></a>
+                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
                 </div>
+                @endif
+                @endforeach
             </div>
             <div class="banner-box">
+            @foreach($all_banner as $bn)
+                @if($bn->position == "big_banner7")
                 <div class="col-img">
-                    <a href="#"><img src="{{url('public/client')}}/img/banner\banner3-7.jpg" alt="banner 3"></a>
+                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
                 </div>
+                @endif
+                @endforeach
+                @foreach($all_banner as $bn)
+                @if($bn->position == "big_banner8")
                 <div class="col-img">
-                    <a href="#"><img src="{{url('public/client')}}/img/banner\banner3-8.jpg" alt="banner 3"></a>
+                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
                 </div>
+                @endif
+                @endforeach
             </div>
         </div>
         <!-- Container End -->
@@ -160,9 +200,13 @@
                             <div class="row">
                                 <div class="col-lg-5 order-2 order-lg-1">
                                     <div class="banner-site-box mt-10">
+                                        @foreach($all_banner as $bn)
                                         <div class="col-img">
-                                            <a href="#"><img src="{{url('public/client')}}/img/banner\electorince.jpg" alt=""></a>
+                                            @if($bn->position == "tab_content")
+                                            <a href="#"><img src="{{url('public/uploads')}}/{{$bn->image}}" data-thumb="{{url('public/uploads')}}/{{$bn->image}}" alt=""></a>
+                                            @endif
                                         </div>
+                                        @endforeach
                                         <!-- Single Product Start -->
                                         <div class="single-product mt-20">
                                             <!-- Product Image Start -->
@@ -417,9 +461,13 @@
            </div>
             <div class="row no-gutters">
                 <div class="col-lg-3">
+                @foreach($all_banner as $bn)
                     <div class="col-img">
-                        <img src="{{url('public/client')}}/img/banner\h1-band1.jpg" alt="">
+                        @if($bn->position == "hot_brand1")
+                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
+                        @endif
                     </div>
+                @endforeach
                 </div>
                 <div class="col-lg-6">
                     <!-- Brand Banner Start -->
@@ -436,9 +484,13 @@
 
                 </div>
                 <div class="col-lg-3">
+                @foreach($all_banner as $bn)
                     <div class="col-img">
-                        <img src="{{url('public/client')}}/img/banner\h1-band2.jpg" alt="">
+                        @if($bn->position == "hot_brand2")
+                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
+                        @endif
                     </div>
+                @endforeach
                 </div>
             </div>
         </div>
@@ -447,16 +499,20 @@
     <!-- Brand Banner Area End Here -->
     <div class="big-banner pb-100 pb-sm-60">
         <div class="container big-banner-box">
-            <div class="col-img">
-                <a href="#">
-                <img src="{{url('public/client')}}/img/banner\5.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-img">
-                <a href="#">
-                <img src="{{url('public/client')}}/img/banner\h1-banner3.jpg" alt="">
-                </a>
-            </div>
+        @foreach($all_banner as $bn)
+                    <div class="col-img">
+                        @if($bn->position == "brand_banner1")
+                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
+                        @endif
+                    </div>
+                @endforeach
+                @foreach($all_banner as $bn)
+                    <div class="col-img">
+                        @if($bn->position == "brand_banner2")
+                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
+                        @endif
+                    </div>
+                @endforeach
         </div>
         <!-- Container End -->
     </div>
