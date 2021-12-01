@@ -108,16 +108,12 @@
             'icon'=>'fa-list-alt',
             'items'=>[
                 [
-
                     'label'=>'Danh Sách Thương hiệu',
-
                     'route'=>'brand.index',
                     'icon'=>'fa-circle nav-icon'
                 ],
                 [
-
                     'label'=>'Thêm Thương hiệu mới',
-
                     'route'=>'brand.create',
                     'icon'=>'fa-circle nav-icon'
                 ]
@@ -146,17 +142,30 @@
             'icon'=>'fa-list-alt',
             'items'=>[
                 [
-
                     'label'=>'Danh mục bài viết',
-
                     'route'=>'categoryblog.index',
                     'icon'=>'fa-circle nav-icon'
                 ],
                 [
-
                     'label'=>'Danh sách bài viết',
-
                     'route'=>'blog.index',
+                    'icon'=>'fa-circle nav-icon'
+                ]
+            ]
+        ],
+        [
+            'label'=>'Quản lý khách hàng',
+            'route'=>'customer.index',
+            'icon'=>'fa-list-alt',
+            'items'=>[
+                [
+                    'label'=>'Danh sách khách hàng',
+                    'route'=>'customer.index',
+                    'icon'=>'fa-circle nav-icon'
+                ],
+                [
+                    'label'=>'Thêm mới khách hàng',
+                    'route'=>'customer.create',
                     'icon'=>'fa-circle nav-icon'
                 ]
             ]

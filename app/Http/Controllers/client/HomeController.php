@@ -78,8 +78,9 @@ class HomeController extends Controller
 
     public function shop(Request $request){
         // (product)->(has:category)->(has:variant)->(price or date)->(between price)->paginate(12)
+        $top_5_new = $this->product_repo->paginate(5);
         $data_paginate_product = $this->product_repo->searchProduct($request);
-        return view('client.products.shop', compact('data_paginate_product'));
+        return view('client.products.shop', compact('data_paginate_product', 'top_5_new'));
     }
 
     public function productDetail($product_id){

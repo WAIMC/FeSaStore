@@ -6,8 +6,8 @@
     <div class="container">
         <div class="breadcrumb">
             <ul class="d-flex align-items-center">
-                <li><a href="index.html">Home</a></li>
-                <li class="active"><a href="contact.html">Contact Us</a></li>
+                <li><a href="{{ route('client.index') }}">Trang Chủ</a></li>
+                <li class="active"><a href="{{ route('client.contact') }}">Liên Hệ</a></li>
             </ul>
         </div>
     </div>
@@ -69,7 +69,7 @@
 </div>
 <!-- Contact Email Area End -->
 <!-- Google Map Start -->
-<div class="goole-map">
+<div class="goole-map pb-50">
     <div id="map" style="height:400px">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3833.8025459042856!2d108.1677603148079!3d16.075732988876894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314218e6e72e66f5%3A0x46619a0e2d55370a!2zMTM3IE5ndXnhu4VuIFRo4buLIFRo4bqtcCwgVGhhbmggS2jDqiBUw6J5LCBMacOqbiBDaGnhu4N1LCDEkMOgIE7hurVuZywgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1636890877959!5m2!1svi!2s" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>

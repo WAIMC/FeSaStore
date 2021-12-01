@@ -10,35 +10,94 @@ class OrderController extends Controller
 {
     protected $order;
     protected $orderdetail;
-   public function __construct(OrderInterface $orders)
-   {
-       $this->order = $orders;
-   }
-   public function index(){
-       $data = $this->order->getAll();
-       return view('dashboard.order.index', compact('data'));
-   }
 
-   public function show($order)
-   {
-     $data= $this->order->showOrderDetail($order);
+    public function __construct(OrderInterface $orders)
+    {
+        $this->order = $orders;
+    }
 
-     return view('dashboard.order.show', compact('data'));
-   }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(){
+        $data = $this->order->getAll();
+        return view('dashboard.order.index', compact('data'));
+    }
 
-   public function destroy(Order $order)
-   {
-       if($this->order->destroy($order)){
-           return redirect()->route('order.index')->with('success','Xóa dữ liệu thành công!');
-       }else{
-           return redirect()->route('order.index')->with('error','Xóa dữ liệu thất bại!');
-       }
-   }
-   public function update(Order $order){
-       if ($this->order->updateStatus($order)) {
-        return redirect()->back()->with('success','Cập nhật trạng thái thành công!');
-       }
-       
-   }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\order  $order
+     * @return \Illuminate\Http\Response
+     */
+    public function show($order)
+    {
+        $data= $this->order->showOrderDetail($order);
+
+        return view('dashboard.order.show', compact('data'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\order  $order
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(order $order)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\order  $order
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Order $order){
+        if ($this->order->updateStatus($order)) {
+            return redirect()->back()->with('success','Cập nhật trạng thái thành công!');
+        }
+        
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\order  $order
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Order $order)
+    {
+        if($this->order->destroy($order)){
+            return redirect()->route('order.index')->with('success','Xóa dữ liệu thành công!');
+        }else{
+            return redirect()->route('order.index')->with('error','Xóa dữ liệu thất bại!');
+        }
+    }
 
 }

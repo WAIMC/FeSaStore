@@ -17,6 +17,9 @@
             return \App\Models\Admin::class;
         }
         
+        public function findEmail($email){
+            return $this->getModel()::where('email', $email)->first();
+        }
 
 
     }
