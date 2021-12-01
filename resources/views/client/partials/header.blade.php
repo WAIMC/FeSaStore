@@ -6,9 +6,8 @@
             <!-- Header Top Start -->
             <div class="header-top">
                 <ul>
-                    <li><a href="#">Miễn phí chuyển hàng với đơn hàng trên 1.000.000đ</a></li>
-                    <li><a href="#">Giỏ hàng</a></li>
-                    <li><a href="{{route('client.checkout')}}">Thủ tục thanh toán</a></li>
+                    <li><a href="#">FESA Store - mang đến sự hài lòng cho khách hàng !</a></li>
+                    
                 </ul>
                 <ul>                                          
                     <li><span>Ngôn Ngữ</span> <a href="#">English<i class="lnr lnr-chevron-down"></i></a>
@@ -17,15 +16,6 @@
                             <li><a href="#"><img src="{{url('public/client')}}/img/header\1.jpg" alt="language-selector">English</a></li>
                             <li><a href="#"><img src="{{url('public/client')}}/img/header\2.jpg" alt="language-selector">Francis</a></li>
                         </ul>
-                        <!-- Dropdown End -->
-                    </li>
-                    <li><span>Currency</span><a href="#"> USD $ <i class="lnr lnr-chevron-down"></i></a>
-                        <!-- Dropdown Start -->
-                        {{-- <ul class="ht-dropdown">
-                            <li><a href="#">&#36; USD</a></li>
-                            <li><a href="#"> € Euro</a></li>
-                            <li><a href="#">&#163; Pound Sterling</a></li>
-                        </ul> --}}
                         <!-- Dropdown End -->
                     </li>
                     <li><a href="#">Tài Khoản<i class="lnr lnr-chevron-down"></i></a>
@@ -152,10 +142,10 @@
                 <div class="col-xl-9 col-lg-8 col-md-12 ">
                     <nav class="d-none d-lg-block">
                         <ul class="header-bottom-list d-flex">
-                            <li class="active"><a href="{{route('client.index')}}">Trang Chủ</a></li>
-                            <li><a href="{{route('client.shop')}}">Cửa Hàng</a></li>
-                            <li><a href="{{route('client.about')}}">Giới Thiệu</a></li>
-                            <li><a href="{{route('client.blog')}}">Bài Viết<i class="fa fa-angle-down"></i></a>
+                            <li class="active"><a href="{{route('client.index')}}">TRANG CHỦ</a></li>
+                            <li><a href="{{route('client.about')}}">GIỚI THIỆU</a></li>
+                            <li><a href="{{route('client.shop')}}">CỬA HÀNG</a></li>
+                            <li><a href="{{route('client.blog')}}">BÀI VIẾT<i class="fa fa-angle-down"></i></a>
                                 <!-- Home Version Dropdown Start -->
                                 <ul class="ht-dropdown dropdown-style-two">
                                     @foreach ($modelcategoryblog as $item)
@@ -164,7 +154,7 @@
                                 </ul>
                                 <!-- Home Version Dropdown End -->
                             </li>
-                            <li><a href="{{route('client.contact')}}">Liên Hệ</a></li>
+                            <li><a href="{{route('client.contact')}}">LIÊN HỆ</a></li>
                         </ul>
                     </nav>
                     <div class="mobile-menu d-block d-lg-none">

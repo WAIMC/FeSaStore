@@ -7,6 +7,7 @@ use App\Repositories\Contracts\CategoryBlogInterface;
 use App\Repositories\Contracts\CategoryInterface;
 use App\Repositories\Contracts\ProductInterface;
 use App\Repositories\Contracts\VariantProductInterface;
+use App\Repositories\Contracts\SettingLinkInterface;
 use App\Helper\CartHelper;
 use App\Helper\WishlistHelper;
 class CategoryComposer
@@ -16,6 +17,7 @@ class CategoryComposer
     protected $cate_repo;
     protected $product_repo;
     protected $variant_product_repo;
+    protected $settinglink_repo;
     /**
      * Create a new profile composer.
      *
@@ -25,13 +27,15 @@ class CategoryComposer
         CategoryBlogInterface $categoryblog,
         CategoryInterface $cate_repo,
         ProductInterface $product_repo,
-        VariantProductInterface $variant_product_repo
+        VariantProductInterface $variant_product_repo,
+        SettingLinkInterface $settinglink_repo
     )
     {
         $this->cate_repo = $cate_repo;
         $this->product_repo = $product_repo;
         $this->variant_product_repo = $variant_product_repo;
         $this->categoryblog=$categoryblog;
+        $this->settinglink_repo = $settinglink_repo;
     }
 
     /**
@@ -53,7 +57,8 @@ class CategoryComposer
             'all_variant_pro' => $this->variant_product_repo->getAll(),
             'modelcategoryblog'=>$this->categoryblog->getCategoryBlogActive(),
             'cart'=>new CartHelper(),
-            'wishlist'=> new WishlistHelper() 
+            'wishlist'=> new WishlistHelper(),
+            'settinglink_repo' => $this->settinglink_repo->getAll()
            ]);
        
     }

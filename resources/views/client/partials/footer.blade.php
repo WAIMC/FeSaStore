@@ -21,88 +21,67 @@
             <!-- Signup-Newsletter End -->                   
             <div class="row">
                 <!-- Single Footer Start -->
-                <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="single-footer mb-sm-40">
-                        <h3 class="footer-title">Thông Tin</h3>
+                        <h3 class="footer-title"><span style="font-size:30px;">FASA STORE</span></h3>
                         <div class="footer-content">
                             <ul class="footer-list">
-                                <li><a href="about.html">Giới Thiệu</a></li>
-                                <li><a href="#">Thông tin giao hàng</a></li>
-                                <li><a href="#">Chính sách bảo mật</a></li>
-                                <li><a href="contact.html">Điều khoản và điều kiện</a></li>
-                                <li><a href="login.html">Câu hỏi thường gặp</a></li>
-                                <li><a href="login.html">Chính sách hoàn trả</a></li>
+                            <li><a href="contact.html">Thương hiệu thời trang FESA Store đã trở thành một trong những hệ thống kinh doanh uy tín, được đông đảo giới trẻ Đà Nẵng yêu thích và lựa chọn</a></li>
+                                <div class="footer-line"></div>
+                                <div class="footer-content">
+                                    <ul class="footer-list address-content">
+                                        <li><i class="lnr lnr-map-marker"></i> 137 Nguyễn Thị Thập - Đà Nẵng</li>
+                                        <li><i class="lnr lnr-envelope"></i><a href="#"> fesastorefpoly@gmail.com</a></li>
+                                        <li>
+                                            <i class="lnr lnr-phone-handset"></i>  (+84) 0909009009
+                                        </li>
+                                    </ul>                              
+                                </div>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <!-- Single Footer Start -->
                 <!-- Single Footer Start -->
-                <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="single-footer mb-sm-40">
-                        <h3 class="footer-title">Dịch vụ khách hàng</h3>
+                        <h3 class="footer-title">Chính sách khách hàng</h3>
                         <div class="footer-content">
                             <ul class="footer-list">
-                                <li><a href="contact.html">Giới Thiệu</a></li>
-                                <li><a href="#">Returns</a></li>
-                                <li><a href="#">Lịch Sủ Đặt Hàng</a></li>
-                                <li><a href="wishlist.html">Danh Sách Ưa Thích</a></li>
-                                <li><a href="#">Địa Chỉ Cửa Hàng</a></li>
-                                <li><a href="#">Phiếu Quà Tặng</a></li>
+                                <li><a href="contact.html">Chính sách bảo mật</a></li>
+                                <li><a href="#">Ưu đãi khách hàng thân thiết</a></li>
+                                <li><a href="#">Chính sách bảo hành</a></li>
+                                <li><a href="wishlist.html">Chính sách giao nhận</a></li>
+                                <li><a href="#">Chính sách đổi trả sản phẩm</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <!-- Single Footer Start -->
                 <!-- Single Footer Start -->
-                <div class="col-lg-2 col-md-4 col-sm-6">
+                <!-- Single Footer Start -->
+                <!-- Single Footer Start -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="single-footer mb-sm-40">
-                        <h3 class="footer-title">Thông Tin Thêm</h3>
+                        <h3 class="footer-title">Hỗ trợ khách hàng</h3>
                         <div class="footer-content">
                             <ul class="footer-list">
-                                <li><a href="#">Bản tin</a></li>
-                                <li><a href="#">Thương Hiệu</a></li>
-                                <li><a href="#">Phiếu Quà Tặng</a></li>
-                                <li><a href="#">Chi Nhánh</a></li>
-                                <li><a href="#">Đặc Biệt</a></li>
-                                <li><a href="#">Bản Đồ Địa Chỉ</a></li>      
+                                <li><a href="contact.html">Hướng dẫn mua hàng</a></li>
+                                <li><a href="#">Tra cứu bảo hành</a></li>
+                                <li><a href="#">Quy định về phiếu quà tặng</a></li>
+                                <li><a href="#">Điều khoản sử dụng</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <!-- Single Footer Start -->
                 <!-- Single Footer Start -->
-                <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="single-footer mb-sm-40">
-                        <h3 class="footer-title">Tài Khoản</h3>
+                        <h3 class="footer-title">Theo dõi Fanpage</h3>
                         <div class="footer-content">
-                            <ul class="footer-list">
-                                <li><a href="contact.html">Liên Hệ</a></li>
-                                <li><a href="#">Lợi Ích</a></li>
-                                <li><a href="#">Tài Khoản Của Tôi</a></li>
-                                <li><a href="#">Lịch Sử Đặt Hàng</a></li>
-                                <li><a href="wishlist.html">Danh Sách Ưa Thích</a></li>
-                                <li><a href="#">Tin Mới</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Footer Start -->
-                <!-- Single Footer Start -->
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-footer mb-sm-40">
-                        <h3 class="footer-title">Liên Hệ Với Chúng Tôi</h3>
-                        <div class="footer-content">
-                            <ul class="footer-list address-content">
-                                <li><i class="lnr lnr-map-marker"></i> Địa Chỉ: 123, Đỗ Văn Vinh , Đà Nẵng Việt Nam.</li>
-                                <li><i class="lnr lnr-envelope"></i><a href="#"> Email: dovanvinhwao@fesa.shop.com </a></li>
-                                <li>
-                                    <i class="lnr lnr-phone-handset"></i> Điện Thoại: (+84) 123 456 789)
-                                </li>
-                            </ul>
-                            <div class="payment mt-25 bdr-top pt-30">
-                                <a href="#"><img class="img" src="{{url('public/client')}}/img/payment\1.png" alt="payment-image"></a>
-                            </div>                                   
+                        <div class="fb-page" data-href="https://www.facebook.com/FesaStoreDaNang/" data-tabs="time" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/FesaStoreDaNang/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/FesaStoreDaNang/">Fesa Store</a></blockquote></div>
+                         
                         </div>
                     </div>
                 </div>
@@ -118,12 +97,10 @@
         <div class="container">
             <div class="footer-middle-content pt-20 pb-30">
                     <ul class="social-footer">
-                        <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="https://plus.google.com/"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><img src="{{url('public/client')}}/img/icon\social-img1.png" alt="google play"></a></li>
-                        <li><a href="#"><img src="{{url('public/client')}}/img/icon\social-img2.png" alt="app store"></a></li>
+                        <li><a href="{{$settinglink_repo[0]->config_value}}"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                     </ul>
             </div>
         </div>

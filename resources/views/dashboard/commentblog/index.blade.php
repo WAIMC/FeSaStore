@@ -84,6 +84,12 @@
                                     </td>
                                     <td>{{ $commentblog->created_at->format('d-m-Y') }}</td>
                                     <td>
+<<<<<<< HEAD
+                                         <a href="{{ route('commentblog.edit', $commentblog->id) }}" class="btn btn-info">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+=======
+>>>>>>> 01298ab0a4f3f16bcb5c9918cdfbbffc442fed01
                                         <a href="{{ route('commentblog.destroy', $commentblog->id) }}"
                                             class="btn btn-danger btnDelete">
                                             <i class="fa fa-trash" aria-hidden="true"></i>

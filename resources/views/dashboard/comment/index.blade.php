@@ -62,6 +62,10 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Sản phẩm</th>
+<<<<<<< HEAD
+                                <th>Hình ảnh</th>
+=======
+>>>>>>> 01298ab0a4f3f16bcb5c9918cdfbbffc442fed01
                                 <th>Nội dung</th>
                                 <th>Khách hàng</th>
                                 <th>Tình trạng</th>
@@ -75,6 +79,12 @@
                                 <tr>
                                     <td scope="row">{{ $comment->id }}</td>
                                     <td>{{ $comment->pro->name }}</td>
+<<<<<<< HEAD
+                                    <td>
+                                      <img src="{{ url('public/uploads/'. $comment->pro->image) }}" alt="" width="100px" height="100px" >
+                                    </td>
+=======
+>>>>>>> 01298ab0a4f3f16bcb5c9918cdfbbffc442fed01
                                     <td>{{ $comment->comment }}</td>
                                     <td>{{ $comment->cus->name}}</td>
                                     <td>
@@ -84,6 +94,12 @@
                                     </td>
                                     <td>{{ $comment->created_at->format('d-m-Y') }}</td>
                                     <td>
+<<<<<<< HEAD
+                                        <a href="{{ route('comment.edit', $comment->id) }}" class="btn btn-info">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+=======
+>>>>>>> 01298ab0a4f3f16bcb5c9918cdfbbffc442fed01
                                         <a href="{{ route('comment.destroy', $comment->id) }}"
                                             class="btn btn-danger btnDelete">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
