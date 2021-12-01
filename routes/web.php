@@ -48,16 +48,19 @@ use Illuminate\Support\Facades\Route;
             'banner'=>admin\BannerController::class,
             'variantProduct'=>admin\VariantProductController::class,
             'brand'=>admin\BrandController::class,
+            'order'=>admin\OrderController::class,
+            'slider'=>admin\SliderController::class,
             'blog'=>admin\BlogController::class,
             'categoryblog'=>admin\CategoryBlogController::class,
             'role'=>admin\RoleController::class,
             'decentralize'=>admin\DecentralizeController::class,
             'comment'=>admin\CommentController::class,
+            'commentblog'=>admin\CommentBlogController::class,
             'order'=>admin\OrderController::class,
             'customer'=>admin\CustomerController::class,
         ]);
-
     });
+    
 
 /*
     End route admin
@@ -68,11 +71,11 @@ use Illuminate\Support\Facades\Route;
     Start route client
 */ 
     Route::get('/',[App\Http\Controllers\client\HomeController::class,'index'])->name('client.index');
-    Route::get('/Cửa-Hàng',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
-    Route::get('/Sản-Phẩm-Chi-Tiết/{product_id}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
-    Route::get('/Giới-Thiệu',[App\Http\Controllers\client\HomeController::class,'about'])->name('client.about');
-    Route::get('/Liên-Hệ',[App\Http\Controllers\client\HomeController::class,'contact'])->name('client.contact');
-    Route::post('/Liên-Hệ',[App\Http\Controllers\client\HomeController::class,'post_contact'])->name('client.post_contact');
+    Route::get('/Cua-Hang',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
+    Route::get('/San-Pham-Chi-Tiet/{product_id}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
+    Route::get('/Gioi-Thieu',[App\Http\Controllers\client\HomeController::class,'about'])->name('client.about');
+    Route::get('/Lien-He',[App\Http\Controllers\client\HomeController::class,'contact'])->name('client.contact');
+    Route::post('/Lien-He',[App\Http\Controllers\client\HomeController::class,'post_contact'])->name('client.post_contact');
     
     // route user
     Route::get('/register',[App\Http\Controllers\client\Auth\RegisterController::class,'register'])->name('client.register');
@@ -122,6 +125,7 @@ Route::prefix('wishlist')->group(function () {
     Route::get('/checkout',[App\Http\Controllers\client\HomeController::class,'checkout'])->name('client.checkout');
     Route::get('/blog',[App\Http\Controllers\client\HomeController::class,'blog'])->name('client.blog');
     Route::get('/blog-details/{slug}',[App\Http\Controllers\client\HomeController::class,'blog_details'])->name('client.blog_details');
+    Route::post('/blog-details/{slug}',[App\Http\Controllers\admin\CommentBlogController::class,'store'])->name('client.blog_details');
     Route::get('/blog/category/{slug}',[App\Http\Controllers\client\HomeController::class,'categoryblog'])->name('client.cateblog');
 /*
     End route client

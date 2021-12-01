@@ -4,9 +4,7 @@
 
     use App\Repositories\Contracts\RepositoryInterface;
 
-    interface CommentInterface extends RepositoryInterface{
-
-        public function FindComment($id);
+    interface SliderInterface extends RepositoryInterface{
     }
 
 ?>

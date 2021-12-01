@@ -52,6 +52,7 @@ class BannerController extends Controller
            'title'=>$request->title,
            'link'=>$request->link,
            'image'=>$request->image,
+           'position'=>$request->position,
            'slug'=>Str::slug($request->title),
        ];
       $result=$this->banners->create($attribute);
@@ -99,6 +100,7 @@ class BannerController extends Controller
             'link'=>$request->link,
             'image'=>$request->image,
             'status'=>$request->status,
+            'position'=>$request->position,
             'slug'=>Str::slug($request->title),
         ];
        // dd($attribute);
@@ -118,6 +120,9 @@ class BannerController extends Controller
      */
     public function destroy(Banner $banner)
     {
-        //
+        {
+            $banner->delete();
+            return redirect()->route('banner.index')->with('success','xóa thành công');
+        }
     }
 }

@@ -123,7 +123,7 @@
                 <div class="col-sm-12">
                     <ul class="main-thumb-desc nav tabs-area" role="tablist">
                         <li><a class="active" data-toggle="tab" href="#dtail">Chi Tiết Sản Phẩm</a></li>
-                        <li><a data-toggle="tab" href="#review">Reviews 1</a></li>
+                        <li><a data-toggle="tab" href="#review">ĐÁNH GIÁ</a></li>
                     </ul>
                     <!-- Product Thumbnail Tab Content Start -->
                     <div class="tab-content thumb-content border-default">
@@ -131,108 +131,48 @@
                             <p>{!! $data_product_detail->description !!}</p>
                         </div>
                         <div id="review" class="tab-pane fade">
-                            <!-- Reviews Start -->
-                            <div class="review border-default universal-padding">
-                                <div class="group-title">
-                                    <h2>đánh giá người dùng</h2>
+                        <div class="review border-default universal-padding mt-30">
+                                <h2 class="review-title mb-30"><span> Đánh giá & Nhận xét {{ $data_product_detail->name }}</span>
+                                </h2>
+                                <!-- Reviews Field Start -->
+                                <div class="riview-field mt-40">
+                                @if(isset(Auth::guard('cus')->user()->id))
+                                <form>
+                                        <input type="hidden" name="customer_id" value="{{Auth::guard('cus')->user()->id}}">
+                                        <input type="hidden" name="product_id" value="{{$data_product_detail->id}}">
+                                        <div class="form-group">
+                                            <textarea class="form-control" rows="5" name="comment" id="comment"
+                                                required="required" style="width:100%"></textarea>
+                                        </div>
+                                        <button id="post_product_details" class="customer-btn">Gửi Đi Đánh Giá</button>
+                                    </form>
+                                @else
+                                    <p>Vui lòng đăng nhập để bình luận</p>
+                                @endif
                                 </div>
-                                <h4 class="review-mini-title">FeSa</h4>
-                                <ul class="review-list">
-                                    <!-- Single Review List Start -->
-                                    <li>
-                                        <span>Số Lượng</span>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <label>FeSa</label>
-                                    </li>
-                                    <!-- Single Review List End -->
-                                    <!-- Single Review List Start -->
-                                    <li>
-                                        <span>Giá</span>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <label>Đánh giá bởi <a href="https://themeforest.net/user/hastech">FeSa</a></label>
-                                    </li>
-                                    <!-- Single Review List End -->
-                                    <!-- Single Review List Start -->
-                                    <li>
-                                        <span>Giá trị</span>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <label>Posted on 7/20/18</label>
-                                    </li>
-                                    <!-- Single Review List End -->
-                                </ul>
+                                <!-- Reviews Field Start -->
+                            </div>
+                            <!-- Reviews Start -->
+                            <div class="review border-default universal-padding" id="comment_product">
+                            @if($data_comment)
+                             @foreach($data_comment as $comment)
+                               <div class="row iconcustomer">
+                                   <div class="col-2">
+                                       <img src="{{url('public/client')}}/img/icon/iconcustomer.jpg" alt="" style="width:60%">
+                                   </div>
+                                   <div class="col-10">
+                                   <h4 class="review-mini-title">{{$comment->cus->name}} <span class="time">{{ date('\V\à\o \l\ú\c H:i d-m-Y ',strtotime($comment->created_at))}}</span></h4> 
+                                       <p>{{$comment->comment}}</p>
+                                   </div>
+                               </div>
+                               @endforeach
+                            @else
+                                <p>Chưa có bình luận cho sản phẩm này!</p>
+                            @endif
                             </div>
                             <!-- Reviews End -->
                             <!-- Reviews Start -->
-                            <div class="review border-default universal-padding mt-30">
-                                <h2 class="review-title mb-30">Bạn đang đánh giá:
-                                    <br><span>{{ $data_product_detail->name }}</span>
-                                </h2>
-                                <p class="review-mini-title">Bạn xếp hạng</p>
-                                <ul class="review-list">
-                                    <!-- Single Review List Start -->
-                                    <li>
-                                        <span>Số lượng</span>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </li>
-                                    <!-- Single Review List End -->
-                                    <!-- Single Review List Start -->
-                                    <li>
-                                        <span>Giá</span>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </li>
-                                    <!-- Single Review List End -->
-                                    <!-- Single Review List Start -->
-                                    <li>
-                                        <span>Giá trị</span>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </li>
-                                    <!-- Single Review List End -->
-                                </ul>
-                                <!-- Reviews Field Start -->
-                                <div class="riview-field mt-40">
-                                    <form autocomplete="off" action="#">
-                                        <div class="form-group">
-                                            <label class="req" for="sure-name">Nickname</label>
-                                            <input type="text" class="form-control" id="sure-name" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="req" for="subject">Tóm Lược</label>
-                                            <input type="text" class="form-control" id="subject" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="req" for="comments">Đánh giá</label>
-                                            <textarea class="form-control" rows="5" id="comments"
-                                                required="required"></textarea>
-                                        </div>
-                                        <button type="submit" class="customer-btn">Gửi Đi Đánh Giá</button>
-                                    </form>
-                                </div>
-                                <!-- Reviews Field Start -->
-                            </div>
+                      
                             <!-- Reviews End -->
                         </div>
                     </div>
@@ -548,6 +488,45 @@
                 }
             });
         });
+
+
+
+      // Gửi bình luận sản phẩm bằng ajax
+        $('#post_product_details').click(function(e) {
+            e.preventDefault();
+        
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+          var customer_id = $("input[name=customer_id]").val();
+          var product_id = $("input[name=product_id]").val();
+          var comment = $("textarea[name=comment]").val();
+          console.log(customer_id);
+          console.log(product_id);
+          console.log(comment);
+            $.ajax({
+                type: 'post',
+                url:  '{{url('')}}/productDetail/'+$("input[name=product_id]").val(),
+                data: {
+                     customer_id : $("input[name=customer_id]").val(),
+                     product_id : $("input[name=product_id]").val(),
+                     comment : $("textarea[name=comment]").val()
+                },
+                success: function(response) {
+                    alertify.success('Đã gửi bình luận');
+                    console.log(response);
+                    $('#comment_product').empty();
+                    $('#comment_product').html(response);
+                    $('#comment').val('');
+                },
+                error: (error) => {
+                    console.log(JSON.stringify(error));
+                }
+            });
+        });
+
 
     </script>
 @endsection

@@ -25,12 +25,14 @@ class RepositoryServiceProvider extends ServiceProvider
             'VariantProduct',
             'Brand',
             'Banner',
+            'Slider',
             'User',
             'Cart',
             'Order',
             'OrderDetail',
             'Comment',
-            'Customer'
+            'Customer',
+            'CommentBlog'
         );
 
         foreach ($models as $model) {
