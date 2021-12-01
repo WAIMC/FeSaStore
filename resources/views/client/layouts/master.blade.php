@@ -8,7 +8,7 @@
     <title>FESA Shop | @yield('title') </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
-    <link rel="shortcut icon" href="{{url('public/client')}}/img/favicon.ico">
+    <link rel="shortcut icon" href="{{ url('public/dashboard') }}/dist/img/logo_admin.png">
     <!-- Fontawesome css -->
     <link rel="stylesheet" href="{{url('public/client')}}/css/font-awesome.min.css">
     <!-- Ionicons css -->

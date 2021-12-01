@@ -67,6 +67,12 @@
                                                 $name_managerment = 'Phân Quyền';
                                             }elseif ($route == 'slider') {
                                                 $name_managerment = 'slider';
+                                            }elseif ($route == 'comment') {
+                                                $name_managerment = 'Bình Luận Sản Phẩm';
+                                            }elseif ($route == 'order') {
+                                                $name_managerment = 'Đơn Hàng';
+                                            }elseif ($route == 'customer') {
+                                                $name_managerment = 'Khách Hàng';
                                             }
                                         @endphp
                                         <div class="card card-dark col-4 card_{{$route}}">
@@ -130,6 +136,12 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="custom-control custom-checkbox">
+                                                            <input class="custom-control-input checkbox-children check_{{$route}}" type="checkbox" id="file{{$route}}" name="routes[]" value="{{$route}}.file">
+                                                            <label for="file{{$route}}" class="custom-control-label">Quản Lý Ảnh {{$name_managerment}}</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="custom-control custom-checkbox">
                                                             <input class="custom-control-input checkbox-children check_{{$route}}" type="checkbox" id="login{{$route}}" name="routes[]" value="{{$route}}.login">
                                                             <label for="login{{$route}}" class="custom-control-label">Đăng Nhập {{$name_managerment}}</label>
                                                         </div>
@@ -184,7 +196,7 @@
             // checked form with data role
             var permission = {!! json_encode(json_decode($role->permission)) !!};
             var rou = {!! json_encode($routes) !!}
-            permission.forEach(per => {    
+            permission.forEach(per => {
                 rou.forEach(rou => {
                     if($('.check_'+rou).val()==per){
                         $('.check_'+rou).prop('checked',true);

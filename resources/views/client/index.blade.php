@@ -2,7 +2,7 @@
 @section('title','Trang chủ')
 
 @section('slider')
-    <div class="col-xl-9 col-lg-8 slider_box">
+    <div class="col-xl-9 col-lg-8 slider_box pb-50" >
         <div class="slider-wrapper theme-default">
             <!-- Slider Background  Image Start-->
             <div id="slider" class="nivoSlider">
@@ -426,7 +426,7 @@
                         <!-- Single Blog Start -->
                         <div class="single-latest-blog">
                             <div class="blog-img">
-                                <a href="{{ route('client.blog_details', $blog->slug) }}"><img src="{{ url('public/uploads/', $blog->image) }}" alt="blog-image"></a>
+                                <a href="{{ route('client.blog_details', $blog->slug) }}"><img src="{{ url('public/uploads/') }}/{{$blog->image}}" alt="blog-image"></a>
                             </div>
                             <div class="blog-desc">
                                 <h4><a href="{{ route('client.blog_details', $blog->slug) }}">{{$blog->title}}</a></h4>

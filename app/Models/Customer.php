@@ -44,5 +44,46 @@ protected $table='customer';
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get one product rating
+     * 
+     * @return Object
+     */
+    public function customer_product_rating()
+    {
+        return $this->hasOne(ProductRating::class, 'id', 'customer_id');
+    } 
+    
+    /**
+     * Get many product comment
+     * 
+     * @return Object
+     */
+    public function customer_product_comment()
+    {
+        return $this->hasMany(Comment::class, 'customer_id', 'id');
+    } 
+
+    /**
+     * Get many order
+     * 
+     * @return Object
+     */
+    public function customer_order()
+    {
+        return $this->hasMany(Order::class, 'customer_id', 'id');
+    } 
+
+    /**
+     * Get many comment blog
+     * 
+     * @return Object
+     */
+    public function customer_blog_comment()
+    {
+        return $this->hasMany(BlogComment::class, 'customer_id', 'id');
+    } 
+
 }
 
