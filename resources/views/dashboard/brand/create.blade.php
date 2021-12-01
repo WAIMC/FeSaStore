@@ -11,11 +11,8 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow">
-
                 {{-- card hearder --}}
                 <div class="card-header">
-
-                    {{-- header Setting Link --}}
                     <div class="row justify-content-between">
                         <div class="col-4">
                             <h4>Thêm thương hiệu mới</h4>
@@ -27,44 +24,41 @@
                             </a>
                         </div>
                     </div>
-                       
-                    {{-- select by choose --}}
-                  
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12">
-                        <form action="{{route('brand.store')}}" method="post"  id="quickForm" novalidate="novalidate">
-                        @csrf
-                        <div class="form-group">
-                          <label for="">Tên thương hiệu</label>
-                          <input type="text" name="name" value="{{old("name")}}" class="form-control @error('name')   is-invalid   @enderror" placeholder="Nhập tên thương hiệu" aria-describedby="helpId">
-                              @error('name')
-                            <small  class="text-danger">{{$message}}</small> 
-                            @enderror
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <form action="{{route('brand.store')}}" method="post"  id="quickForm" novalidate="novalidate">
+                                @csrf
+                            <div class="form-group">
+                                <label for="">Tên thương hiệu</label>
+                                <input type="text" name="name" value="{{old("name")}}" class="form-control @error('name')   is-invalid   @enderror" placeholder="Nhập tên thương hiệu" aria-describedby="helpId">
+                                @error('name')
+                                    <small  class="text-danger">{{$message}}</small> 
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="">Hình ảnh</label>
+                                <div class="input-group">
+                                    <span class="input-group-prepend">
+                                        <button type="button" data-toggle="modal" data-target="#model_file" class="btn btn-primary">
+                                            <i class="fas fa-folder-open"></i>
+                                        </button>
+                                    </span>
+                                    <input type="text" readonly name="image" value="{{old("image")}}" id="image" class="form-control @error('image') is-invalid @enderror">
+                                </div>
+                                @error('image')
+                                <small  class="text-danger">{{$message}}</small> 
+                                @enderror
+                                <div class="col-4 mt-3">
+                                    <img class="img w-100" src="" id="show_img" class="mt-2" >
+                                </div>
+                            </div>
+                            <input type="submit" value="Thêm mới" class="btn btn-primary">
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <label for="">Hình ảnh</label>
-                            <div class="input-group">
-                                <span class="input-group-prepend">
-                                    <button type="button" data-toggle="modal" data-target="#model_file" class="btn btn-primary"><i
-                                            class="fas fa-folder-open"></i></i></button>
-                                </span>
-                                <input type="text" readonly name="image" value="{{old("image")}}" id="image" class="form-control @error('image')   is-invalid   @enderror">
-                              
-                            </div>
-                            @error('image')
-                            <small  class="text-danger">{{$message}}</small> 
-                            @enderror
-                            <div class="col-4 mt-3">
-                                <img class="img w-100" src="" id="show_img" class="mt-2" >
-                            </div>
-                          </div>
-                          <input type="submit" value="Thêm mới" class="btn btn-primary">
-                        </form>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>

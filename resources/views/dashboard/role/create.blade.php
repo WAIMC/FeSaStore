@@ -179,6 +179,8 @@
 @section('js')
     {{-- swal --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- load crud js for project --}}
+    <script src="{{ url('public/dashboard') }}/setup-project/setup-crud.js"></script>
     <script>
         $(document).ready(function () {
             // checked all
@@ -194,31 +196,7 @@
                     $(this).parents('.card_'+element).find('.check_'+element).prop('checked', $(this).prop('checked'));
                 });
             });
-           // show alert insert
-            $('.btnInsert').click(function(e) {
-                e.preventDefault();
-                Swal.fire({
-                    title: 'Bạn có chắc chắn?',
-                    text: "Bạn không thể hoàn tác chức năng này!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Có, Thêm mới nó!',
-                    cancelButtonText: "Không, hủy nó!",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $('form#formInsert').submit();
-                        Swal.fire(
-                            'Đã Thêm!',
-                            'Dữ liệu của bạn đã được thêm.',
-                            'success'
-                        );
-                    }
-                });
-            }); 
-
+            
         });
-
-</script>
+    </script>
 @endsection

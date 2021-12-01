@@ -11,11 +11,8 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow">
-
                 {{-- card hearder --}}
                 <div class="card-header">
-
-                    {{-- header Setting Link --}}
                     <div class="row justify-content-between">
                         <div class="col-4">
                             <h4>Chỉnh sửa banner</h4>
@@ -51,6 +48,13 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                            <label for="">vị trí</label>
+                            <input type="text" name="position" value="{{$banner->position}}" class="form-control @error('link')   is-invalid  @enderror" placeholder="Nhập đường dẫn trỏ đến" aria-describedby="helpId">
+                                @error('position')
+                              <small  class="text-danger">{{$message}}</small> 
+                              @enderror
+                          </div>
+                            <div class="form-group">
                                 <label>Trạng thái</label>
                                 <div class="form-control">
                                     <input type="radio" id="inlineRadio1" @if ($banner->status == 1)checked="" @endif value="1" name="status">
@@ -58,31 +62,29 @@
                                     <input @if ($banner->status == 0)checked="" @endif type="radio" id="inlineRadio2" value="0" name="status">
                                     <label for="inlineRadio2"> Hiện </label>
                                 </div>
-                
-                            </div>
-                          <div class="form-group">
-                              <label for="">Hình ảnh</label>
-                              <div class="input-group">
-                                  <span class="input-group-prepend">
-                                      <button type="button" data-toggle="modal" data-target="#model_file" class="btn btn-primary"><i
-                                              class="fas fa-folder-open"></i></i></button>
-                                  </span>
-                                  <input type="text" readonly name="image" value="{{$banner->image}}" id="image" class="form-control @error('image')   is-invalid  @enderror">
-                                
-                              </div>
-                              @error('image')
-                              <small  class="text-danger">{{$message}}</small> 
-                              @enderror
-                              <div class="col-4 mt-3">
-                                  <img class="img w-100" src="{{ url('public/uploads') }}/{{$banner->image}}" id="show_img" class="mt-2" >
-                              </div>
-                            </div>
-                            <input type="hidden" name="id" value="{{$banner->id}}">
-                            <input type="submit" value="Cập nhật" class="btn btn-primary">
-                          </form>
+                                <div class="form-group">
+                                    <label for="">Hình ảnh</label>
+                                    <div class="input-group">
+                                        <span class="input-group-prepend">
+                                            <button type="button" data-toggle="modal" data-target="#model_file" class="btn btn-primary">
+                                                <i class="fas fa-folder-open"></i>
+                                            </button>
+                                        </span>
+                                        <input type="text" readonly name="image" value="{{$banner->image}}" id="image" class="form-control @error('image') is-invalid @enderror">
+                                    </div>
+                                    @error('image')
+                                        <small  class="text-danger">{{$message}}</small> 
+                                    @enderror
+                                    <div class="col-4 mt-3">
+                                        <img class="img w-100" src="{{ url('public/uploads') }}/{{$banner->image}}" id="show_img" class="mt-2" >
+                                    </div>
+                                </div>
+                                <input type="hidden" name="id" value="{{$banner->id}}">
+                                <input type="submit" value="Cập nhật" class="btn btn-primary btnEdit">
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>
@@ -113,6 +115,10 @@
 
 {{-- customize load js for master layout --}}
 @section('js')
+    {{-- swal --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- load crud js for project --}}
+    <script src="{{ url('public/dashboard') }}/setup-project/setup-crud.js"></script>
     <script>
          $('#model_file').on('hide.bs.modal', event => {
             var _link = $('input#image').val();

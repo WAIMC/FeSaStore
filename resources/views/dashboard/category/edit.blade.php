@@ -35,9 +35,8 @@
                                         <div class="form-group">
                                           <label for="parent_id">Thuộc Danh Mục</label>
                                           <select class="form-control" name="parent_id" id="parent_id">
-                                                <option value="0" id="current">Chọn danh mục hiện tại</option>
-                                                {!! $option !!}
-
+                                            <option value="0" id="current">Chọn danh mục hiện tại</option>
+                                            {!! $option !!}
                                           </select>
                                         </div>
 
@@ -84,6 +83,8 @@
     <script src="{{ url('public/dashboard') }}/plugins/summernote/summernote-bs4.min.js"></script>
     {{-- swal --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- load crud js for project --}}
+    <script src="{{ url('public/dashboard') }}/setup-project/setup-crud.js"></script>
     <script>
         // using ckeditor
         $(function () {
@@ -104,30 +105,5 @@
                 $(this).remove();
             }
         })
-
-        // show alert insert
-        $('.btnEdit').click(function(e) {
-            e.preventDefault();
-            Swal.fire({
-                title: 'Bạn có chắc chắn?',
-                text: "Bạn không thể hoàn tác chức năng này!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Có, Thêm mới nó!',
-                cancelButtonText: "Không, hủy nó!",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $('form#formEdit').submit();
-                    Swal.fire(
-                        'Đang Thêm!',
-                        'Dữ liệu của bạn đang được thêm.',
-                        'success'
-                    );
-                }
-            });
-        });
-
-</script>
+    </script>
 @endsection

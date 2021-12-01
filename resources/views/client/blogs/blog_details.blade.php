@@ -77,34 +77,68 @@
                             </div>
                             <!-- Contact Email Area Start -->
                             <div class="blog-detail-contact">
+
+
+                    
                                 <h3 class="mb-15 leave-reply">Để lại một câu trả lời</h3>
                                 <div class="submit-review">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="usr">Tên của bạn:</label>
-                                            <input type="text" class="form-control" id="usr">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="usr">Email cảu bạn là:</label>
-                                            <input type="email" class="form-control" id="email">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="web-address">Url trang web:</label>
-                                            <input type="text" class="form-control" id="web-address">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="sub">Chủ thể:</label>
-                                            <input type="text" class="form-control" id="sub">
-                                        </div>
+                                @if(isset(Auth::guard('cus')->user()->id))
+                                <form>
+                                    @csrf
+                                    <input type="hidden" name="slug" value="{{$blog->slug}}">
+                                    <input type="hidden" name="customer_id" value="{{Auth::guard('cus')->user()->id}}">
+                                    <input type="hidden" name="blog_id" value="{{$blog->id}}">
                                         <div class="form-group">
                                             <label for="comment">Bình luận:</label>
-                                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                                            <textarea class="form-control" name="comment" rows="5" id="comment"></textarea>
                                         </div>
                                         <div class="sbumit-reveiew">
-                                            <input value="Submit" class="return-customer-btn" type="submit">
+                                         <button type="submit" id="post_blog_details" class="customer-btn">Gửi Bình Luận</button>
                                         </div>
                                     </form>
+                                @else
+                                <p>Vui lòng đăng nhập để bình luận</p>
+                                @endif
+                                </div><br>
+
+                                <div class="review border-default universal-padding" id="comment_blogdetail" >
+                                @if($data_commentblog)
+                                @foreach($data_commentblog as $commentblog)
+                                <div class="row iconcustomer">
+                                    <div class="col-2">
+                                        <img src="{{url('public/client')}}/img/icon/iconcustomer.jpg" alt="" style="width:60%">
+                                    </div>
+                                    <div class="col-10">
+                                    <h4 class="review-mini-title">{{$commentblog->cus->name}} <span class="time">{{ date('\V\à\o \l\ú\c H:i d-m-Y ',strtotime($commentblog->created_at))}}</span></h4> 
+                                        <p>{{$commentblog->comment}}</p>
+                                    </div>
                                 </div>
+                                @endforeach
+                                @else
+                                    <p>Chưa có bình luận cho sản phẩm này !</p>
+                                @endif
+                                </div>
+
+                           
+
+                                <!-- @if(isset(Auth::guard('cus')->user()->id))
+                                <form action="{{route('client.blog_details',$blog->slug)}}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="slug" value="{{$blog->slug}}">
+                                    <input type="hidden" name="customer_id" value="{{Auth::guard('cus')->user()->id}}">
+                                    <input type="hidden" name="blog_id" value="{{$blog->id}}">
+                                        <div class="form-group">
+                                            <label for="comment">Bình luận:</label>
+                                            <textarea class="form-control" name=comment rows="5" id="comment"></textarea>
+                                        </div>
+                                        <div class="sbumit-reveiew">
+                                         <button type="submit" class="customer-btn">Gửi Bình Luận</button>
+                                        </div>
+                                    </form>
+                                @else
+                                <p>Vui lòng đăng nhập để bình luận</p>
+                                @endif
+                                </div> -->
                             </div>
                             <!-- Contact Email Area End -->
                         </div>
@@ -117,4 +151,52 @@
         <!-- Single Blog Page End Here -->
         <!-- Support Area Start Here -->
    
+@endsection
+
+
+{{-- load js for index --}}
+@section('js')
+   
+    <script>
+        // Gửi bình luận bài viết bằng ajax
+
+        $('#post_blog_details').click(function(e) {
+            e.preventDefault();
+        
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+          var slug = $("input[name=slug]").val();
+          var customer_id = $("input[name=customer_id]").val();
+          var blog_id = $("input[name=blog_id]").val();
+          var comment = $("textarea[name=comment]").val();
+          console.log(slug);
+          console.log(customer_id);
+          console.log(blog_id);
+          console.log(comment);
+            $.ajax({
+                type: 'post',
+                url:  '{{url('')}}/blog-details/'+$("input[name=slug]").val(),
+                data: {
+                     slug : $("input[name=slug]").val(),
+                     customer_id : $("input[name=customer_id]").val(),
+                     blog_id : $("input[name=blog_id]").val(),
+                     comment : $("textarea[name=comment]").val()
+                },
+                success: function(response) {
+                    alertify.success('Đã gửi bình luận');
+                    console.log(response);
+                    $('#comment_blogdetail').empty();
+                    $('#comment_blogdetail').html(response);
+                    $('#comment').val('');
+                },
+                error: (error) => {
+                    console.log(JSON.stringify(error));
+                }
+            });
+        });
+
+    </script>
 @endsection

@@ -67,8 +67,10 @@
 @section('js')
     {{-- load js for multiple select --}}
     <script src="{{ url('public/dashboard') }}/plugins/select2/js/select2.full.min.js"></script>
-    {{-- load sweet --}}
+    {{-- swal --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- load crud js for project --}}
+    <script src="{{ url('public/dashboard') }}/setup-project/setup-crud.js"></script>
     <script>
         $(document).ready(function () {
             // checked form with data admin_role
@@ -87,30 +89,6 @@
 
             // multiple select
             $('.select2').select2();
-
-           // show alert insert
-           $('.btnEdit').click(function(e) {
-                e.preventDefault();
-                Swal.fire({
-                    title: 'Bạn có chắc chắn?',
-                    text: "Bạn không thể hoàn tác chức năng này!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Có, cập nhật mới nó!',
-                    cancelButtonText: "Không, hủy nó!",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $('form#formEdit').submit();
-                        Swal.fire(
-                            'Đã Cập nhật!',
-                            'Dữ liệu của bạn đã được cập nhật.',
-                            'success'
-                        );
-                    }
-                });
-            }); 
         });
     </script>
 @endsection

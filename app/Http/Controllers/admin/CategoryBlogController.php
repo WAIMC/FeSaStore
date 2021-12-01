@@ -14,7 +14,7 @@ class CategoryBlogController extends Controller
    protected $categoryblog;
     public function __construct(CategoryBlogInterface $categoryblog)
     {
-        $this->categoryblog=$categoryblog;
+        $this->categoryblog = $categoryblog;
     }
     /**
      * Display a listing of the resource.
@@ -23,8 +23,8 @@ class CategoryBlogController extends Controller
      */
     public function index()
     {
-        $data=$this->categoryblog->paginate(10);
-        return view('dashboard.categoryblog.index',compact('data'));
+        $data = $this->categoryblog->getAll();
+        return view('dashboard.categoryblog.index', compact('data'));
     }
 
     /**

@@ -4,6 +4,8 @@
 
     use App\Repositories\Contracts\OrderDetailInterface;
     use App\Repositories\Eloquent\BaseRepository;
+    use Carbon\Carbon;
+
 
     class OrderDetailRepository extends BaseRepository implements OrderDetailInterface{
         
@@ -21,7 +23,7 @@
          * @return array
          */
         public function get_date_between($from_date, $to_date){
-            return $this->getModel()::WhereBetween('created_at',[$from_date,$to_date])->get();
+            return $this->getModel()::whereDate('created_at', '>=', $from_date)->whereDate('created_at', '<=', $to_date)->get();
         }
 
     }

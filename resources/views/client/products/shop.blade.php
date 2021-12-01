@@ -381,19 +381,10 @@
                         <div class="main-toolbar-sorter clearfix">
                             <div class="toolbar-sorter d-flex align-items-center">
                                 <label>Sắp Xếp:</label>
-                                <select class="sorter wide" style="display: none;" name="search_name" id="soft_by_name">
-                                    <option value="Position">Relevance</option>
+                                <select class="sorter wide" style="" name="search_name" id="soft_by_name">
                                     <option value="DESC" selected>Tên, A tới Z</option>
                                     <option value="ASC" >Tên, Z tới A</option>
                                 </select>
-                                <div class="nice-select sorter wide" tabindex="0">
-                                    <span class="current">Sắp xếp tên</span>
-                                    <ul class="list" id="data_soft_by_name">
-                                        <li data-value="Position" class="option">Relevance</li>
-                                        <li data-value="DESC" class="option">Tên, A tới Z</li>
-                                        <li data-value="ASC" class="option">Tên, Z tới A</li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                         <!-- Toolbar Short Area End -->
@@ -401,23 +392,13 @@
                         <div class="main-toolbar-sorter clearfix">
                             <div class="toolbar-sorter d-flex align-items-center">
                                 <label>Hiển Thị:</label>
-                                <select class="sorter wide" style="display: none;" name="paginate" id="soft_by_paginate">
+                                <select class="sorter wide" style="" name="paginate" id="soft_by_paginate">
                                     <option value="12">12</option>
                                     <option value="25">25</option>
                                     <option value="50">50</option>
                                     <option value="75">75</option>
                                     <option value="100">100</option>
                                 </select>
-                                <div class="nice-select sorter wide" tabindex="0">
-                                    <span class="current">12</span>
-                                    <ul class="list">
-                                        <li data-value="12" class="option">12</li>
-                                        <li data-value="25" class="option">25</li>
-                                        <li data-value="50" class="option">50</li>
-                                        <li data-value="75" class="option">75</li>
-                                        <li data-value="100" class="option">100</li>
-                                    </ul>
-                                </div>
                                 <!-- Row End -->
                             </div>
                         </div>
@@ -561,43 +542,45 @@
 {{-- load js for index --}}
 @section('js')
     <script>
-        // set value slier ranger
-        $(function () {
-            $('#slider-range').slider({
-                range: true,
-                min: {!! $all_variant_pro->min('price') !!},
-                max: {!! $all_variant_pro->max('price') !!},
-                values: [0, 2000],
-                create: function() {
-                    $("#amount").val("$"+min+" - $"+max);
-                },
-                slide: function (event, ui) {
-                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-                    var mi = ui.values[0];
-                    var mx = ui.values[1];
-                    $('#start_price').val(ui.values[0]);
-                    $('#end_price').val(ui.values[1]);
-                }
-            })
-        });
-        
-        $('#fillter_price').click(function (e) { 
-            e.preventDefault();
-            $('form#form_search').submit();
-        });
-
-
-        // selected and post soft name
-        $('#soft_by_name').change(function (e) { 
-            e.preventDefault();
-            $('form#form_search').submit();
+        $(document).ready(function () {
+            // set value slier ranger
+            $(function () {
+                $('#slider-range').slider({
+                    range: true,
+                    min: {!! $all_variant_pro->min('price') !!},
+                    max: {!! $all_variant_pro->max('price') !!},
+                    values: [0, 2000],
+                    create: function() {
+                        $("#amount").val("$"+min+" - $"+max);
+                    },
+                    slide: function (event, ui) {
+                        $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                        var mi = ui.values[0];
+                        var mx = ui.values[1];
+                        $('#start_price').val(ui.values[0]);
+                        $('#end_price').val(ui.values[1]);
+                    }
+                })
+            });
             
-        });
+            $('#fillter_price').click(function (e) { 
+                e.preventDefault();
+                $('form#form_search').submit();
+            });
 
-        // selected and post soft name
-        $('#soft_by_paginate').change(function (e) { 
-            e.preventDefault();
-            $('form#form_search').submit();
+
+            // selected and post soft name
+            $('#soft_by_name').change(function (e) { 
+                e.preventDefault();
+                $('form#form_search').submit();
+                
+            });
+
+            // selected and post soft name
+            $('#soft_by_paginate').change(function (e) { 
+                e.preventDefault();
+                $('form#form_search').submit();
+            });
         });
 
     </script>

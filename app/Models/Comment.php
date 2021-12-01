@@ -29,4 +29,12 @@ class Comment extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function cus(){
+        return $this->hasOne(Customer::class,'id','customer_id');
+    }
+
+    public function pro(){
+        return $this->hasOne(Product::class,'id','product_id');
+    }
 }

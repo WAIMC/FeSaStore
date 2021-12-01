@@ -24,7 +24,8 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/Admin/Register',[App\Http\Controllers\admin\Auth\RegisterController::class,'register'])->name('admin.register');
     Route::post('Admin/Register',[App\Http\Controllers\admin\Auth\RegisterController::class,'postRegister'])->name('admin.register');
-
+    
+    //Route::post('xu-li-don-hang/{id}',[])
 
     Route::prefix('admin')->middleware('adminAuth')->group(function(){
         Route::get('/',[App\Http\Controllers\admin\AdminController::class,'index'])->name('admin.index');
@@ -39,19 +40,20 @@ use Illuminate\Support\Facades\Route;
             'banner'=>admin\BannerController::class,
             'variantProduct'=>admin\VariantProductController::class,
             'brand'=>admin\BrandController::class,
+            'order'=>admin\OrderController::class,
+            'slider'=>admin\SliderController::class,
             'blog'=>admin\BlogController::class,
             'categoryblog'=>admin\CategoryBlogController::class,
             'role'=>admin\RoleController::class,
             'decentralize'=>admin\DecentralizeController::class,
             'comment'=>admin\CommentController::class,
+            'commentblog'=>admin\CommentBlogController::class,
             'order'=>admin\OrderController::class,
             'customer'=>admin\CustomerController::class,
         ]);
-
-        Route::resource('order', admin\OrderController::class)->only([
-            'index', 'show', 'update', 'destroy'
-        ]);
+        
     });
+    
 
 /*
     End route admin
@@ -64,6 +66,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/',[App\Http\Controllers\client\HomeController::class,'index'])->name('client.index');
     Route::get('/shop',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
     Route::get('/productDetail/{product_id}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
+    Route::post('/productDetail/{product_id}',[App\Http\Controllers\admin\CommentController::class,'store'])->name('client.commentProductDetail');
     Route::get('/about',[App\Http\Controllers\client\HomeController::class,'about'])->name('client.about');
     Route::get('/contact',[App\Http\Controllers\client\HomeController::class,'contact'])->name('client.contact');
     Route::post('/contact',[App\Http\Controllers\client\HomeController::class,'post_contact'])->name('client.post_contact');
@@ -116,6 +119,7 @@ Route::prefix('wishlist')->group(function () {
     Route::get('/checkout',[App\Http\Controllers\client\HomeController::class,'checkout'])->name('client.checkout');
     Route::get('/blog',[App\Http\Controllers\client\HomeController::class,'blog'])->name('client.blog');
     Route::get('/blog-details/{slug}',[App\Http\Controllers\client\HomeController::class,'blog_details'])->name('client.blog_details');
+    Route::post('/blog-details/{slug}',[App\Http\Controllers\admin\CommentBlogController::class,'store'])->name('client.blog_details');
     Route::get('/blog/category/{slug}',[App\Http\Controllers\client\HomeController::class,'categoryblog'])->name('client.cateblog');
 /*
     End route client

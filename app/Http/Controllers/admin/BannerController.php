@@ -15,7 +15,7 @@ class BannerController extends Controller
 
     public function __construct(BannerInterface $banners)
     {
-        $this->banners=$banners;
+        $this->banners = $banners;
     }
 
     /**
@@ -25,8 +25,8 @@ class BannerController extends Controller
      */
     public function index()
     {
-        $data=$this->banners->paginate(10);
-        return view('dashboard.banner.index',compact('data'));
+        $data = $this->banners->getAll();
+        return view('dashboard.banner.index', compact('data'));
     }
 
     /**
@@ -52,6 +52,7 @@ class BannerController extends Controller
            'title'=>$request->title,
            'link'=>$request->link,
            'image'=>$request->image,
+           'position'=>$request->position,
            'slug'=>Str::slug($request->title),
        ];
       $result=$this->banners->create($attribute);
@@ -99,6 +100,7 @@ class BannerController extends Controller
             'link'=>$request->link,
             'image'=>$request->image,
             'status'=>$request->status,
+            'position'=>$request->position,
             'slug'=>Str::slug($request->title),
         ];
        // dd($attribute);
@@ -118,6 +120,9 @@ class BannerController extends Controller
      */
     public function destroy(Banner $banner)
     {
-        //
+        {
+            $banner->delete();
+            return redirect()->route('banner.index')->with('success','xóa thành công');
+        }
     }
 }

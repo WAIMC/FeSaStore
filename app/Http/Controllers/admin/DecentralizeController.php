@@ -35,7 +35,7 @@ class DecentralizeController extends Controller
      */
     public function index()
     {
-        $data_decentralize = $this->admin_repo->paginate(12);
+        $data_decentralize = $this->admin_repo->getAll();
         return view('dashboard.decentralize.index', compact('data_decentralize'));
     }
 

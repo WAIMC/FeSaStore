@@ -19,7 +19,6 @@
                         <div class="col-12 m-auto">
                             <form action="{{ route('role.update', $role->id) }}" id="formEdit" method="POST">
                                 @csrf @method('PUT')
-                                
                                 <div class="form-group">
                                     <label for="name">Tên Vai Trò</label>
                                     <input type="text" class="form-control @error('name')
@@ -29,7 +28,6 @@
                                         <small id="nameRole" class="form-text text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                               
                                 <div class="row">
                                     <h3 for="" class="m-auto">Sự Cho Phép</h3>
                                 </div>
@@ -43,34 +41,34 @@
                                 </div>
                                 <div class="row p-0 m-0">
                                     @foreach ($routes as $route)
-                                    @php
-                                        $name_managerment = '';
-                                        if($route == 'admin'){
-                                            $name_managerment = 'Quản Trị';
-                                        }elseif ($route == 'settingLink') {
-                                            $name_managerment = 'Đường Dẫn';
-                                        }elseif ($route == 'category') {
-                                            $name_managerment = 'Danh Mục';
-                                        }elseif ($route == 'product') {
-                                            $name_managerment = 'Sản Phẩm';
-                                        }elseif ($route == 'banner') {
-                                            $name_managerment = 'Banner';
-                                        }elseif ($route == 'variantProduct') {
-                                            $name_managerment = 'Biến Thể';
-                                        }elseif ($route == 'brand') {
-                                            $name_managerment = 'Thương Hiệu';
-                                        }elseif ($route == 'blog') {
-                                            $name_managerment = 'Bài Viết';
-                                        }elseif ($route == 'categoryblog') {
-                                            $name_managerment = 'Danh Mục Bài Viết';
-                                        }elseif ($route == 'role') {
-                                            $name_managerment = 'Vai Trò';
-                                        }elseif ($route == 'decentralize') {
-                                            $name_managerment = 'Phân Quyền';
-                                        }elseif ($route == 'slider') {
-                                            $name_managerment = 'slider';
-                                        }
-                                    @endphp
+                                        @php
+                                            $name_managerment = '';
+                                            if($route == 'admin'){
+                                                $name_managerment = 'Quản Trị';
+                                            }elseif ($route == 'settingLink') {
+                                                $name_managerment = 'Đường Dẫn';
+                                            }elseif ($route == 'category') {
+                                                $name_managerment = 'Danh Mục';
+                                            }elseif ($route == 'product') {
+                                                $name_managerment = 'Sản Phẩm';
+                                            }elseif ($route == 'banner') {
+                                                $name_managerment = 'Banner';
+                                            }elseif ($route == 'variantProduct') {
+                                                $name_managerment = 'Biến Thể';
+                                            }elseif ($route == 'brand') {
+                                                $name_managerment = 'Thương Hiệu';
+                                            }elseif ($route == 'blog') {
+                                                $name_managerment = 'Bài Viết';
+                                            }elseif ($route == 'categoryblog') {
+                                                $name_managerment = 'Danh Mục Bài Viết';
+                                            }elseif ($route == 'role') {
+                                                $name_managerment = 'Vai Trò';
+                                            }elseif ($route == 'decentralize') {
+                                                $name_managerment = 'Phân Quyền';
+                                            }elseif ($route == 'slider') {
+                                                $name_managerment = 'slider';
+                                            }
+                                        @endphp
                                         <div class="card card-dark col-4 card_{{$route}}">
                                             <div class="card-header">
                                                 <div class="form-group">
@@ -156,7 +154,6 @@
                                         </div>
                                     @endforeach
                                 </div>
-    
                                 <button type="button" class="btn btn-outline-dark btnEdit">Cập Nhật</button>
                             </form>
                         </div>
@@ -179,6 +176,8 @@
 @section('js')
     {{-- swal --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- load crud js for project --}}
+    <script src="{{ url('public/dashboard') }}/setup-project/setup-crud.js"></script>
     <script>
         $(document).ready(function () {
 
@@ -206,31 +205,8 @@
                     $(this).parents('.card_'+element).find('.check_'+element).prop('checked', $(this).prop('checked'));
                 });
             });
-           // show alert insert
-            $('.btnEdit').click(function(e) {
-                e.preventDefault();
-                Swal.fire({
-                    title: 'Bạn có chắc chắn?',
-                    text: "Bạn không thể hoàn tác chức năng này!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Có, cập nhật mới nó!',
-                    cancelButtonText: "Không, hủy nó!",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $('form#formEdit').submit();
-                        Swal.fire(
-                            'Đã Cập nhật!',
-                            'Dữ liệu của bạn đã được cập nhật.',
-                            'success'
-                        );
-                    }
-                });
-            }); 
 
         });
 
-</script>
+    </script>
 @endsection

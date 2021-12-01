@@ -11,7 +11,6 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow">
-
                 <div class="card-header">
                     <h4 class="text-center">Thêm Sản Phẩm Mới</h4>
                 </div>
@@ -219,6 +218,8 @@
     <script src="{{ url('public/dashboard') }}/plugins/summernote/summernote-bs4.min.js"></script>
     {{-- swal --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- load crud js for project --}}
+    <script src="{{ url('public/dashboard') }}/setup-project/setup-crud.js"></script>
     <script>
         $(document).ready(function () {
             //  summernote description
@@ -240,30 +241,6 @@
                 var _link = $('input#image').val();
                 var _image = "{{ url('public/uploads') }}" + "/" + _link;
                 $('#show_image').attr('src', _image);
-            });
-
-            // insert conformation
-            $('.btnInsert').click(function(e) {
-                e.preventDefault();
-                Swal.fire({
-                    title: 'Bạn Có Chắc Chắn?',
-                    text: "Bạn Không Thể Hoàn Tác Chức Năng!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Có, Thêm nó!',
-                    cancelButtonText: "Không, hủy nó!",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $('form#formInsert').submit();
-                        Swal.fire(
-                            'Đang Thêm Mới!',
-                            'Dữ Liệu Đang Được Thêm.',
-                            'success'
-                        );
-                    }
-                });
             });
 
             // insert variant product

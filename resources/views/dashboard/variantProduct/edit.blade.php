@@ -121,7 +121,7 @@
                         </div>
 
                         <div class="row mt-5">
-                            <button type="button" class="btn btn-primary" id="btnEdit">Cập Nhật</button>
+                            <button type="button" class="btn btn-primary btnEdit">Cập Nhật</button>
                         </div>
                         
                     </form>
@@ -168,6 +168,8 @@
 @section('js')
     {{-- swal --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- load crud js for project --}}
+    <script src="{{ url('public/dashboard') }}/setup-project/setup-crud.js"></script>
     <script>
 
         // checked status
@@ -218,30 +220,6 @@
                 _html += "</div>";
             }
             $('#show_gallery').html(_html);
-        });
-
-        // insert conformation
-        $('#btnEdit').click(function(e) {
-            e.preventDefault();
-            Swal.fire({
-                title: 'Bạn Có Chắc Chắn?',
-                text: "Bạn Không Thể Hoàn Tác Chức Năng!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Có, Thêm nó!',
-                cancelButtonText: "Không, hủy nó!",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $('form#formEdit').submit();
-                    Swal.fire(
-                        'Đang Cập Nhật!',
-                        'Dữ Liệu Đang Được Cập Nhật.',
-                        'success'
-                    );
-                }
-            });
         });
 
     </script>

@@ -127,7 +127,8 @@
             'label'=>'Quản lý banner ',
             'route'=>'banner.index',
             'icon'=>'fa-list-alt',
-            'items'=>[
+            'items'=>
+            [
                 [
                     'label'=>'Danh Sách banner',
                     'route'=>'banner.index',
@@ -138,8 +139,37 @@
                     'route'=>'banner.create',
                     'icon'=>'fa-circle nav-icon'
                 ]
-            ]
-        ],
+             ]
+      ],
+                [
+                    'label'=>'Quản lý đơn hàng ',
+                    'route'=>'order.index',
+                    'icon'=>'fa-list-alt',
+                    'items'=>[
+                        [
+                            'label'=>'Danh Sách đơn hàng',
+                            'route'=>'order.index',
+                            'icon'=>'fa-circle nav-icon'
+                        ],
+                        ]
+                    ],
+                    [
+                        'label'=>'Quản lý slider ',
+                        'route'=>'slider.index',
+                        'icon'=>'fa-list-alt',
+                        'items'=>[
+                            [
+                                'label'=>'Danh Sách slider',
+                                'route'=>'slider.index',
+                                'icon'=>'fa-circle nav-icon'
+                            ],
+                            [
+                                'label'=>'Thêm mới slider ',
+                                'route'=>'slider.create',
+                                'icon'=>'fa-circle nav-icon'
+                            ]
+                        ]
+                   ],         
         [
             'label'=>'Quản lý bài viết',
             'route'=>'blog.index',
@@ -157,6 +187,27 @@
                     'label'=>'Danh sách bài viết',
 
                     'route'=>'blog.index',
+                    'icon'=>'fa-circle nav-icon'
+                ]
+            ]
+        ],
+        [
+            'label'=>'Quản lý bình luận',
+            'route'=>'blog.index',
+            'icon'=>'fa-list-alt',
+            'items'=>[
+                [
+
+                    'label'=>'Bình luận bài viết',
+
+                    'route'=>'commentblog.index',
+                    'icon'=>'fa-circle nav-icon'
+                ],
+                [
+
+                    'label'=>'Bình luận sản phẩm',
+
+                    'route'=>'comment.index',
                     'icon'=>'fa-circle nav-icon'
                 ]
             ]

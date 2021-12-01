@@ -30,7 +30,7 @@ class VariantProductController extends Controller
      */
     public function index()
     {
-        $data_var = $this->variant_product_repo->paginate(10);
+        $data_var = $this->variant_product_repo->getAll();
         return view('dashboard.variantProduct.index', compact('data_var'));
     }
 
