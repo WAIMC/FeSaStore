@@ -111,12 +111,12 @@ class HomeController extends Controller
         return view('client.products.shop', compact('data_paginate_product', 'top_5_new'));
     }
 
-    public function productDetail($product_id){
-        $data_product_detail = $this->product_repo->find($product_id);
-        $get_all_comment = $this->comment->FindComment($product_id);
+    public function productDetail($slug){
+        $data_product_detail = $this->product_repo->findBySlug($slug);
+        $get_all_comment = $this->comment->FindComment($data_product_detail->id);
         $data_comment = [] ;
         foreach ($get_all_comment as $key) {
-           if($key->product_id == $product_id){
+           if($key->product_id == $data_product_detail->id){
                 array_push($data_comment, $key);
            }
         }

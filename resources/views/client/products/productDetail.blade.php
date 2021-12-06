@@ -11,7 +11,7 @@
                     <li><a href="{{ route('client.index') }}">Trang Chủ</a></li>
                     <li><a href="{{ route('client.shop') }}">Cửa Hàng</a></li>
                     <li class="active"><a
-                            href="{{ route('client.productDetail', $data_product_detail->id) }}">{{ $data_product_detail->name }}</a>
+                            href="{{ route('client.productDetail', $data_product_detail->slug) }}">{{ $data_product_detail->name }}</a>
                     </li>
                 </ul>
             </div>
@@ -199,7 +199,7 @@
                     <div class="single-product">
                         <!-- Product Image Start -->
                         <div class="pro-img">
-                            <a href="{{ route('client.productDetail', $realted_pro->id) }}">
+                            <a href="{{ route('client.productDetail', $realted_pro->slug) }}">
                                 <img class="primary-img" src="{{ url('public/uploads/' . $realted_pro->image) }}"
                                     alt="single-product">
                                 <img class="secondary-img" src="{{ url('public/uploads/' . $realted_pro->image) }}"
@@ -213,7 +213,7 @@
                         <div class="pro-content">
                             <div class="pro-info">
                                 <h4><a
-                                        href="{{ route('client.productDetail', $realted_pro->id) }}">{{ $realted_pro->name }}</a>
+                                        href="{{ route('client.productDetail', $realted_pro->slug) }}">{{ $realted_pro->name }}</a>
                                 </h4>
                                 <p><span class="price">
                                         @if ($realted_pro->product_variantProduct->first()->price > $realted_pro->product_variantProduct->first()->discount)

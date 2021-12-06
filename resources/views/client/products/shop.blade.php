@@ -59,7 +59,7 @@
                         <!-- Price Filter Options End -->
                         <!-- Product Top Start -->
                         <div class="top-new mb-40">
-                            <h3 class="sidebar-title">Top New</h3>
+                            <h3 class="sidebar-title">Mới</h3>
                             <div class="side-product-active owl-carousel owl-loaded owl-drag">
                                 <!-- Side Item Start -->
                                 
@@ -79,7 +79,7 @@
                                                 <div class="single-product single-product-sidebar">
                                                     <!-- Product Image Start -->
                                                     <div class="pro-img">
-                                                        <a href="{{ route('client.productDetail', $top_five->id)}}">
+                                                        <a href="{{ route('client.productDetail', $top_five->slug)}}">
                                                             <img class="primary-img" src="{{url('public/uploads')}}/{{ $top_five->image }}" alt="single-product">
                                                             <img class="secondary-img" src="{{url('public/uploads')}}/{{ $top_five->image }}" alt="single-product">
                                                         </a>
@@ -90,7 +90,7 @@
                                                     <!-- Product Image End -->
                                                     <!-- Product Content Start -->
                                                     <div class="pro-content">
-                                                        <h4><a href="{{ route('client.productDetail', $top_five->id)}}">{{ $top_five->name }}</a></h4>
+                                                        <h4><a href="{{ route('client.productDetail', $top_five->slug)}}">{{ $top_five->name }}</a></h4>
                                                         @if ($top_five->product_variantProduct->first()->price > $top_five->product_variantProduct->first()->discount)
                                                             <p><span class="price">{{$top_five->product_variantProduct->first()->discount}} VNĐ</span><del class="prev-price">{{ $top_five->product_variantProduct->first()->price }} VNĐ</del></p>
                                                         @else
@@ -179,7 +179,7 @@
                                                 <div class="single-product">
                                                     <!-- Product Image Start -->
                                                     <div class="pro-img">
-                                                        <a href="{{ route('client.productDetail', $shop_grid_pro->id)}}">
+                                                        <a href="{{ route('client.productDetail', $shop_grid_pro->slug)}}">
                                                             <img class="primary-img" src="{{url('public/uploads')}}/{{$shop_grid_pro->image}}" alt="single-product">
                                                             <img class="secondary-img" src="{{url('public/uploads')}}/{{$shop_grid_pro->image}}" alt="single-product">
                                                         </a>
@@ -189,7 +189,7 @@
                                                     <!-- Product Content Start -->
                                                     <div class="pro-content">
                                                         <div class="pro-info">
-                                                            <h4><a href="{{ route('client.productDetail', $shop_grid_pro->id)}}">{{$shop_grid_pro->name}}</a></h4>
+                                                            <h4><a href="{{ route('client.productDetail', $shop_grid_pro->slug)}}">{{$shop_grid_pro->name}}</a></h4>
                                                             @if ($shop_grid_pro->product_variantProduct->first()->price > $shop_grid_pro->product_variantProduct->first()->discount)
                                                                 <p>
                                                                     <span class="price">${{$shop_grid_pro->product_variantProduct->first()->discount}}</span>
@@ -232,7 +232,7 @@
                                                 <!-- Product Image Start -->
                                                 <div class="col-lg-4 col-md-5 col-sm-12">
                                                     <div class="pro-img">
-                                                        <a href="{{ route('client.productDetail', $shop_list_pro->id)}}">
+                                                        <a href="{{ route('client.productDetail', $shop_list_pro->slug)}}">
                                                             <img class="primary-img" src="{{url('public/uploads')}}/{{$shop_list_pro->image}}" alt="single-product">
                                                             <img class="secondary-img" src="{{url('public/uploads')}}/{{$shop_list_pro->image}}" alt="single-product">
                                                         </a>
@@ -244,7 +244,7 @@
                                                 <!-- Product Content Start -->
                                                 <div class="col-lg-8 col-md-7 col-sm-12">
                                                     <div class="pro-content hot-product2">
-                                                        <h4><a href="{{ route('client.productDetail', $shop_list_pro->id)}}">{{$shop_list_pro->name}}</a></h4>
+                                                        <h4><a href="{{ route('client.productDetail', $shop_list_pro->slug)}}">{{$shop_list_pro->name}}</a></h4>
                                                         @if ($shop_list_pro->product_variantProduct->first()->price > $shop_list_pro->product_variantProduct->first()->discount)
                                                             <p><span class="price">${{$shop_list_pro->product_variantProduct->first()->discount}}</span></p>
                                                         @else
