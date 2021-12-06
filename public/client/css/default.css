@@ -457,3 +457,7 @@ Background variation set
     text-align: center;
     line-height: 23px;
 }
+.about{
+    text-align: justify;
+    line-height:35px;
+}

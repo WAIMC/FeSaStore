@@ -4385,7 +4385,6 @@ a.shipping-calculator-button:hover {
   font-size: 14px;
   font-weight: 500;
   position: absolute;
-  text-transform: uppercase;
   top: -28px;
 }
 
@@ -4567,4 +4566,8 @@ a.shipping-calculator-button:hover {
 }
 .iconcustomer{
     padding: 15px 0px;
+}
+.footer-line {
+    margin: 25px 0;
+    border-bottom: 1px solid rgba(68,68,68,.2);
 }
