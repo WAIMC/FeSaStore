@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -8,7 +7,7 @@
     <title>FESA Shop | @yield('title') </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
-    <link rel="shortcut icon" href="{{url('public/client')}}/img/favicon.ico">
+    <link rel="shortcut icon" href="{{ url('public/dashboard') }}/dist/img/logo_admin.png">
     <!-- Fontawesome css -->
     <link rel="stylesheet" href="{{url('public/client')}}/css/font-awesome.min.css">
     <!-- Ionicons css -->
@@ -57,6 +56,8 @@
      </style>
     <!-- Modernizer js -->
     <script src="{{url('public/client')}}/js/vendor\modernizr-3.5.0.min.js"></script>
+    <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=2531877450391912&autoLogAppEvents=1" nonce="qpCnKYue"></script>
 </head>
 
 <body>
@@ -99,60 +100,6 @@
         {{-- main content start  --}}
         @yield('main')
         {{-- main content end --}}
-
-        <!-- Support Area Start Here -->
-        <div class="support-area bdr-top">
-            <div class="container">
-                <div class="d-flex flex-wrap text-center">
-                    <div class="single-support">
-                        <div class="support-icon">
-                            <i class="lnr lnr-gift"></i>
-                        </div>
-                        <div class="support-desc">
-                            <h6>Giá Trị Lớn</h6>
-                            <span>Nunc id ante quis tellus faucibus dictum in eget.</span>
-                        </div>
-                    </div>
-                    <div class="single-support">
-                        <div class="support-icon">
-                            <i class="lnr lnr-rocket"></i>
-                        </div>
-                        <div class="support-desc">
-                            <h6>Giao hàng trên toàn Đà Nẵng</h6>
-                            <span>Quisque posuere enim augue, in rhoncus diam dictum non</span>
-                        </div>
-                    </div>
-                    <div class="single-support">
-                        <div class="support-icon">
-                           <i class="lnr lnr-lock"></i>
-                        </div>
-                        <div class="support-desc">
-                            <h6>Thanh Toán An Toàn</h6>
-                            <span>Duis suscipit elit sem, sed mattis tellus accumsan.</span>
-                        </div>
-                    </div>
-                    <div class="single-support">
-                        <div class="support-icon">
-                           <i class="lnr lnr-enter-down"></i>
-                        </div>
-                        <div class="support-desc">
-                            <h6>Sự tự tin mua sắm</h6>
-                            <span>Faucibus dictum suscipit eget metus. Duis  elit sem, sed.</span>
-                        </div>
-                    </div>
-                    <div class="single-support">
-                        <div class="support-icon">
-                           <i class="lnr lnr-users"></i>
-                        </div>
-                        <div class="support-desc">
-                            <h6>24/7 Hỗ Trợ</h6>
-                            <span>Quisque posuere enim augue, in rhoncus diam dictum non.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Container End -->
-        </div>
         <!-- Support Area End Here -->
         
         {{-- footer area start --}}

@@ -6,7 +6,7 @@
 
     interface AdminInterface extends RepositoryInterface{
 
-        
+        public function findEmail($email);
     }
 
 ?>

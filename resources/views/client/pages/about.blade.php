@@ -21,18 +21,16 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="sidebar-img mb-all-30">
-                    <img src="{{url('public/client')}}/img/blog\10.jpg" alt="single-blog-img">
+                    <img src="{{url('public/client')}}/img/about\about.png" alt="single-blog-img">
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="about-desc">
-                    <h3 class="mb-10 about-title">Về chúng tôi</h3>
-                    <p class="mb-20">Thành lập từ tháng 10/2021,Với phương châm hoạt động “Tất cả vì Khách Hàng”, chúng tôi luôn không ngừng nỗ lực nâng cao chất lượng dịch vụ và sản phẩm, từ đó mang đến trải nghiệm mua sắm trọn vẹn cho Khách Hàng Việt Nam</p>
-                    <p class="mb-20">Cam kết cung cấp hàng chính hãng với chính sách hoàn tiền 111% nếu phát hiện hàng giả, hàng nhái.
+                    <h3 class="mb-10 about-title">ĐÔI NÉT VỀ FESA STORE</h3>
+                    <p class="mb-20 about">Những năm gần đây, FESA Store phát triển nhanh chóng và trở thành một trong những shop thời trang quốc tế được yêu thích bởi các thiết kế tinh tế, mang tính ứng dụng cao. Trong sản xuất, FESA Store luôn bắt đầu từ việc phát triển chất liệu. Chúng tôi tin rằng chất liệu vải là yếu tố quan trọng nhất, quyết định chất lượng của một sản phẩm. FESA Store cam kết sử dụng những chất liệu tốt nhất đã được kiểm tra kỹ lưỡng về chất lượng và độ an toàn cho người sử dụng.</p>
+                    <p class="mb-20 about">Cam kết cung cấp hàng chính hãng với chính sách hoàn tiền 111% nếu phát hiện hàng giả, hàng nhái.
                     </p>
-                    <p>Để định nghĩa chúng tôi là ai - thông qua lời nói hay cách ứng xử trong nhiều trường hợp khác nhau - thì thực chất, chúng tôi Gần gũi, Vui vẻ và Đồng lòng. Đây là những đặc tính chính và nổi bật trong từng bước đường phát triển
-                        của chúng tôi</p>
-                    <a href="#" class="return-customer-btn read-more">Xem thêm</a>
+                    <p class="about">FESA Store luôn lấy khách hàng làm trọng tâm phát triển. Tại công ty của chúng tôi, thời trang không chỉ đơn thuần là thiết kế, phát triển sản phẩm và quảng bá thị trường. Chúng tôi tin rằng có thể đem đến cho khách hàng những sản phẩm thời trang tinh xảo với giá cả hợp lý nhất chính là mang lại niềm vui cho khách hàng và làm cho cuộc sống của họ đẹp hơn mỗi ngày.</p>
                 </div>
             </div>
         </div>
@@ -43,24 +41,26 @@
 <!-- About Us Team Start Here -->
 <div class="about-team pt-100 pt-sm-60">
     <div class="container">
-        <h3 class="mb-30 about-title">Nhóm độc quyền của chúng tôi</h3>
+        <h3 class="mb-30 about-title">MUA HÀNG TẠI FESA STORE</h3>
         <div class="row text-center">
             <!-- Single Team Start Here -->
             <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                 <div class="single-team mb-all-30">
                     <div class="team-img sidebar-img">
-                        <img src="{{url('public/client')}}/img/team\2.jpg" alt="team-image">
+                        <img src="{{url('public/client')}}/img/about\tantinh.png" alt="team-image">
                         <div class="team-link">
                             <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li>
+                                    <div class="team-info">
+                                     <h4>TẬN TÌNH</h4>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
                     <div class="team-info">
-                        <h4>Marcos Alonso</h4>
-                        <p>web designer</p>
+                        <h4>Phục vụ tận tình</h4>
+                        <p>Khách hàng sẽ được tư vấn và phục vụ tận tình khi sản phẩm của chúng tôi</p>
                     </div>
                 </div>
             </div>
@@ -69,18 +69,20 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                 <div class="single-team mb-all-30">
                     <div class="team-img sidebar-img">
-                        <img src="{{url('public/client')}}/img/team\1.jpg" alt="team-image">
+                        <img src="{{url('public/client')}}/img/about\dadang.png" alt="team-image">
                         <div class="team-link">
                             <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li>
+                                    <div class="team-info">
+                                     <h4>ĐA DẠNG</h4>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
                     <div class="team-info">
-                        <h4>Luis Aragones</h4>
-                        <p>web developer</p>
+                        <h4>Mẫu mã đa dạng</h4>
+                        <p>Luôn nắm bắt những cơ hội và xu hướng thời trang trên thị trường một cách liên tục</p>
                     </div>
                 </div>
             </div>
@@ -89,18 +91,20 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                 <div class="single-team mb-xxs-30">
                     <div class="team-img sidebar-img">
-                        <img src="{{url('public/client')}}/img/team\3.jpg" alt="team-image">
+                        <img src="{{url('public/client')}}/img/about\khuyenmai.png" alt="team-image">
                         <div class="team-link">
                             <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li>
+                                    <div class="team-info">
+                                     <h4>KHUYẾN MÃI</h4>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
                     <div class="team-info">
-                        <h4>Maria Alessis</h4>
-                        <p>class master</p>
+                        <h4>Khuyến mãi cực sốc</h4>
+                        <p>Các chương trình săn voucher, sale với giá cực sốc và tặng quà diễn ra thường xuyên</p>
                     </div>
                 </div>
             </div>
@@ -109,18 +113,20 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                 <div class="single-team">
                     <div class="team-img sidebar-img">
-                        <img src="{{url('public/client')}}/img/team\4.jpg" alt="team-image">
+                        <img src="{{url('public/client')}}/img/about\uytin.png" alt="team-image">
                         <div class="team-link">
                             <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li>
+                                    <div class="team-info">
+                                     <h4>UY TÍN</h4>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
                     <div class="team-info">
-                        <h4>John Doe</h4>
-                        <p>php developer</p>
+                        <h4>Đảm bảo uy tín</h4>
+                        <p>Cam kết cung cấp hàng chính hãng và hoàn tiền 111% nếu phát hiện hàng giả, hàng nhái.</p>
                     </div>
                 </div>
             </div>
@@ -135,30 +141,30 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <h3 class="about-title mb-20">Kỹ năng của chúng tôi</h3>
+                <h3 class="about-title mb-20">Đến với chúng tôi</h3>
                 <div class="skill-progress mb-all-40">
                     <div class="progress">
-                        <div class="skill-title">Strategy 79%</div>
+                        <div class="skill-title">Sở hữu ngay những mẫu quần áo cực chất</div>
                         <div class="progress-bar wow fadeInLeft" data-wow-delay="0.2s" role="progressbar" style="width: 79%; visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
                         </div>
                     </div>
                     <div class="progress">
-                        <div class="skill-title">Marketing 96%</div>
+                        <div class="skill-title">Thái độ phục vụ tận tâm & tận tình</div>
                         <div class="progress-bar wow fadeInLeft" data-wow-delay="0.3s" role="progressbar" style="width: 96%; visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
                         </div>
                     </div>
                     <div class="progress">
-                        <div class="skill-title">Wordpress Theme 65%</div>
+                        <div class="skill-title">Sản phẩm chất lượng - giá thành rẻ</div>
                         <div class="progress-bar wow fadeInLeft" data-wow-delay="0.4s" role="progressbar" style="width: 65%; visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
                         </div>
                     </div>
                     <div class="progress">
-                        <div class="skill-title">Shopify Theme 75%</div>
+                        <div class="skill-title">Các chương trình khuyến mãi ngập tràn</div>
                         <div class="progress-bar wow fadeInLeft" data-wow-delay="0.5s" role="progressbar" style="width: 75%; visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
                         </div>
                     </div>
                     <div class="progress">
-                        <div class="skill-title">UI/UX Design 92%</div>
+                        <div class="skill-title">Cơ hội nhận được quà tặng hấp dẫn</div>
                         <div class="progress-bar wow fadeInLeft" data-wow-delay="0.6s" role="progressbar" style="width: 89%; visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
                         </div>
                     </div>
@@ -166,33 +172,33 @@
             </div>
             <div class="col-lg-6">
                 <div class="ht-single-about">
-                    <h3 class="about-title mb-20">Công việc của chúng tôi</h3>
+                    <h3 class="about-title mb-20">Chính sách ưu đãi</h3>
                     <div class="ht-about-work">
                         <span>1</span>
                         <div class="ht-work-text">
-                            <h5><a href="#">LOREM IPSUM DOLOR SIT AMET</a></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu nisi ac mi</p>
+                            <h5><a href="#">Miễn phí giao hàng</a></h5>
+                            <p>FREESHIP các đơn hàng từ 300.000 VND. Giao hàng toàn quốc.</p>
                         </div>
                     </div>
                     <div class="ht-about-work">
                         <span>2</span>
                         <div class="ht-work-text">
-                            <h5><a href="#">DONEC FERMENTUM EROS</a></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu nisi ac mi</p>
+                            <h5><a href="#">Hotline mua hàng</a></h5>
+                            <p>Đường dây nóng 0909009009 hoặc email fesastorefpoly@gmail.com</p>
                         </div>
                     </div>
                     <div class="ht-about-work">
                         <span>3</span>
                         <div class="ht-work-text">
-                            <h5><a href="#">LOREM IPSUM DOLOR SIT AMET</a></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu nisi ac mi</p>
+                            <h5><a href="#">Thanh toán an toàn</a></h5>
+                            <p>Thanh toán linh hoạt: Tiền mặt, Chuyển khoản, Thẻ Visa,...</p>
                         </div>
                     </div>
                     <div class="ht-about-work">
                         <span>4</span>
                         <div class="ht-work-text">
-                            <h5><a href="#">Adipiscing IPSUM DOLOR SIT AMET</a></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu nisi ac mi</p>
+                            <h5><a href="#">Miễn phí đổi/trả hàng 30 ngày</a></h5>
+                            <p>Đổi/trả hàng 30 ngày. Khách hàng an tâm khi mua sắm</p>
                         </div>
                     </div>
                 </div>

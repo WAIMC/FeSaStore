@@ -69,6 +69,12 @@
                                             $name_managerment = 'Phân Quyền';
                                         }elseif ($route == 'slider') {
                                             $name_managerment = 'Slider';
+                                        }elseif ($route == 'comment') {
+                                            $name_managerment = 'Bình Luận Sản Phẩm';
+                                        }elseif ($route == 'order') {
+                                            $name_managerment = 'Đơn Hàng';
+                                        }elseif ($route == 'customer') {
+                                            $name_managerment = 'Khách Hàng';
                                         }
                                     @endphp
                                         <div class="card card-dark col-4 card_{{$route}}">
@@ -128,6 +134,12 @@
                                                         <div class="custom-control custom-checkbox">
                                                             <input class="custom-control-input checkbox-children check_{{$route}}" type="checkbox" id="filter_chart_by_date{{$route}}" name="routes[]" value="{{$route}}.filter_chart_by_date">
                                                             <label for="filter_chart_by_date{{$route}}" class="custom-control-label">Lọc Biểu Đồ {{$name_managerment}}</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input class="custom-control-input checkbox-children check_{{$route}}" type="checkbox" id="file{{$route}}" name="routes[]" value="{{$route}}.file">
+                                                            <label for="file{{$route}}" class="custom-control-label">Quản Lý Ảnh {{$name_managerment}}</label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">

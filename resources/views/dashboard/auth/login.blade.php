@@ -96,7 +96,7 @@
                         </>
                     </div>
 
-                    <a href="#">Quên Mật Khẩu?</a>
+                    <a href="{{ route('admin.password_reset') }}">Quên Mật Khẩu?</a>
                     <button type="submit" id="login">Đăng Nhập</button>
             </form>
         </div>

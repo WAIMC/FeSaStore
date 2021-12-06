@@ -11,14 +11,31 @@ class OrderController extends Controller
 {
     protected $order;
     protected $orderdetail;
-   public function __construct(OrderInterface $orders)
-   {
-       $this->order = $orders;
-   }
-   public function index(){
-       $data = $this->order->getAll();
-       return view('dashboard.order.index', compact('data'));
-   }
+
+    public function __construct(OrderInterface $orders)
+    {
+        $this->order = $orders;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(){
+        $data = $this->order->getAll();
+        return view('dashboard.order.index', compact('data'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.

@@ -75,7 +75,7 @@ class CommentBlogController extends Controller
      */
     public function edit(commentblog $commentblog)
     {
-        //
+        return view('dashboard.commentblog.edit',compact('commentblog'));
     }
 
       /**
@@ -85,9 +85,21 @@ class CommentBlogController extends Controller
      * @param  \App\Models\CommentBlog  $commentBlog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, commentblog $comment)
+    public function update(Request $request, commentblog $commentblog)
     {
-        //
+        $attributes = [
+            'parent_id' => $request->parent_id,
+            'comment' => $request->comment,
+            'status' => $request->status,
+            'blog_id' => $request->blog_id,
+            'customer_id' => $request->customer_id
+        ];
+        $result=$this->commentblog->update($commentblog, $attributes);
+        if($result){
+            return redirect()->route('commentblog.index')->with('success','Cập nhật thành công !');
+        }else{
+            return redirect()->route('commentblog.edit',$comment)->with('error','Cập nhật thất bại !');
+        }
     }
 
     /**

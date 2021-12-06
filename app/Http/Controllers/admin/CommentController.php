@@ -64,7 +64,7 @@ class CommentController extends Controller
      */
     public function show(comment $comment)
     {
-        //
+        
     }
 
     /**
@@ -75,7 +75,7 @@ class CommentController extends Controller
      */
     public function edit(comment $comment)
     {
-        //
+        return view('dashboard.comment.edit',compact('comment'));
     }
 
     /**
@@ -87,7 +87,19 @@ class CommentController extends Controller
      */
     public function update(Request $request, comment $comment)
     {
-        //
+        $attributes = [
+            'parent_id' => $request->parent_id,
+            'comment' => $request->comment,
+            'status' => $request->status,
+            'product_id' => $request->product_id,
+            'customer_id' => $request->customer_id
+        ];
+        $result=$this->comment->update($comment, $attributes);
+        if($result){
+            return redirect()->route('comment.index')->with('success','Cập nhật thành công !');
+        }else{
+            return redirect()->route('comment.edit',$comment)->with('error','Cập nhật thất bại !');
+        }
     }
 
     /**
@@ -100,9 +112,9 @@ class CommentController extends Controller
     {
         $result=$this->comment->destroy($comment);
         if($result){
-            return redirect()->route('comment.index')->with('success','Xóa thương hiệu thành công !');
+            return redirect()->route('comment.index')->with('success','Xóa bình luận thành công !');
         }else{
-            return redirect()->route('comment.index',$comment)->with('error','Xóa thương hiệu thất bại !');
+            return redirect()->route('comment.index',$comment)->with('error','Xóa bình luận thất bại !');
         }
     }
 }

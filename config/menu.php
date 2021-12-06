@@ -108,16 +108,12 @@
             'icon'=>'fa-list-alt',
             'items'=>[
                 [
-
                     'label'=>'Danh Sách Thương hiệu',
-
                     'route'=>'brand.index',
                     'icon'=>'fa-circle nav-icon'
                 ],
                 [
-
                     'label'=>'Thêm Thương hiệu mới',
-
                     'route'=>'brand.create',
                     'icon'=>'fa-circle nav-icon'
                 ]
@@ -139,59 +135,69 @@
                     'route'=>'banner.create',
                     'icon'=>'fa-circle nav-icon'
                 ]
-             ]
-      ],
+            ]
+        ],
+        [
+            'label'=>'Quản lý đơn hàng ',
+            'route'=>'order.index',
+            'icon'=>'fa-list-alt',
+            'items'=>[
                 [
-                    'label'=>'Quản lý đơn hàng ',
+                    'label'=>'Danh Sách đơn hàng',
                     'route'=>'order.index',
-                    'icon'=>'fa-list-alt',
-                    'items'=>[
-                        [
-                            'label'=>'Danh Sách đơn hàng',
-                            'route'=>'order.index',
-                            'icon'=>'fa-circle nav-icon'
-                        ],
-                        ]
-                    ],
-                    [
-                        'label'=>'Quản lý slider ',
-                        'route'=>'slider.index',
-                        'icon'=>'fa-list-alt',
-                        'items'=>[
-                            [
-                                'label'=>'Danh Sách slider',
-                                'route'=>'slider.index',
-                                'icon'=>'fa-circle nav-icon'
-                            ],
-                            [
-                                'label'=>'Thêm mới slider ',
-                                'route'=>'slider.create',
-                                'icon'=>'fa-circle nav-icon'
-                            ]
-                        ]
-                   ],         
+                    'icon'=>'fa-circle nav-icon'
+                ],
+            ]
+        ],
+        [
+            'label'=>'Quản lý slider ',
+            'route'=>'slider.index',
+            'icon'=>'fa-list-alt',
+            'items'=>[
+                [
+                    'label'=>'Danh Sách slider',
+                    'route'=>'slider.index',
+                    'icon'=>'fa-circle nav-icon'
+                ],
+                [
+                    'label'=>'Thêm mới slider ',
+                    'route'=>'slider.create',
+                    'icon'=>'fa-circle nav-icon'
+                ]
+            ]
+        ],         
         [
             'label'=>'Quản lý bài viết',
             'route'=>'blog.index',
             'icon'=>'fa-list-alt',
             'items'=>[
                 [
-
                     'label'=>'Danh mục bài viết',
-
                     'route'=>'categoryblog.index',
                     'icon'=>'fa-circle nav-icon'
                 ],
                 [
-
                     'label'=>'Danh sách bài viết',
-
                     'route'=>'blog.index',
                     'icon'=>'fa-circle nav-icon'
                 ]
             ]
         ],
         [
+            'label'=>'Quản lý khách hàng',
+            'route'=>'customer.index',
+            'icon'=>'fa-list-alt',
+            'items'=>[
+                [
+                    'label'=>'Danh sách khách hàng',
+                    'route'=>'customer.index',
+                    'icon'=>'fa-circle nav-icon'
+                ],
+            ]
+        ],
+        [
+            'label'=>'Thêm mới khách hàng',
+            'route'=>'customer.create',
             'label'=>'Quản lý bình luận',
             'route'=>'blog.index',
             'icon'=>'fa-list-alt',
@@ -212,11 +218,10 @@
                 ]
             ]
         ],
-          [
+        [
             'label'=>'Quản lý đơn hàng',
             'route'=>'order.index',
-            'icon'=>'fas fa-shopping-cart',
-           
+            'icon'=>'fas fa-shopping-cart',   
         ],
 
     ];

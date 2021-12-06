@@ -57,71 +57,6 @@
                             </form>
                         </div>
                         <!-- Price Filter Options End -->
-                        <!-- Sidebar Categorie Start -->
-                        <div class="sidebar-categorie mb-40">
-                            <h3 class="sidebar-title">categories</h3>
-                            <ul class="sidbar-style">
-                                <li class="form-check">
-                                    <input class="form-check-input" value="#" id="camera" type="checkbox">
-                                    <label class="form-check-label" for="camera">Cameras (8)</label>
-                                </li>
-                                <li class="form-check">
-                                    <input class="form-check-input" value="#" id="GamePad" type="checkbox">
-                                    <label class="form-check-label" for="GamePad">GamePad (8)</label>
-                                </li>
-                                <li class="form-check">
-                                    <input class="form-check-input" value="#" id="Digital" type="checkbox">
-                                    <label class="form-check-label" for="Digital">Digital Cameras (8)</label>
-                                </li>
-                                <li class="form-check">
-                                    <input class="form-check-input" value="#" id="Virtual" type="checkbox">
-                                    <label class="form-check-label" for="Virtual"> Virtual Reality (8) </label>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Sidebar Categorie Start -->
-                        <!-- Product Size Start -->
-                        <div class="size mb-40">
-                            <h3 class="sidebar-title">size</h3>
-                            <ul class="size-list sidbar-style">
-                                <li class="form-check">
-                                    <input class="form-check-input" value="" id="small" type="checkbox">
-                                    <label class="form-check-label" for="small">S (6)</label>
-                                </li>
-                                <li class="form-check">
-                                    <input class="form-check-input" value="" id="medium" type="checkbox">
-                                    <label class="form-check-label" for="medium">M (9)</label>
-                                </li>
-                                <li class="form-check">
-                                    <input class="form-check-input" value="" id="large" type="checkbox">
-                                    <label class="form-check-label" for="large">L (8)</label>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Product Size End -->
-                        <!-- Product Color Start -->
-                        <div class="color mb-40">
-                            <h3 class="sidebar-title">color</h3>
-                            <ul class="color-option sidbar-style">
-                                <li>
-                                    <span class="white"></span>
-                                    <a href="#">white (4)</a>
-                                </li>
-                                <li>
-                                    <span class="orange"></span>
-                                    <a href="#">Orange (2)</a>
-                                </li>
-                                <li>
-                                    <span class="blue"></span>
-                                    <a href="#">Blue (6)</a>
-                                </li>
-                                <li>
-                                    <span class="yellow"></span>
-                                    <a href="#">Yellow (8)</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Product Color End -->
                         <!-- Product Top Start -->
                         <div class="top-new mb-40">
                             <h3 class="sidebar-title">Top New</h3>
@@ -135,228 +70,51 @@
                                 <!-- Side Item Start -->
                                 
                                 <!-- Side Item End -->
-                            <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 810px;"><div class="owl-item active" style="width: 270px;"><div class="side-pro-item">
-                                    <!-- Single Product Start -->
-                                    <div class="single-product single-product-sidebar">
-                                        <!-- Product Image Start -->
-                                        <div class="pro-img">
-                                            <a href="product.html">
-                                                <img class="primary-img" src="{{url('public/client')}}/img/products\20.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\19.jpg" alt="single-product">
-                                            </a>
-                                            <div class="label-product l_sale">30<span class="symbol-percent">%</span></div>
+                            <div class="owl-stage-outer">
+                                <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 810px;">
+                                    <div class="owl-item active" style="width: 270px;">
+                                        <div class="side-pro-item">
+                                            @foreach ($top_5_new as $top_five)
+                                                <!-- Single Product Start -->
+                                                <div class="single-product single-product-sidebar">
+                                                    <!-- Product Image Start -->
+                                                    <div class="pro-img">
+                                                        <a href="{{ route('client.productDetail', $top_five->id)}}">
+                                                            <img class="primary-img" src="{{url('public/uploads')}}/{{ $top_five->image }}" alt="single-product">
+                                                            <img class="secondary-img" src="{{url('public/uploads')}}/{{ $top_five->image }}" alt="single-product">
+                                                        </a>
+                                                        @if ($top_five->product_variantProduct->first()->price > $top_five->product_variantProduct->first()->discount)
+                                                            <div class="label-product l_sale">{{ 100-($top_five->product_variantProduct->first()->price/100*$top_five->product_variantProduct->first()->discount) }}<span class="symbol-percent">%</span></div>
+                                                        @endif
+                                                    </div>
+                                                    <!-- Product Image End -->
+                                                    <!-- Product Content Start -->
+                                                    <div class="pro-content">
+                                                        <h4><a href="{{ route('client.productDetail', $top_five->id)}}">{{ $top_five->name }}</a></h4>
+                                                        @if ($top_five->product_variantProduct->first()->price > $top_five->product_variantProduct->first()->discount)
+                                                            <p><span class="price">{{$top_five->product_variantProduct->first()->discount}} VNĐ</span><del class="prev-price">{{ $top_five->product_variantProduct->first()->price }} VNĐ</del></p>
+                                                        @else
+                                                            <p><span class="price">{{$top_five->product_variantProduct->first()->price}} VNĐ</span></p>
+                                                        @endif
+                                                    </div>
+                                                    <!-- Product Content End -->
+                                                </div>
+                                                <!-- Single Product End -->     
+                                            @endforeach                                         
                                         </div>
-                                        <!-- Product Image End -->
-                                        <!-- Product Content Start -->
-                                        <div class="pro-content">
-                                            <h4><a href="product.html">Work Lamp Silver Proin</a></h4>
-                                            <p><span class="price">$130.45</span><del class="prev-price">180.50</del></p>
-                                        </div>
-                                        <!-- Product Content End -->
                                     </div>
-                                    <!-- Single Product End -->  
-                                    <!-- Single Product Start -->
-                                    <div class="single-product single-product-sidebar">
-                                        <!-- Product Image Start -->
-                                        <div class="pro-img">
-                                            <a href="product.html">
-                                                <img class="primary-img" src="{{url('public/client')}}/img/products\2.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\1.jpg" alt="single-product">
-                                            </a>
-                                        </div>
-                                        <!-- Product Image End -->
-                                        <!-- Product Content Start -->
-                                        <div class="pro-content">
-                                            <h4><a href="product.html">Silver Work Lamp  Proin</a></h4>
-                                            <p><span class="price">$320.45</span><del class="prev-price">$400.50</del></p>
-                                        </div>
-                                        <!-- Product Content End -->
-                                    </div>
-                                    <!-- Single Product End --> 
-                                    <!-- Single Product Start -->
-                                    <div class="single-product single-product-sidebar">
-                                        <!-- Product Image Start -->
-                                        <div class="pro-img">
-                                            <a href="product.html">
-                                                <img class="primary-img" src="{{url('public/client')}}/img/products\3.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\4.jpg" alt="single-product">
-                                            </a>
-                                        </div>
-                                        <!-- Product Image End -->
-                                        <!-- Product Content Start -->
-                                        <div class="pro-content">
-                                            <h4><a href="product.html">Proin Work Lamp Silver </a></h4>
-                                            <p><span class="price">$150.45</span><del class="prev-price">$200.50</del></p>
-                                        </div>
-                                        <!-- Product Content End -->
-                                    </div>
-                                    <!-- Single Product End --> 
-                                    <!-- Single Product Start -->
-                                    <div class="single-product single-product-sidebar">
-                                        <!-- Product Image Start -->
-                                        <div class="pro-img">
-                                            <a href="product.html">
-                                                <img class="primary-img" src="{{url('public/client')}}/img/products\25.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\26.jpg" alt="single-product">
-                                            </a>
-                                        </div>
-                                        <!-- Product Image End -->
-                                        <!-- Product Content Start -->
-                                        <div class="pro-content">
-                                            <h4><a href="product.html">Work Lamp Silver Proin</a></h4>
-                                            <p><span class="price">$320.45</span><del class="prev-price">$400.50</del></p>
-                                        </div>
-                                        <!-- Product Content End -->
-                                    </div>
-                                    <!-- Single Product End -->                                        
-                                </div></div><div class="owl-item" style="width: 270px;"><div class="side-pro-item">
-                                    <!-- Single Product Start -->
-                                    <div class="single-product single-product-sidebar">
-                                        <!-- Product Image Start -->
-                                        <div class="pro-img">
-                                            <a href="product.html">
-                                                <img class="primary-img" src="{{url('public/client')}}/img/products\41.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\42.jpg" alt="single-product">
-                                            </a>
-                                        </div>
-                                        <!-- Product Image End -->
-                                        <!-- Product Content Start -->
-                                        <div class="pro-content">
-                                            <h4><a href="product.html">Silver Work Lamp  Proin</a></h4>
-                                            <p><span class="price">$80.45</span><del class="prev-price">$100.50</del></p>
-                                        </div>
-                                        <!-- Product Content End -->
-                                    </div>
-                                    <!-- Single Product End -->  
-                                    <!-- Single Product Start -->
-                                    <div class="single-product single-product-sidebar">
-                                        <!-- Product Image Start -->
-                                        <div class="pro-img">
-                                            <a href="product.html">
-                                                <img class="primary-img" src="{{url('public/client')}}/img/products\36.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\35.jpg" alt="single-product">
-                                            </a>
-                                        </div>
-                                        <!-- Product Image End -->
-                                        <!-- Product Content Start -->
-                                        <div class="pro-content">
-                                            <h4><a href="product.html">Silver Work Lamp  Proin</a></h4>
-                                            <p><span class="price">$320.45</span><del class="prev-price">$400.50</del></p>
-                                        </div>
-                                        <!-- Product Content End -->
-                                    </div>
-                                    <!-- Single Product End --> 
-                                    <!-- Single Product Start -->
-                                    <div class="single-product single-product-sidebar">
-                                        <!-- Product Image Start -->
-                                        <div class="pro-img">
-                                            <a href="product.html">
-                                                <img class="primary-img" src="{{url('public/client')}}/img/products\33.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\34.jpg" alt="single-product">
-                                            </a>
-                                        </div>
-                                        <!-- Product Image End -->
-                                        <!-- Product Content Start -->
-                                        <div class="pro-content">
-                                            <h4><a href="product.html">Lamp Proin Work  Silver </a></h4>
-                                            <p><span class="price">$120.45</span><del class="prev-price">130.50</del></p>
-                                        </div>
-                                        <!-- Product Content End -->
-                                    </div>
-                                    <!-- Single Product End --> 
-                                    <!-- Single Product Start -->
-                                    <div class="single-product single-product-sidebar">
-                                        <!-- Product Image Start -->
-                                        <div class="pro-img">
-                                            <a href="product.html">
-                                                <img class="primary-img" src="{{url('public/client')}}/img/products\31.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\32.jpg" alt="single-product">
-                                            </a>
-                                        </div>
-                                        <!-- Product Image End -->
-                                        <!-- Product Content Start -->
-                                        <div class="pro-content">
-                                            <h4><a href="product.html">Work Lamp Silver Proin</a></h4>
-                                            <p><span class="price">$140.45</span><del class="prev-price">$150.50</del></p>
-                                        </div>
-                                        <!-- Product Content End -->
-                                    </div>
-                                    <!-- Single Product End -->                                        
-                                </div></div><div class="owl-item" style="width: 270px;"><div class="side-pro-item">
-                                    <!-- Single Product Start -->
-                                    <div class="single-product single-product-sidebar">
-                                        <!-- Product Image Start -->
-                                        <div class="pro-img">
-                                            <a href="product.html">
-                                                <img class="primary-img" src="{{url('public/client')}}/img/products\15.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\16.jpg" alt="single-product">
-                                            </a>
-                                        </div>
-                                        <!-- Product Image End -->
-                                        <!-- Product Content Start -->
-                                        <div class="pro-content">
-                                            <h4><a href="product.html">Lamp Work Silver Proin</a></h4>
-                                            <p><span class="price">$320.45</span><del class="prev-price">$400.50</del></p>
-                                        </div>
-                                        <!-- Product Content End -->
-                                    </div>
-                                    <!-- Single Product End -->  
-                                    <!-- Single Product Start -->
-                                    <div class="single-product single-product-sidebar">
-                                        <!-- Product Image Start -->
-                                        <div class="pro-img">
-                                            <a href="product.html">
-                                                <img class="primary-img" src="{{url('public/client')}}/img/products\17.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\18.jpg" alt="single-product">
-                                            </a>
-                                            <div class="label-product l_sale">30<span class="symbol-percent">%</span></div>
-                                        </div>
-                                        <!-- Product Image End -->
-                                        <!-- Product Content Start -->
-                                        <div class="pro-content">
-                                            <h4><a href="product.html">Silver Work Lamp  Proin</a></h4>
-                                            <p><span class="price">$320.45</span><del class="prev-price">$400.50</del></p>
-                                        </div>
-                                        <!-- Product Content End -->
-                                    </div>
-                                    <!-- Single Product End --> 
-                                    <!-- Single Product Start -->
-                                    <div class="single-product single-product-sidebar">
-                                        <!-- Product Image Start -->
-                                        <div class="pro-img">
-                                            <a href="product.html">
-                                                <img class="primary-img" src="{{url('public/client')}}/img/products\23.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\24.jpg" alt="single-product">
-                                            </a>
-                                        </div>
-                                        <!-- Product Image End -->
-                                        <!-- Product Content Start -->
-                                        <div class="pro-content">
-                                            <h4><a href="product.html">Proin Work Lamp Silver </a></h4>
-                                            <p><span class="price">$320.45</span><del class="prev-price">$400.50</del></p>
-                                        </div>
-                                        <!-- Product Content End -->
-                                    </div>
-                                    <!-- Single Product End --> 
-                                    <!-- Single Product Start -->
-                                    <div class="single-product single-product-sidebar">
-                                        <!-- Product Image Start -->
-                                        <div class="pro-img">
-                                            <a href="product.html">
-                                                <img class="primary-img" src="{{url('public/client')}}/img/products\25.jpg" alt="single-product">
-                                                <img class="secondary-img" src="{{url('public/client')}}/img/products\26.jpg" alt="single-product">
-                                            </a>
-                                        </div>
-                                        <!-- Product Image End -->
-                                        <!-- Product Content Start -->
-                                        <div class="pro-content">
-                                            <h4><a href="product.html">Work Lamp Silver Proin</a></h4>
-                                            <p><span class="price">$320.45</span><del class="prev-price">$400.50</del></p>
-                                        </div>
-                                        <!-- Product Content End -->
-                                    </div>
-                                    <!-- Single Product End -->                                        
-                                </div></div></div></div><div class="owl-nav disabled"><div class="owl-prev"><i class="lnr lnr-arrow-left"></i></div><div class="owl-next"><i class="lnr lnr-arrow-right"></i></div></div><div class="owl-dots disabled"></div></div>
+                                </div>
+                            </div>
+                            <div class="owl-nav disabled">
+                                <div class="owl-prev">
+                                    <i class="lnr lnr-arrow-left"></i>
+                                </div>
+                                <div class="owl-next">
+                                    <i class="lnr lnr-arrow-right"></i>
+                                </div>
+                            </div>
+                            <div class="owl-dots disabled"></div>
+                        </div>
                         </div>
                         <!-- Product Top End -->                            
                         <!-- Single Banner Start -->

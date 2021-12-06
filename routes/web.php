@@ -19,18 +19,26 @@ use Illuminate\Support\Facades\Route;
 /*
     Start route admin
 */ 
-    Route::get('/Admin/Login',[App\Http\Controllers\admin\Auth\loginController::class,'login'])->name('admin.login');
-    Route::post('/Admin/Login',[App\Http\Controllers\admin\Auth\loginController::class,'postLogin'])->name('admin.login');
+    // login admin
+    Route::get('/Admin/Đăng-Nhập',[App\Http\Controllers\admin\Auth\loginController::class,'login'])->name('admin.login');
+    Route::post('/Admin/Đăng-Nhập',[App\Http\Controllers\admin\Auth\loginController::class,'postLogin'])->name('admin.login');
 
-    Route::get('/Admin/Register',[App\Http\Controllers\admin\Auth\RegisterController::class,'register'])->name('admin.register');
-    Route::post('Admin/Register',[App\Http\Controllers\admin\Auth\RegisterController::class,'postRegister'])->name('admin.register');
-    
-    //Route::post('xu-li-don-hang/{id}',[])
+    // register admin
+    Route::get('/Admin/Đăng-Ký',[App\Http\Controllers\admin\Auth\RegisterController::class,'register'])->name('admin.register');
+    Route::post('Admin/Đăng-Ký',[App\Http\Controllers\admin\Auth\RegisterController::class,'postRegister'])->name('admin.register');
 
+    // forgot and reset password
+    Route::get('/Admin/Cài-Lại-Mật-Khẩu', [App\Http\Controllers\admin\Auth\ForgotPasswordController::class,'showForm'])->name('admin.password_reset');
+    Route::post('/Admin/Cài-Lại-Mật-Khẩu', [App\Http\Controllers\admin\Auth\ForgotPasswordController::class,'sendPasswordResetToken'])->name('admin.password_reset');
+    Route::get('/Admin/Cài-Lại-Mật-Khẩu/{token}', [App\Http\Controllers\admin\Auth\ForgotPasswordController::class,'showPasswordResetForm'])->name('admin.get_token');
+    Route::post('/Admin/Cài-Lại-Mật-Khẩu/{token}', [App\Http\Controllers\admin\Auth\ForgotPasswordController::class,'resetPassword'])->name('admin.get_token');
+
+    // manager admin
     Route::prefix('admin')->middleware('adminAuth')->group(function(){
+
         Route::get('/',[App\Http\Controllers\admin\AdminController::class,'index'])->name('admin.index');
-        Route::post('/filter_chart_by_date',[App\Http\Controllers\admin\AdminController::class, 'filter_chart_by_date'])->name('admin.filter_chart_by_date');
-        Route::get('/file',[App\Http\Controllers\admin\AdminController::class,'file'])->name('admin.file');
+        Route::post('/Biểu-Đồ-Doanh-Thu',[App\Http\Controllers\admin\AdminController::class, 'filter_chart_by_date'])->name('admin.filter_chart_by_date');
+        Route::get('/Quản-Lý-Ảnh',[App\Http\Controllers\admin\AdminController::class,'file'])->name('admin.file');
         Route::post('/Admin/Logout',[App\Http\Controllers\admin\Auth\loginController::class,'logout'])->name('admin.logout');
 
         Route::resources([
@@ -51,7 +59,6 @@ use Illuminate\Support\Facades\Route;
             'order'=>admin\OrderController::class,
             'customer'=>admin\CustomerController::class,
         ]);
-        
     });
     
 
@@ -64,12 +71,11 @@ use Illuminate\Support\Facades\Route;
     Start route client
 */ 
     Route::get('/',[App\Http\Controllers\client\HomeController::class,'index'])->name('client.index');
-    Route::get('/shop',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
-    Route::get('/productDetail/{product_id}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
-    Route::post('/productDetail/{product_id}',[App\Http\Controllers\admin\CommentController::class,'store'])->name('client.commentProductDetail');
-    Route::get('/about',[App\Http\Controllers\client\HomeController::class,'about'])->name('client.about');
-    Route::get('/contact',[App\Http\Controllers\client\HomeController::class,'contact'])->name('client.contact');
-    Route::post('/contact',[App\Http\Controllers\client\HomeController::class,'post_contact'])->name('client.post_contact');
+    Route::get('/Cua-Hang',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
+    Route::get('/San-Pham-Chi-Tiet/{product_id}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
+    Route::get('/Gioi-Thieu',[App\Http\Controllers\client\HomeController::class,'about'])->name('client.about');
+    Route::get('/Lien-He',[App\Http\Controllers\client\HomeController::class,'contact'])->name('client.contact');
+    Route::post('/Lien-He',[App\Http\Controllers\client\HomeController::class,'post_contact'])->name('client.post_contact');
     
     // route user
     Route::get('/register',[App\Http\Controllers\client\Auth\RegisterController::class,'register'])->name('client.register');
