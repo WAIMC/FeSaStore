@@ -3,7 +3,7 @@
 
 {{-- define item for master layout --}}
 @section('title','Bảng Điều Khiển Quản Trị')
-@section('directory', 'S')
+@section('directory', 'Quản Lý Đường Dẫn')
 @section('action', 'Trang Chủ')
 
 {{-- main section for master layout --}}

@@ -11,6 +11,7 @@ use App\Repositories\Contracts\CategoryInterface;
 use App\Repositories\Contracts\ProductInterface;
 use App\Repositories\Contracts\VariantProductInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -64,6 +65,7 @@ class ProductController extends Controller
     {
         $attributes_product = [
             'name' => $request->name,
+            'slug' => Str::slug($request->name),
         	'short_description' => $request->short_description,
         	'description' => $request->description,
         	'image' => $request->image,
@@ -132,6 +134,7 @@ class ProductController extends Controller
     {
         $attributes_product = [
             'name' => $request->name,
+            'slug' => Str::slug($request->name),
         	'short_description' => $request->short_description,
         	'description' => $request->description,
         	'image' => $request->image,
