@@ -405,9 +405,9 @@
                 // fill price
                 if(price > discount){
                     var percent_discount = 100-(price/100*discount);
-                    $('.qv_price').html("<span class='prev-price'>"+price+"</span><span class='price'>$"+discount+"</span><span class='saving-price'>save "+percent_discount+"%</span>");
+                    $('.qv_price').html("<span class='prev-price'>"+price+" VNĐ</span><span class='price'>"+discount+" VNĐ</span><span class='saving-price'>save "+percent_discount+"%</span>");
                 }
-                $('.qv_price').html("<span class='price'>$"+price+"</span>");
+                $('.qv_price').html("<span class='price'>"+price+" VNĐ</span>");
 
                 // fill gallery
                 //$('.quick_view_thumb_menu_gallery').html(quick_view_thumb_menu_gallery);
@@ -416,6 +416,17 @@
                 $('.quick_view_thumb_gallery').html(quick_view_thumb_gallery);
                 
             }
+
+            // search list category
+            // $('#list_category').hide();
+            $("#list_search_category").hide();
+            $("#input_search_category").on("keyup", function() {
+                $("#list_search_category").show();
+                var value = $(this).val().toLowerCase();
+                $("#list_search_category a").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
             
         });
     </script>

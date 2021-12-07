@@ -60,7 +60,7 @@
                     <br>
                 <h3 class="mb-20">GÓP Ý, KHIẾU NẠI</h3>
                     <p class="style-contact">Chúng tôi thực lòng mong muốn lắng nghe những góp ý từ Bạn. Đừng ngần ngại liên hệ và hãy theo dõi với chúng tôi qua những kênh sau đây:</p>
-                    <p class="style-contact"><a href="{{$settinglink_repo[0]->config_value}}"><i class="fa fa-facebook" style="color:black;" aria-hidden="true"></i></a> Fanpage: facebook.com/FESAStore </p>
+                    <p class="style-contact"><a href=""><i class="fa fa-facebook" style="color:black;" aria-hidden="true"></i></a> Fanpage: facebook.com/FESAStore </p>
                     <p class="style-contact"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram: Instagram.com/FESAStore</p>
                     <p class="style-contact"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter: Twitter.com/FESAStore</p>
             </div>

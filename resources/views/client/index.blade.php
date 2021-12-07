@@ -61,10 +61,10 @@
                             <div class="pro-info">
                                 <h4><a href="{{ route('client.productDetail', $item_pro->slug)}}">{{ $item_pro->name }}</a></h4>
                                 @if ($item_pro->product_variantProduct->first()->price > $item_pro->product_variantProduct->first()->discount)
-                                    <p><span class="price">${{$item_pro->product_variantProduct->first()->discount}}</span><del class="prev-price">${{$item_pro->product_variantProduct->first()->price}}</del></p>
+                                    <p><span class="price">{{$item_pro->product_variantProduct->first()->discount}} VNĐ</span><del class="prev-price">{{$item_pro->product_variantProduct->first()->price}}VNĐ</del></p>
                                     <div class="label-product l_sale">{{ 100-($item_pro->product_variantProduct->first()->price/100*$item_pro->product_variantProduct->first()->discount) }}<span class="symbol-percent">%</span></div>
                                 @else
-                                    <p><span class="price">${{$item_pro->product_variantProduct->first()->price}}</span></p>
+                                    <p><span class="price">{{$item_pro->product_variantProduct->first()->price}} VNĐ</span></p>
                                 @endif
                             </div>
                             <div class="pro-actions">
@@ -227,15 +227,15 @@
                                                         $product_content_discount = $all_product->first()->product_variantProduct->first()->discount;
                                                     @endphp
                                                     @if ($product_content_price > $product_content_discount)
-                                                        <p><span class="price">${{$product_content_discount}}</span><del class="prev-price">${{$product_content_price}}</del></p>
+                                                        <p><span class="price">{{$product_content_discount}} VNĐ</span><del class="prev-price">{{$product_content_price}}VNĐ</del></p>
                                                         <div class="label-product l_sale">{{ 100-($product_content_price/100*$product_content_discount) }}<span class="symbol-percent">%</span></div>
                                                     @else
-                                                        <p><span class="price">${{$product_content_price}}</span></p>
+                                                        <p><span class="price">{{$product_content_price}} VNĐ</span></p>
                                                     @endif
                                                 </div>
                                             </div>
                                             <!-- Product Content End -->
-                                            <span class="sticker-new">new</span>
+                                            <span class="sticker-new">Mới</span>
                                         </div>
                                         <!-- Single Product End -->
                                     </div>
@@ -268,10 +268,10 @@
                                                     <div class="pro-info">
                                                         <h4><a href="{{ route('client.productDetail', $single_pro_first->slug)}}">{{$single_pro_first->name}}</a></h4>
                                                         @if ($single_pro_first->product_variantProduct->first()->price > $single_pro_first->product_variantProduct->first()->discount)
-                                                            <p><span class="price">${{$single_pro_first->product_variantProduct->first()->discount}}</span><del class="prev-price">${{$single_pro_first->product_variantProduct->first()->price}}</del></p>
+                                                            <p><span class="price">{{$single_pro_first->product_variantProduct->first()->discount}} VNĐ</span><del class="prev-price">{{$single_pro_first->product_variantProduct->first()->price}} VNĐ</del></p>
                                                             <div class="label-product l_sale">{{ 100-($single_pro_first->product_variantProduct->first()->price/100*$single_pro_first->product_variantProduct->first()->discount)}}<span class="symbol-percent">%</span></div>    
                                                         @else
-                                                            <p><span class="price">${{$single_pro_first->product_variantProduct->first()->price}}</span></p>
+                                                            <p><span class="price">{{$single_pro_first->product_variantProduct->first()->price}} VNĐ</span></p>
                                                         @endif
                                                     </div>
                                                     <div class="pro-actions">
@@ -305,10 +305,10 @@
                                                         <div class="pro-info">
                                                             <h4><a href="{{ route('client.productDetail', $item_pro->slug)}}">{{$single_pro_secound->name}}</a></h4>
                                                             @if ($single_pro_secound->product_variantProduct->first()->price > $single_pro_secound->product_variantProduct->first()->discount)
-                                                                <p><span class="price">${{$single_pro_secound->product_variantProduct->first()->discount}}</span><del class="prev-price">${{$single_pro_secound->product_variantProduct->first()->price}}</del></p>
+                                                                <p><span class="price">{{$single_pro_secound->product_variantProduct->first()->discount}} VNĐ</span><del class="prev-price">{{$single_pro_secound->product_variantProduct->first()->price}} VNĐ</del></p>
                                                                 <div class="label-product l_sale">{{ 100-($single_pro_secound->product_variantProduct->first()->price/100*$single_pro_secound->product_variantProduct->first()->discount)}}<span class="symbol-percent">%</span></div>    
                                                             @else
-                                                                <p><span class="price">${{$single_pro_secound->product_variantProduct->first()->price}}</span></p>
+                                                                <p><span class="price">{{$single_pro_secound->product_variantProduct->first()->price}} VNĐ</span></p>
                                                             @endif
                                                         </div>
                                                         <div class="pro-actions">
@@ -323,7 +323,7 @@
                                                         </div>
                                                     </div>
                                                     <!-- Product Content End -->
-                                                    <span class="sticker-new">new</span>
+                                                    <span class="sticker-new">Mới</span>
                                                 </div>
                                                 <!-- Single Product End -->
                                             @endif
@@ -385,7 +385,7 @@
                                         <div class="pro-content">
                                             <div class="pro-info">
                                                 <h4><a href="{{ route('client.productDetail', $tab_best->slug)}}">{{ $best_pro->name }}</a></h4>
-                                                <p><span class="price">${{ $best_pro->product_variantProduct->first()->discount }}</span></p>
+                                                <p><span class="price">{{ $best_pro->product_variantProduct->first()->discount }} VNĐ</span></p>
                                             </div>
                                             <div class="pro-actions">
                                                 <div class="actions-primary">
@@ -433,7 +433,7 @@
                                 <ul class="meta-box d-flex">
                                     <li><a href="#">{{ $blog->getauthor->name }}</a></li>
                                 </ul>
-                                <p>{!! $blog->description !!}</p>
+                                <p>{!! $blog->content !!}</p>
                                 <a class="readmore" href="{{ route('client.blog_details', $blog->slug) }}">Đọc Thêm</a>
                             </div>
                             <div class="blog-date">

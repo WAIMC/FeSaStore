@@ -6,7 +6,7 @@
             <div class="breadcrumb">
                 <ul class="d-flex align-items-center">
                     <li><a href="{{ route('client.index')}}">Trang Chủ</a></li>
-                    <li class="active"><a href="{{ route('client.shop')}}">Shop</a></li>
+                    <li class="active"><a href="{{ route('client.shop')}}">Cửa Hàng</a></li>
                 </ul>
             </div>
         </div>
@@ -79,11 +79,7 @@
                                                 <div class="single-product single-product-sidebar">
                                                     <!-- Product Image Start -->
                                                     <div class="pro-img">
-<<<<<<< HEAD
-                                                        <a href="{{ route('client.productDetail', $top_five->slug)}}">
-=======
                                                         <a href="{{ route('client.productDetail', $top_five->id)}}">
->>>>>>> 9ee1003b19eb17d7e6226380ab338f127a8356e1
                                                             <img class="primary-img" src="{{url('public/uploads')}}/{{ $top_five->image }}" alt="single-product">
                                                             <img class="secondary-img" src="{{url('public/uploads')}}/{{ $top_five->image }}" alt="single-product">
                                                         </a>
@@ -94,11 +90,7 @@
                                                     <!-- Product Image End -->
                                                     <!-- Product Content Start -->
                                                     <div class="pro-content">
-<<<<<<< HEAD
-                                                        <h4><a href="{{ route('client.productDetail', $top_five->slug)}}">{{ $top_five->name }}</a></h4>
-=======
                                                         <h4><a href="{{ route('client.productDetail', $top_five->id)}}">{{ $top_five->name }}</a></h4>
->>>>>>> 9ee1003b19eb17d7e6226380ab338f127a8356e1
                                                         @if ($top_five->product_variantProduct->first()->price > $top_five->product_variantProduct->first()->discount)
                                                             <p><span class="price">{{$top_five->product_variantProduct->first()->discount}} VNĐ</span><del class="prev-price">{{ $top_five->product_variantProduct->first()->price }} VNĐ</del></p>
                                                         @else
@@ -127,7 +119,7 @@
                         <!-- Product Top End -->                            
                         <!-- Single Banner Start -->
                         <div class="col-img">
-                            <a href="shop.html"><img src="{{url('public/client')}}/img/banner\banner-sidebar.jpg" alt="slider-banner"></a>
+                            <a href="{{ route("client.shop") }}"><img src="{{url('public/client')}}/img/banner\banner-sidebar.jpg" alt="slider-banner"></a>
                         </div>
                         <!-- Single Banner End -->
                     </div>
@@ -200,11 +192,11 @@
                                                             <h4><a href="{{ route('client.productDetail', $shop_grid_pro->slug)}}">{{$shop_grid_pro->name}}</a></h4>
                                                             @if ($shop_grid_pro->product_variantProduct->first()->price > $shop_grid_pro->product_variantProduct->first()->discount)
                                                                 <p>
-                                                                    <span class="price">${{$shop_grid_pro->product_variantProduct->first()->discount}}</span>
-                                                                    <del class="prev-price">${{$shop_grid_pro->product_variantProduct->first()->price}}</del></p>
+                                                                    <span class="price">{{$shop_grid_pro->product_variantProduct->first()->discount}} VNĐ</span>
+                                                                    <del class="prev-price">{{$shop_grid_pro->product_variantProduct->first()->price}} VNĐ</del></p>
                                                                 <div class="label-product l_sale">{{ 100-($shop_grid_pro->product_variantProduct->first()->price/100*$shop_grid_pro->product_variantProduct->first()->discount) }}<span class="symbol-percent">%</span></div>
                                                             @else
-                                                            <span class="price">${{$shop_grid_pro->product_variantProduct->first()->discount}}</span></p>
+                                                            <span class="price">{{$shop_grid_pro->product_variantProduct->first()->discount}} VNĐ</span></p>
                                                             @endif
                                                         </div>
                                                         <div class="pro-actions">
@@ -254,9 +246,9 @@
                                                     <div class="pro-content hot-product2">
                                                         <h4><a href="{{ route('client.productDetail', $shop_list_pro->slug)}}">{{$shop_list_pro->name}}</a></h4>
                                                         @if ($shop_list_pro->product_variantProduct->first()->price > $shop_list_pro->product_variantProduct->first()->discount)
-                                                            <p><span class="price">${{$shop_list_pro->product_variantProduct->first()->discount}}</span></p>
+                                                            <p><span class="price">{{$shop_list_pro->product_variantProduct->first()->discount}} VNĐ</span></p>
                                                         @else
-                                                            <p><span class="price">${{$shop_list_pro->product_variantProduct->first()->price}}</span></p>
+                                                            <p><span class="price">{{$shop_list_pro->product_variantProduct->first()->price}} VNĐ</span></p>
                                                         @endif
                                                         <p> {!! $shop_list_pro->short_description !!}</p>
                                                         <div class="pro-actions">

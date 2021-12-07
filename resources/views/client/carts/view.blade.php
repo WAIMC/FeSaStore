@@ -7,7 +7,7 @@
         <div class="breadcrumb">
             <ul class="d-flex align-items-center">
                 <li><a href="{{route('client.index')}}">Trang chủ</a></li>
-                <li class="active"><a href="#">Gỏ hàng</a></li>
+                <li class="active"><a href="#">Giỏ hàng</a></li>
             </ul>
         </div>
     </div>
