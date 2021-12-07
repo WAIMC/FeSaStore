@@ -48,18 +48,14 @@ use Illuminate\Support\Facades\Route;
             'banner'=>admin\BannerController::class,
             'variantProduct'=>admin\VariantProductController::class,
             'brand'=>admin\BrandController::class,
-            'order'=>admin\OrderController::class,
             'slider'=>admin\SliderController::class,
             'blog'=>admin\BlogController::class,
             'categoryblog'=>admin\CategoryBlogController::class,
             'role'=>admin\RoleController::class,
             'decentralize'=>admin\DecentralizeController::class,
             'comment'=>admin\CommentController::class,
-<<<<<<< HEAD
-=======
             'commentblog'=>admin\CommentBlogController::class,
             'order'=>admin\OrderController::class,
->>>>>>> 6e24f7ddc44ddf6c93af93bb6d789900053e38ec
             'customer'=>admin\CustomerController::class,
         ]);
     });
