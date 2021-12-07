@@ -15,7 +15,7 @@
                 <div class="card-header">
                     <div class="row justify-content-between">
                         <div class="col-4">
-                            <h4>Danh sách bài viết</h4>
+                            <h4>Danh sách đơn hàng</h4>
                         </div>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                             <tr>
                                 <th>Mã đơn hàng</th>
                                 <th>Họ tên </th>
-                                <th>Email </th>
+                                {{-- <th>Email </th> --}}
                                 <th>Tổng đơn hàng</th>
                                 <th>Ngày đặt</th>
                                 <th>Tình trạng</th>
@@ -43,9 +43,9 @@
                                 <tr>
                                     <td> #{{ $item->id }} </td>
                                     <td> {{ $item->name }} </td>
-                                    <td>
+                                    {{-- <td>
                                         <a href="#" class="text-muted">{{ $item->email }}</a>
-                                    </td>
+                                    </td> --}}
                                     <td>
                                         @foreach ($item->orderDetail as $value)
                                             <?php $total += $value->price * $value->quantity; ?>
@@ -80,7 +80,7 @@
                             <tr>
                                 <th>Mã đơn hàng</th>
                                 <th>Họ tên </th>
-                                <th>Email </th>
+                                {{-- <th>Email </th> --}}
                                 <th>Tổng đơn hàng</th>
                                 <th>Ngày đặt</th>
                                 <th>Tình trạng</th>

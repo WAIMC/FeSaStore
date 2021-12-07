@@ -6,7 +6,8 @@
 
     interface CartInterface extends RepositoryInterface{
         public function checkout($name,$email,$phone,$address,$note,$customer_id);
-     
+        
+        public function vnpayCheckout();
     }
 
 ?>

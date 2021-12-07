@@ -4,7 +4,7 @@
 {{-- define item for master layout --}}
 @section('title','Bảng Điều Khiển Quản Trị')
 @section('directory', 'Danh Mục Bình luận')
-@section('action', 'Bình luận bài viết')
+@section('action', 'Bình luận sản phẩm')
 
 {{-- main section for master layout --}}
 @section('main')
@@ -18,7 +18,7 @@
                     {{-- header Setting Link --}}
                     <div class="row justify-content-between">
                         <div class="col-4">
-                            <h4>Danh sách bình luận</h4>
+                            <h4>Bình luận chi tiết</h4>
                         </div>
                     </div>
                  
@@ -61,26 +61,33 @@
                         <thead class="">
                             <tr>
                                 <th>ID</th>
-                                <th>Bài viết</th>
-                                <th>Hình ảnh</th>
-                                <th>Số lượng bình luận</th>
+                                <th>Nội dung</th>
+                                <th>Khách hàng</th>
+                                <th>Tình trạng</th>
+                                <th>Ngày bình luận</th>
                                 <th>Hành Động</th>
                               
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($data as $commentblog)
-                            <tr>
-                                    <td scope="row">{{ $commentblog->id }}</td>
-                                    <td>{{ $commentblog->title }}</td>
+                            @foreach ($data as $comment)
+                                <tr>
+                                    <td scope="row">{{ $comment->id }}</td>
+                                    <td>{{ $comment->comment }}</td>
+                                    <td>{{ $comment->cus->name}}</td>
                                     <td>
-                                      <img src="{{ url('public/uploads/'. $commentblog->image) }}" alt="" width="100px" height="100px" >
+                                        <span class="badge badge-{{$comment->status==0 ? 'success' : 'danger'}}">   
+                                            {{ $comment->status==0 ? 'Hiển thị' : 'Ẩn' }}
+                                        </span>
                                     </td>
-                                    <td>{{ $commentblog->soluong }}</td>
+                                    <td>{{ $comment->created_at->format('d-m-Y') }}</td>
                                     <td>
-
-                                        <a href="{{ route('commentblog.show', $commentblog->id) }}" class="btn btn-info">
-                                            Chi tiết
+                                        <a href="{{ route('comment.edit', $comment->id) }}" class="btn btn-info">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="{{ route('comment.destroy', $comment->id) }}"
+                                            class="btn btn-danger btnDelete">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
                                         </a>
                                     </td>
                                 </tr>

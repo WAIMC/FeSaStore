@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSettingLinkTable extends Migration
+class CreateRating extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateSettingLinkTable extends Migration
      */
     public function up()
     {
-        Schema::create('setting_link', function (Blueprint $table) {
+        Schema::create('rating', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('config_key');
-            $table->string('config_value');
-            $table->string('icon');
+            $table->integer('product_id');
+            $table->integer('customer_id');
+            $table->integer('star');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateSettingLinkTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('setting_link');
+        Schema::dropIfExists('rating');
     }
 }

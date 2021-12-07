@@ -184,6 +184,30 @@
             ]
         ],
         [
+            'label'=>'Quản lý đánh giá',
+            'route'=>'rating.index',
+            'icon'=>'fa-list-alt',
+            'items'=>[
+                [
+                    'label'=>'Danh sách đánh giá',
+                    'route'=>'rating.index',
+                    'icon'=>'fa-circle nav-icon'
+                ]
+            ]
+        ],
+        [
+            'label'=>'Quản lý đánh giá sao ',
+            'route'=>'rating.index',
+            'icon'=>'fa-list-alt',
+            'items'=>[
+                [
+                    'label'=>'Danh Sách đánh giá sao',
+                    'route'=>'rating.index',
+                    'icon'=>'fa-circle nav-icon'
+                ]
+            ]
+        ],         
+        [
             'label'=>'Quản lý khách hàng',
             'route'=>'customer.index',
             'icon'=>'fa-list-alt',
@@ -195,6 +219,7 @@
                 ],
             ]
         ],
+        
         [
             'label'=>'Thêm mới khách hàng',
             'route'=>'customer.create',
@@ -218,11 +243,5 @@
                 ]
             ]
         ],
-        [
-            'label'=>'Quản lý đơn hàng',
-            'route'=>'order.index',
-            'icon'=>'fas fa-shopping-cart',   
-        ],
-
     ];
 ?>

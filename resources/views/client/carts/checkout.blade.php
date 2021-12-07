@@ -129,64 +129,40 @@
                                         </tr> --}}
                                         <tr class="order-total">
                                             <th>Tổng đơn hàng</th>
-                                            <td><span class=" total amount">{{$cart->total_price}} VND</span>
+                                            <td><span class=" total amount">{{number_format($cart->total_price) }} VND</span>
                                             </td>
+                                            <input type="hidden" name="amount" value="{{$cart->total_price}}">
                                         </tr>
                                     </tfoot>
                                 </table>
                             </div>
                             <div class="payment-method">
-                                <div id="accordion">
+                                {{-- <div id="accordion">
                                     <div class="card">
                                         <div class="card-header" id="headingone">
                                             <h5 class="mb-0">
                                                 <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                  Chuyển khoản
+                                                  Thanh toán khi nhận hàng
                                                 </button>
                                             </h5>
                                         </div>
 
                                         <div id="collapseOne" class="collapse show" aria-labelledby="headingone" data-parent="#accordion">
                                             <div class="card-body">
-                                                <p>Thực hiện thanh toán của bạn trực tiếp vào tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng ID đơn đặt hàng của bạn làm tham chiếu thanh toán. Đơn đặt hàng của bạn sẽ không được giao cho đến khi tiền đã hết trong tài khoản của chúng tôi.</p>
+                                                <p>Bạn sẽ nhận đơn hàng sau đó thanh toán</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card">
-                                        <div class="card-header" id="headingtwo">
-                                            <h5 class="mb-0">
-                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                          Thanh toán Sec
-                                        </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingtwo" data-parent="#accordion">
-                                            <div class="card-body">
-                                                <p>Vui lòng gửi séc của bạn đến Tên cửa hàng, Phố cửa hàng, Thị trấn cửa hàng, Bang / Hạt cửa hàng, Mã bưu điện cửa hàng.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header" id="headingthree">
-                                            <h5 class="mb-0">
-                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                          PayPal
-                                        </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapseThree" class="collapse" aria-labelledby="headingthree" data-parent="#accordion">
-                                            <div class="card-body">
-                                                 <p>Thanh toán qua PayPal; bạn có thể thanh toán bằng thẻ tín dụng của mình nếu bạn không có tài khoản PayPal.</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
+                                </div> --}}
+                                <div class="wc-proceed-to-checkout">
+                                    <button type="submit" class="buttons-cart btn btn-dark">Thanh toán khi nhận hàng</button>
+                                    <button type="submit" class="buttons-cart btn btn-dark" name="payment" value="2">Thanh toán online</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="wc-proceed-to-checkout">
-                        <button type="submit" class="btn btn-info">Đặt hàng</button>
-                    </div>
+                   
                 </form>
                 
             </div>

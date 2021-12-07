@@ -3,8 +3,8 @@
 
 {{-- define item for master layout --}}
 @section('title','Bảng Điều Khiển Quản Trị')
-@section('directory', 'Danh Mục Bình luận')
-@section('action', 'Bình luận bài viết')
+@section('directory', 'Danh Mục Đánh giá sao')
+@section('action', 'Đánh giá sản phẩm')
 
 {{-- main section for master layout --}}
 @section('main')
@@ -18,7 +18,7 @@
                     {{-- header Setting Link --}}
                     <div class="row justify-content-between">
                         <div class="col-4">
-                            <h4>Danh sách bình luận</h4>
+                            <h4>Danh sách đánh giá sao</h4>
                         </div>
                     </div>
                  
@@ -61,25 +61,23 @@
                         <thead class="">
                             <tr>
                                 <th>ID</th>
-                                <th>Bài viết</th>
+                                <th>Sản phẩm</th>
                                 <th>Hình ảnh</th>
-                                <th>Số lượng bình luận</th>
+                                <th>Số lượng đánh giá</th>
                                 <th>Hành Động</th>
-                              
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($data as $commentblog)
-                            <tr>
-                                    <td scope="row">{{ $commentblog->id }}</td>
-                                    <td>{{ $commentblog->title }}</td>
+                            @foreach ($data as $rating)
+                                <tr>
+                                    <td scope="row">{{ $rating->id }}</td>
+                                    <td>{{ $rating->name }}</td>
                                     <td>
-                                      <img src="{{ url('public/uploads/'. $commentblog->image) }}" alt="" width="100px" height="100px" >
+                                      <img src="{{ url('public/uploads/'. $rating->image) }}" alt="" width="100px" height="100px" >
                                     </td>
-                                    <td>{{ $commentblog->soluong }}</td>
+                                    <td>{{ $rating->soluong }}</td>
                                     <td>
-
-                                        <a href="{{ route('commentblog.show', $commentblog->id) }}" class="btn btn-info">
+                                        <a href="{{ route('rating.show', $rating->id) }}" class="btn btn-info">
                                             Chi tiết
                                         </a>
                                     </td>

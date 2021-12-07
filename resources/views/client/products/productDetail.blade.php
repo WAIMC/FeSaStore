@@ -11,7 +11,7 @@
                     <li><a href="{{ route('client.index') }}">Trang Chủ</a></li>
                     <li><a href="{{ route('client.shop') }}">Cửa Hàng</a></li>
                     <li class="active"><a
-                            href="{{ route('client.productDetail', $data_product_detail->id) }}">{{ $data_product_detail->name }}</a>
+                            href="{{ route('client.productDetail', $data_product_detail->slug) }}">{{ $data_product_detail->name }}</a>
                     </li>
                 </ul>
             </div>
@@ -136,13 +136,63 @@
                                 </h2>
                                 <!-- Reviews Field Start -->
                                 <div class="riview-field mt-40">
+                                
+
+                                <div class="review border-default universal-padding">
+                                    <h4 class="review-mini-title">Đánh giá trung bình</h4>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-2" id="rating_product">
+                                            @if($avg_rating)
+                                            <p class="point">{{$avg_rating}}/5</p>
+                                            @else
+                                            <p class="point1">Chưa có</p>
+                                            @endif
+                                            <br>
+                                            <p class="number_rating">{{$number_rating}} đánh giá</p>
+                                            <ul class="review-list">
+                                            <!-- Single Review List Start -->
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-7">
+                                        @if(isset(Auth::guard('cus')->user()->id))
+                                            <p class="star">Bạn chấm sản phẩm này bao nhiêu sao ?</p>
+                                            <div id="rateYo" style="margin:0 auto"></div>
+                                            <form>
+                                                <input type="hidden" name="rating_star" id="rating_star">
+                                                <input type="hidden" name="product_id" value="{{$data_product_detail->id}}" >
+                                                <input type="hidden" name="customer_id" value="{{Auth::guard('cus')->user()->id}}" >
+                                            </form>
+                                            </div>
+                                            <div class="col-sm-3">
+                                            <button id="post_rating_star" class="customer-btn"> Gửi đánh giá của bạn</button>
+                                            </div>
+                                        @else
+                                        <p class="star">Bạn chấm sản phẩm này bao nhiêu sao ?</p>
+                                            <div id="rateYo" style="margin:0 auto"></div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                            <button class="customer-btn" disablded> Đăng nhập để đánh giá</button>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <br>
+
                                 @if(isset(Auth::guard('cus')->user()->id))
                                 <form>
                                         <input type="hidden" name="customer_id" value="{{Auth::guard('cus')->user()->id}}">
                                         <input type="hidden" name="product_id" value="{{$data_product_detail->id}}">
                                         <div class="form-group">
                                             <textarea class="form-control" rows="5" name="comment" id="comment"
-                                                required="required" style="width:100%"></textarea>
+                                                required="required" placeholder="Nhận xét về sản phẩm ..." style="width:100%"></textarea>
                                         </div>
                                         <button id="post_product_details" class="customer-btn">Gửi Đi Đánh Giá</button>
                                     </form>
@@ -199,7 +249,7 @@
                     <div class="single-product">
                         <!-- Product Image Start -->
                         <div class="pro-img">
-                            <a href="{{ route('client.productDetail', $realted_pro->id) }}">
+                            <a href="{{ route('client.productDetail', $realted_pro->slug) }}">
                                 <img class="primary-img" src="{{ url('public/uploads/' . $realted_pro->image) }}"
                                     alt="single-product">
                                 <img class="secondary-img" src="{{ url('public/uploads/' . $realted_pro->image) }}"
@@ -213,7 +263,7 @@
                         <div class="pro-content">
                             <div class="pro-info">
                                 <h4><a
-                                        href="{{ route('client.productDetail', $realted_pro->id) }}">{{ $realted_pro->name }}</a>
+                                        href="{{ route('client.productDetail', $realted_pro->slug) }}">{{ $realted_pro->name }}</a>
                                 </h4>
                                 <p><span class="price">
                                         @if ($realted_pro->product_variantProduct->first()->price > $realted_pro->product_variantProduct->first()->discount)
@@ -479,8 +529,6 @@
                     }, 1000);
 
 
-                  
-             
                     alertify.success('Đã thêm vào danh sách yêu thích');
                 },
                 error: (error) => {
@@ -527,6 +575,52 @@
             });
         });
 
+        $(function () {
+ 
+            $("#rateYo").rateYo({
+                rating: 2,
+                fullStar: true
+            }).on("rateyo.set",function(e,data){
+                $('#rating_star').val(data.rating);
+            });
 
+            });
+
+
+        // Gửi bình luận sản phẩm bằng ajax
+        $('#post_rating_star').click(function(e) {
+            e.preventDefault();
+        
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+          var customer_id = $("input[name=customer_id]").val();
+          var product_id = $("input[name=product_id]").val();
+          var star = $("input[name=rating_star]").val();
+
+          console.log(customer_id);
+          console.log(product_id);
+          console.log(star);
+            $.ajax({
+                type: 'get',
+                url:  '{{url('')}}/productDetail/rating/'+$("input[name=product_id]").val(),
+                data: {
+                     customer_id : $("input[name=customer_id]").val(),
+                     product_id : $("input[name=product_id]").val(),
+                     star : $("input[name=rating_star]").val()
+                },
+                success: function(response) {
+                    alertify.success('Đã gửi đánh giá');
+                    console.log(response);
+                    $('#rating_product').empty();
+                    $('#rating_product').html(response);
+                },
+                error: (error) => {
+                    console.log(JSON.stringify(error));
+                }
+            });
+        });
     </script>
 @endsection

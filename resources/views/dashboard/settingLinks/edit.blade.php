@@ -44,6 +44,13 @@
                                         <small  class="text-danger">{{$message}}</small> 
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                    <label for="">Icon</label>
+                                    <input type="text" name="icon" id="" value="{{$settingLink->icon}}" class="form-control" placeholder="" aria-describedby="helpId">
+                                        @error('icon')
+                                    <small  class="text-danger">{{$message}}</small> 
+                                    @enderror
+                                </div>
                                 <input type="hidden" name="id" value="{{$settingLink->id}}">
                                 <input type="submit" value="Cập nhật" class="btn btn-primary btnEdit">
                             </form>

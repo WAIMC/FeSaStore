@@ -34,6 +34,7 @@
                                 <th>ID</th>
                                 <th>Tên Đường Đẫn</th>
                                 <th>Đường Dẫn</th>
+                                <th>Icon</th>
                                 <th>Ngày Tạo</th>
                                 <th>Hành Động</th>
                             </tr>
@@ -44,6 +45,7 @@
                                     <td scope="row">{{ $st_link->id }}</td>
                                     <td>{{ $st_link->config_key }}</td>
                                     <td>{{ $st_link->config_value }}</td>
+                                    <td>{{ $st_link->icon}}</td>
                                     <td>{{ $st_link->created_at->format('d-m-Y') }}</td>
                                     <td>
                                         <a href="{{ route('settingLink.edit', $st_link->id) }}" class="btn btn-info">

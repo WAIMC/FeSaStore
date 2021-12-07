@@ -7,6 +7,8 @@
     interface CommentInterface extends RepositoryInterface{
 
         public function FindComment($id);
+
+        public function GetListComment();
     }
 
 ?>

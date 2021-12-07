@@ -45,6 +45,7 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
     <!-- Bootstrap theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
      <!-- style css -->
@@ -234,6 +235,7 @@
     <script src="{{url('public/client')}}/js/plugins.js"></script>
     <!-- Main activaion js -->
     <script src="{{url('public/client')}}/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
     @yield('js')
 
     <script>

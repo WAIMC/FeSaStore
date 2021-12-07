@@ -48,7 +48,6 @@ use Illuminate\Support\Facades\Route;
             'banner'=>admin\BannerController::class,
             'variantProduct'=>admin\VariantProductController::class,
             'brand'=>admin\BrandController::class,
-            'order'=>admin\OrderController::class,
             'slider'=>admin\SliderController::class,
             'blog'=>admin\BlogController::class,
             'categoryblog'=>admin\CategoryBlogController::class,
@@ -58,7 +57,9 @@ use Illuminate\Support\Facades\Route;
             'commentblog'=>admin\CommentBlogController::class,
             'order'=>admin\OrderController::class,
             'customer'=>admin\CustomerController::class,
+            'rating'=>admin\RatingController::class
         ]);
+
     });
     
 
@@ -72,7 +73,10 @@ use Illuminate\Support\Facades\Route;
 */ 
     Route::get('/',[App\Http\Controllers\client\HomeController::class,'index'])->name('client.index');
     Route::get('/Cua-Hang',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
-    Route::get('/San-Pham-Chi-Tiet/{product_id}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
+    Route::get('/productDetail/{slug}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
+    Route::post('/productDetail/{slug}',[App\Http\Controllers\admin\CommentController::class,'store'])->name('client.productDetail');
+    Route::get('/productDetail/rating/{slug}',[App\Http\Controllers\admin\RatingController::class,'store'])->name('client.rating');
+    Route::get('/San-Pham-Chi-Tiet/{slug}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
     Route::get('/Gioi-Thieu',[App\Http\Controllers\client\HomeController::class,'about'])->name('client.about');
     Route::get('/Lien-He',[App\Http\Controllers\client\HomeController::class,'contact'])->name('client.contact');
     Route::post('/Lien-He',[App\Http\Controllers\client\HomeController::class,'post_contact'])->name('client.post_contact');
@@ -90,8 +94,16 @@ use Illuminate\Support\Facades\Route;
     Route::get('reset-password/{token}', [App\Http\Controllers\client\Auth\ForgotPasswordController::class, 'showResetPasswordForm'])->name('client.reset.password.get');
     Route::post('reset-password', [App\Http\Controllers\client\Auth\ForgotPasswordController::class, 'submitResetPasswordForm'])->name('client.reset.password.post');
 
+    Route::group(['prefix' => 'account', 'middleware' => 'cus'],function () {
+    Route::get('/',[App\Http\Controllers\client\AccountController::class,'index'] )->name('client.account.index');
+    Route::get('/history',[App\Http\Controllers\client\AccountController::class,'showOrder'] )->name('client.account.order');
+    Route::get('/order/view/{id}',[App\Http\Controllers\client\AccountController::class,'showOrderDetail'] )->name('client.account.orderDetail');
+    Route::get('/order/{id}',[App\Http\Controllers\client\AccountController::class,'updateOrder'] )->name('client.account.updateOrder');
+});
 
  //end
+
+
 //cart
  Route::prefix('cart')->group(function () {
     Route::get('/', [App\Http\Controllers\client\CartController::class, 'view'])->name('cart.view');
@@ -102,6 +114,9 @@ use Illuminate\Support\Facades\Route;
     Route::get('clear', [App\Http\Controllers\client\CartController::class, 'clear'])->name('cart.clear');
     Route::get('checkout', [App\Http\Controllers\client\CartController::class, 'checkout'])->name('cart.checkout')->middleware('cus');
     Route::post('checkout', [App\Http\Controllers\client\CartController::class, 'PostCheckout'])->name('cart.postcheckout')->middleware('cus');
+    Route::post('payment/online', [App\Http\Controllers\client\CartController::class, 'PostCheckoutOnline'])->name('cart.postcheckoutonline')->middleware('cus');
+    Route::get('vnpay/return', [App\Http\Controllers\client\CartController::class, 'vnpayReturn'])->name('cart.vnpayReturn');
+
 });
 
 //end

@@ -51,10 +51,27 @@ class CartController extends Controller
     }
     public function PostCheckout(CheckoutRequest $request)
     { 
-        $id=Auth::guard('cus')->user()->id;  
-       $this->orders->checkout($request->name ,$request->email,$request->phone,$request->address,$request->note,$id);
-           return redirect()->route('cart.view')->with('success','Đặt hàng thành công');
-       
+        if ($request->payment==2) {
+            //  session('cus_info')=[
+            //      $request-
+            //  ];
+         //   dd($request->all());
+         return  $this->orders->vnpayCheckout();
+        }else{
+             $id=Auth::guard('cus')->user()->id;  
+        $this->orders->checkout($request->name ,$request->email,$request->phone,$request->address,$request->note,$id);
+           return redirect()->route('cart.view')->with('success','Đặt hàng thành công'); 
+        }
+      
+    }
 
+    public function vnpayReturn(Request $request){
+        //dd($request->all());
+        if($request->vnp_ResponseCode == "00") {
+
+            return redirect()->route('cart.view')->with('success' ,'Đã thanh toán phí dịch vụ');
+        }else{
+            return redirect()->route('cart.view')->with('errors' ,'Lỗi trong quá trình thanh toán phí dịch vụ');
+        }
     }
 }

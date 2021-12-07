@@ -36,7 +36,7 @@
                                     <select class="select2" name="role[]" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
                                         @foreach ($get_role as $role)
                                         <?php $checked = in_array($role->name, $role_assignment) ? 'checked' : ''; ?>
-                                            <option class="role_{{$role->id}}" value="{{$role->id}}" {{$checked}}>{{$role->name}}</option>
+                                            <option class="role_{{$role->id}} bg-blue" value="{{$role->id}}" {{$checked}}>{{$role->name}}</option>
                                         @endforeach
                                     </select>
                                   </div>
