@@ -57,7 +57,9 @@ use Illuminate\Support\Facades\Route;
             'commentblog'=>admin\CommentBlogController::class,
             'order'=>admin\OrderController::class,
             'customer'=>admin\CustomerController::class,
+            'rating'=>admin\RatingController::class
         ]);
+
     });
     
 
@@ -71,6 +73,9 @@ use Illuminate\Support\Facades\Route;
 */ 
     Route::get('/',[App\Http\Controllers\client\HomeController::class,'index'])->name('client.index');
     Route::get('/Cua-Hang',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
+    Route::get('/productDetail/{slug}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
+    Route::post('/productDetail/{slug}',[App\Http\Controllers\admin\CommentController::class,'store'])->name('client.productDetail');
+    Route::get('/productDetail/rating/{slug}',[App\Http\Controllers\admin\RatingController::class,'store'])->name('client.rating');
     Route::get('/San-Pham-Chi-Tiet/{slug}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
     Route::get('/Gioi-Thieu',[App\Http\Controllers\client\HomeController::class,'about'])->name('client.about');
     Route::get('/Lien-He',[App\Http\Controllers\client\HomeController::class,'contact'])->name('client.contact');

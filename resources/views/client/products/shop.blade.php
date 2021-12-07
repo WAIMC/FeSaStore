@@ -79,11 +79,7 @@
                                                 <div class="single-product single-product-sidebar">
                                                     <!-- Product Image Start -->
                                                     <div class="pro-img">
-<<<<<<< HEAD
-                                                        <a href="{{ route('client.productDetail', $top_five->slug)}}">
-=======
                                                         <a href="{{ route('client.productDetail', $top_five->id)}}">
->>>>>>> 9ee1003b19eb17d7e6226380ab338f127a8356e1
                                                             <img class="primary-img" src="{{url('public/uploads')}}/{{ $top_five->image }}" alt="single-product">
                                                             <img class="secondary-img" src="{{url('public/uploads')}}/{{ $top_five->image }}" alt="single-product">
                                                         </a>
@@ -94,11 +90,7 @@
                                                     <!-- Product Image End -->
                                                     <!-- Product Content Start -->
                                                     <div class="pro-content">
-<<<<<<< HEAD
-                                                        <h4><a href="{{ route('client.productDetail', $top_five->slug)}}">{{ $top_five->name }}</a></h4>
-=======
                                                         <h4><a href="{{ route('client.productDetail', $top_five->id)}}">{{ $top_five->name }}</a></h4>
->>>>>>> 9ee1003b19eb17d7e6226380ab338f127a8356e1
                                                         @if ($top_five->product_variantProduct->first()->price > $top_five->product_variantProduct->first()->discount)
                                                             <p><span class="price">{{$top_five->product_variantProduct->first()->discount}} VNĐ</span><del class="prev-price">{{ $top_five->product_variantProduct->first()->price }} VNĐ</del></p>
                                                         @else

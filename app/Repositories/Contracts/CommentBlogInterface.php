@@ -7,6 +7,7 @@
     interface CommentBlogInterface extends RepositoryInterface{
 
         public function FindCommentBlog($id);
+        public function GetListCommentBlog();
     }
 
 ?>

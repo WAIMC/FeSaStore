@@ -44,9 +44,16 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="">Value</label>
+                            <label for="">Đường dẫn</label>
                             <input type="text" name="config_value" id="" class="form-control" placeholder="" aria-describedby="helpId">
                                 @error('config_value')
+                            <small  class="text-danger">{{$message}}</small> 
+                            @enderror
+                          </div>
+                          <div class="form-group">
+                            <label for="">Icon</label>
+                            <input type="text" name="icon" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                                @error('icon')
                             <small  class="text-danger">{{$message}}</small> 
                             @enderror
                           </div>

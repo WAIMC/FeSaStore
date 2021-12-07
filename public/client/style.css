@@ -2465,7 +2465,7 @@ li.megamenu-img a {
 .rating i,
 .review-list i {
     color: #F39C11;
-    font-size: 14px;
+    font-size: 20px;
 }
 
 .rating-feedback a {
@@ -2704,7 +2704,8 @@ li.megamenu-img a {
 }
 
 .review-list li {
-    text-align: left;
+    text-align: center;
+    font-size: 28px;
 }
 
 .review-list li > span {
@@ -4570,4 +4571,28 @@ a.shipping-calculator-button:hover {
 .footer-line {
     margin: 25px 0;
     border-bottom: 1px solid rgba(68,68,68,.2);
+}
+
+.point{
+    font-size: 44px;
+    line-height: 60px;
+    color: #00483d;
+    font-weight: 800;
+    margin-bottom: 4px;
+    text-align: center;
+}
+.star{
+    text-align: center;
+    font-size: 17px;
+}
+.point1{
+    font-size: 20px;
+    color: #00483d;
+    font-weight: bolder;
+    text-align: center;
+}
+.number_rating{
+    font-size: 15px;
+    color: #00483d;
+    text-align: center;
 }

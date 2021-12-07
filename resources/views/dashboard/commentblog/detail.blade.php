@@ -61,9 +61,10 @@
                         <thead class="">
                             <tr>
                                 <th>ID</th>
-                                <th>Bài viết</th>
-                                <th>Hình ảnh</th>
-                                <th>Số lượng bình luận</th>
+                                <th>Nội dung</th>
+                                <th>Khách hàng</th>
+                                <th>Tình trạng</th>
+                                <th>Ngày bình luận</th>
                                 <th>Hành Động</th>
                               
                             </tr>
@@ -72,15 +73,21 @@
                             @foreach ($data as $commentblog)
                             <tr>
                                     <td scope="row">{{ $commentblog->id }}</td>
-                                    <td>{{ $commentblog->title }}</td>
+                                    <td>{{ $commentblog->comment }}</td>
+                                    <td>{{ $commentblog->cus->name}}</td>
                                     <td>
-                                      <img src="{{ url('public/uploads/'. $commentblog->image) }}" alt="" width="100px" height="100px" >
+                                        <span class="badge badge-{{$commentblog->status==0 ? 'success' : 'danger'}}">   
+                                            {{ $commentblog->status==0 ? 'Hiển thị' : 'Ẩn' }}
+                                        </span>
                                     </td>
-                                    <td>{{ $commentblog->soluong }}</td>
+                                    <td>{{ $commentblog->created_at->format('d-m-Y') }}</td>
                                     <td>
-
-                                        <a href="{{ route('commentblog.show', $commentblog->id) }}" class="btn btn-info">
-                                            Chi tiết
+                                        <a href="{{ route('commentblog.edit', $commentblog->id) }}" class="btn btn-info">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="{{ route('commentblog.destroy', $commentblog->id) }}"
+                                            class="btn btn-danger btnDelete">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
                                         </a>
                                     </td>
                                 </tr>
