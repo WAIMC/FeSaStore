@@ -17,7 +17,6 @@
             return \App\Models\Order::class;
         }
   
-
         public function showOrderDetail($id){
             $data=$this->getModel()::join('order_detail', 'order.id', '=', 'order_detail.order_id')
             ->join('variant_product', 'order_detail.variant_product_id', '=', 'variant_product.id')
@@ -40,6 +39,9 @@
 
         }
 
+        public function showCustomerOrder($id){
+            return $this->getModel()::orderBy('id','DESC')->where('customer_id',$id)->get();
+        }
     }
 
 ?>

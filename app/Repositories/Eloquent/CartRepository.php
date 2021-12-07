@@ -48,7 +48,7 @@
                  $prod->quantity-= $quantity;
                  $prod->update(['quantity'=> $prod->quantity]);
                 }
-                Mail::send('client.email.checkout',
+                Mail::send('client.email.order',
                 [
                     'name'=> $name,
                     'address' => $address,

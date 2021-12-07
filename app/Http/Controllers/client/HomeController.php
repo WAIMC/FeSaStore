@@ -123,27 +123,6 @@ class HomeController extends Controller
          // dd($data_comment);
         return view('client.products.productDetail', compact('data_product_detail','data_comment'));
     }
-
-    public function register(){
-        
-        return view('client.register');
-    }
-
-    public function signIn(){
-        
-        return view('client.signIn');
-    }
-
-    public function forgotPassword(){
-        
-        return view('client.forgotPassword');
-    }
-
-    
-    public function checkout(){
-        
-        return view('client.carts.checkout');
-    }
     public function blog(){
         $blogs=$this->blogs->paginate(10);
         return view('client.blogs.blog', compact('blogs'));

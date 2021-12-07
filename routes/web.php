@@ -55,8 +55,11 @@ use Illuminate\Support\Facades\Route;
             'role'=>admin\RoleController::class,
             'decentralize'=>admin\DecentralizeController::class,
             'comment'=>admin\CommentController::class,
+<<<<<<< HEAD
+=======
             'commentblog'=>admin\CommentBlogController::class,
             'order'=>admin\OrderController::class,
+>>>>>>> 6e24f7ddc44ddf6c93af93bb6d789900053e38ec
             'customer'=>admin\CustomerController::class,
         ]);
     });
@@ -90,8 +93,16 @@ use Illuminate\Support\Facades\Route;
     Route::get('reset-password/{token}', [App\Http\Controllers\client\Auth\ForgotPasswordController::class, 'showResetPasswordForm'])->name('client.reset.password.get');
     Route::post('reset-password', [App\Http\Controllers\client\Auth\ForgotPasswordController::class, 'submitResetPasswordForm'])->name('client.reset.password.post');
 
+    Route::group(['prefix' => 'account', 'middleware' => 'cus'],function () {
+    Route::get('/',[App\Http\Controllers\client\AccountController::class,'index'] )->name('client.account.index');
+    Route::get('/history',[App\Http\Controllers\client\AccountController::class,'showOrder'] )->name('client.account.order');
+    Route::get('/order/view/{id}',[App\Http\Controllers\client\AccountController::class,'showOrderDetail'] )->name('client.account.orderDetail');
+    Route::get('/order/{id}',[App\Http\Controllers\client\AccountController::class,'updateOrder'] )->name('client.account.updateOrder');
+});
 
  //end
+
+
 //cart
  Route::prefix('cart')->group(function () {
     Route::get('/', [App\Http\Controllers\client\CartController::class, 'view'])->name('cart.view');

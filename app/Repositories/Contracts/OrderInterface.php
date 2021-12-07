@@ -8,6 +8,7 @@
 
      public function showOrderDetail($id);
      public function updateStatus($order);
+     public function showCustomerOrder($id);
     }
 
 ?>
