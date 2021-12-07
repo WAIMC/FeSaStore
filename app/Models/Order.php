@@ -31,4 +31,7 @@ class Order extends Model
         }
         return $query;
     }
+    public function getPayment(){
+        return $this->hasOne(Payment::class,'order_id','id');
+    }
 }

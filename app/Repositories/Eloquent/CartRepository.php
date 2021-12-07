@@ -6,6 +6,7 @@
     use App\Repositories\Contracts\CartInterface;
     use App\Repositories\Eloquent\BaseRepository;
     use App\Models\VariantProduct;
+  use App\Models\Payment;
     use App\Helper\CartHelper;
     use Illuminate\Support\Facades\Mail;
     class CartRepository extends BaseRepository implements CartInterface{
@@ -116,5 +117,45 @@
                 $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
             }
             return redirect($vnp_Url); 
+        }
+
+        public function vnpayPost($cus_info,$data_payment){
+            $order=$this->getModel()::create($cus_info);
+            $name   =$cus_info['name'];
+            $email=$cus_info['email'];
+            if($order){
+                $order_id=$order->id;
+                $cart=new CartHelper();
+                $data_payment['order_id']=$order->id;
+                Payment::create($data_payment);
+                foreach ($cart->items as $product_id => $item) {
+                 $prod=VariantProduct::find($product_id);
+                 $dataOrderDetail=[
+                     'name'=>$item['name'],
+                     'quantity'=>$item['quantity'],
+                     'price'=>$item['price'],
+                     'variant_product_id'=>$item['id'],
+                     'order_id'=>$order->id
+                 ];
+                 OrderDetail::create($dataOrderDetail);
+                 $quantity=$item['quantity'];
+                 $prod->quantity-= $quantity;
+                 $prod->update(['quantity'=> $prod->quantity]);
+                }
+                Mail::send('client.email.order',
+                [
+                    'name'=> $cus_info['name'],
+                    'address' => $cus_info['address'],
+                    'order'=> $order,
+                    'carts'=>$cart->items
+                ]
+                ,function ($mail) use($order_id,$email,$name) {
+                     $mail->from('Tan874979@gmail.com');
+                     $mail->to($email, $name);
+                     $mail->subject('Đơn hàng #'.$order_id);
+                 });
+                session(['cart'=>'']);
+                session(['cus_info'=>'']);
+            }
         }
     }

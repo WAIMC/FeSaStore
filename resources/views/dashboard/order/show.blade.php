@@ -12,7 +12,6 @@
             <div class="card shadow">
                 <div class="card-header">
 
-<<<<<<< HEAD
                     {{-- header Setting Link --}}
                     <div class="row justify-content-between">
                         <div class="col-4">
@@ -29,86 +28,6 @@
 
                     {{-- select by choose --}}
 
-=======
-                {{-- select by choose --}}
-                
-            </div>
-            <div class="card-body">
-    <!-- Default box -->
-    <div class="box" >
-        <div class="box-header with-border">
-            <div class="row" >
-                <div class="col-md-12" id="tblCustomers" >
-                    <div class="container123  col-md-6">
-                        <h4></h4>
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th class="col-md-4">Thông tin khách hàng</th>
-                                <th class="col-md-6"></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>Thông tin người đặt hàng</td>
-                                <td>{{ $data[0]->name }}</td>
-                            </tr>
-                            <tr>
-                                <td>Ngày đặt hàng</td>
-                                <td>{{ $data[0]->created_at }}</td>
-                            </tr>
-                            <tr>
-                                <td>Số điện thoại</td>
-                                <td>{{ $data[0]->phone }}</td>
-                            </tr>
-                            <tr>
-                                <td>Địa chỉ</td>
-                                <td>{{ $data[0]->address }}</td>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td>{{ $data[0]->email }}</td>
-                            </tr>
-                            <tr>
-                                <td>Ghi chú</td>
-                                <td>{{ $data[0]->note }}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <table id="myTable" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info" id="invoice">
-                        <thead>
-                        <tr role="row">
-                            <th class="sorting col-md-1" >STT</th>
-                            <th class="sorting_asc col-md-3">Tên sản phẩm</th>
-                            <th class="sorting_asc col-md-2">Tên thuộc tính</th>
-                            <th class="sorting col-md-2">Số lượng</th>
-                            <th class="sorting col-md-2">Giá tiền</th>
-                        </thead>
-                        <tbody>
-                            @php
-                                $total_price=0;
-                            @endphp
-                        @foreach($data as $key => $bill)
-
-                            <tr>
-                                <td>{{ $key+1 }}</td>
-                                <td>{{ $bill->name }}</td>
-                                <td>{{ $bill->variant_attribute	 }}</td>
-                                <td>{{ $bill->quantity }}</td>
-                                <td>{{ number_format($bill->price) }} VNĐ</td>
-                            </tr>
-                            @php
-                            $total_price+=$bill->quantity*$bill->price;
-                        @endphp
-                        @endforeach
-                        <tr>
-                            <td colspan="3"><b>Tổng tiền</b></td>
-                            <td colspan="1"><b class="text-red">{{ number_format($total_price) }} VNĐ</b></td>
-                        </tr>
-                        </tbody>
-                    </table>
->>>>>>> 6e24f7ddc44ddf6c93af93bb6d789900053e38ec
                 </div>
                 <div class="card-body" id="invoice">
                     <section class="content">
@@ -143,8 +62,8 @@
                                                     127 Nguyễn Thị Thập,<br>
                                                     Liên Chiểu, Đà Nẵng<br>
 
-                                                  <b> Điện thoại:</b>  (84) 123-5432<br>
-                                                   <b>Email:</b>  Fesastore@gmail.com
+                                                    <b> Điện thoại:</b> (84) 123-5432<br>
+                                                    <b>Email:</b> Fesastore@gmail.com
                                                 </address>
                                             </div>
                                             <!-- /.col -->
@@ -154,7 +73,7 @@
                                                     <strong>{{ $data[0]->name }}</strong><br>
                                                     {{ $data[0]->address }} <br>
                                                     <b> Điện thoại:</b> {{ $data[0]->phone }}<br>
-                                                   <b>Email: </b> {{ $data[0]->email }}
+                                                    <b>Email: </b> {{ $data[0]->email }}
                                                 </address>
                                             </div>
                                             <!-- /.col -->
@@ -162,7 +81,7 @@
                                                 <b>Hóa đơn </b><br>
                                                 <br>
                                                 <b>Mã hóa đơn:</b>#{{ $data[0]->id }}<br>
-                                                <b>Ngày thanh toán:</b> <br>
+                                                {{-- <b>Ngày thanh toán:</b> <br> --}}
                                                 <form id="formEdit" action="{{ route('order.update', $data[0]->id) }}"
                                                     class="" method="POST">
                                                     @csrf @method('PUT')
@@ -187,10 +106,11 @@
                                                 <table class="table table-bordered">
                                                     <thead>
                                                         <tr>
-                                                            <th>Số lượng</th>
+                                                            <th>STT</th>
                                                             <th>Sản phẩm</th>
                                                             <th>Thuộc tính #</th>
                                                             <th>Giá</th>
+                                                            <th>Số lượng</th>
                                                             <th>Thành tiền</th>
                                                         </tr>
                                                     </thead>
@@ -204,6 +124,7 @@
                                                                 <td>{{ $key + 1 }}</td>
                                                                 <td>{{ $bill->sanpham }}</td>
                                                                 <td>{{ $bill->variant_attribute }}</td>
+                                                                <td>{{ $bill->price }}</td>
                                                                 <td>{{ $bill->quantity }}</td>
                                                                 <td>{{ number_format($bill->price) }} VNĐ</td>
                                                             </tr>
@@ -223,11 +144,21 @@
                                             <!-- accepted payments column -->
                                             <div class="col-6">
                                                 <p class="lead">Phương thức thanh toán:</p>
-                                                <p>Thanh toán khi nhận hàng</p>
+                                                @if ($data[0]->getPayment)
+                                                    <p class="text-muted well well-sm shadow-none"
+                                                        style="margin-top: 10px;">
+                                                    <ul>
+                                                        <li>Ngân hàng: {{ $data[0]->getPayment->vnp_BankCode }} </li>
+                                                        <li>Nội dung: {{ $data[0]->getPayment->vnp_OrderInfo }}</li>
+                                                        <li>Thời gian: {{ $data[0]->getPayment->created_at }}</li>
+                                                    </ul>
+                                                    </p>
 
-                                                <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
+                                                @else
+                                                    <p>Thanh toán khi nhận hàng</p>
+                                                @endif
 
-                                                </p>
+
                                             </div>
                                             <!-- /.col -->
                                             <div class="col-6">
@@ -280,13 +211,12 @@
                         </div><!-- /.container-fluid -->
                     </section>
                 </div>
-<<<<<<< HEAD
             </div>
         </div>
     </div>
 @endsection
 @section('js')
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function printContent(el) {
             var restorepage = $('body').html();
@@ -295,57 +225,27 @@
             window.print();
             $('body').html(restorepage);
         }
-        $('.status').change(function (e) { 
-          e.preventDefault();
-          Swal.fire({
-            title: 'Bạn Có Chắc Chắn ?',
-            text: "Bạn Không Thể Hoàn Tác Chức Năng!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Tiếp tục!',
-            cancelButtonText: "Hủy!",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $('form#formEdit').submit();
-                Swal.fire(
-                    'Đang Cập Nhật!',
-                    'Dữ Liệu Đang Được Cập Nhật.',
-                    'success'
-                );
-            }
-        });
-        });
-    </script>
-@endsection
-=======
-                </form>
-                <input type="button" class="btn btn-primary" id="btnExport" value="Print-PDF" onclick="Export()" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-            </div>
-        </div>
-    </div>
-</div>
-        </div>
-    </div>
-</div>
-<script type="text/javascript">
-        function Export() {
-            html2canvas(document.getElementById('tblCustomers'), {
-                onrendered: function (canvas) {
-                    var data = canvas.toDataURL();
-                    var docDefinition = {
-                        content: [{
-                            image: data,
-                            width: 500
-                        }]
-                    };
-                    pdfMake.createPdf(docDefinition).download("Hóa đơn.pdf");
+        $('.status').change(function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Bạn Có Chắc Chắn ?',
+                text: "Bạn Không Thể Hoàn Tác Chức Năng!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Tiếp tục!',
+                cancelButtonText: "Hủy!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('form#formEdit').submit();
+                    Swal.fire(
+                        'Đang Cập Nhật!',
+                        'Dữ Liệu Đang Được Cập Nhật.',
+                        'success'
+                    );
                 }
             });
-        }
+        });
     </script>
 @endsection
->>>>>>> 6e24f7ddc44ddf6c93af93bb6d789900053e38ec

@@ -140,14 +140,8 @@
         [
             'label'=>'Quản lý đơn hàng ',
             'route'=>'order.index',
-            'icon'=>'fa-list-alt',
-            'items'=>[
-                [
-                    'label'=>'Danh Sách đơn hàng',
-                    'route'=>'order.index',
-                    'icon'=>'fa-circle nav-icon'
-                ],
-            ]
+            'icon'=>'fa fa-shopping-cart',
+        
         ],
         [
             'label'=>'Quản lý slider ',
