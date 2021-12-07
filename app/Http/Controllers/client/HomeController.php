@@ -14,6 +14,7 @@ use App\Repositories\Contracts\CommentInterface;
 use App\Repositories\Contracts\CommentBlogInterface;
 use App\Repositories\Contracts\SliderInterface;
 use App\Repositories\Contracts\OrderInterface;
+use App\Repositories\Contracts\RatingInterface;
 
 use Illuminate\Http\Request;
 use Mail;
@@ -35,6 +36,7 @@ class HomeController extends Controller
 
     protected $slider_repo;
     protected $order_repo;
+    protected $rating_repo;
     
     
     public function __construct(
@@ -48,7 +50,8 @@ class HomeController extends Controller
         CommentInterface $comment,
         CommentBlogInterface $commentblog,
         SliderInterface $slider_repo,
-        OrderInterface $order_repo
+        OrderInterface $order_repo,
+        RatingInterface $rating_repo
 
     ){
         $this->category_repo = $category_repo;
@@ -62,6 +65,8 @@ class HomeController extends Controller
         $this->commentblog = $commentblog;
         $this->slider_repo = $slider_repo;
         $this->order_repo = $order_repo;
+        $this->rating_repo = $rating_repo;
+
     }
 
     /**
@@ -113,36 +118,11 @@ class HomeController extends Controller
 
     public function productDetail($slug){
         $data_product_detail = $this->product_repo->findBySlug($slug);
-        $get_all_comment = $this->comment->FindComment($data_product_detail->id);
-        $data_comment = [] ;
-        foreach ($get_all_comment as $key) {
-           if($key->product_id == $data_product_detail->id){
-                array_push($data_comment, $key);
-           }
-        }
-         // dd($data_comment);
-        return view('client.products.productDetail', compact('data_product_detail','data_comment'));
-    }
+        $data_comment = $this->comment->FindComment($data_product_detail->id);
+        $avg_rating = $this->rating_repo->AvgRating($data_product_detail->id);
+        $number_rating = $this->rating_repo->CountRating($data_product_detail->id);
 
-    public function register(){
-        
-        return view('client.register');
-    }
-
-    public function signIn(){
-        
-        return view('client.signIn');
-    }
-
-    public function forgotPassword(){
-        
-        return view('client.forgotPassword');
-    }
-
-    
-    public function checkout(){
-        
-        return view('client.carts.checkout');
+        return view('client.products.productDetail', compact('data_product_detail','data_comment','avg_rating','number_rating'));
     }
     public function blog(){
         $blogs=$this->blogs->paginate(10);

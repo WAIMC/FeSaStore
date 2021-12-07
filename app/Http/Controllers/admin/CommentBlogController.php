@@ -21,7 +21,7 @@ class CommentBlogController extends Controller
      */
     public function index()
     {
-        $data=$this->commentblog->paginate(10);
+        $data=$this->commentblog->GetListCommentBlog();
         return view('dashboard.commentblog.index',compact('data'));
     }
 
@@ -62,9 +62,10 @@ class CommentBlogController extends Controller
      * @param  \App\Models\CommentBlog  $commentBlog
      * @return \Illuminate\Http\Response
      */
-    public function show(commentblog $commentblog)
+    public function show($id)
     {
-        //
+        $data=$this->commentblog->FindCommentBlog($id);
+        return view('dashboard.commentblog.detail',compact('data'));
     }
 
      /**
@@ -96,9 +97,9 @@ class CommentBlogController extends Controller
         ];
         $result=$this->commentblog->update($commentblog, $attributes);
         if($result){
-            return redirect()->route('commentblog.index')->with('success','Cập nhật thành công !');
+            return redirect()->route('commentblog.show',$commentblog->blog_id)->with('success','Cập nhật thành công !');
         }else{
-            return redirect()->route('commentblog.edit',$comment)->with('error','Cập nhật thất bại !');
+            return redirect()->route('commentblog.index',$commentblog)->with('error','Xóa thương hiệu thất bại !');
         }
     }
 
@@ -112,9 +113,9 @@ class CommentBlogController extends Controller
     {
         $result=$this->commentblog->destroy($commentblog);
         if($result){
-            return redirect()->route('commentblog.index')->with('success','Xóa thương hiệu thành công !');
+            return redirect()->route('commentblog.show',$commentblog->blog_id)->with('success','Xóa thành công !');
         }else{
-            return redirect()->route('commentblog.index',$commentblog)->with('error','Xóa thương hiệu thất bại !');
+            return redirect()->route('commentblog.index',$commentblog)->with('error','Xóa thất bại !');
         }
     }
 }

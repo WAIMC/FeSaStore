@@ -4,6 +4,7 @@
 
     use App\Repositories\Contracts\CommentInterface;
     use App\Repositories\Eloquent\BaseRepository;
+    use DB;
     
 
     class CommentRepository extends BaseRepository implements CommentInterface{
@@ -18,7 +19,16 @@
         }
 
         public function FindComment($id){
-            return $this->getModel()::where('product_id',$id)->where('status',0)->get();
+            return $this->getModel()::where('product_id',$id)->paginate(10);
+        }
+
+        public function GetListComment(){
+            $data = $this->getModel()::join('product','comment.product_id','=','product.id')
+            ->select(DB::raw('count(*) as soluong,product.name,product.image,product.id,
+            MIN(comment.created_at) AS oldcomment, MAX(comment.created_at) AS newcomment'))
+            ->groupByRaw('product.name,product.id,product.image')
+            ->having('soluong','>',0)->paginate(10);
+            return $data;
         }
         
         public function showComment($menus, $parent_id = 0){

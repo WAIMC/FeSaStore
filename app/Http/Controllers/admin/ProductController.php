@@ -69,6 +69,7 @@ class ProductController extends Controller
         	'short_description' => $request->short_description,
         	'description' => $request->description,
         	'image' => $request->image,
+            'slug' => Str::slug($request->name),
         	'status' => $request->status,
         	'variant' => $request->variant,
         	'category_id' => $request->category_id,

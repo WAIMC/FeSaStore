@@ -93,19 +93,25 @@
     </div>
     <!-- Footer Top End -->
     <!-- Footer Middle Start -->
-    <div class="footer-middle text-center">
+    {{-- <div class="footer-middle text-center">
         <div class="container">
             <div class="footer-middle-content pt-20 pb-30">
                     <ul class="social-footer">
+<<<<<<< HEAD
                         <li><a href=""><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                         <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+=======
+                        @foreach($settinglink_repo as $item)
+                        <li><a href="{{$item->config_value}}"><i class="{{$item->icon}}"></i></a></li>
+                        @endforeach
+>>>>>>> 6445de429bba4b6f5f314ec12463f3d36a0a3028
                     </ul>
             </div>
         </div>
         <!-- Container End -->
-    </div>
+    </div> --}}
     <!-- Footer Middle End -->
     <!-- Footer Bottom Start -->
     <div class="footer-bottom pb-30">

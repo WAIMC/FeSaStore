@@ -22,7 +22,7 @@
                         <!-- Dropdown Start -->
                         <ul class="ht-dropdown">
                             @if (Auth::guard('cus')->user())
-                            <li><a href="{{route('client.login')}}">Thông tin tài khoản</a></li>
+                            <li><a href="{{route('client.account.index')}}">Thông tin tài khoản</a></li>
                             @else
                             <li><a href="{{route('client.login')}}">Đăng Nhập</a></li>
                             <li><a href="{{route('client.register')}}">Đăng Ký</a></li>
