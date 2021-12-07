@@ -52,15 +52,6 @@
                               @enderror
                           </div>
                         <div class="form-group">
-                            <label for="">Hình ảnh</label>
-                            <div class="input-group">
-                                <span class="input-group-prepend">
-                                    <button type="button" data-toggle="modal" data-target="#model_file" class="btn btn-primary"><i
-                                            class="fas fa-folder-open"></i></i></button>
-                                </span>
-                                <input type="text" readonly name="image" value="{{old('image')}}" id="image" class="form-control @error('image')   is-invalid  @enderror" >
-                              
-                            </div>
                             <div class="form-group">
                                 <label for="">Hình ảnh</label>
                                 <div class="input-group">
