@@ -93,7 +93,7 @@
     </div>
     <!-- Footer Top End -->
     <!-- Footer Middle Start -->
-    <div class="footer-middle text-center">
+    {{-- <div class="footer-middle text-center">
         <div class="container">
             <div class="footer-middle-content pt-20 pb-30">
                     <ul class="social-footer">
@@ -105,7 +105,7 @@
             </div>
         </div>
         <!-- Container End -->
-    </div>
+    </div> --}}
     <!-- Footer Middle End -->
     <!-- Footer Bottom Start -->
     <div class="footer-bottom pb-30">

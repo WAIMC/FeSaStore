@@ -102,6 +102,9 @@ use Illuminate\Support\Facades\Route;
     Route::get('clear', [App\Http\Controllers\client\CartController::class, 'clear'])->name('cart.clear');
     Route::get('checkout', [App\Http\Controllers\client\CartController::class, 'checkout'])->name('cart.checkout')->middleware('cus');
     Route::post('checkout', [App\Http\Controllers\client\CartController::class, 'PostCheckout'])->name('cart.postcheckout')->middleware('cus');
+    Route::post('payment/online', [App\Http\Controllers\client\CartController::class, 'PostCheckoutOnline'])->name('cart.postcheckoutonline')->middleware('cus');
+    Route::get('vnpay/return', [App\Http\Controllers\client\CartController::class, 'vnpayReturn'])->name('cart.vnpayReturn');
+
 });
 
 //end
