@@ -51,14 +51,22 @@ class CartController extends Controller
     }
     public function PostCheckout(CheckoutRequest $request)
     { 
+        
+        $id=Auth::guard('cus')->user()->id;
         if ($request->payment==2) {
-            //  session('cus_info')=[
-            //      $request-
-            //  ];
+            $data=[
+                'name' =>$request->name,
+                'email'=>$request->email,
+                'phone'=>$request->phone,
+                'address'=>$request->address,
+                'note'=>$request->note,
+                'customer_id'=>$id,
+             ];
+             session(['cus_info' => $data]);
          //   dd($request->all());
          return  $this->orders->vnpayCheckout();
         }else{
-             $id=Auth::guard('cus')->user()->id;  
+              
         $this->orders->checkout($request->name ,$request->email,$request->phone,$request->address,$request->note,$id);
            return redirect()->route('cart.view')->with('success','Đặt hàng thành công'); 
         }
@@ -66,9 +74,17 @@ class CartController extends Controller
     }
 
     public function vnpayReturn(Request $request){
-        //dd($request->all());
+      
         if($request->vnp_ResponseCode == "00") {
-
+        $data=  [
+            'vnp_Amount'=>$request->vnp_Amount,
+            'vnp_BankCode'=>$request->vnp_BankCode,
+            'order_code'=>$request->vnp_TxnRef,
+            'vnp_CardType'=>$request->vnp_CardType,
+            'vnp_OrderInfo'=>$request->vnp_OrderInfo,
+        ]  ;
+     //   dd($request->all());
+        $this->orders->vnpayPost(session('cus_info'),$data);
             return redirect()->route('cart.view')->with('success' ,'Đã thanh toán phí dịch vụ');
         }else{
             return redirect()->route('cart.view')->with('errors' ,'Lỗi trong quá trình thanh toán phí dịch vụ');

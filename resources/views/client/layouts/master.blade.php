@@ -5,7 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>FESA Shop | @yield('title') </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!----seo----->
+   
+    
+    <!--//--seo----->
     <!-- Favicons -->
     <link rel="shortcut icon" href="{{ url('public/dashboard') }}/dist/img/logo_admin.png">
     <!-- Fontawesome css -->
