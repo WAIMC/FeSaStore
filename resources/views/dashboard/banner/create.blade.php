@@ -51,7 +51,6 @@
                               <small  class="text-danger">{{$message}}</small> 
                               @enderror
                           </div>
-                        <div class="form-group">
                             <div class="form-group">
                                 <label for="">Hình ảnh</label>
                                 <div class="input-group">
@@ -71,13 +70,11 @@
                             </div>
                             <input type="submit" value="Thêm mới" class="btn btn-primary btnInsert">
                             </form>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="modal fade " id="model_file" role="dialog" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">

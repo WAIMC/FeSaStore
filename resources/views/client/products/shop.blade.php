@@ -79,7 +79,7 @@
                                                 <div class="single-product single-product-sidebar">
                                                     <!-- Product Image Start -->
                                                     <div class="pro-img">
-                                                        <a href="{{ route('client.productDetail', $top_five->id)}}">
+                                                        <a href="{{ route('client.productDetail', $top_five->slug)}}">
                                                             <img class="primary-img" src="{{url('public/uploads')}}/{{ $top_five->image }}" alt="single-product">
                                                             <img class="secondary-img" src="{{url('public/uploads')}}/{{ $top_five->image }}" alt="single-product">
                                                         </a>
@@ -90,7 +90,7 @@
                                                     <!-- Product Image End -->
                                                     <!-- Product Content Start -->
                                                     <div class="pro-content">
-                                                        <h4><a href="{{ route('client.productDetail', $top_five->id)}}">{{ $top_five->name }}</a></h4>
+                                                        <h4><a href="{{ route('client.productDetail', $top_five->slug)}}">{{ $top_five->name }}</a></h4>
                                                         @if ($top_five->product_variantProduct->first()->price > $top_five->product_variantProduct->first()->discount)
                                                             <p><span class="price">{{$top_five->product_variantProduct->first()->discount}} VNĐ</span><del class="prev-price">{{ $top_five->product_variantProduct->first()->price }} VNĐ</del></p>
                                                         @else

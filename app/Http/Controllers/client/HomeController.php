@@ -73,7 +73,13 @@ class HomeController extends Controller
      * return index
      *   
      */ 
-    public function index(){
+    public function index(Request $request){
+        //--seo
+        // $meta_desc = "chuyên bán quần áo ";
+        // $meta_keywords = "quần áo,phụ kiện thời trang";
+        // $meta_title = "thời trang nam,thời trang nữ";
+        // $url_canonical = $request->url();
+        //seo
         $all_brand = $this->brand_repo->getAll();
         $all_banner = $this->banner_repo->getAll();
         $all_slider = $this->slider_repo->getAll();
@@ -94,7 +100,11 @@ class HomeController extends Controller
                         'all_slider', 
                         'all_setting_link', 
                         'paginate_cate',
-                        'all_order'
+                        'all_order',
+                        // 'meta_desc',
+                        // 'meta_keywords',
+                        // 'meta_title',
+                        // 'url_canonical'
                         )
                     );
     }

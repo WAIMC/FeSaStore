@@ -43,7 +43,8 @@
                         <tbody>
                             @foreach ($data as $banner)
                                 <tr>
-                                    <td> <img src="{{url('public/uploads')}}/{{ $banner->image }}" alt="{{ $banner->name }}" height="100" > </td>
+                                    <td> <img src="{{url('public/uploads')}}/{{ $banner->image }}" alt="{{ $banner->name }}" width="100px" height="100px"> </td>
+
                                     <td>{{ $banner->title }}</td>
                                     <td>{{ $banner->link }}</td>
                                     <td>
@@ -68,12 +69,13 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Hình ảnh</th>
+                            <th>Hình ảnh</th>
                                 <th>Tên banner</th>
                                 <th>Liên kết</th>
                                 <th>Trạng thái</th>
+                                <th>Vị trí</th>
                                 <th>Ngày tạo</th>
-                                <th></th>
+                                <th>Thao tác</th>
                             </tr>
                         </tfoot>
                     </table>
