@@ -237,11 +237,13 @@
                           @php
                               $total = 0;
                           @endphp
-                          @foreach ($recent_order->orderDetail as $get_total)
-                              @php
-                                $total += $get_total->quantity * $get_total->price;
-                              @endphp
-                          @endforeach
+                          @if (isset($recent_order->orderDetail))
+                            @foreach ($recent_order->orderDetail as $get_total)
+                                @php
+                                  $total += $get_total->quantity * $get_total->price;
+                                @endphp
+                            @endforeach
+                          @endif
                           {{ number_format($total) }} VNĐ
                         </td>
                         <td>
@@ -297,7 +299,7 @@
                     </div>
                     <div class="product-info">
                       <a href="javascript:void(0)" class="product-title"> {{ $related_pro->name }}
-                        <span class="badge badge-warning float-right"> {{ $related_pro->product_variantProduct->first()->price }} VNĐ</span></a>
+                        <span class="badge badge-warning float-right"> {{ isset($related_pro->product_variantProduct->first()->price) ? $related_pro->product_variantProduct->first()->price : '' }} VNĐ</span></a>
                       <span class="product-description">
                         {{ $related_pro->short_desciption }}
                       </span>
