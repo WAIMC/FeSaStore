@@ -32,24 +32,60 @@
                                 @csrf
                             <div class="form-group">
                                 <label for="">Tiêu đề</label>
-                                <input type="text" name="title" value="{{old("title")}}" class="form-control @error('title') is-invalid @enderror"placeholder="Nhập tên banner" aria-describedby="helpId">
+                                <input type="text" name="title" value="{{old('title')}}" class="form-control @error('title') is-invalid @enderror"placeholder="Nhập tên banner" aria-describedby="helpId">
                                 @error('title')
                                     <small  class="text-danger">{{$message}}</small> 
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="">Liên kết</label>
-                                <input type="text" name="link" value="{{old("link")}}" class="form-control @error('link') is-invalid @enderror" placeholder="Nhập đường dẫn trỏ đến" aria-describedby="helpId">
+                                <input type="text" name="link" value="{{old('link')}}" class="form-control @error('link') is-invalid @enderror" placeholder="Nhập đường dẫn trỏ đến" aria-describedby="helpId">
                                 @error('link')
                               <small  class="text-danger">{{$message}}</small> 
                               @enderror
                           </div>
                           <div class="form-group">
                             <label for="">vị trí</label>
-                            <input type="" name="position" value="{{old("position")}}" class="form-control @error('link')   is-invalid  @enderror" placeholder="Nhập đường dẫn trỏ đến" aria-describedby="helpId">
-                                @error('position')
+                            <input type="" name="position" value="{{old('position')}}" class="form-control @error('position')   is-invalid  @enderror" placeholder="Nhập đường dẫn trỏ đến" aria-describedby="helpId" >
+                              @error('position')
                               <small  class="text-danger">{{$message}}</small> 
                               @enderror
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                xem chỉ dẫn thêm vị trí
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog  modal-lg" role="document">
+                                    <div class="modal-content" >
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Hướng dẫn thêm position banner</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <p>brand_banner: là vị trí banner dưới chân slider</p>
+                                    <img src="{{url('public/uploads')}}/chỉ dẫn thêm vị trí banner\a.PNG" alt="slider-banner" width="400px" height="200px" style="margin-left: 200px;">
+                                    <hr>
+                                    <p>big_banner: là vị trí banner trên danh mục tiêu biểu vd:big_banner1 -> big_banner8</p>
+                                    <img src="{{url('public/uploads')}}/chỉ dẫn thêm vị trí banner\b.PNG" alt="slider-banner" width="400px" height="200px" style="margin-left: 200px;">
+                                    <hr>
+                                    <p>tab_content: là vị trí banner danh mục tiêu biểu</p>
+                                    <img src="{{url('public/uploads')}}/chỉ dẫn thêm vị trí banner\c.PNG" alt="slider-banner" width="400px" height="200px" style="margin-left: 200px;">
+                                    <hr>
+                                    <p>hot_brand: là vị trí banner hot brand</p>
+                                    <img src="{{url('public/uploads')}}/chỉ dẫn thêm vị trí banner\d.PNG" alt="slider-banner" width="400px" height="200px" style="margin-left: 200px;">
+                                    <hr>
+                                    <p>brand_banner: là vị trí banner dưới hot brand</p>
+                                    <img src="{{url('public/uploads')}}/chỉ dẫn thêm vị trí banner\e.PNG" alt="slider-banner" width="400px" height="200px" style="margin-left: 200px;">
+                                    <hr>
+                                </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
                           </div>
                             <div class="form-group">
                                 <label for="">Hình ảnh</label>
