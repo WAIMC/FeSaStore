@@ -38,7 +38,7 @@
         <div class="container">
            <!-- Product Title Start -->
            <div class="post-title pb-30">
-               <h2>Ưu đãi lớn</h2>
+               <h2>SẢN PHẨM HOT</h2>
            </div>
            <!-- Product Title End -->
             <!-- Hot Deal Product Activation Start -->
@@ -52,7 +52,6 @@
                                 <img class="primary-img" src="{{url('public/uploads/'.$item_pro->image)}}" alt="single-product">
                                 <img class="secondary-img" src="{{url('public/uploads/'.$item_pro->image)}}" alt="single-product">
                             </a>
-                            <div class="countdown" data-countdown="{{ $item_pro->created_at->format('Y/d/m') }}"></div>
                             <a href="#" class="quick_view" data-toggle="modal" data-target="{{$item_pro->id}}" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                         </div>
                         <!-- Product Image End -->
@@ -61,8 +60,8 @@
                             <div class="pro-info">
                                 <h4><a href="{{ route('client.productDetail', $item_pro->slug)}}">{{ $item_pro->name }}</a></h4>
                                 @if ($item_pro->product_variantProduct->first()->price > $item_pro->product_variantProduct->first()->discount)
-                                    <p><span class="price">{{$item_pro->product_variantProduct->first()->discount}} VNĐ</span><del class="prev-price">{{$item_pro->product_variantProduct->first()->price}}VNĐ</del></p>
-                                    <div class="label-product l_sale">{{ 100-($item_pro->product_variantProduct->first()->price/100*$item_pro->product_variantProduct->first()->discount) }}<span class="symbol-percent">%</span></div>
+                                    <p><span class="price">{{number_format($item_pro->product_variantProduct->first()->discount)}}  <u>đ</u></span><del class="prev-price">{{number_format($item_pro->product_variantProduct->first()->price)}} <u>đ</u> </del></p>
+                                    <div class="label-product l_sale">{{ round((($item_pro->product_variantProduct->first()->price - $item_pro->product_variantProduct->first()->discount )/$item_pro->product_variantProduct->first()->price)*100,0) }}<span class="symbol-percent">%</span></div>
                                 @else
                                     <p><span class="price">{{$item_pro->product_variantProduct->first()->price}} VNĐ</span></p>
                                 @endif
@@ -71,10 +70,7 @@
                                 <div class="actions-primary">
                                     <a href="#" class="quick_view" title="Thêm vào giỏ hàng" data-toggle="modal" data-target="{{$item_pro->id}}" > + Thêm vào giỏ hàng</a>
                                 </div>
-                                <div class="actions-secondary">
-                                    <a href="compare.html" title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
-                                    <a href="wishlist.html" title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
-                                </div>
+                                
                             </div>
                         </div>
                         <!-- Product Content End -->
@@ -96,25 +92,26 @@
                 @foreach($all_banner as $bn)
                 @if($bn->position == "big_banner1")
                 <div class="col-img">
-                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
+                        <img src="{{url('public/uploads')}}/{{$bn->image}}"  alt="">
                 </div>
                 @endif
                 @endforeach
                 @foreach($all_banner as $bn)
                 @if($bn->position == "big_banner2")
                 <div class="col-img">
-                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
+                        <img src="{{url('public/uploads')}}/{{$bn->image}}"  alt="">
                 </div>
                 @endif
                 @endforeach
             </div>
             <div class="banner-box">
             @foreach($all_banner as $bn)
-                @if($bn->position == "big_banner3")
+                <!-- @if($bn->position == "big_banner3")
                 <div class="col-img">
                         <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
                 </div>
-                @endif
+                @endif -->
+               
                 @endforeach
             </div>
             <div class="banner-box">
@@ -135,11 +132,12 @@
             </div>
             <div class="banner-box">
             @foreach($all_banner as $bn)
-                @if($bn->position == "big_banner6")
+                <!-- @if($bn->position == "big_banner6")
                 <div class="col-img">
                         <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
                 </div>
-                @endif
+                @endif -->
+               
                 @endforeach
             </div>
             <div class="banner-box">
@@ -208,15 +206,9 @@
                                         </div>
                                         @endforeach
                                         <!-- Single Product Start -->
-                                        <div class="single-product mt-20">
+                                        <div class="single-product mt-0">
                                             <!-- Product Image Start -->
-                                            <div class="pro-img">
-                                                <a href="{{ route('client.productDetail', $tab_pro_arrival->slug)}}">
-                                                    <img class="primary-img" src="{{url('public/uploads/'.$all_product->first()->image)}}" alt="single-product">
-                                                    <img class="secondary-img" src="{{url('public/uploads/'.$all_product->first()->image)}}" alt="single-product">
-                                                </a>
-                                                <a href="#" class="quick_view" data-toggle="modal" data-target="{{$all_product->first()->id}}" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
-                                            </div>
+                                               <img src="{{url('public/client')}}/img/banner\sanphamtieubieu.png" style="width:100%;" alt="">
                                             <!-- Product Image End -->
                                             <!-- Product Content Start -->
                                             <div class="pro-content">
@@ -227,10 +219,10 @@
                                                         $product_content_discount = $all_product->first()->product_variantProduct->first()->discount;
                                                     @endphp
                                                     @if ($product_content_price > $product_content_discount)
-                                                        <p><span class="price">{{$product_content_discount}} VNĐ</span><del class="prev-price">{{$product_content_price}}VNĐ</del></p>
+                                                        <p><span class="price">{{$product_content_discount}} đ</span><del class="prev-price">{{$product_content_price}} đ</del></p>
                                                         <div class="label-product l_sale">{{ 100-($product_content_price/100*$product_content_discount) }}<span class="symbol-percent">%</span></div>
                                                     @else
-                                                        <p><span class="price">{{$product_content_price}} VNĐ</span></p>
+                                                        <p><span class="price">{{$product_content_price}} đ</span></p>
                                                     @endif
                                                 </div>
                                             </div>
@@ -268,8 +260,8 @@
                                                     <div class="pro-info">
                                                         <h4><a href="{{ route('client.productDetail', $single_pro_first->slug)}}">{{$single_pro_first->name}}</a></h4>
                                                         @if ($single_pro_first->product_variantProduct->first()->price > $single_pro_first->product_variantProduct->first()->discount)
-                                                            <p><span class="price">{{$single_pro_first->product_variantProduct->first()->discount}} VNĐ</span><del class="prev-price">{{$single_pro_first->product_variantProduct->first()->price}} VNĐ</del></p>
-                                                            <div class="label-product l_sale">{{ 100-($single_pro_first->product_variantProduct->first()->price/100*$single_pro_first->product_variantProduct->first()->discount)}}<span class="symbol-percent">%</span></div>    
+                                                            <p><span class="price">{{number_format($single_pro_first->product_variantProduct->first()->discount)}} <u>đ</u> </span><del class="prev-price">{{number_format($single_pro_first->product_variantProduct->first()->price) }}<u>đ</u></del></p>
+                                                            <div class="label-product l_sale">{{ round((($single_pro_first->product_variantProduct->first()->price - $single_pro_first->product_variantProduct->first()->discount )/$single_pro_first->product_variantProduct->first()->price)*100,0)}}<span class="symbol-percent">%</span></div>    
                                                         @else
                                                             <p><span class="price">{{$single_pro_first->product_variantProduct->first()->price}} VNĐ</span></p>
                                                         @endif
@@ -278,10 +270,7 @@
                                                         <div class="actions-primary">
                                                             <a href="#" class="quick_view" data-toggle="modal" data-target="{{$single_pro_first->id}}" title="Thêm vào giỏ hàng"> + Thêm vào giỏ hàng</a>
                                                         </div>
-                                                        <div class="actions-secondary">
-                                                            <a href="compare.html" title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
-                                                            <a href="wishlist.html" title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
-                                                        </div>
+                                            
                                                     </div>
                                                 </div>
                                                 <!-- Product Content End -->
@@ -305,8 +294,8 @@
                                                         <div class="pro-info">
                                                             <h4><a href="{{ route('client.productDetail', $item_pro->slug)}}">{{$single_pro_secound->name}}</a></h4>
                                                             @if ($single_pro_secound->product_variantProduct->first()->price > $single_pro_secound->product_variantProduct->first()->discount)
-                                                                <p><span class="price">{{$single_pro_secound->product_variantProduct->first()->discount}} VNĐ</span><del class="prev-price">{{$single_pro_secound->product_variantProduct->first()->price}} VNĐ</del></p>
-                                                                <div class="label-product l_sale">{{ 100-($single_pro_secound->product_variantProduct->first()->price/100*$single_pro_secound->product_variantProduct->first()->discount)}}<span class="symbol-percent">%</span></div>    
+                                                                <p><span class="price">{{number_format($single_pro_secound->product_variantProduct->first()->discount)}} <u>đ</u> </span><del class="prev-price">{{number_format($single_pro_secound->product_variantProduct->first()->price)}} <u>đ</u> </del></p>
+                                                                <div class="label-product l_sale">{{ round((($single_pro_secound->product_variantProduct->first()->price - $single_pro_secound->product_variantProduct->first()->discount )/$single_pro_secound->product_variantProduct->first()->price)*100,0)}}<span class="symbol-percent">%</span></div>    
                                                             @else
                                                                 <p><span class="price">{{$single_pro_secound->product_variantProduct->first()->price}} VNĐ</span></p>
                                                             @endif
@@ -502,14 +491,14 @@
         @foreach($all_banner as $bn)
                     <div class="col-img">
                         @if($bn->position == "brand_banner1")
-                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
+                        <img src="{{url('public/uploads')}}/{{$bn->image}}" style="width:99%" alt="">
                         @endif
                     </div>
                 @endforeach
                 @foreach($all_banner as $bn)
                     <div class="col-img">
                         @if($bn->position == "brand_banner2")
-                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
+                        <img src="{{url('public/uploads')}}/{{$bn->image}}" style="width:99%" alt="">
                         @endif
                     </div>
                 @endforeach

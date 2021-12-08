@@ -53,13 +53,12 @@
                                 <div class="rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
                                 </div>
                                 <div class="rating-feedback">
                                     <a href="#">(1 review)</a>
-                                    <a href="#">thêm đánh giá của bạn</a>
                                 </div>
                             </div>
                             <div class="pro-price mtb-30">
@@ -399,13 +398,13 @@
                 var num_thumb_detail = 0;
                 var id_variant = '';
                 // set color for button when click
-                $('input:radio[name="attr_detail_0"]').parent().removeClass('bg-primary');
-                $('input:radio[name="attr_detail_0"]:checked').parent().addClass('bg-primary');
+                $('input:radio[name="attr_detail_0"]').parent().removeClass('bg-default');
+                $('input:radio[name="attr_detail_0"]:checked').parent().addClass('bg-default');
                 // get each variant product
                 if ($('input:radio[name="attr_detail_1"]:checked').val() != undefined) {
                     // set color for button when click
-                    $('input:radio[name="attr_detail_1"]').parent().removeClass('bg-primary');
-                    $('input:radio[name="attr_detail_1"]:checked').parent().addClass('bg-primary');
+                    $('input:radio[name="attr_detail_1"]').parent().removeClass('bg-default');
+                    $('input:radio[name="attr_detail_1"]:checked').parent().addClass('bg-default');
 
                     value_attr_detail_second = $('input:radio[name="attr_detail_1"]:checked').val();
                     merge_detail_attri = value_attr_detail_first + "|" + value_attr_detail_second;

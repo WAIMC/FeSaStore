@@ -84,7 +84,6 @@
                                                             <img class="secondary-img" src="{{url('public/uploads')}}/{{ $top_five->image }}" alt="single-product">
                                                         </a>
                                                         @if ($top_five->product_variantProduct->first()->price > $top_five->product_variantProduct->first()->discount)
-                                                            <div class="label-product l_sale">{{ 100-($top_five->product_variantProduct->first()->price/100*$top_five->product_variantProduct->first()->discount) }}<span class="symbol-percent">%</span></div>
                                                         @endif
                                                     </div>
                                                     <!-- Product Image End -->
@@ -92,9 +91,9 @@
                                                     <div class="pro-content">
                                                         <h4><a href="{{ route('client.productDetail', $top_five->slug)}}">{{ $top_five->name }}</a></h4>
                                                         @if ($top_five->product_variantProduct->first()->price > $top_five->product_variantProduct->first()->discount)
-                                                            <p><span class="price">{{$top_five->product_variantProduct->first()->discount}} VNĐ</span><del class="prev-price">{{ $top_five->product_variantProduct->first()->price }} VNĐ</del></p>
+                                                            <p><span class="price">{{number_format($top_five->product_variantProduct->first()->discount)}} <u>đ</u></span><del class="prev-price">{{ number_format($top_five->product_variantProduct->first()->price) }} <u>đ</u> </del></p>
                                                         @else
-                                                            <p><span class="price">{{$top_five->product_variantProduct->first()->price}} VNĐ</span></p>
+                                                            <p><span class="price">{{number_format($top_five->product_variantProduct->first()->price)}}  <u>đ</u></span></p>
                                                         @endif
                                                     </div>
                                                     <!-- Product Content End -->
@@ -119,7 +118,7 @@
                         <!-- Product Top End -->                            
                         <!-- Single Banner Start -->
                         <div class="col-img">
-                            <a href="{{ route("client.shop") }}"><img src="{{url('public/client')}}/img/banner\banner-sidebar.jpg" alt="slider-banner"></a>
+                            <a href="{{ route("client.shop") }}"><img src="{{url('public/client')}}/img/banner\shop.png" alt="slider-banner"></a>
                         </div>
                         <!-- Single Banner End -->
                     </div>
@@ -192,20 +191,16 @@
                                                             <h4><a href="{{ route('client.productDetail', $shop_grid_pro->slug)}}">{{$shop_grid_pro->name}}</a></h4>
                                                             @if ($shop_grid_pro->product_variantProduct->first()->price > $shop_grid_pro->product_variantProduct->first()->discount)
                                                                 <p>
-                                                                    <span class="price">{{$shop_grid_pro->product_variantProduct->first()->discount}} VNĐ</span>
-                                                                    <del class="prev-price">{{$shop_grid_pro->product_variantProduct->first()->price}} VNĐ</del></p>
-                                                                <div class="label-product l_sale">{{ 100-($shop_grid_pro->product_variantProduct->first()->price/100*$shop_grid_pro->product_variantProduct->first()->discount) }}<span class="symbol-percent">%</span></div>
+                                                                    <span class="price">{{number_format($shop_grid_pro->product_variantProduct->first()->discount)}} <u>đ</u></span>
+                                                                    <del class="prev-price">{{number_format($shop_grid_pro->product_variantProduct->first()->price)}} <u>đ</u> </del></p>
+                                                                <div class="label-product l_sale">{{ round((($shop_grid_pro->product_variantProduct->first()->price - $shop_grid_pro->product_variantProduct->first()->discount )/$shop_grid_pro->product_variantProduct->first()->price)*100,0)  }}<span class="symbol-percent">%</span></div>
                                                             @else
-                                                            <span class="price">{{$shop_grid_pro->product_variantProduct->first()->discount}} VNĐ</span></p>
+                                                            <span class="price">{{$shop_grid_pro->product_variantProduct->first()->discount}} đ</span></p>
                                                             @endif
                                                         </div>
                                                         <div class="pro-actions">
                                                             <div class="actions-primary">
-                                                                <a href="#" title="Thêm vào giỏ hàng" data-original-title="Thêm Vào Giỏ Hàng"  class="quick_view" data-toggle="modal" data-target="{{$shop_grid_pro->id}}"> + Thêm Vào Giỏ Hàng</a>
-                                                            </div>
-                                                            <div class="actions-secondary">
-                                                                <a href="compare.html" title="" data-original-title="So Sánh"><i class="lnr lnr-sync"></i> <span>Thêm Vào So Sánh</span></a>
-                                                                <a href="wishlist.html" title="" data-original-title="Ưa Thích"><i class="lnr lnr-heart"></i> <span>Thêm Vào Danh Sách ưa Thích</span></a>
+                                                                <a href="#" title="Thêm vào giỏ hàng" data-original-title="Thêm Vào Giỏ Hàng"  class="quick_view" data-toggle="modal" data-target="{{$shop_grid_pro->id}}"> + Thêm vào giỏ</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -246,18 +241,14 @@
                                                     <div class="pro-content hot-product2">
                                                         <h4><a href="{{ route('client.productDetail', $shop_list_pro->slug)}}">{{$shop_list_pro->name}}</a></h4>
                                                         @if ($shop_list_pro->product_variantProduct->first()->price > $shop_list_pro->product_variantProduct->first()->discount)
-                                                            <p><span class="price">{{$shop_list_pro->product_variantProduct->first()->discount}} VNĐ</span></p>
+                                                            <p><span class="price">{{number_format($shop_list_pro->product_variantProduct->first()->discount)}} <u>đ</u></span><del class="prev-price">{{ number_format($shop_list_pro->product_variantProduct->first()->price) }} <u>đ</u> </del></p>
                                                         @else
                                                             <p><span class="price">{{$shop_list_pro->product_variantProduct->first()->price}} VNĐ</span></p>
                                                         @endif
                                                         <p> {!! $shop_list_pro->short_description !!}</p>
                                                         <div class="pro-actions">
                                                             <div class="actions-primary">
-                                                                <a href="#" title="" data-original-title="Thêm Vào Giỏ Hàng"  class="quick_view" data-toggle="modal" data-target="{{$shop_list_pro->id}}"> + Thêm Vào Giỏ Hàng</a>
-                                                            </div>
-                                                            <div class="actions-secondary">
-                                                                <a href="compare.html" title="" data-original-title="So Sánh"><i class="lnr lnr-sync"></i> <span>Thêm Vào So Sánh</span></a>
-                                                                <a href="wishlist.html" title="" data-original-title="Ưa Thích"><i class="lnr lnr-heart"></i> <span>Thêm Vào Danh Mục Ưa Thích</span></a>
+                                                                <a href="#" style="line-height:30px;" title="" data-original-title="Thêm Vào Giỏ Hàng"  class="quick_view" data-toggle="modal" data-target="{{$shop_list_pro->id}}"> + Thêm vào giỏ</a>
                                                             </div>
                                                         </div>
                                                     </div>

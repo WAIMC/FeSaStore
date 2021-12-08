@@ -55,7 +55,7 @@ Version: 1.0;
 /* 1. Theme Default CSS
 /*----------------------------------------*/
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 400;
     color: #232323;
     font-size: 16px;
@@ -148,7 +148,7 @@ ul {
     background: #00483d none repeat scroll 0 0;
     color: #fff;
     font-size: 21px;
-    font-weight: 900;
+    font-weight: 400;
     line-height: 20px;
     position: relative;
     text-transform: capitalize;
@@ -1137,7 +1137,7 @@ li.megamenu-img a {
   border-right: 1px solid rgba(0, 0, 0, 0.1);
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   display: block;
-  padding: 12.4px 10px;
+  padding: 6.8px 10px;
   text-align: center;
 }
 .brand-banner a:last-child,.brand-banner-sidebar a:last-child{
@@ -1361,7 +1361,7 @@ li.megamenu-img a {
 .cart-main-area.wish-list .product-add-to-cart a {
   background: -webkit-linear-gradient(right, #00917a, #00483d);
   border: 1px solid #cbcbcb;
-  border-radius: 30px;
+  border-radius: 3px;
   color: #ffffff;
     height: 40px;
     line-height: 40px;
@@ -1372,7 +1372,7 @@ li.megamenu-img a {
     -transition: all 400ms ease-in 0s;
     transition: all 400ms ease-in 0s;
     width: 100%;
-    margin: 0 0 10px;
+    margin: 0px 10px;
     font-weight: 700;
     display: block;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -1384,6 +1384,7 @@ li.megamenu-img a {
     background: -webkit-linear-gradient(right, #00483d, #00917a);
     color: #fff;
     border-color: #00483d;
+    margin: 0px 10px;
 }
 .actions-secondary a {
   background: transparent none repeat scroll 0 0;
@@ -1471,8 +1472,8 @@ li.megamenu-img a {
 
 .section-ttitle h2,.title-box h2 {
   color: #212121;
-  font-size: 34px;
-  font-weight: 900;
+  font-size: 23px;
+  font-weight: 600;
   line-height: 1;
   margin: 0;
   text-transform: capitalize;
@@ -1580,8 +1581,8 @@ li.megamenu-img a {
 
 .news-desc h3 {
   color: #212121;
-  font-size: 28px;
-  font-weight: 900;
+  font-size: 30px;
+  font-weight: 600;
   margin: 0 0 15px;
   line-height: 1;
 }
@@ -1617,7 +1618,7 @@ li.megamenu-img a {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: #fff;
     font-size: 13px;
-    font-weight: 900;
+    font-weight: 600;
     height: 50px;
     line-height: 50px;
     padding: 0 35px;
@@ -2539,7 +2540,7 @@ li.megamenu-img a {
 
 .add-cart {
     background-color: #00483d;
-    border-radius: 25px;
+    border-radius: 2px;
     color: #ffffff;
     display: inline-block;
     font-size: 14px;
@@ -4577,7 +4578,7 @@ a.shipping-calculator-button:hover {
     font-size: 44px;
     line-height: 60px;
     color: #00483d;
-    font-weight: 800;
+    font-weight: 600;
     margin-bottom: 4px;
     text-align: center;
 }
