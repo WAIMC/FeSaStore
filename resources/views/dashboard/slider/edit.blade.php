@@ -34,9 +34,9 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{route('slider.update',$slider)}}" method="post">
-                        @csrf @method('PUT')
-                        <div class="form-group">
+                        <form action="{{route('slider.update', $slider)}}" method="post" id="formEdit">
+                            @csrf @method('PUT')
+                            <div class="form-group">
                               <label for="">title</label>
                               <input type="text" name="title" value="{{$slider->title}}" class="form-control @error('link')   is-invalid  @enderror" placeholder="Nhập đường dẫn trỏ đến" aria-describedby="helpId">
                                   @error('link')
@@ -58,28 +58,27 @@
                                     <input @if ($slider->status == 0)checked="" @endif type="radio" id="inlineRadio2" value="0" name="status">
                                     <label for="inlineRadio2"> Hiện </label>
                                 </div>
-                
                             </div>
-                          <div class="form-group">
-                              <label for="">Hình ảnh</label>
-                              <div class="input-group">
-                                  <span class="input-group-prepend">
-                                      <button type="button" data-toggle="modal" data-target="#model_file" class="btn btn-primary"><i
-                                              class="fas fa-folder-open"></i></i></button>
-                                  </span>
-                                  <input type="text" readonly name="image" value="{{$slider->image}}" id="image" class="form-control @error('image')   is-invalid  @enderror">
+                            <div class="form-group">
+                                <label for="">Hình ảnh</label>
+                                <div class="input-group">
+                                    <span class="input-group-prepend">
+                                        <button type="button" data-toggle="modal" data-target="#model_file" class="btn btn-primary"><i
+                                                class="fas fa-folder-open"></i></i></button>
+                                    </span>
+                                    <input type="text" readonly name="image" value="{{$slider->image}}" id="image" class="form-control @error('image')   is-invalid  @enderror">
                                 
-                              </div>
-                              @error('image')
-                              <small  class="text-danger">{{$message}}</small> 
-                              @enderror
-                              <div class="col-4 mt-3">
-                                  <img class="img w-100" src="{{ url('public/uploads') }}/{{$slider->image}}" id="show_img" class="mt-2" >
-                              </div>
+                                </div>
+                                @error('image')
+                                <small  class="text-danger">{{$message}}</small> 
+                                @enderror
+                                <div class="col-4 mt-3">
+                                    <img class="img w-100" src="{{ url('public/uploads') }}/{{$slider->image}}" id="show_img" class="mt-2" >
+                                </div>
                             </div>
                             <input type="hidden" name="id" value="{{$slider->id}}">
-                            <input type="submit" value="Cập nhật" class="btn btn-primary">
-                          </form>
+                            <button type="button" class="btn btn-outline-dark btnEdit">Cập Nhật</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -113,6 +112,10 @@
 
 {{-- customize load js for master layout --}}
 @section('js')
+    {{-- swal --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- load crud js for project --}}
+    <script src="{{ url('public/dashboard') }}/setup-project/setup-crud.js"></script>
     <script>
          $('#model_file').on('hide.bs.modal', event => {
             var _link = $('input#image').val();

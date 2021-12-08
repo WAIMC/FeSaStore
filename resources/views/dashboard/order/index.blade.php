@@ -22,13 +22,14 @@
                 {{-- card body --}}
                 <div class="card-body">
                     {{-- Start datatable js --}}
-                    <table id="example2" class="table table-striped table-bordered table-hover text-center">
+                    <table id="example2"  class=" table table-striped table-bordered table-hover text-center">
                         <thead>
                             <tr>
-                                <th>Mã đơn hàng</th>
-                                <th>Họ tên </th>
+                                <th>#</th>
+                                <th>Thông tin </th>
                                 {{-- <th>Email </th> --}}
                                 <th>Tổng đơn hàng</th>
+                                <th>Phương thức thanh toán</th>
                                 <th>Ngày đặt</th>
                                 <th>Tình trạng</th>
                                 <th>Hành Động</th>
@@ -42,7 +43,15 @@
                             @foreach ($data as $item)
                                 <tr>
                                     <td> #{{ $item->id }} </td>
-                                    <td> {{ $item->name }} </td>
+                                    <td> 
+                                        <ul style="text-align: left" >
+                                            <li>Họ tên: {{ $item->name }} </li>
+                                            <li>Email: {{ $item->email }}</li>
+                                            <li>Điện thoại: {{ $item->phone }}</li>
+                                            <li>Địac chỉ: {{ $item->address }}</li>
+                                        </ul>
+                                        
+                                        </td>
                                     {{-- <td>
                                         <a href="#" class="text-muted">{{ $item->email }}</a>
                                     </td> --}}
@@ -53,6 +62,18 @@
                                         {{ number_format($total) }} VND
                                         <?php $total = 0; ?>
                                     </td>
+                                    <td>
+                                        @if ($item->getPayment)
+                                         <ul style="text-align: left" >
+                                            <li>Ngân hàng: {{$item->getPayment->vnp_BankCode}} </li>
+                                            <li>Nội dung: {{$item->getPayment->vnp_OrderInfo}}</li>
+                                            <li>Thời gian: {{$item->getPayment->created_at}}</li>
+                                        </ul>
+                                        @else 
+                                        Thanh toán khi nhận hàng
+                                        @endif
+                                       
+                                       </td>
                                     <td>{{ $item->created_at->format('d-m-Y') }} </td>
                                     <td>
                                         @if ($item->status === 0)
@@ -79,9 +100,9 @@
                         <tfoot>
                             <tr>
                                 <th>Mã đơn hàng</th>
-                                <th>Họ tên </th>
-                                {{-- <th>Email </th> --}}
+                                <th>Họ tên </th> 
                                 <th>Tổng đơn hàng</th>
+                                <th>Phương thức thanh toán</th>
                                 <th>Ngày đặt</th>
                                 <th>Tình trạng</th>
                                 <th>Hành Động</th>

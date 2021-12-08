@@ -9,7 +9,7 @@ class Payment extends Model
 {
     use HasFactory;
     protected $table='payment';
-    protected $fillalbe=[
+    protected $fillable=[
         'vnp_Amount',
         'vnp_BankCode',
         'order_code',

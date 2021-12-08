@@ -21,18 +21,19 @@
                 <div class="col-lg-9 p-3" style="  background: #f8f8f8;">
                     <div class="row">
                         <div class="col-12">
-                            <h5>Chi tiết đơn hàng #{{ $data[0]->id }}  
+                            <h5>Chi tiết đơn hàng #{{ $data[0]->id }}
                             </h5>
-                         <p>   @if ($data[0]->status === 0)
-                                Đang xử lý
-                            @elseif ($data[0]->status===1)
-                                Đã tiếp nhận - Đang giao
-                            @elseif ($data[0]->status===2)
-                               Đã Thanh toán
-                            @elseif ($data[0]->status===3)
-                              Đã Hủy
-                            @endif
-                        </p>
+                            <p>
+                                @if ($data[0]->status === 0)
+                                    Đang xử lý
+                                @elseif ($data[0]->status===1)
+                                    Đã tiếp nhận - Đang giao
+                                @elseif ($data[0]->status===2)
+                                    Đã Thanh toán
+                                @elseif ($data[0]->status===3)
+                                    Đã Hủy
+                                @endif
+                            </p>
                         </div>
 
                     </div>
@@ -52,15 +53,26 @@
                             <address>
                                 <p><img src="https://salt.tikicdn.com/ts/upload/2a/47/46/0e038f5927f3af308b4500e5b243bcf6.png"
                                         width="56" alt="TikiFast"> <span> Giao Tiết Kiệm</span></p>
-                                <p>Giao vào Chủ nhật, 05/12</p>
-                                <p>Được giao bởi Sứ Ming</p>
+                                {{-- <p>Giao vào Chủ nhật, 05/12</p> --}}
+                                <p>Được giao bởi giao hàng nhanh(GHN)</p>
                                 <p>Phí vận chuyển: 0đ</p>
                             </address>
                         </div>
                         <div class="col-sm-4 invoice-col">
                             HÌNH THỨC THANH TOÁN
                             <address>
-                                <p>Thanh toán khi nhận hàng</p>
+                                @if ($data[0]->getPayment)
+                                    <p>
+                                    <ul>
+                                        <li>Ngân hàng: {{ $data[0]->getPayment->vnp_BankCode }} </li>
+                                        <li>Nội dung: {{ $data[0]->getPayment->vnp_OrderInfo }}</li>
+                                        <li>Thời gian: {{ $data[0]->getPayment->created_at }}</li>
+                                    </ul>
+                                    </p>
+
+                                @else
+                                    <p>Thanh toán khi nhận hàng</p>
+                                @endif
                             </address>
                         </div>
                     </div>
@@ -81,8 +93,8 @@
 
                                         <tr>
                                             <td class="row">
-                                                <img src="{{ url('public/uploads') }}/{{ $item->image }}" height="100px"
-                                                    alt="">
+                                                <img src="{{ url('public/uploads') }}/{{ $item->image }}"
+                                                    height="100px" alt="">
                                                 <p class="pl-2"> {{ $item->sanpham }}</p>
                                             </td>
                                             <td>{{ number_format($item->price) }} ₫</td>
@@ -119,18 +131,20 @@
 
                         </table>
                     </div>
-                    @if ($data[0]->status===0)
-                         <div class="row">
-                        <div class="col-12 text-right mt-2 p-3"> <a id="changeStatus" class="btn btn-danger">Hủy</a> </div>
-                    </div> 
+                    @if ($data[0]->status === 0)
+                        <div class="row">
+                            <div class="col-12 text-right mt-2 p-3"> <a id="changeStatus" class="btn btn-danger">Hủy</a>
+                            </div>
+                        </div>
                     @endif
-                  
+
                 </div>
             </div>
         </div>
     </div>
 @endsection
 @section('css')
+<script src="{{url('public')}}/client/css/account.css"></script>
     <style>
         .account {
             min-height: 400px;
@@ -194,7 +208,7 @@
 
                     $.ajax({
                         type: 'get',
-                        url: '{{route('client.account.updateOrder',$data[0]->id) }}',
+                        url: '{{ route('client.account.updateOrder', $data[0]->id) }}',
                         data: {
                             status: '3'
                         },

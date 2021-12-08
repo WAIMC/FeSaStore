@@ -31,19 +31,19 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{route('banner.update',$banner)}}" method="post">
-                        @csrf @method('PUT')
-                        <div class="form-group">
-                            <label for="">Tiêu đề</label>
-                            <input type="text" name="title" value="{{$banner->title}}" class="form-control  @error('title')   is-invalid   @enderror"  placeholder="Nhập tên banner" aria-describedby="helpId">
+                        <form action="{{route('banner.update', $banner)}}" method="post" id="formEdit">
+                            @csrf @method('PUT')
+                            <div class="form-group">
+                                <label for="">Tiêu đề</label>
+                                <input type="text" name="title" value="{{$banner->title}}" class="form-control  @error('title')   is-invalid   @enderror"  placeholder="Nhập tên banner" aria-describedby="helpId">
                                 @error('title')
-                              <small  class="text-danger">{{$message}}</small> 
-                              @enderror
-                          </div>
-                          <div class="form-group">
-                              <label for="">Liên kết</label>
-                              <input type="text" name="link" value="{{$banner->link}}" class="form-control @error('link')   is-invalid  @enderror" placeholder="Nhập đường dẫn trỏ đến" aria-describedby="helpId">
-                                  @error('link')
+                                    <small  class="text-danger">{{$message}}</small> 
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="">Liên kết</label>
+                                <input type="text" name="link" value="{{$banner->link}}" class="form-control @error('link')   is-invalid  @enderror" placeholder="Nhập đường dẫn trỏ đến" aria-describedby="helpId">
+                                    @error('link')
                                 <small  class="text-danger">{{$message}}</small> 
                                 @enderror
                             </div>
@@ -51,9 +51,9 @@
                             <label for="">vị trí</label>
                             <input type="text" name="position" value="{{$banner->position}}" class="form-control @error('link')   is-invalid  @enderror" placeholder="Nhập đường dẫn trỏ đến" aria-describedby="helpId">
                                 @error('position')
-                              <small  class="text-danger">{{$message}}</small> 
-                              @enderror
-                          </div>
+                                <small  class="text-danger">{{$message}}</small> 
+                                @enderror
+                            </div>
                             <div class="form-group">
                                 <label>Trạng thái</label>
                                 <div class="form-control">
@@ -62,27 +62,26 @@
                                     <input @if ($banner->status == 0)checked="" @endif type="radio" id="inlineRadio2" value="0" name="status">
                                     <label for="inlineRadio2"> Hiện </label>
                                 </div>
-                                <div class="form-group">
-                                    <label for="">Hình ảnh</label>
-                                    <div class="input-group">
-                                        <span class="input-group-prepend">
-                                            <button type="button" data-toggle="modal" data-target="#model_file" class="btn btn-primary">
-                                                <i class="fas fa-folder-open"></i>
-                                            </button>
-                                        </span>
-                                        <input type="text" readonly name="image" value="{{$banner->image}}" id="image" class="form-control @error('image') is-invalid @enderror">
-                                    </div>
-                                    @error('image')
-                                        <small  class="text-danger">{{$message}}</small> 
-                                    @enderror
-                                    <div class="col-4 mt-3">
-                                        <img class="img w-100" src="{{ url('public/uploads') }}/{{$banner->image}}" id="show_img" class="mt-2" >
-                                    </div>
+                            <div class="form-group">
+                                <label for="">Hình ảnh</label>
+                                <div class="input-group">
+                                    <span class="input-group-prepend">
+                                        <button type="button" data-toggle="modal" data-target="#model_file" class="btn btn-primary">
+                                            <i class="fas fa-folder-open"></i>
+                                        </button>
+                                    </span>
+                                    <input type="text" readonly name="image" value="{{$banner->image}}" id="image" class="form-control @error('image') is-invalid @enderror">
                                 </div>
-                                <input type="hidden" name="id" value="{{$banner->id}}">
-                                <input type="submit" value="Cập nhật" class="btn btn-primary btnEdit">
-                            </form>
-                        </div>
+                                @error('image')
+                                    <small  class="text-danger">{{$message}}</small> 
+                                @enderror
+                                <div class="col-4 mt-3">
+                                    <img class="img w-100" src="{{ url('public/uploads') }}/{{$banner->image}}" id="show_img" class="mt-2" >
+                                </div>
+                            </div>
+                            <input type="hidden" name="id" value="{{$banner->id}}">
+                            <button type="button" class="btn btn-outline-dark btnEdit">Cập Nhật</button>
+                        </form>
                     </div>
                 </div>
             </div>

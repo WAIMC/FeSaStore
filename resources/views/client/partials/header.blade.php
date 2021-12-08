@@ -168,7 +168,7 @@
                                     <ul>
                                         @foreach ($modelcategoryblog as $item)
                                         <li><a href="{{route('client.cateblog',$item->slug)}}">{{$item->name}}</a></li>  
-                                    @endforeach
+                                       @endforeach
                                     </ul>
                                     <!-- Mobile Menu Dropdown End -->
                                 </li>

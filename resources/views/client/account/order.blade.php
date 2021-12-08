@@ -18,9 +18,9 @@
         <div class="container">
             <div class="row p-3">
                 @include('client.partials.menu_account')
-                <div class="col-lg-9 p-3 account_main" >
+                <div class="col-lg-9 p-3 account_main">
                     <div class="table-responsive">
-                        <table class="table table-borderless">
+                        <table class="table borderless voice-table">
                             <thead>
                                 <tr>
                                     <th scope="col">Mã đơn hàng</th>
@@ -51,7 +51,7 @@
                                                     $total_price += $bill->quantity * $bill->price;
                                                 endforeach;
                                             @endphp
-                                            <td>{{ number_format($total_price) }} VNĐ</td>
+                                            <td>{{ number_format($total_price) }} ₫</td>
 
                                             <td>
                                                 @if ($item->status === 0)
@@ -84,12 +84,21 @@
         .account {
             min-height: 400px;
         }
-.account_main{
-    background:#f8f8f8;
-}
-.borderless td,
+
+        .account_main {
+            background: #f8f8f8;
+        }
+
+        .borderless td,
         .borderless th {
             border: none !important;
         }
+
+        .voice-table {
+            background: #fff;
+            border-radius: 4px;
+        }
+    
+
     </style>
 @endsection
