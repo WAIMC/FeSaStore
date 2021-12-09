@@ -8,4 +8,5 @@ interface UserInterface extends RepositoryInterface
 {
     public function SendMail($email);
     public function ResetPassword($email, $token,$password);
+    public function findOrCreateUser($user, $provider);
 }

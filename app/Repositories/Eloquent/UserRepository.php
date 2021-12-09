@@ -59,4 +59,20 @@ class UserRepository extends BaseRepository implements UserInterface
 
       
     }
+    public  function findOrCreateUser($user, $provider){
+        $authUser = $this->getModel()::where('provider_id', $user->id)->first();
+        if ($authUser) {
+            return $authUser;
+        }
+        return $this->getModel()::create([
+            'name'     => $user->name,
+            'email'    => $user->email,
+            'provider' => $provider,
+            'provider_id' => $user->id,
+            'phone' => '',
+            'address'=>'',
+            'avatar'=>$user->avatar,
+            
+        ]);
+    }
 }
