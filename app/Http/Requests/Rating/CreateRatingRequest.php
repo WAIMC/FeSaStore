@@ -24,13 +24,13 @@ class CreateRatingRequest extends FormRequest
     public function rules()
     {
         return [
-            'star'=>'required'           
+            'star_rating'=>'required'           
         ];
     }
     public function messages()
     {
         return [
-            'star.required' =>'Vui lòng chọn sao !'
+            'star_rating.required' =>'Vui lòng chọn sao !'
         ];
     }
 }
