@@ -88,6 +88,13 @@ use Illuminate\Support\Facades\Route;
     Route::post('/login',[App\Http\Controllers\client\Auth\loginController::class,'postLogin']);
     Route::get('/logout',[App\Http\Controllers\client\Auth\loginController::class,'logout'])->name('client.logout');
 
+    Route::get('/login/google',[App\Http\Controllers\client\Auth\loginController::class,'googleRedirect'])->name('client.ggRedirect');
+    Route::get('/google/return',[App\Http\Controllers\client\Auth\loginController::class,'googleCallback'])->name('client.ggCallback');
+ 
+    Route::get('/login/facebook',[App\Http\Controllers\client\Auth\loginController::class,'facebookRedirect'])->name('client.fbRedirect');
+    Route::get('/facebook/return',[App\Http\Controllers\client\Auth\loginController::class,'facebookCallback'])->name('client.fbCallback');
+
+
     Route::get('forget-password', [App\Http\Controllers\client\Auth\ForgotPasswordController::class, 'showForgetPasswordForm'])->name('client.forgotPassword');
     Route::post('forget-password', [App\Http\Controllers\client\Auth\ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('client.forget.password.post'); 
     Route::get('reset-password/{token}', [App\Http\Controllers\client\Auth\ForgotPasswordController::class, 'showResetPasswordForm'])->name('client.reset.password.get');
