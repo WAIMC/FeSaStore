@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Repositories\Contracts\UserInterface;
 use App\Http\Requests\UserRequest\LoginRequest;
+use Socialite;
 class loginController extends Controller
 {
     protected $users;
@@ -39,5 +40,29 @@ class loginController extends Controller
             return redirect(route('client.login'));
         }
         return redirect()->back()->with('error', 'Đăng xuất thất bại!');
+    }
+
+    public function googleRedirect(){
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function googleCallback(){
+        $getInfo = Socialite::driver('google')->user();
+        $authUser=  $this->users->findOrCreateUser($getInfo,'google');
+        Auth::guard('cus')->login($authUser, true);
+        return redirect()->route('client.index');
+
+    }
+
+    public function facebookRedirect(){
+        return Socialite::driver('facebook')->redirect(); 
+    }
+
+    public function facebookCallback(){
+        $getInfo = Socialite::driver('facebook')->user();
+        $authUser=  $this->users->findOrCreateUser($getInfo,'facebook');
+        Auth::guard('cus')->login($authUser, true);
+        return redirect()->route('client.index');
+
     }
 }

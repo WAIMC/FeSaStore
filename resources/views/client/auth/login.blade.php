@@ -57,6 +57,13 @@
                                     <span>Ghi nhớ</span>
                                     <input type="checkbox"  name="remember" value="1"> &nbsp;
                                     <input type="submit" value="Đăng Nhập" class="return-customer-btn">
+                                    <div class="form-group row mt-3">
+                                        <div class="col-md-8 offset-md-4">
+                                        <a href="{{route('client.ggRedirect')}}" class="btn btn-danger"><i class="fa fa-google"></i> Google</a>
+                                        <a href="{{route('client.fbRedirect')}}" class="btn btn-primary"><i class="fa fa-facebook"></i> Google</a>
+   
+                                    </div>
+                                        </div>
                                 </form>
                             </div>
                         </div>

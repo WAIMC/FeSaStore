@@ -23,7 +23,10 @@ protected $table='customer';
         'address',
         'phone',
         'email',
-        'status'
+        'status',
+        'provider',
+        'provider_id',
+        'avatar'
     ];
 
     /**
