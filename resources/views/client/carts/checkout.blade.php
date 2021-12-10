@@ -126,7 +126,7 @@
                                                 </td>
                                                 <td class="product-total">
                                                     <span
-                                                        class="amount">{{ number_format($item['price'] * $item['quantity']) }}</span>
+                                                        class="amount">{{ number_format($item['price'] * $item['quantity']) }} VNĐ</span>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -150,7 +150,7 @@
                                             <span>
                                                 
                                                     @php
-                                                         $total_coupon = number_format($cart->total_price);
+                                                         $total_coupon =$cart->total_price;
                                                     @endphp
                                                     @foreach (Session::get('coupon') as $key => $cou)
                                                         @if ($cou['feature_coupon'] == 1)
@@ -168,7 +168,7 @@
                                                             @endphp
                                         
                                                             <span class=" total amount">
-                                                                {{ number_format($cou['coupon_number'], 0, ',', '.') }} VND
+                                                                {{ number_format($cou['coupon_number']) }} VND
                                                             </span>
                                         
                                                         @endif
@@ -181,7 +181,7 @@
                                         <th>Tổng thanh toán</th>
                                         <td>
                                             <span class=" total amount">
-                                                {{ $total_coupon }} VND
+                                                {{ number_format($total_coupon) }} VND
                                             </span>
                                         </td>
                                         <input type="hidden" name="amount" value="{{ $total_coupon }}">
@@ -211,7 +211,7 @@
                                    
                                 </div> --}}
                             <div class="wc-proceed-to-checkout">
-                                <button type="submit" class="buttons-cart btn btn-dark" valude="{{ url('/delete-coupon')}}">Thanh toán khi nhận hàng</button>
+                                <button type="submit" class="buttons-cart btn btn-dark" value="{{ url('/delete-coupon')}}">Thanh toán khi nhận hàng</button>
                                 <button type="submit" class="buttons-cart btn btn-dark" id="btnPopup" name="payment"
                                     value="2">Thanh toán online</button>
                             </div>
