@@ -29,7 +29,7 @@ class loginController extends Controller
         ){
             return redirect()->route('client.index');
         }
-        return redirect()->back()->with('error','Đăng nhập thất bại, thử lại!');
+        return redirect()->back()->with('error','Đăng nhập thất bại, tài khoản hoặc mật khẩu không chính xác!');
     }
 
     public function logout()

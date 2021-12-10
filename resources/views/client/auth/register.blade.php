@@ -48,7 +48,7 @@
                     <!-- Row End -->
                     <div class="row">
                         <div class="col-sm-12">
-                            <form class="form-register" action="" method="POST">
+                            <form class="form-register" id="formid" action="" method="POST">
                                 @csrf
                                 <fieldset>
                                     <legend>Thông tin cá nhân của bạn</legend>
@@ -59,16 +59,19 @@
                                             @error('name')
                                             <small  class="text-danger">{{$message}}</small> 
                                             @enderror
+                                            <small  id="nameError" class="text-danger"></small>
                                         </div>
                                        
                                     </div>
                                     <div class="form-group d-md-flex align-items-md-center">
                                         <label class="control-label col-md-2" for="email"><span class="require">*</span>Email</label>
+                                        
                                         <div class="col-md-10">
                                             <input type="email" value="{{old('email')}}" name="email" class="form-control" id="email" placeholder="Nhập địa chỉ email của bạn vào đây ...">
                                             @error('email')
-                                            <small  class="text-danger">{{$message}}</small> 
+                                            <small   class="text-danger">{{$message}}</small> 
                                             @enderror
+                                            <small  id="emailError" class="text-danger"></small> 
                                         </div>
                                     </div>
                                     <div class="form-group d-md-flex align-items-md-center">
@@ -78,6 +81,7 @@
                                             @error('phone')
                                             <small  class="text-danger">{{$message}}</small> 
                                             @enderror
+                                            <small  id="phoneError" class="text-danger"></small>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -92,6 +96,7 @@
                                             @error('tinh')
                                             <small  class="text-danger">{{$message}}</small> 
                                             @enderror
+                                            <small  id="tinhError" class="text-danger"></small>
                                         </div>
                                         </div>
                                     </div>
@@ -104,6 +109,7 @@
                                         @error('huyen')
                                         <small  class="text-danger">{{$message}}</small> 
                                         @enderror
+                                        <small  id="huyenError" class="text-danger"></small>
                                     </div>
                                         </div>
                                     </div>
@@ -116,6 +122,7 @@
                                         @error('xa')
                                         <small  class="text-danger">{{$message}}</small> 
                                         @enderror
+                                        <small  id="xaError" class="text-danger"></small>
                                     </div>
                                         </div>
                                     </div>
@@ -126,6 +133,7 @@
                                             @error('thon')
                                             <small  class="text-danger">{{$message}}</small> 
                                             @enderror
+                                            <small  id="thonError" class="text-danger"></small>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -138,6 +146,7 @@
                                             @error('password')
                                             <small  class="text-danger">{{$message}}</small> 
                                             @enderror
+                                            <small  id="passwordError" class="text-danger"></small>
                                         </div>
                                     </div>
                                     <div class="form-group d-md-flex align-items-md-center">
@@ -147,6 +156,8 @@
                                             @error('pwd_confirm')
                                             <small  class="text-danger">{{$message}}</small> 
                                             @enderror
+                                            <small  id="pwd_confirmError" class="text-danger"></small>
+
                                         </div>
                                     </div>
                                 </fieldset>
@@ -217,7 +228,7 @@
             function(res){
               console.log(res);
                 content=`<option selected>Chọn Xã/phường</option>`;
-             res.wards.forEach(item => {
+                res.wards.forEach(item => {
                  content+=`
                  <option value="${item.code}">${item.name}</option>
                  `;
@@ -231,6 +242,7 @@
  
   });
   $('#submit-form').click(function(e) {
+    $("#formid").validate();
             e.preventDefault();
             $.ajaxSetup({
                 headers: {
@@ -258,8 +270,18 @@
                 }
                 ,
                 error: function(result) {
+                    console.log(result);
                     alertify.error('Đã đăng ký thất bại');
-                  location.reload();
+                    $('#nameError').text(result.responseJSON.errors.name);
+                    $('#emailError').text(result.responseJSON.errors.email);
+                    $('#phoneError').text(result.responseJSON.errors.phone);
+                    $('#tinhError').text(result.responseJSON.errors.tinh);
+                    $('#huyenError').text(result.responseJSON.errors.huyen);
+                    $('#xaError').text(result.responseJSON.errors.xa);
+                    $('#thonlError').text(result.responseJSON.errors.email);
+                    $('#passwordError').text(result.responseJSON.errors.password);
+                    $('#pwd_confirmError').text(result.responseJSON.errors.pwd_confirm);
+                //   location.reload();
                 }
 
 

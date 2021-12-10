@@ -292,13 +292,9 @@
                                                         </div>
                                                         <div class="pro-actions">
                                                             <div class="actions-primary">
-                                                                <a href="#" title="Thêm vào giỏ hàng"> + Thêm vào giỏ hàng</a>
-                                                                <a href="#" class="quick_view" data-toggle="modal" data-target="{{$single_pro_secound->id}}" title="Thêm vào giỏ hàng">+ Đặt hàng</a>
+                                                                <a href="#" class="quick_view" data-toggle="modal" data-target="{{$single_pro_secound->id}}" title="Thêm vào giỏ hàng">+ Thêm vào giỏ hàng</a>
                                                             </div>
-                                                            <div class="actions-secondary">
-                                                                <a href="compare.html" title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
-                                                                <a href="wishlist.html" title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
-                                                            </div>
+                                                        
                                                         </div>
                                                     </div>
                                                     <!-- Product Content End -->

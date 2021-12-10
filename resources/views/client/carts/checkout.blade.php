@@ -1,8 +1,10 @@
 @extends('client.layouts.master')
 @section('title', 'Thanh toán')
 @section('main')
-
-    <div class="breadcrumb-area mt-30">
+@if(count($cart->items)=='null'){
+  <script>window.location = "{{route('client.index')}}";</script>
+@endif
+    <div class="breadcrumb-area mt-30" onload="check()">
         <div class="container">
             <div class="breadcrumb">
                 <ul class="d-flex align-items-center">
@@ -231,6 +233,7 @@
 
 @section('js')
     <script>
+
         $.get(
             ' https://provinces.open-api.vn/api/?depth=2',
             function(res) {
@@ -289,5 +292,7 @@
             );
 
         });
+        
+      
     </script>
 @endsection
