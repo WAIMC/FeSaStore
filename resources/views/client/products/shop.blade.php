@@ -245,7 +245,14 @@
                                                         @else
                                                             <p><span class="price">{{$shop_list_pro->product_variantProduct->first()->price}} VNĐ</span></p>
                                                         @endif
-                                                        <p> {!! $shop_list_pro->short_description !!}</p>
+                                                        <span style="overflow: hidden;
+                                                                text-overflow: ellipsis;
+                                                                display: -webkit-box;
+                                                                -webkit-line-clamp: 5;
+                                                                        line-clamp: 2; 
+                                                                -webkit-box-orient: vertical;"> 
+                                                            {!! $shop_list_pro->short_description !!}
+                                                        </span>
                                                         <div class="pro-actions">
                                                             <div class="actions-primary">
                                                                 <a href="#" style="line-height:30px;" title="" data-original-title="Thêm Vào Giỏ Hàng"  class="quick_view" data-toggle="modal" data-target="{{$shop_list_pro->id}}"> + Thêm vào giỏ</a>

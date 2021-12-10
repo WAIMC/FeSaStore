@@ -97,28 +97,31 @@
                   </div>
                   <div class="card-body">
                       <div class="chart">
+                        <form>
+                          @csrf
                           <div class="row">
                               <div class="col-5">
-                                  <form class="form-inline">
+                                  <div class="form-inline">
                                       <div class="form-group">
                                           <label for="datepicker" class="mr-2">Từ Thời Điểm</label>
                                           <input type="text" name="fromDate" id="datepicker" class="form-control">
                                       </div>
-                                  </form>
+                                  </div>
                               </div>
                               <div class="col-5">
-                                  <form class="form-inline">
+                                  <div class="form-inline">
                                       <div class="form-group">
                                           <label for="datepicker2" class="mr-2">Đến Thời Điểm</label>
                                           <input type="text" name="toDate" id="datepicker2" class="form-control">
                                       </div>
-                                  </form>
+                                  </div>
                               </div>
                               <div class="col-2">
                                   <button class="btn btn-success" type="submit" id="searchChart">Tìm Kiếm</button>
                               </div>
                           </div>
-                          <div class="row" id="chart" style="height: 250px;"></div>
+                        </form>
+                        <div class="row" id="chart" style="height: 250px;"></div>
                       </div>
                   </div>
                   <!-- /.card-body -->
@@ -292,19 +295,27 @@
             <!-- /.card-header -->
             <div class="card-body p-0">
               <ul class="products-list product-list-in-card pl-2 pr-2">
+                @php
+                    $num_new_pro = 0;
+                @endphp
                 @foreach ($all_product as $related_pro)
-                  <li class="item">
-                    <div class="product-img">
-                      <img src="{{ url('public/uploads') }}/{{ $related_pro->image }}" alt="Ảnh Sản Phẩm" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title"> {{ $related_pro->name }}
-                        <span class="badge badge-warning float-right"> {{ isset($related_pro->product_variantProduct->first()->price) ? $related_pro->product_variantProduct->first()->price : '' }} VNĐ</span></a>
-                      <span class="product-description">
-                        {{ $related_pro->short_desciption }}
-                      </span>
-                    </div>
-                  </li>
+                  @php
+                    $num_new_pro++;
+                  @endphp
+                  @if ($num_new_pro <= 5)
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="{{ url('public/uploads') }}/{{ $related_pro->image }}" alt="Ảnh Sản Phẩm" class="img-size-50">
+                      </div>
+                      <div class="product-info">
+                        <a href="javascript:void(0)" class="product-title"> {{ $related_pro->name }}
+                          <span class="badge badge-warning float-right"> {{ isset($related_pro->product_variantProduct->first()->price) ? number_format($related_pro->product_variantProduct->first()->price) : '' }} VNĐ</span></a>
+                        <span class="product-description">
+                          {{ $related_pro->short_desciption }}
+                        </span>
+                      </div>
+                    </li>
+                    @endif
                 @endforeach
               </ul>
             </div>
@@ -331,19 +342,27 @@
             <!-- /.card-header -->
             <div class="card-body p-0">
               <ul class="products-list product-list-in-card pl-2 pr-2">
+                @php
+                  $num_new_blog = 0;
+                @endphp
                 @foreach ($all_blog as $related_blog)
-                  <li class="item">
-                    <div class="product-img">
-                      <img src="{{ url('public/uploads') }}/{{ $related_blog->image }}" alt="Ảnh Sản Phẩm" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title"> {{ $related_blog->title }}
-                        <span class="badge badge-warning float-right"> Tác Giả : {{ $related_blog->getauthor->name }} </span></a>
-                      <span class="product-description">
-                        {!! $related_blog->content !!}
-                      </span>
-                    </div>
-                  </li>
+                  @php
+                    $num_new_blog++;
+                  @endphp
+                  @if ($num_new_blog <=5 )
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="{{ url('public/uploads') }}/{{ $related_blog->image }}" alt="Ảnh Sản Phẩm" class="img-size-50">
+                      </div>
+                      <div class="product-info">
+                        <a href="javascript:void(0)" class="product-title"> {{ $related_blog->title }}
+                          <span class="badge badge-warning float-right"> Tác Giả : {{ $related_blog->getauthor->name }} </span></a>
+                        <span class="product-description">
+                          {!! $related_blog->content !!}
+                        </span>
+                      </div>
+                    </li>  
+                  @endif
                 @endforeach
               </ul>
             </div>
@@ -545,9 +564,6 @@
                       labels: ['Số Lượng', 'Giá', 'Doanh Số', 'Lợi Nhuận']
                     });
         
-                    // chart.setData([{"name":"test bug","quantity":2,"price":100,"created_at":"2021-11-26","sales":200,"profit":60},
-                    // {"name":"test bug","quantity":2,"price":100,"created_at":"2021-11-26","sales":200,"profit":60}]);
-
         // search chart with date
         $("#searchChart").click(function (e) { 
           e.preventDefault();
@@ -557,12 +573,14 @@
           $.ajax({
             url: "{{ route('admin.filter_chart_by_date') }}",
             type:'POST',
+            dataType:"JSON",
             data: {_token : _token, from_date : from_date, to_date : to_date},
             success: function(data) {
+              console.log(data);
               chart.setData(data);
             },
             error: function (data, textStatus, errorThrown) {
-                console.log(errorThrown);
+              console.log(errorThrown);
             }
           });
         });
@@ -581,9 +599,11 @@
             $.ajax({
               url: "{{ route('admin.filter_chart_by_date') }}",
               type:'POST',
+              dataType:"JSON",
               data: {_token : _token, from_date : setYMD2, to_date : setYMD},
               success: function(data) {
-                chart.setData(data);
+                console.log(data);
+                // chart.setData(data);
               },
               error: function (data, textStatus, errorThrown) {
                   console.log(errorThrown);

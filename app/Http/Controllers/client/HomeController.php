@@ -15,7 +15,6 @@ use App\Repositories\Contracts\CommentBlogInterface;
 use App\Repositories\Contracts\SliderInterface;
 use App\Repositories\Contracts\OrderInterface;
 use App\Repositories\Contracts\RatingInterface;
-
 use Illuminate\Http\Request;
 use Mail;
 
@@ -33,11 +32,9 @@ class HomeController extends Controller
     protected $blogs;
     protected $comment;
     protected $commentblog;
-
     protected $slider_repo;
     protected $order_repo;
     protected $rating_repo;
-    
     
     public function __construct(
         CategoryInterface $category_repo,
@@ -52,7 +49,6 @@ class HomeController extends Controller
         SliderInterface $slider_repo,
         OrderInterface $order_repo,
         RatingInterface $rating_repo
-
     ){
         $this->category_repo = $category_repo;
         $this->product_repo = $product_repo;
@@ -66,7 +62,6 @@ class HomeController extends Controller
         $this->slider_repo = $slider_repo;
         $this->order_repo = $order_repo;
         $this->rating_repo = $rating_repo;
-
     }
 
     /**
@@ -143,9 +138,9 @@ class HomeController extends Controller
         $get_all_commentblog = $this->commentblog->FindCommentBlog($blog->id);
         $data_commentblog = [] ;
         foreach ($get_all_commentblog as $key) {
-           if($key->blog_id == $blog->id){
+            if($key->blog_id == $blog->id){
                 array_push($data_commentblog, $key);
-           }
+            }
         }
         return view('client.blogs.blog_details', compact('blog','data_commentblog'));
     }
@@ -168,6 +163,5 @@ class HomeController extends Controller
 
         return view('client.pages.contact');
     }
- 
 
 }

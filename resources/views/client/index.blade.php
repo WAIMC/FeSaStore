@@ -213,17 +213,7 @@
                                             <!-- Product Content Start -->
                                             <div class="pro-content">
                                                 <div class="pro-info">
-                                                    <h4><a href="{{ route('client.productDetail', $tab_pro_arrival->slug)}}">{{ $all_product->first()->name }}</a></h4>
-                                                    @php
-                                                        $product_content_price = $all_product->first()->product_variantProduct->first()->price;
-                                                        $product_content_discount = $all_product->first()->product_variantProduct->first()->discount;
-                                                    @endphp
-                                                    @if ($product_content_price > $product_content_discount)
-                                                        <p><span class="price">{{$product_content_discount}} đ</span><del class="prev-price">{{$product_content_price}} đ</del></p>
-                                                        <div class="label-product l_sale">{{ 100-($product_content_price/100*$product_content_discount) }}<span class="symbol-percent">%</span></div>
-                                                    @else
-                                                        <p><span class="price">{{$product_content_price}} đ</span></p>
-                                                    @endif
+                                                   
                                                 </div>
                                             </div>
                                             <!-- Product Content End -->
@@ -343,9 +333,16 @@
                    </div>
                     <!-- Nav tabs -->
                     <ul class="nav tabs-area" role="tablist">
+                        @php
+                            $num_bestSell = 0;
+                        @endphp
                         @foreach ($paginate_cate as $best_cate)
+                        @php
+                            $num_bestSell++;
+                            $active_bestSell = $num_bestSell == 1 ? 'active' : '';
+                        @endphp
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tab_{{$best_cate->id}}">{{ $best_cate->name }}</a>
+                            <a class="nav-link {{ $active_bestSell }}" data-toggle="tab" href="#tab_{{$best_cate->id}}">{{ $best_cate->name }}</a>
                         </li>
                         @endforeach
                     </ul>                       
@@ -354,8 +351,15 @@
 
                 <!-- Tab Contetn Start -->
                 <div class="tab-content">
+                    @php
+                        $num_tab_bestSell = 0;
+                    @endphp
                     @foreach ($paginate_cate as $tab_best)
-                        <div id="tab_{{$tab_best->id}}" class="tab-pane fade">
+                        @php
+                            $num_tab_bestSell++;
+                            $tab_active_bestSell = $num_tab_bestSell == 1 ? 'show active' : '';
+                        @endphp
+                        <div id="tab_{{$tab_best->id}}" class="tab-pane fade {{$tab_active_bestSell}}">
                             <!-- Arrivals Product Activation Start Here -->
                             <div class="best-seller-pro-active owl-carousel">
                                 @foreach ($tab_best->category_product as $best_pro)
@@ -422,7 +426,14 @@
                                 <ul class="meta-box d-flex">
                                     <li><a href="#">{{ $blog->getauthor->name }}</a></li>
                                 </ul>
-                                <p>{!! $blog->content !!}</p>
+                                <span style="overflow: hidden;
+                                        text-overflow: ellipsis;
+                                        display: -webkit-box;
+                                        -webkit-line-clamp: 4;
+                                                line-clamp: 2; 
+                                        -webkit-box-orient: vertical;">
+                                    {!! $blog->content !!}    
+                                </span>
                                 <a class="readmore" href="{{ route('client.blog_details', $blog->slug) }}">Đọc Thêm</a>
                             </div>
                             <div class="blog-date">
@@ -446,7 +457,7 @@
     <div class="main-brand-banner pt-95 pb-100 pt-sm-55 pb-sm-60">
         <div class="container">
             <div class="section-ttitle mb-30">
-                <h2>Hot Brands</h2>
+                <h2>Thương Hiệu Nổi Tiếng</h2>
            </div>
             <div class="row no-gutters">
                 <div class="col-lg-3">
