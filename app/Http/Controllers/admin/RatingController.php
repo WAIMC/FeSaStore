@@ -4,7 +4,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Rating;
+use App\Models\ProductRating;
 use App\Http\Requests\Rating\CreateRatingRequest;
 use App\Repositories\Contracts\RatingInterface;
 use Illuminate\Http\Request;
@@ -46,7 +46,7 @@ class RatingController extends Controller
     public function store(CreateRatingRequest $request)
     {
         $attribute=[
-            'star'=>$request->star,
+            'star_rating'=>$request->star_rating,
             'product_id'=>$request->product_id,
             'customer_id'=>$request->customer_id
         ];

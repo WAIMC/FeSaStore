@@ -53,12 +53,13 @@
                                 <div class="rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
                                 </div>
                                 <div class="rating-feedback">
                                     <a href="#">(1 review)</a>
+                                    <a href="#">thêm đánh giá của bạn</a>
                                 </div>
                             </div>
                             <div class="pro-price mtb-30">
@@ -164,11 +165,11 @@
                                         @if(isset(Auth::guard('cus')->user()->id))
                                             <p class="star">Bạn chấm sản phẩm này bao nhiêu sao ?</p>
                                             <div id="rateYo" style="margin:0 auto"></div>
-                                                <form>
-                                                    <input type="hidden" name="rating_star" id="rating_star">
-                                                    <input type="hidden" name="product_id" value="{{$data_product_detail->id}}" >
-                                                    <input type="hidden" name="customer_id" value="{{Auth::guard('cus')->user()->id}}" >
-                                                </form>
+                                            <form>
+                                                <input type="hidden" name="rating_star" value="5" id="rating_star">
+                                                <input type="hidden" name="product_id" value="{{$data_product_detail->id}}" >
+                                                <input type="hidden" name="customer_id" value="{{Auth::guard('cus')->user()->id}}" >
+                                            </form>
                                             </div>
                                             <div class="col-sm-3">
                                                 <button id="post_rating_star" class="customer-btn"> Gửi đánh giá của bạn</button>
@@ -581,7 +582,7 @@
         $(function () {
  
             $("#rateYo").rateYo({
-                rating: 2,
+                rating: 5,
                 fullStar: true
             }).on("rateyo.set",function(e,data){
                 $('#rating_star').val(data.rating);
@@ -612,7 +613,7 @@
                 data: {
                      customer_id : $("input[name=customer_id]").val(),
                      product_id : $("input[name=product_id]").val(),
-                     star : $("input[name=rating_star]").val()
+                     star_rating : $("input[name=rating_star]").val()
                 },
                 success: function(response) {
                     alertify.success('Đã gửi đánh giá');

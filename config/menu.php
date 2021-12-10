@@ -136,7 +136,7 @@
                     'icon'=>'fa-circle nav-icon'
                 ]
              ]
-      ],
+            ],
                 [
                     'label'=>'Quản lý đơn hàng ',
                     'route'=>'order.index',
@@ -202,18 +202,6 @@
                 [
                     'label'=>'Danh sách bài viết',
                     'route'=>'blog.index',
-                    'icon'=>'fa-circle nav-icon'
-                ]
-            ]
-        ],
-        [
-            'label'=>'Quản lý đánh giá',
-            'route'=>'rating.index',
-            'icon'=>'fa-list-alt',
-            'items'=>[
-                [
-                    'label'=>'Danh sách đánh giá',
-                    'route'=>'rating.index',
                     'icon'=>'fa-circle nav-icon'
                 ]
             ]
