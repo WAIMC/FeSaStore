@@ -298,7 +298,7 @@
 
             $('.btnMerge').click(function (e) { 
                 e.preventDefault();
-                $(".variant_product").innerHTML = '';
+                $(".variant_product div").empty();
 
                 // get all value name attribute
                 var name_attribute = $('input[name^=name_att]').map(function(idx, elem) {
@@ -396,7 +396,7 @@
                                             <div class="row">
                                                 <div class="col-9 m-0 p-0">
                                                     <div class="form-group">
-                                                        <input type="text" value="" name="gallery[]" id="list_modal_gallery_${i}" placeholder="Nhập Ảnh"
+                                                        <input type="text" value="" name="gallery[]" id="list_modal_gallery_${i}" placeholder="Nhập Ít Nhất 2 Ảnh"
                                                             class="form-control @error('gallery')
                                                                     is-invalid
                                                             @enderror">

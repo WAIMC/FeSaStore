@@ -73,6 +73,10 @@
                                                 $name_managerment = 'Đơn Hàng';
                                             }elseif ($route == 'customer') {
                                                 $name_managerment = 'Khách Hàng';
+                                            }elseif ($route == 'rating') {
+                                                $name_managerment = 'Đánh Giá';
+                                            }elseif ($route == 'commentblog') {
+                                                $name_managerment = 'Bình Luận Bài Viết';
                                             }
                                         @endphp
                                         <div class="card card-dark col-4 card_{{$route}}">

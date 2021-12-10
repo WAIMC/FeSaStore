@@ -172,14 +172,14 @@
                                             </form>
                                             </div>
                                             <div class="col-sm-3">
-                                            <button id="post_rating_star" class="customer-btn"> Gửi đánh giá của bạn</button>
+                                                <button id="post_rating_star" class="customer-btn"> Gửi đánh giá của bạn</button>
                                             </div>
                                         @else
-                                        <p class="star">Bạn chấm sản phẩm này bao nhiêu sao ?</p>
+                                        <p class="star">Bạn đánh giá sản phẩm này bao nhiêu sao ?</p>
                                             <div id="rateYo" style="margin:0 auto"></div>
                                             </div>
                                             <div class="col-sm-3">
-                                            <button class="customer-btn" disablded> Đăng nhập để đánh giá</button>
+                                                <button class="customer-btn" disablded> Đăng nhập để đánh giá</button>
                                             </div>
                                         @endif
                                     </div>
@@ -188,14 +188,14 @@
 
                                 @if(isset(Auth::guard('cus')->user()->id))
                                 <form>
-                                        <input type="hidden" name="customer_id" value="{{Auth::guard('cus')->user()->id}}">
-                                        <input type="hidden" name="product_id" value="{{$data_product_detail->id}}">
-                                        <div class="form-group">
-                                            <textarea class="form-control" rows="5" name="comment" id="comment"
-                                                required="required" placeholder="Nhận xét về sản phẩm ..." style="width:100%"></textarea>
-                                        </div>
-                                        <button id="post_product_details" class="customer-btn">Gửi Đi Đánh Giá</button>
-                                    </form>
+                                    <input type="hidden" name="customer_id" value="{{Auth::guard('cus')->user()->id}}">
+                                    <input type="hidden" name="product_id" value="{{$data_product_detail->id}}">
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="5" name="comment" id="comment"
+                                            required="required" placeholder="Nhận xét về sản phẩm ..." style="width:100%"></textarea>
+                                    </div>
+                                    <button id="post_product_details" class="customer-btn">Gửi Đi Đánh Giá</button>
+                                </form>
                                 @else
                                     <p>Vui lòng đăng nhập để bình luận</p>
                                 @endif
@@ -205,17 +205,17 @@
                             <!-- Reviews Start -->
                             <div class="review border-default universal-padding" id="comment_product">
                             @if($data_comment)
-                             @foreach($data_comment as $comment)
-                               <div class="row iconcustomer">
-                                   <div class="col-2">
-                                       <img src="{{url('public/client')}}/img/icon/iconcustomer.jpg" alt="" style="width:60%">
-                                   </div>
-                                   <div class="col-10">
-                                   <h4 class="review-mini-title">{{$comment->cus->name}} <span class="time">{{ date('\V\à\o \l\ú\c H:i d-m-Y ',strtotime($comment->created_at))}}</span></h4> 
-                                       <p>{{$comment->comment}}</p>
-                                   </div>
-                               </div>
-                               @endforeach
+                                @foreach($data_comment as $comment)
+                                <div class="row iconcustomer">
+                                    <div class="col-2">
+                                        <img src="{{url('public/client')}}/img/icon/iconcustomer.jpg" alt="" style="width:60%">
+                                    </div>
+                                    <div class="col-10">
+                                    <h4 class="review-mini-title">{{$comment->cus->name}} <span class="time">{{ date('\V\à\o \l\ú\c H:i d-m-Y ',strtotime($comment->created_at))}}</span></h4> 
+                                        <p>{{$comment->comment}}</p>
+                                    </div>
+                                </div>
+                                @endforeach
                             @else
                                 <p>Chưa có bình luận cho sản phẩm này!</p>
                             @endif
@@ -399,13 +399,17 @@
                 var num_thumb_detail = 0;
                 var id_variant = '';
                 // set color for button when click
-                $('input:radio[name="attr_detail_0"]').parent().removeClass('bg-primary');
-                $('input:radio[name="attr_detail_0"]:checked').parent().addClass('bg-primary');
+                $('input:radio[name="attr_detail_0"]').parent().removeClass('bg-dark');
+                $('input:radio[name="attr_detail_0"]').parent().find('span').removeClass('text-white');
+                $('input:radio[name="attr_detail_0"]:checked').parent().addClass('bg-dark');
+                $('input:radio[name="attr_detail_0"]:checked').parent().find('span').addClass('text-white');
                 // get each variant product
                 if ($('input:radio[name="attr_detail_1"]:checked').val() != undefined) {
                     // set color for button when click
-                    $('input:radio[name="attr_detail_1"]').parent().removeClass('bg-primary');
-                    $('input:radio[name="attr_detail_1"]:checked').parent().addClass('bg-primary');
+                    $('input:radio[name="attr_detail_1"]').parent().removeClass('bg-dark');
+                    $('input:radio[name="attr_detail_1"]').parent().find('span').removeClass('text-white');
+                    $('input:radio[name="attr_detail_1"]:checked').parent().addClass('bg-dark');
+                    $('input:radio[name="attr_detail_1"]:checked').parent().find('span').addClass('text-white');
 
                     value_attr_detail_second = $('input:radio[name="attr_detail_1"]:checked').val();
                     merge_detail_attri = value_attr_detail_first + "|" + value_attr_detail_second;

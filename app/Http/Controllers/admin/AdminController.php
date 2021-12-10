@@ -84,8 +84,9 @@ class AdminController extends Controller
 
     public function filter_chart_by_date(Request $request)
     {
-        $from_date = request()->from_date;
-        $to_date = request()->to_date;
+        $data = $request->all();
+        $from_date = $data['from_date'];
+        $to_date = $data['to_date'];
         $get = $this->order_detail_repo->get_date_between($from_date, $to_date);
         foreach ($get as $key => $value) {
             $chartData[] = array(

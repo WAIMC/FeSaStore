@@ -1,5 +1,5 @@
 @extends('client.layouts.master')
-@section('title','Nhập mật khẩu mơis')
+@section('title','Nhập mật khẩu mới')
 @section('main')
             <!-- Breadcrumb Start -->
             <div class="breadcrumb-area mt-30">
