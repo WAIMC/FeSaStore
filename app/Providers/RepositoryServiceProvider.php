@@ -32,6 +32,7 @@ class RepositoryServiceProvider extends ServiceProvider
             'OrderDetail',
             'Comment',
             'Customer',
+            'Coupon',
             'CommentBlog',
             'Rating'
         );

@@ -1,6 +1,7 @@
 @extends('client.layouts.master')
 @section('title', 'Thanh toán')
 @section('main')
+
     <div class="breadcrumb-area mt-30">
         <div class="container">
             <div class="breadcrumb">
@@ -21,10 +22,14 @@
                         <h3>Dùng phiếu giảm giá? <span id="showcoupon">Bấm vào đây để nhập mã của bạn</span></h3>
                         <div id="checkout_coupon" class="coupon-checkout-content">
                             <div class="coupon-info">
-                                <form action="#">
+                                <form method="POST" action="{{ url('/check-coupon') }}">
+                                    @csrf
                                     <p class="checkout-coupon">
-                                        <input type="text" class="code" placeholder="Mã giảm giá">
-                                        <input type="submit" value="Áp dụng">
+                                        <input type="text" name="coupon" class="code" placeholder="Mã giảm giá">
+                                        <input type="submit" class="check_coupon" name="check_coupon" value="Áp dụng">
+                                        @if (Session::get('coupon'))
+                                        <a class="btn btn-default delete-coupon" style="background:#00483d; border-radius: 0; text-decoration: none; corlor:#fff"  href="{{ url('/delete-coupon') }}">Xóa mã giảm giá</a>
+                                        @endif
                                     </p>
                                 </form>
                             </div>
@@ -130,17 +135,59 @@
 
                                 </tbody>
                                 <tfoot>
-                                    {{-- <tr class="cart-subtotal">
-                                            <th>Tổng giỏ hàng</th>
-                                            <td><span class="amount">{{$cart->total_price}}</span></td>
-                                        </tr> --}}
                                     <tr class="order-total">
-                                        <th>Tổng đơn hàng</th>
-                                        <td><span class=" total amount">{{ number_format($cart->total_price) }}
-                                                VND</span>
+                                        <th>Tổng hóa đơn</th>
+                                        <td>
+                                            <span class=" total amount">
+                                                {{ number_format($cart->total_price) }} VND
+                                            </span>
                                         </td>
-                                        <input type="hidden" name="amount" value="{{ $cart->total_price }}">
                                     </tr>
+                                    @if (Session::get('coupon'))
+                                    <tr class="cart-subtotal order-total">
+                                        <th>Giảm giá</th>
+                                        <td>
+                                            <span>
+                                                
+                                                    @php
+                                                         $total_coupon = number_format($cart->total_price);
+                                                    @endphp
+                                                    @foreach (Session::get('coupon') as $key => $cou)
+                                                        @if ($cou['feature_coupon'] == 1)
+                                                            @php
+                                                                $total_coupon =  $total_coupon - ($total_coupon * $cou['coupon_number']) / 100; 
+                                                            @endphp
+                                        
+                                                            <span class=" total amount">
+                                                                {{ number_format($cou['coupon_number'], 0, ',', '.') }} %
+                                                            </span>
+                                        
+                                                        @elseif($cou['feature_coupon']==2)
+                                                            @php
+                                                                $total_coupon = $cart->total_price - $cou['coupon_number'];
+                                                            @endphp
+                                        
+                                                            <span class=" total amount">
+                                                                {{ number_format($cou['coupon_number'], 0, ',', '.') }} VND
+                                                            </span>
+                                        
+                                                        @endif
+                                                    @endforeach
+                                                
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr class="order-total">
+                                        <th>Tổng thanh toán</th>
+                                        <td>
+                                            <span class=" total amount">
+                                                {{ $total_coupon }} VND
+                                            </span>
+                                        </td>
+                                        <input type="hidden" name="amount" value="{{ $total_coupon }}">
+                                    </tr>
+                                    @endif
+                                    
                                 </tfoot>
                             </table>
                         </div>
@@ -164,7 +211,7 @@
                                    
                                 </div> --}}
                             <div class="wc-proceed-to-checkout">
-                                <button type="submit" class="buttons-cart btn btn-dark">Thanh toán khi nhận hàng</button>
+                                <button type="submit" class="buttons-cart btn btn-dark" valude="{{ url('/delete-coupon')}}">Thanh toán khi nhận hàng</button>
                                 <button type="submit" class="buttons-cart btn btn-dark" id="btnPopup" name="payment"
                                     value="2">Thanh toán online</button>
                             </div>
