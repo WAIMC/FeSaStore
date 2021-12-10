@@ -22,7 +22,7 @@
          * @return array
          */
         public function get_date_between($from_date, $to_date){
-            return $this->getModel()::whereDate('created_at', '>=', $from_date)->whereDate('created_at', '<=', $to_date)->get();
+            return $this->getModel()::whereDate('created_at', '>=', $from_date)->whereDate('created_at', '<=', $to_date)->orderBy('created_at', 'ASC')->get();
         }
 
     }

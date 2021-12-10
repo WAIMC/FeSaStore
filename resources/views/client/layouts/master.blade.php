@@ -138,8 +138,6 @@
                                                 <a data-toggle="tab" href="#thumb2"><img src="" alt="product-thumbnail"></a>
                                                 <a data-toggle="tab" href="#thumb3"><img src="" alt="product-thumbnail"></a>
                                                 <a data-toggle="tab" href="#thumb4"><img src="" alt="product-thumbnail"></a>
-                                                <a data-toggle="tab" href="#thumb5"><img src="" alt="product-thumbnail"></a>
-                                                <a data-toggle="tab" href="#thumb6"><img src="" alt="product-thumbnail"></a>
                                             </div>
                                         </div>
                                         <!-- Thumbnail image end -->
@@ -152,7 +150,14 @@
                                             <div class="pro-price mtb-30">
                                                 <p class="d-flex align-items-center qv_price"><span class="prev-price">16.51</span><span class="price">$15.19</span><span class="saving-price">save 8%</span></p>
                                             </div>
-                                            <p class="mb-20 pro-desc-details">Long printed dress with thin adjustable straps. V-neckline and wiring under the bust with ruffles at the bottom of the dress.</p>
+                                            <p class="mb-20 pro-desc-details" style="overflow: hidden;
+                                                                                    text-overflow: ellipsis;
+                                                                                    display: -webkit-box;
+                                                                                    -webkit-line-clamp: 5;
+                                                                                    line-clamp: 2;
+                                                                                    -webkit-box-orient: vertical;">
+                                                Long printed dress with thin adjustable straps. V-neckline and wiring under the bust with ruffles at the bottom of the dress.
+                                            </p>
                                             <div class="show_variant_attr">
                                                 <div class="product-size mb-20 clearfix">
                                                     <label>Size</label>
@@ -355,13 +360,17 @@
                 var num_thumb = 0;
                 var id_variant = '';
                 // set color for button when click
-                $('input:radio[name="attr_0"]').parent().removeClass('bg-primary');
-                $('input:radio[name="attr_0"]:checked').parent().addClass('bg-primary');
+                $('input:radio[name="attr_0"]').parent().removeClass('bg-dark');
+                $('input:radio[name="attr_0"]').parent().find('span').removeClass('text-white');
+                $('input:radio[name="attr_0"]:checked').parent().addClass('bg-dark');
+                $('input:radio[name="attr_0"]:checked').parent().find('span').addClass('text-white');
                 // get each variant product
                 if($('input:radio[name="attr_1"]:checked').val() != undefined){
                     // set color for button when click
-                    $('input:radio[name="attr_1"]').parent().removeClass('bg-primary');
-                    $('input:radio[name="attr_1"]:checked').parent().addClass('bg-primary');
+                    $('input:radio[name="attr_1"]').parent().removeClass('bg-dark');
+                    $('input:radio[name="attr_1"]').parent().find('span').removeClass('text-white');
+                    $('input:radio[name="attr_1"]:checked').parent().addClass('bg-dark');
+                    $('input:radio[name="attr_1"]:checked').parent().find('span').addClass('text-white');
 
                     value_attr_second = $('input:radio[name="attr_1"]:checked').val();
                     merge_attri = value_attr_first+"|"+value_attr_second;
@@ -410,9 +419,9 @@
                 // fill price
                 if(price > discount){
                     var percent_discount = 100-(price/100*discount);
-                    $('.qv_price').html("<span class='prev-price'>"+price+"</span><span class='price'>$"+discount+"</span><span class='saving-price'>save "+percent_discount+"%</span>");
+                    $('.qv_price').html("<span class='prev-price'>"+price+" VNĐ</span><span class='price'>"+discount+" VNĐ</span><span class='saving-price'>save "+percent_discount+"%</span>");
                 }
-                $('.qv_price').html("<span class='price'>$"+price+"</span>");
+                $('.qv_price').html("<span class='price'>"+price+" VNĐ</span>");
 
                 // fill gallery
                 //$('.quick_view_thumb_menu_gallery').html(quick_view_thumb_menu_gallery);
@@ -421,6 +430,25 @@
                 $('.quick_view_thumb_gallery').html(quick_view_thumb_gallery);
                 
             }
+
+            // search list category
+            // $('#list_category').hide();
+            $("#list_search_category").hide();
+            $("#input_search_category").on("keyup", function() {
+                $("#list_search_category").show();
+                var value = $(this).val().toLowerCase();
+                $("#list_search_category a").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+
+            // form search product with category
+            $('#get_value_category').change(function (e) { 
+                e.preventDefault();
+                _href_cate = "{{ route('client.shop',['searchCategory'=>"+$(this).val()+"]) }}";
+                $('#form_cate').attr('action', _href_cate);
+                $('form#form_cate').submit();
+            });
             
         });
     </script>

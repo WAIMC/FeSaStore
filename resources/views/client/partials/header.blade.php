@@ -50,17 +50,31 @@
                 <!-- Categorie Search Box Start Here -->
                 <div class="col-lg-5 col-md-8 ml-auto mr-auto col-10">
                     <div class="categorie-search-box">
-                        <form action="#">
+                        <form action="" method="GET" id="form_cate">
                             <div class="form-group">
-                                <select class="bootstrap-select" name="poscats">
+                                <select class="bootstrap-select" id="get_value_category" name="category">
                                     <option value="0">Tất Cả Danh Mục</option>
                                     @foreach ($all_category as $cate)
-                                    <option value="{{ $cate->id }}">{{ $cate->name }}</option>
+                                    <option value="{{ $cate->id }}">
+                                        <a href="{{ route('client.shop',['searchCategory'=>$cate->id]) }}" class="">
+                                            {{ $cate->name }}
+                                        </a>
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>
-                            <input type="text" name="search" placeholder="Tôi đang muốn mua...">
-                            <button><i class="lnr lnr-magnifier"></i></button>
+                            <div>
+                                <input type="text" id="input_search_category" name="search" placeholder="Tôi đang muốn mua...">
+                                <button><i class="lnr lnr-magnifier"></i></button>
+                                <br>
+                                <div class="list-group" id="list_search_category">
+                                    @foreach ($all_category as $cate_list)
+                                    <a href="{{ route('client.shop',['searchCategory'=>$cate_list->id]) }}" class="list-group-item list-group-item-action list-group-item-dark bg-dark text-white">{{ $cate_list->name }}</a>
+                                    @endforeach
+                                </div>
+                            </div>
+                            
+
                         </form>
                     </div>
                 </div>

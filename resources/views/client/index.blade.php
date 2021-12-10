@@ -63,7 +63,7 @@
                                     <p><span class="price">{{number_format($item_pro->product_variantProduct->first()->discount)}}  <u>đ</u></span><del class="prev-price">{{number_format($item_pro->product_variantProduct->first()->price)}} <u>đ</u> </del></p>
                                     <div class="label-product l_sale">{{ round((($item_pro->product_variantProduct->first()->price - $item_pro->product_variantProduct->first()->discount )/$item_pro->product_variantProduct->first()->price)*100,0) }}<span class="symbol-percent">%</span></div>
                                 @else
-                                    <p><span class="price">${{$item_pro->product_variantProduct->first()->price}}</span></p>
+                                    <p><span class="price">{{$item_pro->product_variantProduct->first()->price}} VNĐ</span></p>
                                 @endif
                             </div>
                             <div class="pro-actions">
@@ -211,7 +211,13 @@
                                                <img src="{{url('public/client')}}/img/banner\sanphamtieubieu.png" style="width:100%;" alt="">
                                             <!-- Product Image End -->
                                             <!-- Product Content Start -->
-                                            
+                                            <div class="pro-content">
+                                                <div class="pro-info">
+                                                   
+                                                </div>
+                                            </div>
+                                            <!-- Product Content End -->
+                                            <span class="sticker-new">Mới</span>
                                         </div>
                                         <!-- Single Product End -->
                                     </div>
@@ -247,7 +253,7 @@
                                                             <p><span class="price">{{number_format($single_pro_first->product_variantProduct->first()->discount)}} <u>đ</u> </span><del class="prev-price">{{number_format($single_pro_first->product_variantProduct->first()->price) }}<u>đ</u></del></p>
                                                             <div class="label-product l_sale">{{ round((($single_pro_first->product_variantProduct->first()->price - $single_pro_first->product_variantProduct->first()->discount )/$single_pro_first->product_variantProduct->first()->price)*100,0)}}<span class="symbol-percent">%</span></div>    
                                                         @else
-                                                            <p><span class="price">${{$single_pro_first->product_variantProduct->first()->price}}</span></p>
+                                                            <p><span class="price">{{$single_pro_first->product_variantProduct->first()->price}} VNĐ</span></p>
                                                         @endif
                                                     </div>
                                                     <div class="pro-actions">
@@ -281,7 +287,7 @@
                                                                 <p><span class="price">{{number_format($single_pro_secound->product_variantProduct->first()->discount)}} <u>đ</u> </span><del class="prev-price">{{number_format($single_pro_secound->product_variantProduct->first()->price)}} <u>đ</u> </del></p>
                                                                 <div class="label-product l_sale">{{ round((($single_pro_secound->product_variantProduct->first()->price - $single_pro_secound->product_variantProduct->first()->discount )/$single_pro_secound->product_variantProduct->first()->price)*100,0)}}<span class="symbol-percent">%</span></div>    
                                                             @else
-                                                                <p><span class="price">${{$single_pro_secound->product_variantProduct->first()->price}}</span></p>
+                                                                <p><span class="price">{{$single_pro_secound->product_variantProduct->first()->price}} VNĐ</span></p>
                                                             @endif
                                                         </div>
                                                         <div class="pro-actions">
@@ -296,7 +302,7 @@
                                                         </div>
                                                     </div>
                                                     <!-- Product Content End -->
-                                                    <span class="sticker-new">new</span>
+                                                    <span class="sticker-new">Mới</span>
                                                 </div>
                                                 <!-- Single Product End -->
                                             @endif
@@ -327,9 +333,16 @@
                    </div>
                     <!-- Nav tabs -->
                     <ul class="nav tabs-area" role="tablist">
+                        @php
+                            $num_bestSell = 0;
+                        @endphp
                         @foreach ($paginate_cate as $best_cate)
+                        @php
+                            $num_bestSell++;
+                            $active_bestSell = $num_bestSell == 1 ? 'active' : '';
+                        @endphp
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tab_{{$best_cate->id}}">{{ $best_cate->name }}</a>
+                            <a class="nav-link {{ $active_bestSell }}" data-toggle="tab" href="#tab_{{$best_cate->id}}">{{ $best_cate->name }}</a>
                         </li>
                         @endforeach
                     </ul>                       
@@ -338,8 +351,15 @@
 
                 <!-- Tab Contetn Start -->
                 <div class="tab-content">
+                    @php
+                        $num_tab_bestSell = 0;
+                    @endphp
                     @foreach ($paginate_cate as $tab_best)
-                        <div id="tab_{{$tab_best->id}}" class="tab-pane fade">
+                        @php
+                            $num_tab_bestSell++;
+                            $tab_active_bestSell = $num_tab_bestSell == 1 ? 'show active' : '';
+                        @endphp
+                        <div id="tab_{{$tab_best->id}}" class="tab-pane fade {{$tab_active_bestSell}}">
                             <!-- Arrivals Product Activation Start Here -->
                             <div class="best-seller-pro-active owl-carousel">
                                 @foreach ($tab_best->category_product as $best_pro)
@@ -358,7 +378,7 @@
                                         <div class="pro-content">
                                             <div class="pro-info">
                                                 <h4><a href="{{ route('client.productDetail', $tab_best->slug)}}">{{ $best_pro->name }}</a></h4>
-                                                <p><span class="price">${{ $best_pro->product_variantProduct->first()->discount }}</span></p>
+                                                <p><span class="price">{{ $best_pro->product_variantProduct->first()->discount }} VNĐ</span></p>
                                             </div>
                                             <div class="pro-actions">
                                                 <div class="actions-primary">
@@ -406,7 +426,14 @@
                                 <ul class="meta-box d-flex">
                                     <li><a href="#">{{ $blog->getauthor->name }}</a></li>
                                 </ul>
-                                <p>{!! $blog->description !!}</p>
+                                <span style="overflow: hidden;
+                                        text-overflow: ellipsis;
+                                        display: -webkit-box;
+                                        -webkit-line-clamp: 4;
+                                                line-clamp: 2; 
+                                        -webkit-box-orient: vertical;">
+                                    {!! $blog->content !!}    
+                                </span>
                                 <a class="readmore" href="{{ route('client.blog_details', $blog->slug) }}">Đọc Thêm</a>
                             </div>
                             <div class="blog-date">
@@ -430,7 +457,7 @@
     <div class="main-brand-banner pt-95 pb-100 pt-sm-55 pb-sm-60">
         <div class="container">
             <div class="section-ttitle mb-30">
-                <h2>Hot Brands</h2>
+                <h2>Thương Hiệu Nổi Tiếng</h2>
            </div>
             <div class="row no-gutters">
                 <div class="col-lg-3">
