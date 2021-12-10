@@ -33,6 +33,9 @@ use Illuminate\Support\Facades\Route;
     Route::get('/Admin/Cai-Lai-Mat-Khau/{token}', [App\Http\Controllers\admin\Auth\ForgotPasswordController::class,'showPasswordResetForm'])->name('admin.get_token');
     Route::post('/Admin/Cai-Lai-Mat-Khau/{token}', [App\Http\Controllers\admin\Auth\ForgotPasswordController::class,'resetPassword'])->name('admin.get_token');
 
+    //coupon
+    Route::post('/check-coupon', [App\Http\Controllers\admin\CouponController::class,'check_coupon']);
+    Route::get('/delete-coupon', [App\Http\Controllers\admin\CouponController::class,'delete_coupon']);
     // manager admin
     Route::prefix('admin')->middleware('adminAuth')->group(function(){
 
@@ -57,6 +60,7 @@ use Illuminate\Support\Facades\Route;
             'commentblog'=>admin\CommentBlogController::class,
             'order'=>admin\OrderController::class,
             'customer'=>admin\CustomerController::class,
+            'coupon'=>admin\CouponController::class,
             'rating'=>admin\RatingController::class
         ]);
 

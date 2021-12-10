@@ -34,7 +34,7 @@
                     <td class="product-quantity"><input type="number" value="{{$item['quantity'] }}" onchange="updateCart(this.value,'{{$item['id']}}')" ></td>
                     <td class="product-subtotal"> {{ number_format($item['price'] * $item['quantity']) }} VND</td>
                     <td class="product-remove"> 
-                        <a href="#" ><i class="fa fa-times"  onclick="deleteCartitem({{$item['id'] }})" aria-hidden="true"></i>
+                        <a href="" ><i class="fa fa-times"  onclick="deleteCartitem({{$item['id'] }})" aria-hidden="true"></i>
                         </a>
                     </td>
                     </td>
