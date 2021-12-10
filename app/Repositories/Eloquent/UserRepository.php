@@ -71,6 +71,7 @@ class UserRepository extends BaseRepository implements UserInterface
             'provider_id' => $user->id,
             'phone' => '',
             'address'=>'',
+            'password'=>'',
             'avatar'=>$user->avatar,
             
         ]);
