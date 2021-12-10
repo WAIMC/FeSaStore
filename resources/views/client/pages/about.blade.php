@@ -1,5 +1,5 @@
 @extends('client.layouts.master')
-@section('title','Gới thiêuj')
+@section('title','Giới Thiệu')
 @section('main')
 
 <!-- Breadcrumb Start -->
@@ -52,7 +52,7 @@
                             <ul>
                             <li>
                                     <div class="team-info">
-                                     <h4>TẬN TÌNH</h4>
+                                        <h4>TẬN TÌNH</h4>
                                     </div>
                                 </li>
                             </ul>
