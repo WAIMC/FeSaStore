@@ -375,13 +375,12 @@
                                             <div class="pro-info">
                                                 <h4><a href="{{ route('client.productDetail', $tab_best->slug)}}">{{ $best_pro->name }}</a></h4>
                                                 <p><span class="price">{{ number_format($best_pro->product_variantProduct->first()->discount) }} <u>đ</u> </span> <del class="prev-price">{{number_format($best_pro->product_variantProduct->first()->price)}} <u>đ</u> </del></p>
-                                                <div class="label-product l_sale">{{ round((($best_pro->product_variantProduct->first()->price - $best_pro->product_variantProduct->first()->discount )/$best_pro->product_variantProduct->first()->price)*100,0)}}<span class="symbol-percent">%</span></div>    
-
+                                                <div class="label-product l_sale">{{ round((($best_pro->product_variantProduct->first()->price - $best_pro->product_variantProduct->first()->discount )/$best_pro->product_variantProduct->first()->price)*100,0)}}<span class="symbol-percent">%</span></div>
                                             </div>
                                             <div class="pro-actions">
-                                                <div class="actions-primary">
-                                                    <a href="#" data-toggle="modal" data-target="{{$best_pro->id}}" title="Thêm vào giỏ hàng"> + Thêm vào giỏ hàng</a>
-                                                </div>
+                                                            <div class="actions-primary">
+                                                                <a href="#" class="quick_view" data-toggle="modal" data-target="{{$best_pro->id}}" title="Thêm vào giỏ hàng">+ Thêm vào giỏ hàng</a>
+                                                            </div>
                                             </div>
                                         </div>
                                         <!-- Product Content End -->

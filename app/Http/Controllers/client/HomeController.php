@@ -123,6 +123,7 @@ class HomeController extends Controller
 
     public function productDetail($slug){
         $data_product_detail = $this->product_repo->findBySlug($slug);
+        // dd($data_product_detail);
         $data_comment = $this->comment->FindComment($data_product_detail->id);
         $data_rating = $this->rating_repo->FindRating($data_product_detail->id);
         $avg_rating = $this->rating_repo->AvgRating($data_product_detail->id);

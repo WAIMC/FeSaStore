@@ -197,7 +197,6 @@
                                                 <button class="customer-btn" disablded> Đăng nhập để đánh giá</button>
                                             </div>
                                         @endif
-                                        </div>
                                     </div>
                                 </div>
                                 <br>
@@ -285,9 +284,9 @@
                                 </h4>
                                 <p><span class="price">
                                         @if ($realted_pro->product_variantProduct->first()->price > $realted_pro->product_variantProduct->first()->discount)
-                                            ${{ $realted_pro->product_variantProduct->first()->discount }}
+                                            {{ number_format($realted_pro->product_variantProduct->first()->discount) }} <u>đ</u>
                                         @else
-                                            ${{ $realted_pro->product_variantProduct->first()->price }}
+                                            ${{ number_format($realted_pro->product_variantProduct->first()->price) }} <u>đ</u>
                                         @endif
                                     </span></p>
                             </div>
@@ -295,12 +294,7 @@
                                 <div class="actions-primary">
                                     <a href="#"  class="quick_view" data-toggle="modal" data-target="{{ $realted_pro->id }}" title="Thêm vào giỏ hàng"> + Thêm vào giỏ hàng</a>
                                 </div>
-                                <div class="actions-secondary">
-                                    <a href="compare.html" title="So Sánh"><i class="lnr lnr-sync"></i> <span>Thêm Vào So
-                                            Sánh</span></a>
-                                    <a href="wishlist.html" title="Ưa Thích"><i class="lnr lnr-heart"></i> <span>Thêm Vào
-                                            Ưa Thích</span></a>
-                                </div>
+                               
                             </div>
                         </div>
                         <!-- Product Content End -->
