@@ -19,7 +19,7 @@
         
 
         public function FindCommentBlog($id){
-            return $this->getModel()::where('blog_id',$id)->paginate(10);
+            return $this->getModel()::where('blog_id',$id)->orderBy('id', 'desc')->paginate(10);
         }
 
         public function GetListCommentBlog(){

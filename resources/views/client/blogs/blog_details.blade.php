@@ -115,7 +115,7 @@
                                 </div>
                                 @endforeach
                                 @else
-                                    <p>Chưa có bình luận cho sản phẩm này !</p>
+                                    <p>Chưa có bình luận cho bài viết này !</p>
                                 @endif
                                 </div>
 

@@ -147,7 +147,7 @@ Route::prefix('wishlist')->group(function () {
     Route::get('/checkout',[App\Http\Controllers\client\HomeController::class,'checkout'])->name('client.checkout');
     Route::get('/blog',[App\Http\Controllers\client\HomeController::class,'blog'])->name('client.blog');
     Route::get('/blog-details/{slug}',[App\Http\Controllers\client\HomeController::class,'blog_details'])->name('client.blog_details');
-    Route::post('/blog-details/{slug}',[App\Http\Controllers\admin\HomeController::class,'post_comment_blog'])->name('client.blog_details');
+    Route::post('/blog-details/{slug}',[App\Http\Controllers\client\HomeController::class,'post_comment_blog'])->name('client.blog_details');
     Route::get('/blog/category/{slug}',[App\Http\Controllers\client\HomeController::class,'categoryblog'])->name('client.cateblog');
 /*
     End route client

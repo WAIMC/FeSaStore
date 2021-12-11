@@ -19,7 +19,7 @@
         }
 
         public function FindComment($id){
-            return $this->getModel()::where('product_id',$id)->paginate(10);
+            return $this->getModel()::where('product_id',$id)->orderBy('id', 'desc')->paginate(10);
         }
 
         public function GetListComment(){
