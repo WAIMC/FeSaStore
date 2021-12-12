@@ -73,7 +73,7 @@ use Illuminate\Support\Facades\Route;
 */ 
     Route::get('/',[App\Http\Controllers\client\HomeController::class,'index'])->name('client.index');
     Route::get('/Cua-Hang',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
-    Route::get('/San-Pham-Chi-Tiet/{slug}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
+    Route::get('/productDetail/{slug}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
     Route::post('/productDetail/{slug}',[App\Http\Controllers\client\HomeController::class,'post_comment_product'])->name('client.productDetail');
     Route::get('/productDetail/rating/{slug}',[App\Http\Controllers\client\HomeController::class,'post_rating'])->name('client.rating');
     Route::get('/Gioi-Thieu',[App\Http\Controllers\client\HomeController::class,'about'])->name('client.about');

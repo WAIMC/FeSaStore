@@ -31,7 +31,6 @@
                     <table id="example2" class="table table-striped table-bordered table-hover text-center">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Họ Và Tên</th>
                                 <th>Email</th>
                                 <th>Điện Thoại</th>
@@ -42,8 +41,7 @@
                         <tbody>
                             @foreach ($data_customer as $dt_customer)
                                 <tr>
-                                    <td scope="row">{{ $dt_customer->id }}</td>
-                                    <td>{{ $dt_customer->name }}</td>
+                                    <td scope="row">{{ $dt_customer->name }}</td>
                                     <td>{{ $dt_customer->email }}</td>
                                     <td>{{ $dt_customer->phone }}</td>
                                     <td>{{ $dt_customer->created_at->format('d-m-Y') }}</td>
@@ -60,7 +58,6 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>ID</th>
                                 <th>Họ Và Tên</th>
                                 <th>Email</th>
                                 <th>Điện Thoại</th>

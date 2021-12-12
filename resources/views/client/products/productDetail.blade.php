@@ -282,7 +282,7 @@
                                         @if ($realted_pro->product_variantProduct->first()->price > $realted_pro->product_variantProduct->first()->discount)
                                             {{ number_format($realted_pro->product_variantProduct->first()->discount) }} <u>đ</u>
                                         @else
-                                            ${{ number_format($realted_pro->product_variantProduct->first()->price) }} <u>đ</u>
+                                            {{ number_format($realted_pro->product_variantProduct->first()->price) }} <u>đ</u>
                                         @endif
                                     </span></p>
                             </div>
@@ -478,7 +478,7 @@
                         "</span><span class='price'>$" + discount_detail +
                         "</span><span class='saving-price'>Giảm " + percent_discount + "%</span>");
                 }
-                $('.price_dt').html("<span class='price'>$" + price_detail + "</span>");
+                $('.price_dt').html("<span class='price'>" + new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' }).format(price_detail) + "</span>");
 
                 // fill gallery
                 $('.thumb_gallery_detail').html(thumb_gallery_detail);
