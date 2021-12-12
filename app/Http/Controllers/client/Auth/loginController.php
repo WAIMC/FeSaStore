@@ -50,7 +50,13 @@ class loginController extends Controller
         $getInfo = Socialite::driver('google')->user();
         $authUser=  $this->users->findOrCreateUser($getInfo,'google');
         Auth::guard('cus')->login($authUser, true);
-        return redirect()->route('client.index');
+        if($authUser->address===''){
+            return redirect()->route('client.account.address')->with('success','Đăng nhập thành công! Vui lòng nhập địa chỉ thanh toán');
+        }else{
+            return redirect()->route('client.index')->with('success','Đăng nhập thành công!');
+        }
+      
+       
 
     }
 

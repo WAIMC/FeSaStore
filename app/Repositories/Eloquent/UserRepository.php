@@ -23,7 +23,7 @@ class UserRepository extends BaseRepository implements UserInterface
         return \App\Models\Customer::class;
     }
 
-    public function SendMail($email)
+    public function SendMail($email,$target)
     {
             $token = Str::random(64);
             DB::table('password_resets')->insert([
@@ -31,40 +31,41 @@ class UserRepository extends BaseRepository implements UserInterface
                 'token' => $token,
                 'created_at' => Carbon::now()
             ]); 
-            Mail::send('client.email.forgetPassword', ['token' => $token, 'email' => $email], function ($message) use ($email) {
+            Mail::send("client.email.$target", ['token' => $token, 'email' => $email], function ($message) use ($email) {
                 $message->from('fesastorefpoly@gmail.com');
                 $message->to($email);
-                $message->subject('Reset Password');
+                $message->subject('FesaStore | Đặt lại mật khẩu');
             });
      
       
     }
-    public function ResetPassword($email, $token,$password)
+    public function ResetPassword($token,$password)
     {
         $updatePassword = DB::table('password_resets')
-            ->where([
-                'email' => $email,
-                'token' => $token
-            ])
+            ->where('token' , $token)
             ->first();
 
         if (!$updatePassword) {
             return redirect()->back()->with('error', 'Invalid token!');
         }else{
-            $user = $this->getModel()::where('email', $email)
+            $user = $this->getModel()::where('email', $updatePassword->email)
             ->update(['password' => Hash::make($password)]);
 
-        DB::table('password_resets')->where(['email' => $email])->delete();
+        DB::table('password_resets')->where(['email' =>  $updatePassword->email])->delete();
         }
-
-      
     }
+
     public  function findOrCreateUser($user, $provider){
         $authUser = $this->getModel()::where('provider_id', $user->id)->first();
+
         if ($authUser) {
             return $authUser;
-        }
-        return $this->getModel()::create([
+        }else{
+            $check=$this->getModel()::where('email',$user->email)->first();
+            if ($check) {
+                return $check;
+            } 
+             return $this->getModel()::create([
             'name'     => $user->name,
             'email'    => $user->email,
             'provider' => $provider,
@@ -75,5 +76,7 @@ class UserRepository extends BaseRepository implements UserInterface
             'avatar'=>$user->avatar,
             
         ]);
+        }
+       
     }
 }

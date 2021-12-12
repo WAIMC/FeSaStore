@@ -6,7 +6,8 @@
             <div class="breadcrumb">
                 <ul class="d-flex align-items-center">
                     <li><a href="{{ route('client.index') }}">Trang chủ</a></li>
-                    <li class="active"><a href="blog">Tài khoản</a></li>
+                    <li class="active"><a href="#">Tài khoản</a></li>
+                    <li class="active"><a href="#">Đổi mật khẩu</a></li>
                 </ul>
             </div>
         </div>
@@ -20,24 +21,20 @@
                 <div class="col-lg-9 p-3 account_main">
                     <div class="row">
                         <div class="col-12">
-                            <h5>Thông tin thanh toán</h5>
+                            <h5>Đổi mật khẩu</h5>
                         </div>
 
                     </div>
                     <div class="row mt-3">
-                        <div class="col-lg-6 ">
-                            <div class="item">
-                                <div class="info">
-                                    <div class="name">{{ Auth::guard('cus')->user()->name }}<span><br>
-                                             </div>
-                                    <div class="address"><span>Địa chỉ: {{ Auth::guard('cus')->user()->address }}</div>
-                                    <div class="phone"><span>Điện thoại: </span>{{ Auth::guard('cus')->user()->phone }}</div>
-                                </div>
-                                <div class="action"><a class="edit"
-                                        href="{{route('client.account.address')}}">Chỉnh sửa</a></div>
+                        <form action="" method="POST" class="col-lg-12 ">
+                           @csrf <div class="form-group">
+                                <label >Chúng tôi sẽ gửi mã xác thức về tài khoản email của bạn</label>
+                                <input type="text" name="email" value="{{ Auth::guard('cus')->user()->email }}"  id=""
+                                    class="form-control" placeholder="" aria-describedby="helpId">
                             </div>
-                        </div>
-
+                            <button type="submit" id="submit-form" class="buttons-cart btn btn-dark float-right">Gửi</button>
+                        </form>
+                        
 
                     </div>
                 </div>
@@ -48,11 +45,11 @@
 @section('js')
     <script>
         @if (Session::has('success'))
-            alertify.success(' {{ Session::get('success') }}');
-        @endif
-        @if (Session::has('error'))
-            alertify.error(' {{ Session::get('error') }}');
-        @endif
+       alertify.success('  {{ Session::get('success') }}');
+       @endif
+       @if (Session::has('error'))
+       alertify.error('  {{ Session::get('error') }}');
+       @endif
     </script>
 @endsection
 @section('css')

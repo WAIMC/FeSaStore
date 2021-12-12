@@ -55,15 +55,6 @@
                             </div>
                         @endif
                             <legend>Nhập lại mật khẩu mới</legend>
-                            <div class="form-group d-md-flex">
-                                <label class="control-label col-md-2" for="email"><span class="require">*</span>Email</label>
-                                <div class="col-md-10">
-                                    <input type="email" class="form-control" value="{{old('email')}}" name="email" id="email" placeholder="Nhập địa chỉ email của bạn ">
-                                    @error('email')
-                                    <small  class="text-danger">{{$message}}</small> 
-                                    @enderror
-                                </div>
-                            </div>
                             <div class="form-group d-md-flex mt-2">
                                 <label class="control-label col-md-2" for="password"><span class="require">*</span>Mật khẩu</label>
                                 <div class="col-md-10">
