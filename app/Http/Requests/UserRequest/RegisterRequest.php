@@ -27,6 +27,7 @@ class RegisterRequest extends FormRequest
             'name'=>'required|string|max:35',
             'email'=>'required|string|max:255|email|unique:customer',
             'password' => ['required', 'string', 'min:8'],
+            'phone'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'pwd_confirm' => ['same:password'],
             'tinh'=>'required',
             'huyen'=>'required',
@@ -52,6 +53,9 @@ class RegisterRequest extends FormRequest
                 'password.required'=>'Mật khẩu không được bỏ trống!',
                 'password.min'=>'Mật khẩu ít nhất 8 kí tự',
                 'pwd_confirm.same'=>'Nhập lại mật khẩu sai!',
+                'phone.required'=>'Số điện thoại không được  trống!',
+                'phone.regex'=>'Số điện thoại không đúng cú pháp!',
+                'phone.min'=>'Số điện thoại phải là 10 số!',
         ];
     }
 }

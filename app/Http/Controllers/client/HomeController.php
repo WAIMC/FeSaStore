@@ -123,11 +123,13 @@ class HomeController extends Controller
 
     public function productDetail($slug){
         $data_product_detail = $this->product_repo->findBySlug($slug);
+        // dd($data_product_detail);
         $data_comment = $this->comment->FindComment($data_product_detail->id);
+        $data_rating = $this->rating_repo->FindRating($data_product_detail->id);
         $avg_rating = $this->rating_repo->AvgRating($data_product_detail->id);
         $number_rating = $this->rating_repo->CountRating($data_product_detail->id);
-
-        return view('client.products.productDetail', compact('data_product_detail','data_comment','avg_rating','number_rating'));
+        
+        return view('client.products.productDetail', compact('data_product_detail','data_comment','avg_rating','number_rating','data_rating'));
     }
     public function blog(){
         $blogs=$this->blogs->paginate(10);
@@ -163,5 +165,56 @@ class HomeController extends Controller
 
         return view('client.pages.contact');
     }
+
+    public function post_comment_product(Request $request){
+        $attribute=[
+            'comment'=>$request->comment,
+            'product_id'=>$request->product_id,
+            'customer_id'=>$request->customer_id
+        ];
+
+        if($this->comment->create($attribute)){
+            $data_comment=$this->comment->FindComment($request->product_id);
+            return view('client.products.comment_list',compact('data_comment'));
+        }else{
+            return redirect()->back()->with('error','Bình luận thất bại!');
+        }
+    }
+
+    public function post_rating(Request $request){
+        $attribute=[
+            'star_rating'=>$request->star_rating,
+            'product_id'=>$request->product_id,
+            'customer_id'=>$request->customer_id
+        ];
+
+        if($this->rating_repo->create($attribute)){
+            $data_rating=$this->rating_repo->FindRating($request->product_id);
+            $avg_rating = $this->rating_repo->AvgRating($request->product_id);
+            $number_rating = $this->rating_repo->CountRating($request->product_id);
+            $product_id = $request->product_id;
+
+            return view('client.products.avg_rating',compact('number_rating','avg_rating','product_id','data_rating'));
+        }else{
+            return redirect()->back()->with('error','Bình luận thất bại!');
+        }
+    }
+
+    public function post_comment_blog(Request $request){
+        $attribute=[
+            'comment'=>$request->comment,
+            'blog_id'=>$request->blog_id,
+            'customer_id'=>$request->customer_id
+        ];
+        if($this->commentblog->create($attribute)){
+            $data_commentblog=$this->commentblog->FindCommentBlog($request->blog_id);
+            return view('client.blogs.comment_list',compact('data_commentblog'));
+        }else{
+            return redirect()->back()->with('error','Bình luận thất bại!');
+        }
+    }
+
+    
+ 
 
 }

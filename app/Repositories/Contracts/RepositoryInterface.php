@@ -38,7 +38,22 @@
          * @return mixed
          */
         public function destroy($model);
+
+          /**
+         * Paginate
+         * @param $id
+         * @return mixed
+         */
+
         public function paginate($perPage = 15);
+
+          /**
+         * FindBySlug
+         * @param $id
+         * @return mixed
+         */
+
         public function findBySlug($slug);
+
     }
 ?>

@@ -141,8 +141,8 @@
                                 <div class="review border-default universal-padding">
                                     <h4 class="review-mini-title">Đánh giá trung bình</h4>
                                     <br>
-                                    <div class="row">
-                                        <div class="col-sm-2" id="rating_product">
+                                    <div class="row" id="rating_product">
+                                        <div class="col-sm-2">
                                             @if($avg_rating)
                                             <p class="point">{{$avg_rating}}/5</p>
                                             @else
@@ -163,6 +163,7 @@
                                         </div>
                                         <div class="col-sm-7">
                                         @if(isset(Auth::guard('cus')->user()->id))
+                                           
                                             <p class="star">Bạn chấm sản phẩm này bao nhiêu sao ?</p>
                                             <div id="rateYo" style="margin:0 auto"></div>
                                             <form>
@@ -172,12 +173,26 @@
                                             </form>
                                             </div>
                                             <div class="col-sm-3">
+                                            <!-- Check xem tài khoản đã đánh giá sao cho sản phẩm này hay chưa -->
+                                            @if($data_rating)
+                                            <?php 
+                                                $check = false;
+                                                  foreach($data_rating as $rating){
+                                                        if($rating->customer_id == Auth::guard('cus')->user()->id){
+                                                            $check = true;
+                                                        }
+                                                }
+                                            ?>
+                                            @endif
+
+                                            <!-- Hiển thị -->
+                                            @if($check == true)
+                                                <p>Bạn đã đánh giá cho sản phẩm này!</p>
+                                            @else
                                                 <button id="post_rating_star" class="customer-btn"> Gửi đánh giá của bạn</button>
+                                            @endif
                                             </div>
-                                        @else
-                                        <p class="star">Bạn đánh giá sản phẩm này bao nhiêu sao ?</p>
-                                            <div id="rateYo" style="margin:0 auto"></div>
-                                            </div>
+                                            @else
                                             <div class="col-sm-3">
                                                 <button class="customer-btn" disablded> Đăng nhập để đánh giá</button>
                                             </div>
@@ -188,14 +203,16 @@
 
                                 @if(isset(Auth::guard('cus')->user()->id))
                                 <form>
-                                    <input type="hidden" name="customer_id" value="{{Auth::guard('cus')->user()->id}}">
-                                    <input type="hidden" name="product_id" value="{{$data_product_detail->id}}">
-                                    <div class="form-group">
-                                        <textarea class="form-control" rows="5" name="comment" id="comment"
-                                            required="required" placeholder="Nhận xét về sản phẩm ..." style="width:100%"></textarea>
-                                    </div>
-                                    <button id="post_product_details" class="customer-btn">Gửi Đi Đánh Giá</button>
-                                </form>
+                                        <input type="hidden" name="customer_id" value="{{Auth::guard('cus')->user()->id}}">
+                                        <input type="hidden" name="product_id" value="{{$data_product_detail->id}}">
+                                        <div class="form-group">
+                                            <textarea class="form-control" rows="5" name="comment" id="comment"
+                                                required="required" placeholder="Nhận xét về sản phẩm ..." style="width:100%"></textarea>
+                                        </div>
+                                        <div id="rated_star">
+                                        <button id="post_product_details" class="customer-btn">Gửi Đi Đánh Giá</button>
+                                        </div>
+                                    </form>
                                 @else
                                     <p>Vui lòng đăng nhập để bình luận</p>
                                 @endif
@@ -267,9 +284,9 @@
                                 </h4>
                                 <p><span class="price">
                                         @if ($realted_pro->product_variantProduct->first()->price > $realted_pro->product_variantProduct->first()->discount)
-                                            ${{ $realted_pro->product_variantProduct->first()->discount }}
+                                            {{ number_format($realted_pro->product_variantProduct->first()->discount) }} <u>đ</u>
                                         @else
-                                            ${{ $realted_pro->product_variantProduct->first()->price }}
+                                            ${{ number_format($realted_pro->product_variantProduct->first()->price) }} <u>đ</u>
                                         @endif
                                     </span></p>
                             </div>
@@ -277,12 +294,7 @@
                                 <div class="actions-primary">
                                     <a href="#"  class="quick_view" data-toggle="modal" data-target="{{ $realted_pro->id }}" title="Thêm vào giỏ hàng"> + Thêm vào giỏ hàng</a>
                                 </div>
-                                <div class="actions-secondary">
-                                    <a href="compare.html" title="So Sánh"><i class="lnr lnr-sync"></i> <span>Thêm Vào So
-                                            Sánh</span></a>
-                                    <a href="wishlist.html" title="Ưa Thích"><i class="lnr lnr-heart"></i> <span>Thêm Vào
-                                            Ưa Thích</span></a>
-                                </div>
+                               
                             </div>
                         </div>
                         <!-- Product Content End -->
@@ -546,7 +558,6 @@
       // Gửi bình luận sản phẩm bằng ajax
         $('#post_product_details').click(function(e) {
             e.preventDefault();
-        
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

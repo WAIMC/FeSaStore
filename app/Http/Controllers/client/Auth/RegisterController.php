@@ -44,7 +44,7 @@ class RegisterController extends Controller
             'address' => $request->thon.",".$request->xa.",".$request->huyen.",".$request->tinh,
             'password' => Hash::make($request->password),
       ]);
-
+      return redirect()->route('client.login')->with('success','Đăng ký thành công!');
 
     }
 }

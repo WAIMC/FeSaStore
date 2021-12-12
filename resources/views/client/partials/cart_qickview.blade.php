@@ -8,7 +8,7 @@
       </div>
       <div class="cart-content">
           <h6><a href="{{route('client.index')}}">{{$item['name']}}</a></h6>
-          <span class="cart-price">{{ number_format($item['price'])}} VND</span>
+          <span class="cart-pricegit">{{ number_format($item['price'])}} VND</span>
           <span>Thuộc tính: {{$item['attr']}}</span>
          
       </div>

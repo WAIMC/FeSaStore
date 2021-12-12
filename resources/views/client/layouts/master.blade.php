@@ -71,9 +71,7 @@
 
     <!-- Main Wrapper Start Here -->
     <div class="wrapper">
-        <!-- Banner Popup Start -->
-       
-        </div>
+
         <!-- Banner Popup End -->
         <!-- Newsletter Popup Start -->
         <div class="popup_wrapper">
