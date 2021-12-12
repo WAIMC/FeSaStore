@@ -74,8 +74,8 @@ use Illuminate\Support\Facades\Route;
     Route::get('/',[App\Http\Controllers\client\HomeController::class,'index'])->name('client.index');
     Route::get('/Cua-Hang',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
     Route::get('/San-Pham-Chi-Tiet/{slug}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
-    // Route::post('/productDetail/{slug}',[App\Http\Controllers\admin\CommentController::class,'store'])->name('client.productDetail');
-    // Route::get('/productDetail/rating/{slug}',[App\Http\Controllers\admin\RatingController::class,'store'])->name('client.rating');
+    Route::post('/productDetail/{slug}',[App\Http\Controllers\client\HomeController::class,'post_comment_product'])->name('client.productDetail');
+    Route::get('/productDetail/rating/{slug}',[App\Http\Controllers\client\HomeController::class,'post_rating'])->name('client.rating');
     Route::get('/Gioi-Thieu',[App\Http\Controllers\client\HomeController::class,'about'])->name('client.about');
     Route::get('/Lien-He',[App\Http\Controllers\client\HomeController::class,'contact'])->name('client.contact');
     Route::post('/Lien-He',[App\Http\Controllers\client\HomeController::class,'post_contact'])->name('client.post_contact');
@@ -146,7 +146,7 @@ Route::prefix('wishlist')->group(function () {
     Route::get('/checkout',[App\Http\Controllers\client\HomeController::class,'checkout'])->name('client.checkout');
     Route::get('/blog',[App\Http\Controllers\client\HomeController::class,'blog'])->name('client.blog');
     Route::get('/blog-details/{slug}',[App\Http\Controllers\client\HomeController::class,'blog_details'])->name('client.blog_details');
-    Route::post('/blog-details/{slug}',[App\Http\Controllers\admin\CommentBlogController::class,'store'])->name('client.blog_details');
+    Route::post('/blog-details/{slug}',[App\Http\Controllers\client\HomeController::class,'post_comment_blog'])->name('client.blog_details');
     Route::get('/blog/category/{slug}',[App\Http\Controllers\client\HomeController::class,'categoryblog'])->name('client.cateblog');
 /*
     End route client

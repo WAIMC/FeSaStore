@@ -60,7 +60,7 @@
                                     <div class="form-group row mt-3">
                                         <div class="col-md-8 offset-md-4">
                                         <a href="{{route('client.ggRedirect')}}" class="btn btn-danger"><i class="fa fa-google"></i> Google</a>
-                                        <a href="{{route('client.fbRedirect')}}" class="btn btn-primary"><i class="fa fa-facebook"></i> Google</a>
+                                        <a href="{{route('client.fbRedirect')}}" class="btn btn-primary"><i class="fa fa-facebook"></i> Facebook</a>
    
                                     </div>
                                         </div>
@@ -78,4 +78,14 @@
 
 
 
+    @endsection
+    @section('js')
+<script>
+       @if (Session::has('success'))
+       alertify.success('  {{ Session::get('success') }}');
+       @endif
+       @if (Session::has('error'))
+       alertify.error('  {{ Session::get('error') }}');
+       @endif
+</script>
     @endsection
