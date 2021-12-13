@@ -35,15 +35,16 @@
                                 <a href="#"><img src="{{url('public/client')}}/img/banner\banner-sidebar.jpg" alt="slider-banner"></a>
                             </div>
                             <div class="single-sidebar mb-30">
-                                 <h3 class="sidebar-title">khác</h3>
+                                 {{-- <h3 class="sidebar-title">Bài việt mới nhất</h3>
                                  <ul class="sidbar-style">
-                                     <li><a href="login.html">Đăng nhập</a></li>
-                                     <li><a href="#">Mục <abbr title="Really Simple Syndication">RSS</abbr></a></li>
-                                     <li><a href="#">Bình luận <abbr title="Really Simple Syndication">RSS</abbr></a></li>
-                                     <li><a href="#">Liên kết khác</a></li>
+                                     @foreach ($blogs as $item)
+                                         <li><a href="login.html">{{$item->name}}</a></li> 
+                                     @endforeach --}}
+                                    
+                                    
                                  </ul>
                             </div>
-                            <div class="tags">
+                            {{-- <div class="tags">
                                  <h3 class="sidebar-title">Thẻ</h3>
                                  <div class="sidbar-style">
                                     <ul class="tag-list">
@@ -55,7 +56,7 @@
                                         <li><a href="#">Nữ giới</a></li>
                                     </ul>
                                  </div>
-                            </div>
+                            </div> --}}
                         </aside>
                     </div>
                     <!-- Single Blog Sidebar End -->

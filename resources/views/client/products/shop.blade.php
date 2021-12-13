@@ -271,7 +271,7 @@
                             <!-- #list view End -->
                             <div class="pro-pagination">
                                 <div class="blog-pagination">
-                                    {{ $data_paginate_product->appends(request()->all())->links() }}
+                                    {{ $data_paginate_product->appends(request()->all())->links('pagination.default') }}
                                 </div>                                    
                                 <div class="product-pagination">
                                     <span class="grid-item-list">Xem {{ $data_paginate_product->currentPage() }} đến {{ $data_paginate_product->perPage() }} của {{ $data_paginate_product->total() }} ({{ $data_paginate_product->currentPage() }} Trang)</span>

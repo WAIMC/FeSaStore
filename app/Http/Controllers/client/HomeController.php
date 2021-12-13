@@ -137,13 +137,8 @@ class HomeController extends Controller
     }
     public function blog_details($slug){
         $blog=$this->blogs->findBySlug($slug);
-        $get_all_commentblog = $this->commentblog->FindCommentBlog($blog->id);
-        $data_commentblog = [] ;
-        foreach ($get_all_commentblog as $key) {
-            if($key->blog_id == $blog->id){
-                array_push($data_commentblog, $key);
-            }
-        }
+        $data_commentblog = $this->commentblog->FindCommentBlog($blog->id);
+      
         return view('client.blogs.blog_details', compact('blog','data_commentblog'));
     }
     
