@@ -378,9 +378,9 @@
                                                 <div class="label-product l_sale">{{ round((($best_pro->product_variantProduct->first()->price - $best_pro->product_variantProduct->first()->discount )/$best_pro->product_variantProduct->first()->price)*100,0)}}<span class="symbol-percent">%</span></div>
                                             </div>
                                             <div class="pro-actions">
-                                                            <div class="actions-primary">
-                                                                <a href="#" class="quick_view" data-toggle="modal" data-target="{{$best_pro->id}}" title="Thêm vào giỏ hàng">+ Thêm vào giỏ hàng</a>
-                                                            </div>
+                                                <div class="actions-primary">
+                                                    <a href="#" class="quick_view" data-toggle="modal" data-target="{{$best_pro->id}}" title="Thêm vào giỏ hàng">+ Thêm vào giỏ hàng</a>
+                                                </div>
                                             </div>
                                         </div>
                                         <!-- Product Content End -->

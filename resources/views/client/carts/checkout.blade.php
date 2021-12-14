@@ -1,9 +1,11 @@
 @extends('client.layouts.master')
 @section('title', 'Thanh toán')
 @section('main')
+
 @if(count($cart->items)=='null'){
   <script>window.location = "{{route('client.index')}}";</script>
 @endif
+
     <div class="breadcrumb-area mt-30" onload="check()">
         <div class="container">
             <div class="breadcrumb">
@@ -21,7 +23,9 @@
                 <div class="col-md-12">
                     <div class="coupon-accordion">
                         <!-- ACCORDION START -->
-                        <h3>Dùng phiếu giảm giá? <span id="showcoupon">Bấm vào đây để nhập mã của bạn</span></h3>
+                        <h3>Dùng phiếu giảm giá? 
+                           
+                            <span id="showcoupon">Bấm vào đây để nhập mã của bạn</span></h3>
                         <div id="checkout_coupon" class="coupon-checkout-content">
                             <div class="coupon-info">
                                 <form method="POST" action="{{ url('/check-coupon') }}">
@@ -44,9 +48,9 @@
     </div>
     <!-- coupon-area end -->
     <!-- checkout-area start -->
-    <div class="checkout-area pb-100 pt-15 pb-sm-60">
+    <div class="checkout-area pb-100 pt-15 pb-sm-60 ">
         <div class="container">
-            <form action="{{ route('cart.postcheckout') }}" id="create_form" method="POST" class="row">
+            <form action="{{ route('cart.postcheckout') }}" id="checkout_form" method="POST" class="row">
                 @csrf
                 <div class="col-lg-6 col-md-6">
                     <div class="checkbox-form mb-sm-40">
@@ -186,10 +190,11 @@
                                                 {{ number_format($total_coupon) }} VND
                                             </span>
                                         </td>
-                                        <input type="hidden" name="amount" value="{{ $total_coupon }}">
+                                       
+                                      
                                     </tr>
                                     @endif
-                                    
+                                    <input type="hidden" name="amount" value="{{ $cart->total_price }}">
                                 </tfoot>
                             </table>
                         </div>
@@ -213,19 +218,21 @@
                                    
                                 </div> --}}
                             <div class="wc-proceed-to-checkout">
-                                <button type="submit" class="buttons-cart btn btn-dark" value="{{ url('/delete-coupon')}}">Thanh toán khi nhận hàng</button>
+                                <button type="submit" class="buttons-cart btn btn-dark" id="off_form" value="{{ url('/delete-coupon')}}">Thanh toán khi nhận hàng</button>
                                 <button type="submit" class="buttons-cart btn btn-dark" id="btnPopup" name="payment"
                                     value="2">Thanh toán online</button>
+                                  
                             </div>
                         </div>
                     </div>
                 </div>
 
             </form>
-
+       
+<div id="loader" class="lds-dual-ring hidden overlay"></div> 
+    </div>
         </div>
 
-    </div>
     <!-- checkout-area end -->
 
 
@@ -233,66 +240,79 @@
 
 @section('js')
     <script>
+        $("#amount").val("{{$cart->total_price}}");
+ $('#off_form').click(function () {
 
-        $.get(
-            ' https://provinces.open-api.vn/api/?depth=2',
-            function(res) {
-                content = `<option selected>Chọn tỉnh thành phố</option>`;
-                res.forEach(item => {
-
-                    content += `
-                    <option value="${item.code}">${item.name}</option>
-                    `;
-
-                });
-
-                $('.tinh').html(content);
-            }
-        );
-
-        $('.tinh').change(function(e) {
-            e.preventDefault();
-            code = $('.tinh').val();
-            $.get(
-                `https://provinces.open-api.vn/api/p/${code}/?depth=2`,
-
-                function(res) {
-                    content = `<option selected>Chọn Quận/huyện</option>`;
-                    res.districts.forEach(item => {
-                        content += `
-                 <option value="${item.code}">${item.name}</option>
-                 `;
-
-                    });
-
-                    $('.huyen').html(content);
+// On click, execute the ajax call.
+$.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
-            );
-
-        });
-        // console.log(code);
-        $('.huyen').change(function(e) {
-            e.preventDefault();
-            var code = $('.huyen').val();
-            $.get(
-                `https://provinces.open-api.vn/api/d/${code}?depth=2`,
-
-                function(res) {
-                    console.log(res);
-                    content = `<option selected>Chọn Xã/phường</option>`;
-                    res.wards.forEach(item => {
-                        content += `
-                 <option value="${item.code}">${item.name}</option>
-                 `;
-
-                    });
-
-                    $('.xa').html(content);
-                }
-            );
-
-        });
-        
-      
+            });
+$.ajax({
+    type: "Post",
+    url: "{{ route('cart.postcheckout') }}",
+    dataType: 'json',
+    data: $('#checkout_form').serialize(),
+    beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
+        $('#loader').removeClass('hidden')
+    },
+    success: function (data) {
+        // On Success, build our rich list up and append it to the #richList div.
+        alertify.success('Đặt hàng thành công');
+        location.replace('{{route('client.index')}}')
+    },
+    complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
+        $('#loader').addClass('hidden')
+        alertify.success('Đặt hàng thành công');
+        location.replace('{{route('client.index')}}')
+    },
+});
+});
     </script>
+    <style>
+   .lds-dual-ring.hidden {
+        display: none;
+    }
+
+    /*Add an overlay to the entire page blocking any further presses to buttons or other elements.*/
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0,0,0,.8);
+        z-index: 999;
+        opacity: 1;
+        transition: all 0.5s;
+        display: none
+    }
+    
+    /*Spinner Styles*/
+    .lds-dual-ring {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+    }
+    .lds-dual-ring:after {
+        content: " ";
+        display: block;
+        width: 64px;
+        height: 64px;
+        margin: 5% auto;
+        border-radius: 50%;
+        border: 6px solid #fff;
+        border-color: #fff transparent #fff transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
+    }
+    @keyframes lds-dual-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    </style>
 @endsection

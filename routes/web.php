@@ -20,26 +20,26 @@ use Illuminate\Support\Facades\Route;
     Start route admin
 */ 
     // login admin
-    Route::get('/Admin/Đăng-Nhập',[App\Http\Controllers\admin\Auth\loginController::class,'login'])->name('admin.login');
-    Route::post('/Admin/Đăng-Nhập',[App\Http\Controllers\admin\Auth\loginController::class,'postLogin'])->name('admin.login');
+    Route::get('/Admin/Dang-Nhap',[App\Http\Controllers\admin\Auth\loginController::class,'login'])->name('admin.login');
+    Route::post('/Admin/Dang-Nhap',[App\Http\Controllers\admin\Auth\loginController::class,'postLogin'])->name('admin.login');
 
     // register admin
-    Route::get('/Admin/Đăng-Ký',[App\Http\Controllers\admin\Auth\RegisterController::class,'register'])->name('admin.register');
-    Route::post('Admin/Đăng-Ký',[App\Http\Controllers\admin\Auth\RegisterController::class,'postRegister'])->name('admin.register');
+    Route::get('/Admin/Dang-Ky',[App\Http\Controllers\admin\Auth\RegisterController::class,'register'])->name('admin.register');
+    Route::post('Admin/Dang-Ky',[App\Http\Controllers\admin\Auth\RegisterController::class,'postRegister'])->name('admin.register');
 
     // forgot and reset password
-    Route::get('/Admin/Cài-Lại-Mật-Khẩu', [App\Http\Controllers\admin\Auth\ForgotPasswordController::class,'showForm'])->name('admin.password_reset');
-    Route::post('/Admin/Cài-Lại-Mật-Khẩu', [App\Http\Controllers\admin\Auth\ForgotPasswordController::class,'sendPasswordResetToken'])->name('admin.password_reset');
-    Route::get('/Admin/Cài-Lại-Mật-Khẩu/{token}', [App\Http\Controllers\admin\Auth\ForgotPasswordController::class,'showPasswordResetForm'])->name('admin.get_token');
-    Route::post('/Admin/Cài-Lại-Mật-Khẩu/{token}', [App\Http\Controllers\admin\Auth\ForgotPasswordController::class,'resetPassword'])->name('admin.get_token');
+    Route::get('/Admin/Cai-Lai-Mat-Khau', [App\Http\Controllers\admin\Auth\ForgotPasswordController::class,'showForm'])->name('admin.password_reset');
+    Route::post('/Admin/Cai-Lai-Mat-Khau', [App\Http\Controllers\admin\Auth\ForgotPasswordController::class,'sendPasswordResetToken'])->name('admin.password_reset');
+    Route::get('/Admin/Cai-Lai-Mat-Khau/{token}', [App\Http\Controllers\admin\Auth\ForgotPasswordController::class,'showPasswordResetForm'])->name('admin.get_token');
+    Route::post('/Admin/Cai-Lai-Mat-Khau/{token}', [App\Http\Controllers\admin\Auth\ForgotPasswordController::class,'resetPassword'])->name('admin.get_token');
 
     // manager admin
     Route::prefix('admin')->middleware('adminAuth')->group(function(){
 
         Route::get('/',[App\Http\Controllers\admin\AdminController::class,'index'])->name('admin.index');
-        Route::post('/Biểu-Đồ-Doanh-Thu',[App\Http\Controllers\admin\AdminController::class, 'filter_chart_by_date'])->name('admin.filter_chart_by_date');
-        Route::get('/Quản-Lý-Ảnh',[App\Http\Controllers\admin\AdminController::class,'file'])->name('admin.file');
-        Route::post('/Admin/Logout',[App\Http\Controllers\admin\Auth\loginController::class,'logout'])->name('admin.logout');
+        Route::post('/Bieu-Đo-Doanh-Thu',[App\Http\Controllers\admin\AdminController::class, 'filter_chart_by_date'])->name('admin.filter_chart_by_date');
+        Route::get('/Quan-Ly-Anh',[App\Http\Controllers\admin\AdminController::class,'file'])->name('admin.file');
+        Route::post('/Admin/Dang-Xuat',[App\Http\Controllers\admin\Auth\loginController::class,'logout'])->name('admin.logout');
 
         Route::resources([
             'settingLink'=>admin\SettingLinkController::class,
@@ -76,7 +76,6 @@ use Illuminate\Support\Facades\Route;
     Route::get('/productDetail/{slug}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
     Route::post('/productDetail/{slug}',[App\Http\Controllers\client\HomeController::class,'post_comment_product'])->name('client.productDetail');
     Route::get('/productDetail/rating/{slug}',[App\Http\Controllers\client\HomeController::class,'post_rating'])->name('client.rating');
-    Route::get('/San-Pham-Chi-Tiet/{slug}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
     Route::get('/Gioi-Thieu',[App\Http\Controllers\client\HomeController::class,'about'])->name('client.about');
     Route::get('/Lien-He',[App\Http\Controllers\client\HomeController::class,'contact'])->name('client.contact');
     Route::post('/Lien-He',[App\Http\Controllers\client\HomeController::class,'post_contact'])->name('client.post_contact');
@@ -104,6 +103,15 @@ use Illuminate\Support\Facades\Route;
     Route::group(['prefix' => 'account', 'middleware' => 'cus'],function () {
     Route::get('/',[App\Http\Controllers\client\AccountController::class,'index'] )->name('client.account.index');
     Route::get('/history',[App\Http\Controllers\client\AccountController::class,'showOrder'] )->name('client.account.order');
+    Route::get('/address',[App\Http\Controllers\client\AccountController::class,'Address'] )->name('client.account.address');
+    Route::post('/address/{user_id}',[App\Http\Controllers\client\AccountController::class,'updateAddress'] );
+
+    Route::get('/change-pass',[App\Http\Controllers\client\AccountController::class,'showChangePass'] )->name('client.account.changepass');
+    Route::post('/change-pass',[App\Http\Controllers\client\AccountController::class,'ChangePass'] );
+    Route::get('reset-password/{token}',[App\Http\Controllers\client\AccountController::class, 'showResetPasswordForm'])->name('client.account.changepass.get');
+    Route::post('reset-password',[App\Http\Controllers\client\AccountController::class, 'submitResetPasswordForm'])->name('client.account.changepass.post');
+
+
     Route::get('/order/view/{id}',[App\Http\Controllers\client\AccountController::class,'showOrderDetail'] )->name('client.account.orderDetail');
     Route::get('/order/{id}',[App\Http\Controllers\client\AccountController::class,'updateOrder'] )->name('client.account.updateOrder');
 });
@@ -144,7 +152,7 @@ Route::prefix('wishlist')->group(function () {
 
 
 
-    Route::get('/checkout',[App\Http\Controllers\client\HomeController::class,'checkout'])->name('client.checkout');
+   
     Route::get('/blog',[App\Http\Controllers\client\HomeController::class,'blog'])->name('client.blog');
     Route::get('/blog-details/{slug}',[App\Http\Controllers\client\HomeController::class,'blog_details'])->name('client.blog_details');
     Route::post('/blog-details/{slug}',[App\Http\Controllers\client\HomeController::class,'post_comment_blog'])->name('client.blog_details');

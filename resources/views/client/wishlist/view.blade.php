@@ -46,7 +46,7 @@
                                             </a>
                                         </td>
                                         <td class="product-thumbnail">
-                                            <a href="#"><img src="{{url('public/thumbs')}}/{{$item['image'] }}" alt="cart-image"></a>
+                                            <a href="#"><img src="{{url('public/uploads')}}/{{$item['image'] }}" alt="cart-image"></a>
                                         </td>
                                         <td class="product-name"><a href="#">{{$item['name'] }}</a></td>                                    
                                         <td class="product-quantity">{{$item['attr'] }}</td>

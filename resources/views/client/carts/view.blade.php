@@ -17,22 +17,6 @@
             <div class="row">
 
                 <div class="col-md-12 col-sm-12">
-                    @if (Session::has('success'))
-                    <div class="alert alert-success  alert-dismissible fade show" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        {{ Session::get('success') }}
-                    </div>
-                @endif
-                @if (Session::has('error'))
-                <div class="alert alert-danger  alert-dismissible fade show" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                    {{ Session::get('error') }}
-                </div>
-            @endif
                     @if (count($cart->items) > 0)
                         <!-- Form Start -->
 
@@ -181,5 +165,11 @@
             $('#change-cart').empty();
             $('#change-cart').html(res);
         }
+        @if (Session::has('success'))
+       alertify.success('  {{ Session::get('success') }}');
+       @endif
+       @if (Session::has('error'))
+       alertify.error('  {{ Session::get('error') }}');
+       @endif
     </script>
 @endsection

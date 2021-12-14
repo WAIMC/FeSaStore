@@ -144,65 +144,64 @@
                                     <div class="row" id="rating_product">
                                         <div class="col-sm-2">
                                             @if($avg_rating)
-                                            <p class="point">{{$avg_rating}}/5</p>
+                                                <p class="point">{{$avg_rating}}/5</p>
                                             @else
-                                            <p class="point1">Chưa có</p>
+                                                <p class="point1">Chưa có</p>
                                             @endif
                                             <br>
                                             <p class="number_rating">{{$number_rating}} đánh giá</p>
                                             <ul class="review-list">
-                                            <!-- Single Review List Start -->
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </li>
+                                                <!-- Single Review List Start -->
+                                                <li>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-7">
-                                        @if(isset(Auth::guard('cus')->user()->id))
-                                           
-                                            <p class="star">Bạn chấm sản phẩm này bao nhiêu sao ?</p>
-                                            <div id="rateYo" style="margin:0 auto"></div>
-                                            <form>
-                                                <input type="hidden" name="rating_star" value="5" id="rating_star">
-                                                <input type="hidden" name="product_id" value="{{$data_product_detail->id}}" >
-                                                <input type="hidden" name="customer_id" value="{{Auth::guard('cus')->user()->id}}" >
-                                            </form>
-                                            </div>
-                                            <div class="col-sm-3">
-                                            <!-- Check xem tài khoản đã đánh giá sao cho sản phẩm này hay chưa -->
-                                            @if($data_rating)
-                                            <?php 
-                                                $check = false;
-                                                  foreach($data_rating as $rating){
-                                                        if($rating->customer_id == Auth::guard('cus')->user()->id){
-                                                            $check = true;
-                                                        }
-                                                }
-                                            ?>
-                                            @endif
-
-                                            <!-- Hiển thị -->
-                                            @if($check == true)
-                                                <p>Bạn đã đánh giá cho sản phẩm này!</p>
+                                            @if(isset(Auth::guard('cus')->user()->id))
+                                            
+                                                <p class="star">Bạn chấm sản phẩm này bao nhiêu sao ?</p>
+                                                <div id="rateYo" style="margin:0 auto"></div>
+                                                    <form>
+                                                        <input type="hidden" name="rating_star" value="5" id="rating_star">
+                                                        <input type="hidden" name="product_id" value="{{$data_product_detail->id}}" >
+                                                        <input type="hidden" name="customer_id" value="{{Auth::guard('cus')->user()->id}}" >
+                                                    </form>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <!-- Check xem tài khoản đã đánh giá sao cho sản phẩm này hay chưa -->
+                                                    @if($data_rating)
+                                                        <?php 
+                                                            $check = false;
+                                                            foreach($data_rating as $rating){
+                                                                if($rating->customer_id == Auth::guard('cus')->user()->id){
+                                                                    $check = true;
+                                                                }
+                                                            }
+                                                        ?>
+                                                    @endif
+                                                    <!-- Hiển thị -->
+                                                    @if($check == true)
+                                                        <p>Bạn đã đánh giá cho sản phẩm này!</p>
+                                                    @else
+                                                        <button id="post_rating_star" class="customer-btn"> Gửi đánh giá của bạn</button>
+                                                    @endif
+                                                </div>
                                             @else
-                                                <button id="post_rating_star" class="customer-btn"> Gửi đánh giá của bạn</button>
+                                                <div class="col-sm-3">
+                                                    <button class="customer-btn" disablded> Đăng nhập để đánh giá</button>
+                                                </div>
                                             @endif
-                                            </div>
-                                            @else
-                                            <div class="col-sm-3">
-                                                <button class="customer-btn" disablded> Đăng nhập để đánh giá</button>
-                                            </div>
-                                        @endif
+                                        </div>
                                     </div>
                                 </div>
                                 <br>
-
                                 @if(isset(Auth::guard('cus')->user()->id))
-                                <form>
+                                    <form>
                                         <input type="hidden" name="customer_id" value="{{Auth::guard('cus')->user()->id}}">
                                         <input type="hidden" name="product_id" value="{{$data_product_detail->id}}">
                                         <div class="form-group">
@@ -221,25 +220,22 @@
                             </div>
                             <!-- Reviews Start -->
                             <div class="review border-default universal-padding" id="comment_product">
-                            @if($data_comment)
-                                @foreach($data_comment as $comment)
-                                <div class="row iconcustomer">
-                                    <div class="col-2">
-                                        <img src="{{url('public/client')}}/img/icon/iconcustomer.jpg" alt="" style="width:60%">
-                                    </div>
-                                    <div class="col-10">
-                                    <h4 class="review-mini-title">{{$comment->cus->name}} <span class="time">{{ date('\V\à\o \l\ú\c H:i d-m-Y ',strtotime($comment->created_at))}}</span></h4> 
-                                        <p>{{$comment->comment}}</p>
-                                    </div>
-                                </div>
-                                @endforeach
-                            @else
-                                <p>Chưa có bình luận cho sản phẩm này!</p>
-                            @endif
+                                @if($data_comment)
+                                    @foreach($data_comment as $comment)
+                                        <div class="row iconcustomer">
+                                            <div class="col-2">
+                                                <img src="{{url('public/client')}}/img/icon/iconcustomer.jpg" alt="" style="width:60%">
+                                            </div>
+                                            <div class="col-10">
+                                                <h4 class="review-mini-title">{{$comment->cus->name}} <span class="time">{{ date('\V\à\o \l\ú\c H:i d-m-Y ',strtotime($comment->created_at))}}</span></h4> 
+                                                <p>{{$comment->comment}}</p>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <p>Chưa có bình luận cho sản phẩm này!</p>
+                                @endif
                             </div>
-                            <!-- Reviews End -->
-                            <!-- Reviews Start -->
-                      
                             <!-- Reviews End -->
                         </div>
                     </div>
@@ -286,7 +282,7 @@
                                         @if ($realted_pro->product_variantProduct->first()->price > $realted_pro->product_variantProduct->first()->discount)
                                             {{ number_format($realted_pro->product_variantProduct->first()->discount) }} <u>đ</u>
                                         @else
-                                            ${{ number_format($realted_pro->product_variantProduct->first()->price) }} <u>đ</u>
+                                            {{ number_format($realted_pro->product_variantProduct->first()->price) }} <u>đ</u>
                                         @endif
                                     </span></p>
                             </div>
@@ -482,7 +478,7 @@
                         "</span><span class='price'>$" + discount_detail +
                         "</span><span class='saving-price'>Giảm " + percent_discount + "%</span>");
                 }
-                $('.price_dt').html("<span class='price'>$" + price_detail + "</span>");
+                $('.price_dt').html("<span class='price'>" + new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' }).format(price_detail) + "</span>");
 
                 // fill gallery
                 $('.thumb_gallery_detail').html(thumb_gallery_detail);
