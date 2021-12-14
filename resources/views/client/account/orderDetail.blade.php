@@ -89,6 +89,7 @@
                             </thead>
                             <tbody>
                                 @if (isset($data))
+                                <?php  $total_price = 0;?>
                                     @foreach ($data as $item)
 
                                         <tr>
@@ -101,7 +102,7 @@
                                             <td> {{ $item->quantity }} </td>
                                             <td>0 ₫</td>
                                             @php
-                                                $total_price = 0;
+                                               
                                                 $total_price += $item->quantity * $item->price;
                                             @endphp
                                             <td class="col_price">
@@ -110,7 +111,9 @@
 
 
                                     @endforeach
-
+                                    {{-- @php
+                                    dd($total_price);
+                                @endphp --}}
                                 @endif
 
                             </tbody>

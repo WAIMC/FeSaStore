@@ -10,6 +10,9 @@ use App\Repositories\Contracts\CartInterface;
 use App\Repositories\Contracts\VariantProductInterface;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Cart\CheckoutRequest;
+use App\Models\Coupon;
+use Illuminate\Support\Facades\Session;
+use App\Repositories\Contracts\CouponInterface;
 class CartController extends Controller
 {
     protected $orders;
@@ -51,10 +54,9 @@ class CartController extends Controller
     }
     public function PostCheckout(CheckoutRequest $request)
     { 
-        
         $id=Auth::guard('cus')->user()->id;
         if ($request->payment==2) {
-            
+        
             $data=[
                 'name' =>$request->name,
                 'email'=>$request->email,
@@ -66,7 +68,6 @@ class CartController extends Controller
              session(['cus_info' => $data]);
          return  $this->orders->vnpayCheckout();
         }else{
-              
         $this->orders->checkout($request->name ,$request->email,$request->phone,$request->address,$request->note,$id);
            return redirect()->route('cart.view')->with('success','Đặt hàng thành công'); 
         }
@@ -90,4 +91,51 @@ class CartController extends Controller
             return redirect()->route('cart.view')->with('errors' ,'Lỗi trong quá trình thanh toán phí dịch vụ');
         }
     }
+
+    public function check_coupon(Request $request){
+        $data = $request ->all();
+        $coupon =Coupon::where('coupon_code',$data['coupon'])->first();
+        if($coupon){
+            $count_coupon = $coupon->count();
+            if($count_coupon>0){
+                $coupon_session = Session::get('coupon');
+                if($coupon_session==true){
+                    $is_avaiable = 0;
+                    if($is_avaiable==0){
+                        $cou[] = array(
+                            'feature_coupon' => $coupon -> feature_coupon,
+                            'id' => $coupon -> id,
+                            'coupon_code' => $coupon -> coupon_code,
+                            'coupon_number' => $coupon -> coupon_number,
+                            
+                        );
+                        Session::put('coupon',$cou);
+                    }
+                }else{
+                    $cou[] = array(
+                        'feature_coupon' => $coupon -> feature_coupon,
+                        'id' => $coupon -> id,
+                        'coupon_code' => $coupon -> coupon_code,
+                        'coupon_number' => $coupon -> coupon_number,
+
+                    );
+                    Session::put('coupon',$cou);
+                }
+                Session::save();
+                return redirect()->back()->with('massage','Đã thêm mã giảm giá!');
+            }
+        }
+        else{
+            return redirect()->back()->with('massage','Mã giảm giá không tồn tại!');
+        }
+    }
+
+    public function delete_coupon(){
+        $coupon = Session::get('coupon');
+        if($coupon == true){
+            Session::forget('coupon');
+        }
+        return redirect()->back()->with('massage','Đã xóa mã giảm giá');
+    }
+
 }

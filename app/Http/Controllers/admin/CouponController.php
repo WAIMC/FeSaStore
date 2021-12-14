@@ -107,46 +107,6 @@ class CouponController extends Controller
         return redirect()->route('coupon.index')->with('success', 'Xóa Thành Công!');
         return view('dashboard.coupon.index');
     }
-    public function check_coupon(Request $request){
-        $data = $request ->all();
-        $coupon =Coupon::where('coupon_code',$data['coupon'])->first();
-        if($coupon){
-            $count_coupon = $coupon->count();
-            if($count_coupon>0){
-                $coupon_session = Session::get('coupon');
-                if($coupon_session==true){
-                    $is_avaiable = 0;
-                    if($is_avaiable==0){
-                        $cou[] = array(
-                            'feature_coupon' => $coupon -> feature_coupon,
-                            'coupon_code' => $coupon -> coupon_code,
-                            'coupon_number' => $coupon -> coupon_number,
-                            
-                        );
-                        Session::put('coupon',$cou);
-                    }
-                }else{
-                    $cou[] = array(
-                        'feature_coupon' => $coupon -> feature_coupon,
-                        'coupon_code' => $coupon -> coupon_code,
-                        'coupon_number' => $coupon -> coupon_number,
-
-                    );
-                    Session::put('coupon',$cou);
-                }
-                Session::save();
-                return redirect()->back()->with('massage','Đã thêm mã giảm giá!');
-            }
-        }
-        else{
-            return redirect()->back()->with('massage','Mã giảm giá không tồn tại!');
-        }
-    }
-    public function delete_coupon(){
-        $coupon = Session::get('coupon');
-        if($coupon == true){
-            Session::forget('coupon');
-        }
-        return redirect()->back()->with('massage','Đã xóa mã giảm giá');
-    }
+   
+ 
 }

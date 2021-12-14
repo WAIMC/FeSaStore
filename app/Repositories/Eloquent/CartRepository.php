@@ -6,9 +6,11 @@
     use App\Repositories\Contracts\CartInterface;
     use App\Repositories\Eloquent\BaseRepository;
     use App\Models\VariantProduct;
-  use App\Models\Payment;
+    use App\Models\Payment;
     use App\Helper\CartHelper;
     use Illuminate\Support\Facades\Mail;
+    use App\Models\Coupon;
+    use App\Models\CouponOrder;
     class CartRepository extends BaseRepository implements CartInterface{
         
         /**
@@ -34,6 +36,12 @@
             $order=$this->getModel()::create($dataOrder);
             if($order){
                 $order_id=$order->id;
+                if (request()->id_coupon) {
+                    CouponOrder::create([ 'order_id'=>$order_id	,
+                    'coupon_id'=>request()->id_coupon]);
+                    $update_cou=  Coupon::find(request()->id_coupon);
+                   $update_cou->update(['quantity_coupon'=> $update_cou->quantity_coupon-1]);
+                }
                 $cart=new CartHelper();
                 foreach ($cart->items as $product_id => $item) {
                  $prod=VariantProduct::find($product_id);
@@ -61,7 +69,8 @@
                      $mail->to($email, $name);
                      $mail->subject('Đơn hàng #'.$order_id);
                  });
-                session(['cart'=>'']);
+              //  session(['cart'=>'']);
+                session(['coupon'=>'']);
             }
             
         }

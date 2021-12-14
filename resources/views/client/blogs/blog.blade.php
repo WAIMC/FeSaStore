@@ -46,7 +46,8 @@
                     </div>
                     <!-- Row End -->
                     <div class="row">
-                        <div class="col-sm-12">
+                        {{-- <div class="col-sm-12">
+                            {{$blogs->getblog->links('pa')}}
                                 <div class="pro-pagination">
                                     <ul class="blog-pagination">
                                         <li class="active"><a href="#">1</a></li>
@@ -59,7 +60,7 @@
                                     </div>
                                 </div>
                                 <!-- Product Pagination Info -->
-                        </div>
+                        </div> --}}
                     </div>
                     <!-- Row End -->
                 </div>
