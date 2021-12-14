@@ -103,6 +103,15 @@ use Illuminate\Support\Facades\Route;
     Route::group(['prefix' => 'account', 'middleware' => 'cus'],function () {
     Route::get('/',[App\Http\Controllers\client\AccountController::class,'index'] )->name('client.account.index');
     Route::get('/history',[App\Http\Controllers\client\AccountController::class,'showOrder'] )->name('client.account.order');
+    Route::get('/address',[App\Http\Controllers\client\AccountController::class,'Address'] )->name('client.account.address');
+    Route::post('/address/{user_id}',[App\Http\Controllers\client\AccountController::class,'updateAddress'] );
+
+    Route::get('/change-pass',[App\Http\Controllers\client\AccountController::class,'showChangePass'] )->name('client.account.changepass');
+    Route::post('/change-pass',[App\Http\Controllers\client\AccountController::class,'ChangePass'] );
+    Route::get('reset-password/{token}',[App\Http\Controllers\client\AccountController::class, 'showResetPasswordForm'])->name('client.account.changepass.get');
+    Route::post('reset-password',[App\Http\Controllers\client\AccountController::class, 'submitResetPasswordForm'])->name('client.account.changepass.post');
+
+
     Route::get('/order/view/{id}',[App\Http\Controllers\client\AccountController::class,'showOrderDetail'] )->name('client.account.orderDetail');
     Route::get('/order/{id}',[App\Http\Controllers\client\AccountController::class,'updateOrder'] )->name('client.account.updateOrder');
 });
@@ -143,7 +152,7 @@ Route::prefix('wishlist')->group(function () {
 
 
 
-    Route::get('/checkout',[App\Http\Controllers\client\HomeController::class,'checkout'])->name('client.checkout');
+   
     Route::get('/blog',[App\Http\Controllers\client\HomeController::class,'blog'])->name('client.blog');
     Route::get('/blog-details/{slug}',[App\Http\Controllers\client\HomeController::class,'blog_details'])->name('client.blog_details');
     Route::post('/blog-details/{slug}',[App\Http\Controllers\client\HomeController::class,'post_comment_blog'])->name('client.blog_details');

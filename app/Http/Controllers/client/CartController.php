@@ -54,6 +54,7 @@ class CartController extends Controller
         
         $id=Auth::guard('cus')->user()->id;
         if ($request->payment==2) {
+            
             $data=[
                 'name' =>$request->name,
                 'email'=>$request->email,
@@ -63,7 +64,6 @@ class CartController extends Controller
                 'customer_id'=>$id,
              ];
              session(['cus_info' => $data]);
-         //   dd($request->all());
          return  $this->orders->vnpayCheckout();
         }else{
               

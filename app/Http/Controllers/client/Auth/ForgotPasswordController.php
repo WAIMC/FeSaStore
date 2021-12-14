@@ -39,7 +39,7 @@ class ForgotPasswordController extends Controller
             'email.exists'=>'Địa chỉ email bạn nhập không đúng!',
         ]);
   
- $this->users->SendMail($request->email);
+ $this->users->SendMail($request->email,'forgetPassword');
         return redirect()->route('client.forgotPassword')->with('message', 'Chúng tôi đã gửi xác nhận đến email của bạn,vui lòng kiểm tra lại!');
    
           
@@ -61,19 +61,15 @@ class ForgotPasswordController extends Controller
       public function submitResetPasswordForm(Request $request)
       {
           $request->validate([
-              'email' => 'required|email|exists:Customer,email',
               'password' => 'required|string|min:8|confirmed',
           ],
           [
-              'email.required'=>'Không để email trống!',
-              'email.email'=>'Nhập dữ liệu không phải email!',
-              'email.exists'=>'Email không chính xác!',
               'password.required'=>'Mật khẩu không được bỏ trống!',
               'password.min'=>'Mật khẩu ít nhất 8 kí tự',
               'password.confirmed'=>'Nhập lại mật khẩu sai!',
           ],);
   
-  $this->users->ResetPassword($request->email,$request->token,$request->password);
+  $this->users->ResetPassword($request->token,$request->password);
           return redirect()->route('client.login')->with('success', 'Cập nhật thành công!');
         }
     }

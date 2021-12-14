@@ -94,7 +94,7 @@
                     <!-- Row End -->
                     <div class="row">
                         <div class="col-sm-12">
-                                <div class="pro-pagination">
+                                {{-- <div class="pro-pagination">
                                     <ul class="blog-pagination">
                                         <li class="active"><a href="#">1</a></li>
                                         <li><a href="#">2</a></li>
@@ -104,7 +104,8 @@
                                     <div class="product-pagination">
                                         <span class="grid-item-list">Hiển thị 1 đến 12 của 51 (5 Trang)</span>
                                     </div>
-                                </div>
+                                </div> --}}
+                                {{$blogs->links('pagination.default')}}
                                 <!-- Product Pagination Info -->
                         </div>
                     </div>
