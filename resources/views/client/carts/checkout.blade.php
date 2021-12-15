@@ -199,26 +199,8 @@
                             </table>
                         </div>
                         <div class="payment-method">
-                            {{-- <div id="accordion">
-                                    <div class="card">
-                                        <div class="card-header" id="headingone">
-                                            <h5 class="mb-0">
-                                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                  Thanh toán khi nhận hàng
-                                                </button>
-                                            </h5>
-                                        </div>
-
-                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingone" data-parent="#accordion">
-                                            <div class="card-body">
-                                                <p>Bạn sẽ nhận đơn hàng sau đó thanh toán</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                   
-                                </div> --}}
                             <div class="wc-proceed-to-checkout">
-                                <button type="submit" class="buttons-cart btn btn-dark" id="off_form" value="{{ url('/delete-coupon')}}">Thanh toán khi nhận hàng</button>
+                                <button type="button" class="buttons-cart btn btn-dark" id="off_form" >Thanh toán khi nhận hàng</button>
                                 <button type="submit" class="buttons-cart btn btn-dark" id="btnPopup" name="payment"
                                     value="2">Thanh toán online</button>
                                   

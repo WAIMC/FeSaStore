@@ -57,7 +57,8 @@ use Illuminate\Support\Facades\Route;
             'commentblog'=>admin\CommentBlogController::class,
             'order'=>admin\OrderController::class,
             'customer'=>admin\CustomerController::class,
-            'rating'=>admin\RatingController::class
+            'rating'=>admin\RatingController::class,
+            'coupon'=>admin\CouponController::class,
         ]);
 
     });
