@@ -39,6 +39,7 @@ use App\Repositories\Contracts\ProductInterface;
 
             $model_search = $this->getModel()::orderBy($softType, $softBy)
                                         ->SearchCategory()
+                                        ->SearchBrand()
                                         // ->product_variantProduct()
                                         // ->first()
                                         // ->whereBetween('price', [$min_price, $max_price])

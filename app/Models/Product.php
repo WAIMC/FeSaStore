@@ -69,15 +69,12 @@ class Product extends Model
         return $query;
     }
 
-    // get review (comment, rating star,..)
-    // public function product_review()
-    // {
-    //     return $this->hasMany(Review::class,'id_product','id');
-    // }
-
-    // check product exits in order 
-    // public function product_orderDetail()
-    // {
-    //     return $this->hasMany(OrderDetail::class,'id_product','id');
-    // }
+    // search all product in brand choose
+    public function scopeSearchBrand($query)
+    {
+        if(request()->SearchBrand){
+            $query = $query->where('brand_id',request()->SearchBrand);
+        }
+        return $query;
+    }
 }
