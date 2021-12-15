@@ -17,12 +17,6 @@
                         <div class="col-4">
                             <h4>Danh sách biến thể</h4>
                         </div>
-                        {{-- <div class="col-4 d-flex justify-content-end">
-                            <a href="{{ route('variantProduct.create') }}" class="btn btn-outline-dark">
-                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                                <span>Thêm mới biến thể</span>
-                            </a>
-                        </div> --}}
                     </div>
                 </div>
                 {{-- card body --}}
@@ -34,8 +28,7 @@
                                 <th>Thuộc Tính Biến Thể</th>
                                 <th>Số Lượng</th>
                                 <th>Giá \ Giảm Giá</th>
-                                <th>Trạng Thái</th>
-                                <th>ID Sản Phẩm</th>
+                                <th>Tên Sản Phẩm</th>
                                 <th>Ngày Tạo</th>
                                 <th>Hành Động</th>
                             </tr>
@@ -46,14 +39,7 @@
                                     <td> {{ $item_var->variant_attribute }} </td>
                                     <td> {{ $item_var->quantity }} </td>
                                     <td> <span class="badge badge-primary">{{ number_format($item_var->price) }} VNĐ</span> | <span class="badge badge-danger">{{ number_format($item_var->discount) }} VNĐ</span> </td>
-                                    <td>
-                                        @if ( $item_var->status==0)
-                                            <span class='badge badge-danger'>Không Đại Diện</span>
-                                        @else
-                                            <span class='badge badge-primary'>Đại Diện</span>
-                                        @endif
-                                    </td>
-                                    <td> {{ $item_var->product_id }} </td>
+                                    <td> {{ $item_var->getProduct->name }} </td>
                                     <td> {{ $item_var->created_at->format('d-m-Y') }} </td>
                                     <td>
                                         <a href="{{ route('variantProduct.edit', $item_var->id) }}" class="btn btn-info">
@@ -71,8 +57,7 @@
                                 <th>Thuộc Tính Biến Thể</th>
                                 <th>Số Lượng</th>
                                 <th>Giá \ Giảm Giá</th>
-                                <th>Trạng Thái</th>
-                                <th>ID Sản Phẩm</th>
+                                <th>Tên Sản Phẩm</th>
                                 <th>Ngày Tạo</th>
                                 <th>Hành Động</th>
                             </tr>
