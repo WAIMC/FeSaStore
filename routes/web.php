@@ -58,7 +58,7 @@ use Illuminate\Support\Facades\Route;
             'order'=>admin\OrderController::class,
             'customer'=>admin\CustomerController::class,
             'rating'=>admin\RatingController::class,
-            'coupon'=>admin\CouponController::class
+            'coupon'=>admin\CouponController::class,
         ]);
 
     });

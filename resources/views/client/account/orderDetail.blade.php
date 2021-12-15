@@ -89,7 +89,13 @@
                             </thead>
                             <tbody>
                                 @if (isset($data))
+<<<<<<< HEAD
                                 <?php  $total_price = 0;?>
+=======
+                                @php
+                                       $total_price = 0;
+                                @endphp
+>>>>>>> 4493e08413bed5deb22b083d0ec866e70348b094
                                     @foreach ($data as $item)
 
                                         <tr>
@@ -102,7 +108,11 @@
                                             <td> {{ $item->quantity }} </td>
                                             <td>0 ₫</td>
                                             @php
+<<<<<<< HEAD
                                                
+=======
+                                             
+>>>>>>> 4493e08413bed5deb22b083d0ec866e70348b094
                                                 $total_price += $item->quantity * $item->price;
                                             @endphp
                                             <td class="col_price">

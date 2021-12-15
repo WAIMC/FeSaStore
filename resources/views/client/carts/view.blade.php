@@ -50,7 +50,7 @@
                                                 <td class="product-price"><span
                                                         class="amount">{{ number_format($item['price']) }}
                                                         VND</span></td>
-                                                <td class="product-quantity"><input type="number"
+                                                <td class="product-quantity"><input type="number" minlength="1"
                                                         value="{{ $item['quantity'] }}"
                                                         onchange="updateCart(this.value,'{{ $item['id'] }}')"></td>
                                                 <td class="product-subtotal">

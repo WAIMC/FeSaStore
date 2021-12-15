@@ -215,8 +215,7 @@
                         </div>
                         <div class="payment-method">
                             <div class="wc-proceed-to-checkout">
-                                <button type="button" class="buttons-cart btn btn-dark" id="off_form">Thanh toán khi nhận
-                                    hàng</button>
+                                <button type="button" class="buttons-cart btn btn-dark" id="off_form" >Thanh toán khi nhận hàng</button>
                                 <button type="submit" class="buttons-cart btn btn-dark" id="btnPopup" name="payment"
                                     value="2">Thanh toán online</button>
 
