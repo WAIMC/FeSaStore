@@ -35,15 +35,6 @@ class VariantProduct extends Model
     //     return $this->hasOne(Category::class,'id','id_category');
     // }
 
-    // search name with function scope
-    // public function scopeSearch($query)
-    // {
-    //     if(request()->key){
-    //         $query = $query->where('name','like',"%".request()->key."%");
-    //     }
-    //     return $query;
-    // }
-
     // search all product in category choose
     // public function scopeSearchCategory($query)
     // {
@@ -66,8 +57,8 @@ class VariantProduct extends Model
     // }
 
     // check product exits in order 
-    // public function product_orderDetail()
-    // {
-    //     return $this->hasMany(OrderDetail::class,'id_product','id');
-    // }
+    public function product_orderDetail()
+    {
+        return $this->hasMany(OrderDetail::class,'variant_product_id','id');
+    }
 }

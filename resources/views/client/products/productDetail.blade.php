@@ -28,7 +28,6 @@
                     <div class="col-lg-5 mb-all-40">
                         <!-- Thumbnail Large Image start -->
                         <div class="tab-content thumb_gallery_detail">
-
                         </div>
                         <!-- Thumbnail Large Image End -->
                         <!-- Thumbnail Image End -->
@@ -74,9 +73,10 @@
                                     <input class="quantity mr-15 " name="quantity" type="number" value="1">
                                     <input type="hidden" name="id_variant" id="id_variant">
                                     <div class="pro-actions mt-1">
-                                        <div class="actions-primary">
+                                        <div class="actions-primary" id="show_qt_add_card">
                                             <a href="#" id="add_cart_detail" title="thêm" data-original-title="Thêm vào giỏ hàng">
-                                                + Thêm vào giỏ hàng</a>
+                                                + Thêm vào giỏ hàng
+                                            </a>
                                         </div>
                                     </div>
                                 {{-- </form> --}}
@@ -95,7 +95,12 @@
                                 {{-- </form> --}}
                             </div>
                             <div class="pro-ref mt-20">
-                                <p><span class="in-stock"><i class="ion-checkmark-round"></i> Trong kho</span></p>
+                                <p>
+                                    <span class="in-stock">
+                                        <i class="ion-checkmark-round"></i> 
+                                        <span id="quantity_pro_dt"></span> 
+                                    </span>
+                                </p>
                             </div>
                             <div class="socila-sharing mt-25">
                                 <ul class="d-flex">
@@ -290,7 +295,6 @@
                                 <div class="actions-primary">
                                     <a href="#"  class="quick_view" data-toggle="modal" data-target="{{ $realted_pro->id }}" title="Thêm vào giỏ hàng"> + Thêm vào giỏ hàng</a>
                                 </div>
-                               
                             </div>
                         </div>
                         <!-- Product Content End -->
@@ -401,6 +405,7 @@
                 var merge_detail_attri = '';
                 var price_detail = '';
                 var discount_detail = '';
+                var quantity_dt = 0;
                 var thumb_gallery_detail = '';
                 var thumb_menu_gallery_detail = '';
                 var active_thumb_detail = '';
@@ -427,6 +432,7 @@
                             price_detail = var_pro_detail['price'];
                             id_variant = var_pro_detail['id'];
                             discount_detail = var_pro_detail['discount'];
+                            quantity_dt = var_pro_detail['quantity'];
                             $('.quantity_pro_detail').attr('max', var_pro_detail['quantity']);
                             // fill gallery
                             var gallery_detail = JSON.parse(var_pro_detail['gallery']);
@@ -453,6 +459,7 @@
                         price_detail = var_pro_detail['price'];
                         id_variant = var_pro_detail['id'];
                         discount_detail = var_pro_detail['discount'];
+                        quantity_dt = var_pro_detail['quantity'];
                         $('.quantity_pro_detail').attr('max', var_pro_detail['quantity']);
                         // fill gallery
                         var gallery_detail = JSON.parse(var_pro_detail['gallery']);
@@ -479,6 +486,15 @@
                         "</span><span class='saving-price'>Giảm " + percent_discount + "%</span>");
                 }
                 $('.price_dt').html("<span class='price'>" + new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' }).format(price_detail) + "</span>");
+
+                // fill quantity product detail
+                if (quantity_dt > 0) {
+                    $('#show_qt_add_card').show();
+                    $('#quantity_pro_dt').html(quantity_dt+' trong kho');
+                } else {
+                    $('#show_qt_add_card').hide();
+                    $('#quantity_pro_dt').html('đã hết hàng trong kho');
+                }
 
                 // fill gallery
                 $('.thumb_gallery_detail').html(thumb_gallery_detail);

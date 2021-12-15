@@ -277,11 +277,18 @@
                                                 <form action="#">
                                                     <input class="quantity mr-40 qv_quantity" name="quantity" type="number" min="1" value="1">
                                                 </form>
-                                                <a class="add-cart" href="#" id="add-cart">Thêm Vào Giỏ Hàng</a>
+                                                <span id="display_cart">
+                                                    <a class="add-cart" href="#" id="add-cart">Thêm Vào Giỏ Hàng</a>
+                                                </span>
                                                 <input type="hidden" name="id_variant" id="id_variant">
                                             </div>
                                             <div class="pro-ref mt-15">
-                                                <p><span class="in-stock"><i class="ion-checkmark-round"></i> Trong Kho</span></p>
+                                                <p>
+                                                    <span class="in-stock">
+                                                        <i class="ion-checkmark-round"></i> 
+                                                        <span id="stock"></span> 
+                                                    </span>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -464,6 +471,7 @@
                 var merge_attri = '';
                 var price = '';
                 var discount = '';
+                var quantity_in_stock = 0;
                 var quick_view_thumb_gallery = '';
                 var quick_view_thumb_menu_gallery = '';
                 var active_thumb = '';
@@ -489,6 +497,7 @@
                             price = var_pro['price'];
                             discount = var_pro['discount'];
                             id_variant = var_pro['id'];
+                            quantity_in_stock = var_pro['quantity'];
                             $('.qv_quantity').attr('max', var_pro['quantity']);
                             // fill gallery
                             var gallery = JSON.parse(var_pro['gallery']);
@@ -510,6 +519,7 @@
                     if(var_pro['product_id'] == product_id && var_pro['variant_attribute'] === value_attr_first){
                         price = var_pro['price'];
                         discount = var_pro['discount'];
+                        quantity_in_stock = var_pro['quantity'];
                         $('.qv_quantity').attr('max', var_pro['quantity']);
                         id_variant = var_pro['id'];
                         // fill gallery
@@ -533,16 +543,23 @@
                 }
                 $('.qv_price').html("<span class='price'>"+price+" VNĐ</span>");
 
+                // fill quantity in stock
+                if(quantity_in_stock > 0){
+                    $('#display_cart').show();
+                    $('#stock').html(quantity_in_stock+' trong kho');
+                }else{
+                    $('#display_cart').hide();
+                    $('#stock').html('đã hết hàng trong kho');
+                }
+
                 // fill gallery
-                //$('.quick_view_thumb_menu_gallery').html(quick_view_thumb_menu_gallery);
-                 $("#id_variant").attr('value',id_variant) ;
-                 console.log($("input[name=id_variant]").val());
+                $("#id_variant").attr('value',id_variant) ;
+                console.log($("input[name=id_variant]").val());
                 $('.quick_view_thumb_gallery').html(quick_view_thumb_gallery);
                 
             }
 
             // search list category
-            // $('#list_category').hide();
             $("#list_search_category").hide();
             $("#input_search_category").on("keyup", function() {
                 $("#list_search_category").show();

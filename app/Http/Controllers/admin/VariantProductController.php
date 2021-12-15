@@ -112,10 +112,14 @@ class VariantProductController extends Controller
      */
     public function destroy(variantProduct $variantProduct)
     {
-        if($this->variant_product_repo->destroy($variantProduct)){
-            return redirect()->route('variantProduct.index')->with('success', 'Xóa biến thể thành công!');
+        if($variantProduct->product_orderDetail->count() > 0){
+            return redirect()->route('variantProduct.index')->with('error', 'Xóa đơn hàng chi tiết có biến thể này trước !');
         }else{
-            return redirect()->route('variantProduct.index')->with('error', 'Xóa biến thể không thành công!');
+            if($this->variant_product_repo->destroy($variantProduct)){
+                return redirect()->route('variantProduct.index')->with('success', 'Xóa biến thể thành công!');
+            }else{
+                return redirect()->route('variantProduct.index')->with('error', 'Xóa biến thể không thành công!');
+            }
         }
     }
 }
