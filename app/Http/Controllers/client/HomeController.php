@@ -105,25 +105,24 @@ class HomeController extends Controller
     }
 
     public function about(){
-        
         return view('client.pages.about');
     }
 
     public function contact(){
-        
         return view('client.pages.contact');
     }
 
     public function shop(Request $request){
-        // (product)->(has:category)->(has:variant)->(price or date)->(between price)->paginate(12)
+        $menu_search_category = $this->category_repo->showSearchCategory($this->category_repo->getAll());
         $top_5_new = $this->product_repo->paginate(5);
+        $all_brand = $this->brand_repo->getAll();
         $data_paginate_product = $this->product_repo->searchProduct($request);
-        return view('client.products.shop', compact('data_paginate_product', 'top_5_new'));
+        $request->flash();
+        return view('client.products.shop', compact('menu_search_category', 'data_paginate_product','all_brand', 'top_5_new'));
     }
 
     public function productDetail($slug){
         $data_product_detail = $this->product_repo->findBySlug($slug);
-        // dd($data_product_detail);
         $data_comment = $this->comment->FindComment($data_product_detail->id);
         $data_rating = $this->rating_repo->FindRating($data_product_detail->id);
         $avg_rating = $this->rating_repo->AvgRating($data_product_detail->id);
