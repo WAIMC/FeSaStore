@@ -87,11 +87,23 @@
                                                     @csrf @method('PUT')
                                                     <label>Trạng thái đơn hàng: </label>
                                                     <select name="status" class="form-control bdata[0]-success status">
-                                                        <option @if ($data[0]->status == 0) selected @endif value="0">Đang Xử lý</option>
-                                                        <option @if ($data[0]->status == 1) selected @endif value="1">Đã Tiếp nhận-Đang giao
-                                                        </option>
+                                                        @if ($data[0]->status == 0)
+                                                        <option @if ($data[0]->status == 0) selected  @endif disabled  value="0">Đang Xử lý</option>
+                                                        <option @if ($data[0]->status == 1) selected  @endif  value="1">Đã Tiếp nhận-Đang giao</option>
                                                         <option @if ($data[0]->status == 2) selected @endif value="2">Đã Thanh toán</option>
                                                         <option @if ($data[0]->status == 3) selected @endif value="3">Đã Hủy</option>
+                                                        @elseif ($data[0]->status == 1) 
+                                                        <option @if ($data[0]->status == 0) selected  @endif disabled  value="0">Đang Xử lý</option>
+                                                        <option @if ($data[0]->status == 1) selected  @endif  value="1">Đã Tiếp nhận-Đang giao</option>
+                                                        <option @if ($data[0]->status == 2) selected @endif value="2">Đã Thanh toán</option>
+                                                        <option @if ($data[0]->status == 3) selected @endif disabled value="3">Đã Hủy</option>
+                                                        @elseif ($data[0]->status == 2 ||$data[0]->status == 3 ) 
+                                                        <option @if ($data[0]->status == 0) selected  @endif disabled  value="0">Đang Xử lý</option>
+                                                        <option @if ($data[0]->status == 1) selected  @endif disabled  value="1">Đã Tiếp nhận-Đang giao</option>
+                                                        <option @if ($data[0]->status == 2) selected @endif disabled value="2">Đã Thanh toán</option>
+                                                        <option @if ($data[0]->status == 3) selected @endif disabled value="3">Đã Hủy</option>
+                                                        @endif
+                                                        
                                                     </select>
                                                 </form> <br>
                                                 {{-- <b>Account:</b> 968-34567 --}}
