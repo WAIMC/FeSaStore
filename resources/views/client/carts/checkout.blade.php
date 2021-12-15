@@ -202,10 +202,9 @@
                                         <input type="hidden" name="amount" value="{{ $total_coupon }}">
                                         @php
                                             $data = Session::get('coupon');
-                                            //  dd($data[0]['id']);
                                         @endphp
                                         <input type="hidden" name="id_coupon" value="{{ $data[0]['id'] }}">
-                                        {{-- {{  dd(Session::get('coupon'))  }} --}}
+                                     
                                     @else
                                         <input type="hidden" name="amount" value="{{ $cart->total_price }}">
                                     @endif
@@ -256,7 +255,6 @@
                 success: function(data) {
                     // On Success, build our rich list up and append it to the #richList div.
                     alertify.success('Đặt hàng thành công');
-                    location.replace('{{ route('client.index') }}')
                 },
                 complete: function() { // Set our complete callback, adding the .hidden class and hiding the spinner.
                     $('#loader').addClass('hidden')

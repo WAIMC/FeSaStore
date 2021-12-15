@@ -54,9 +54,9 @@ class CartController extends Controller
     }
     public function PostCheckout(CheckoutRequest $request)
     { 
+       
         $id=Auth::guard('cus')->user()->id;
         if ($request->payment==2) {
-        
             $data=[
                 'name' =>$request->name,
                 'email'=>$request->email,

@@ -29,7 +29,8 @@ class AccountController extends Controller
       }
       public function showOrderDetail($id){
          $data=$this->orders->showOrderDetail($id);
-         return view('client.account.orderDetail',compact('data'));
+         $data_cou=$this->orders->find($id);
+         return view('client.account.orderDetail',compact('data','data_cou'));
       }
       public function updateOrder(Order $id){
          $data=$this->orders->updateStatus($id);

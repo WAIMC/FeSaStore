@@ -11,6 +11,7 @@
     use Illuminate\Support\Facades\Mail;
     use App\Models\Coupon;
     use App\Models\CouponOrder;
+    use Illuminate\Support\Facades\Session;
     class CartRepository extends BaseRepository implements CartInterface{
         
         /**
@@ -25,6 +26,7 @@
   
         public function checkout($name,$email,$phone,$address,$note,$customer_id)
         {
+          //  dd(request()->amount);
             $dataOrder = [
                 'name' =>$name,
                 'email'=>$email,
@@ -50,7 +52,7 @@
                      'quantity'=>$item['quantity'],
                      'price'=>$item['price'],
                      'variant_product_id'=>$item['id'],
-                     'order_id'=>$order->id
+                     'order_id'=>$order->id,
                  ];
                  OrderDetail::create($dataOrderDetail);
                  $quantity=$item['quantity'];
@@ -62,7 +64,8 @@
                     'name'=> $name,
                     'address' => $address,
                     'order'=> $order,
-                    'carts'=>$cart->items
+                    'carts'=>$cart->items,
+                    'total'=>request()->amount
                 ]
                 ,function ($mail) use($order_id,$email,$name) {
                      $mail->from('Tan874979@gmail.com');
@@ -134,6 +137,12 @@
             $email=$cus_info['email'];
             if($order){
                 $order_id=$order->id;
+                if (Session::get('coupon')) {
+                    CouponOrder::create([ 'order_id'=>$order_id	,
+                    'coupon_id'=>Session::get('coupon')[0]['id']]);
+                    $update_cou=  Coupon::find(Session::get('coupon')[0]['id']);
+                   $update_cou->update(['quantity_coupon'=> $update_cou->quantity_coupon-1]);
+                }
                 $cart=new CartHelper();
                 $data_payment['order_id']=$order->id;
                 Payment::create($data_payment);
@@ -156,7 +165,8 @@
                     'name'=> $cus_info['name'],
                     'address' => $cus_info['address'],
                     'order'=> $order,
-                    'carts'=>$cart->items
+                    'carts'=>$cart->items,
+                    'total'=>$data_payment['vnp_Amount']/100
                 ]
                 ,function ($mail) use($order_id,$email,$name) {
                      $mail->from('Tan874979@gmail.com');
@@ -165,6 +175,7 @@
                  });
                 session(['cart'=>'']);
                 session(['cus_info'=>'']);
+                session(['coupon'=>'']);
             }
         }
     }

@@ -188,8 +188,11 @@
                                                                 <td>{{ number_format($total_price) }} VNĐ</td>
                                                             </tr>
                                                             <tr>
+                                                                @if (isset($cou_code))
                                                                 <th>Giảm giá: ({{$cou_code}})</th>
                                                                 <td>{{number_format($cou_price)}} VND</td>
+                                                                @endif
+                                                                
                                                             </tr>
                                                             <tr>
                                                                 <th>Tổng thanh toán:</th>

@@ -50,7 +50,15 @@
                                                 foreach ($item->orderDetail as $bill):
                                                     $total_price += $bill->quantity * $bill->price;
                                                 endforeach;
+                                                if (count($item->getCoupon) > 0) {
+                                                    if ($item->getCoupon[0]->feature_coupon == 1) {
+                                                        $total_price -= ($total_price * $item->getCoupon[0]->coupon_number) / 100;
+                                                    } else {
+                                                        $total_price -= $item->getCoupon[0]->coupon_number;
+                                                    }
+                                                }
                                             @endphp
+
                                             <td>{{ number_format($total_price) }} ₫</td>
 
                                             <td>
@@ -98,7 +106,6 @@
             background: #fff;
             border-radius: 4px;
         }
-    
 
     </style>
 @endsection
