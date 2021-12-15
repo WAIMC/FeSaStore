@@ -69,7 +69,7 @@
                      $mail->to($email, $name);
                      $mail->subject('Đơn hàng #'.$order_id);
                  });
-              //  session(['cart'=>'']);
+                session(['cart'=>'']);
                 session(['coupon'=>'']);
             }
             
