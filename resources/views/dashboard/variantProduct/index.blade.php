@@ -39,13 +39,6 @@
                                     <td> {{ $item_var->variant_attribute }} </td>
                                     <td> {{ $item_var->quantity }} </td>
                                     <td> <span class="badge badge-primary">{{ number_format($item_var->price) }} VNĐ</span> | <span class="badge badge-danger">{{ number_format($item_var->discount) }} VNĐ</span> </td>
-                                    {{-- <td>
-                                        @if ( $item_var->status==0)
-                                            <span class='badge badge-danger'>Không Đại Diện</span>
-                                        @else
-                                            <span class='badge badge-primary'>Đại Diện</span>
-                                        @endif
-                                    </td> --}}
                                     <td> {{ $item_var->getProduct->name }} </td>
                                     <td> {{ $item_var->created_at->format('d-m-Y') }} </td>
                                     <td>
