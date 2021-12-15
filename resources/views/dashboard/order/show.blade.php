@@ -117,6 +117,7 @@
                                                     <tbody>
                                                         @php
                                                             $total_price = 0;
+                                                            $cou_price=0;
                                                         @endphp
                                                         @foreach ($data as $key => $bill)
 
@@ -128,10 +129,24 @@
                                                                 <td>{{ $bill->quantity }}</td>
                                                                 <td>{{ number_format($bill->price) }} VNĐ</td>
                                                             </tr>
+                                                           
                                                             @php
                                                                 $total_price += $bill->quantity * $bill->price;
                                                             @endphp
+
                                                         @endforeach
+                                                        @php
+                                                        if (count($data_cou->getCoupon) > 0) {
+                                                            $cou_code=$data_cou->getCoupon[0]->coupon_name;
+                                                            if ($data_cou->getCoupon[0]->feature_coupon == 1) {
+                                                                $cou_price = ($total_price * $data_cou->getCoupon[0]->coupon_number) / 100;
+                                                                $total_price -= $cou_price;
+                                                            } else {
+                                                                $cou_price = $data_cou->getCoupon[0]->coupon_number;
+                                                                $total_price -= $cou_price;
+                                                            }
+                                                        }
+                                                        @endphp
 
                                                     </tbody>
                                                 </table>
@@ -173,8 +188,8 @@
                                                                 <td>{{ number_format($total_price) }} VNĐ</td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Shipping:</th>
-                                                                <td></td>
+                                                                <th>Giảm giá: ({{$cou_code}})</th>
+                                                                <td>{{number_format($cou_price)}} VND</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Tổng thanh toán:</th>

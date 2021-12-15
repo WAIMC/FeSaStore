@@ -75,19 +75,7 @@
 
                                         {{ number_format($total) }} VND
                                         <?php $total = 0; ?>
-                                        {{-- @php
-                                              if(count($item->getCoupon)>0){
-                                         if($item->getCoupon[0]->feature_coupon==1){
-                                             $tong= $total- $total*$item->getCoupon[0]->coupon_number/100;
-                                           echo  number_format($tong);
-                                         }else{
-                                             $tong=$total-$item->getCoupon[0]->coupon_number;
-                                             echo  number_format($tong);
-                                         }
-                                     }else{
-                                            echo  number_format($total);
-                                         }
-                                        @endphp --}}
+
                                     </td>
                                     <td>
                                         @if ($item->getPayment)

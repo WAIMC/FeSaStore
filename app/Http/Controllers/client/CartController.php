@@ -88,7 +88,7 @@ class CartController extends Controller
         $this->orders->vnpayPost(session('cus_info'),$data);
             return redirect()->route('cart.view')->with('success' ,'Đã thanh toán phí dịch vụ');
         }else{
-            return redirect()->route('cart.view')->with('errors' ,'Lỗi trong quá trình thanh toán phí dịch vụ');
+            return redirect()->route('cart.view')->with('error' ,'Lỗi trong quá trình thanh toán phí dịch vụ');
         }
     }
 
@@ -122,11 +122,11 @@ class CartController extends Controller
                     Session::put('coupon',$cou);
                 }
                 Session::save();
-                return redirect()->back()->with('massage','Đã thêm mã giảm giá!');
+                return redirect()->back()->with('success','Đã thêm mã giảm giá!');
             }
         }
         else{
-            return redirect()->back()->with('massage','Mã giảm giá không tồn tại!');
+            return redirect()->back()->with('error','Mã giảm giá không tồn tại!');
         }
     }
 
@@ -135,7 +135,7 @@ class CartController extends Controller
         if($coupon == true){
             Session::forget('coupon');
         }
-        return redirect()->back()->with('massage','Đã xóa mã giảm giá');
+        return redirect()->back()->with('success','Đã xóa mã giảm giá');
     }
 
 }

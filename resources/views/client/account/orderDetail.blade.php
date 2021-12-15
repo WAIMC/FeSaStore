@@ -89,13 +89,9 @@
                             </thead>
                             <tbody>
                                 @if (isset($data))
-<<<<<<< HEAD
-                                <?php  $total_price = 0;?>
-=======
                                 @php
                                        $total_price = 0;
                                 @endphp
->>>>>>> 4493e08413bed5deb22b083d0ec866e70348b094
                                     @foreach ($data as $item)
 
                                         <tr>

@@ -57,7 +57,8 @@ class OrderController extends Controller
     public function show($order)
     {
         $data= $this->order->showOrderDetail($order);
-        return view('dashboard.order.show', compact('data'));
+        $data_cou=$this->order->find($order);
+        return view('dashboard.order.show', compact('data','data_cou'));
     }
 
     /**

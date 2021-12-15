@@ -504,13 +504,18 @@
                     id: $("input[name=id_variant]").val()
                 },
                 success: function(response) {
+                    console.log(response);
                     $('#cart-box-width').empty();
                     $('#cart-box-width').html(response);
                     $('.total-pro').text($('#quantity_cart').val());
                     alertify.success('Đã thêm vào giỏ hàng');
                 },
                 error: (error) => {
-                    console.log(JSON.stringify(error));
+                    // console.log(JSON.stringify(error));
+                    alert(error.status + ' ' + error.statusText);
+                    console.log('roi');
+                     console.log(error);
+                    alertify.error(error.error);
                 }
             });
         });
