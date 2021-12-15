@@ -232,38 +232,46 @@
                   </tr>
                   </thead>
                   <tbody>
+                    @php
+                      $num_order = 0;
+                    @endphp
                     @foreach ($all_order as $recent_order)
-                      <tr>
-                        <td><a href="{{route('order.show', $recent_order->id)}}"> #{{ $recent_order->id }} </a></td>
-                        <td> {{ $recent_order->name }} </td>
-                        <td>
-                          @php
-                              $total = 0;
-                          @endphp
-                          @if (isset($recent_order->orderDetail))
-                            @foreach ($recent_order->orderDetail as $get_total)
-                                @php
-                                  $total += $get_total->quantity * $get_total->price;
-                                @endphp
-                            @endforeach
-                          @endif
-                          {{ number_format($total) }} VNĐ
-                        </td>
-                        <td>
-                          @if ($recent_order->status == 0)
-                            <span class="badge badge-warning">Đang Xác Nhận</span> 
-                          @elseif ($recent_order->status == 1)
-                            <span class="badge badge-success">Đang Giao</span>
-                          @elseif ($recent_order->status == 2)
-                            <span class="badge badge-info">Hoàn Thành</span>
-                          @elseif ($recent_order->status == 3)
-                          <span class="badge badge-danger">Đã Hủy</span>
-                          @endif
-                        </td>
-                        <td>
-                          {{ $recent_order->created_at->format('d-m-Y') }}
-                        </td>
-                      </tr>
+                      @php
+                        $num_order++;
+                      @endphp
+                      @if ($num_order < 15)
+                        <tr>
+                          <td><a href="{{route('order.show', $recent_order->id)}}"> #{{ $recent_order->id }} </a></td>
+                          <td> {{ $recent_order->name }} </td>
+                          <td>
+                            @php
+                                $total = 0;
+                            @endphp
+                            @if (isset($recent_order->orderDetail))
+                              @foreach ($recent_order->orderDetail as $get_total)
+                                  @php
+                                    $total += $get_total->quantity * $get_total->price;
+                                  @endphp
+                              @endforeach
+                            @endif
+                            {{ number_format($total) }} VNĐ
+                          </td>
+                          <td>
+                            @if ($recent_order->status == 0)
+                              <span class="badge badge-warning">Đang Xác Nhận</span> 
+                            @elseif ($recent_order->status == 1)
+                              <span class="badge badge-success">Đang Giao</span>
+                            @elseif ($recent_order->status == 2)
+                              <span class="badge badge-info">Hoàn Thành</span>
+                            @elseif ($recent_order->status == 3)
+                            <span class="badge badge-danger">Đã Hủy</span>
+                            @endif
+                          </td>
+                          <td>
+                            {{ $recent_order->created_at->format('d-m-Y') }}
+                          </td>
+                        </tr>
+                      @endif
                     @endforeach
                   </tbody>
                 </table>

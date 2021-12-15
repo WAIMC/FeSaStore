@@ -24,7 +24,6 @@
         */ 
         public function showOption($lists, $parent_id = 0, $char = ''){
             $option = '';
-            // $lists = $this->model->get();
             foreach ($lists as $key => $list) {
                 if($list->parent_id == $parent_id){
                     $option .= "<option value='".$list->id."' >" . $char . " " . $list->name . "</option>";
@@ -53,7 +52,6 @@
                         $list_menu .= "<li class=''><a href='".route('client.shop',['searchCategory'=>$value_menu->id])."'><span><i class='fa fa-dot-circle-o' aria-hidden='true' style='position: unset'></i></span>".$value_menu->name."</a></li>";
                         unset($menus[$key_menu]);
                     }
-                   
                 }
             }
             return $list_menu;
@@ -77,12 +75,33 @@
                         $list_menu_mobile .= "<li class=''><a href='".route('client.shop',['searchCategory'=>$value_menu->id])."'>".$value_menu->name."</a></li>";
                         unset($menus[$key_menu]);
                     }
-                   
                 }
             }
             return $list_menu_mobile;
-        }        
-
+        }       
+        
+        /**
+        *   show list menu parent and children for search category shop
+        *   @return string
+        */ 
+        public function showSearchCategory($menus, $parent_id = 0){
+            $list_menu_mobile = '';
+            foreach ($menus as $key_menu => $value_menu) {
+                if($value_menu->parent_id == $parent_id){
+                    if($value_menu->categoryChildren->count() > 0){
+                        $list_menu_mobile .= "<li class='has-sub'><a href=''>".$value_menu->name."</a>";
+                        $list_menu_mobile .="<ul class='category-sub'>";
+                        unset($menus[$key_menu]);
+                        $list_menu_mobile .= $this->showSearchCategory($menus, $value_menu->id);
+                        $list_menu_mobile .= "</ul></li>";
+                    }else{
+                        $list_menu_mobile .= "<li class='category_id' data-id='".$value_menu->id."'><a href=''>".$value_menu->name."</a></li>";
+                        unset($menus[$key_menu]);
+                    }
+                }
+            }
+            return $list_menu_mobile;
+        }     
+    
     }
-
 ?>
