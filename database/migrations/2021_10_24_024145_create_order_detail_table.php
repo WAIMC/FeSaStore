@@ -22,7 +22,7 @@ class CreateOrderDetailTable extends Migration
             $table->unsignedInteger('order_id');
             $table->timestamps();
             $table->foreign('variant_product_id')->references('id')->on('variant_product');
-            $table->foreign('order_id')->references('id')->on('order');
+            $table->foreign('order_id')->references('id')->on('order')->onDelete('cascade');
 
         });
     }
