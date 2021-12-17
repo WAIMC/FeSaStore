@@ -567,9 +567,9 @@
                       pointColor:['#ffffff'],
                       pointStrokeColor:['black'],
                       parseTime:false,
-                      xkey: 'created_at',
-                      ykeys: ['quantity', 'price', 'sales', 'profit'],
-                      labels: ['Số Lượng', 'Giá', 'Doanh Số', 'Lợi Nhuận']
+                      xkey: 'date',
+                      ykeys: ['quantity', 'sales', 'profit'],
+                      labels: ['Tổng số lượng', 'Doanh Số', 'Lợi Nhuận']
                     });
         
         // search chart with date
@@ -603,7 +603,6 @@
             var setYMD2 = day_last.getFullYear() + "-" + getMonth2 + "-" + day_last.getDay();
 
             var _token = $('input[name="_token"]').val();
-
             $.ajax({
               url: "{{ route('admin.filter_chart_by_date') }}",
               type:'POST',
@@ -611,7 +610,7 @@
               data: {_token : _token, from_date : setYMD2, to_date : setYMD},
               success: function(data) {
                 console.log(data);
-                // chart.setData(data);
+                chart.setData(data);
               },
               error: function (data, textStatus, errorThrown) {
                   console.log(errorThrown);

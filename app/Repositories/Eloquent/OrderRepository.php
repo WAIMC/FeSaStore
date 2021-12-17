@@ -6,6 +6,7 @@
     use App\Repositories\Contracts\OrderInterface;
     use App\Repositories\Eloquent\BaseRepository;
     use App\Models\VariantProduct;
+    use Illuminate\Support\Facades\DB;
     class OrderRepository extends BaseRepository implements OrderInterface{
         
         /**
@@ -23,25 +24,25 @@
             ->join('product', 'variant_product.product_id', '=', 'product.id')
             ->select('order.*', 'order_detail.quantity', 'order_detail.price','variant_product.variant_attribute'
             , 'product.name as sanpham', 'product.image')->where('order_id',$id)
-             ->get(); 
-             return $data;
+            ->get(); 
+            return $data;
         }
         public function updateStatus($order){
             if(request()->status==3){
-                     foreach($order->orderDetail as $ord)
-                     {
-                         $product=VariantProduct::find($ord->variant_product_id);
-                         $product->quantity+=$ord->quantity;
-                         $product->update(['quantity'=> $product->quantity]);
-                     }       
+                foreach($order->orderDetail as $ord)
+                {
+                    $product=VariantProduct::find($ord->variant_product_id);
+                    $product->quantity+=$ord->quantity;
+                    $product->update(['quantity'=> $product->quantity]);
+                }       
             }
-          return $order->update(['status'=>request()->status]);
-
+            return $order->update(['status'=>request()->status]);
         }
 
         public function showCustomerOrder($id){
             return $this->getModel()::orderBy('id','DESC')->where('customer_id',$id)->get();
         }
+        
     }
 
 ?>
