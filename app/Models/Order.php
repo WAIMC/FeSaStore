@@ -34,4 +34,7 @@ class Order extends Model
     public function getPayment(){
         return $this->hasOne(Payment::class,'order_id','id');
     }
+    public function getCoupon(){
+        return $this->belongsToMany(Coupon::class,'coupon_order','order_id','coupon_id');
+    }
 }

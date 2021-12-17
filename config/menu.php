@@ -141,13 +141,6 @@ return [
             'label'=>'Quản lý đơn hàng ',
             'route'=>'order.index',
             'icon'=>'fa fa-shopping-cart',
-            'items'=>[
-                [
-                    'label'=>'Danh Sách đơn hàng',
-                    'route'=>'order.index',
-                    'icon'=>'fa-circle nav-icon'
-                ],
-            ]
         ],
         [
             'label'=>'Quản lý slider ',

@@ -53,8 +53,8 @@ use Illuminate\Support\Facades\Route;
             'categoryblog'=>admin\CategoryBlogController::class,
             'role'=>admin\RoleController::class,
             'decentralize'=>admin\DecentralizeController::class,
-            'comment'=>admin\CommentController::class,
             'commentblog'=>admin\CommentBlogController::class,
+            'comment'=>admin\CommentController::class,
             'order'=>admin\OrderController::class,
             'customer'=>admin\CustomerController::class,
             'rating'=>admin\RatingController::class,
@@ -132,6 +132,8 @@ use Illuminate\Support\Facades\Route;
     Route::post('checkout', [App\Http\Controllers\client\CartController::class, 'PostCheckout'])->name('cart.postcheckout')->middleware('cus');
     Route::post('payment/online', [App\Http\Controllers\client\CartController::class, 'PostCheckoutOnline'])->name('cart.postcheckoutonline')->middleware('cus');
     Route::get('vnpay/return', [App\Http\Controllers\client\CartController::class, 'vnpayReturn'])->name('cart.vnpayReturn');
+    Route::post('/check-coupon', [App\Http\Controllers\client\CartController::class,'check_coupon']);
+    Route::get('/delete-coupon', [App\Http\Controllers\client\CartController::class,'delete_coupon']);
 
 });
 

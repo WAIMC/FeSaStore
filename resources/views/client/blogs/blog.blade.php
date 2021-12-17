@@ -46,7 +46,8 @@
                     </div>
                     <!-- Row End -->
                     <div class="row">
-                        <div class="col-sm-12">
+                        {{-- <div class="col-sm-12">
+                            {{$blogs->getblog->links('pa')}}
                                 <div class="pro-pagination">
                                     <ul class="blog-pagination">
                                         <li class="active"><a href="#">1</a></li>
@@ -59,7 +60,7 @@
                                     </div>
                                 </div>
                                 <!-- Product Pagination Info -->
-                        </div>
+                        </div> --}}
                     </div>
                     <!-- Row End -->
                 </div>
@@ -94,18 +95,7 @@
                     <!-- Row End -->
                     <div class="row">
                         <div class="col-sm-12">
-                                {{-- <div class="pro-pagination">
-                                    <ul class="blog-pagination">
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                    </ul>                                    
-                                    <div class="product-pagination">
-                                        <span class="grid-item-list">Hiển thị 1 đến 12 của 51 (5 Trang)</span>
-                                    </div>
-                                </div> --}}
-                                {{$blogs->links('pagination.default')}}
+                           {{$blogs->links('pagination.default')}}
                                 <!-- Product Pagination Info -->
                         </div>
                     </div>

@@ -83,7 +83,6 @@
                                     <th scope="col">Sản phẩm</th>
                                     <th scope="col">Giá</th>
                                     <th scope="col">Số lượng</th>
-                                    <th scope="col">Giảm giá</th>
                                     <th scope="col" class="col_price">Tạm tính</th>
                                 </tr>
                             </thead>
@@ -91,6 +90,7 @@
                                 @if (isset($data))
                                 @php
                                        $total_price = 0;
+                                       $cou_price=0;
                                 @endphp
                                     @foreach ($data as $item)
 
@@ -102,18 +102,19 @@
                                             </td>
                                             <td>{{ number_format($item->price) }} ₫</td>
                                             <td> {{ $item->quantity }} </td>
-                                            <td>0 ₫</td>
                                             @php
-                                             
                                                 $total_price += $item->quantity * $item->price;
                                             @endphp
+                                           
                                             <td class="col_price">
                                                 {{ number_format($item->quantity * $item->price) }} ₫</td>
                                         </tr>
 
 
                                     @endforeach
-
+                                    {{-- @php
+                                    dd($total_price);
+                                @endphp --}}
                                 @endif
 
                             </tbody>
@@ -123,8 +124,26 @@
                                     <td>{{ number_format($total_price) }} ₫</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="4"><span>Phí vận chuyển</span></td>
-                                    <td>0 ₫</td>
+                                    @php
+                                    if (count($data_cou->getCoupon) > 0) {
+                                        $cou_code=$data_cou->getCoupon[0]->coupon_name;
+                                        if ($data_cou->getCoupon[0]->feature_coupon == 1) {
+                                            $cou_price = ($total_price * $data_cou->getCoupon[0]->coupon_number) / 100;
+                                            $total_price -= $cou_price;
+                                        } else {
+                                            $cou_price = $data_cou->getCoupon[0]->coupon_number;
+                                            $total_price -= $cou_price;
+                                        }
+                                    }
+                                    @endphp
+                                    @if (isset( $cou_code))
+                                         <td colspan="4"><span>Giảm giá ({{ $cou_code}}) </span></td>
+                                    <td>{{number_format($cou_price)}} ₫</td>
+                                    @else
+                                    <td colspan="4"><span>Giảm giá  </span></td>
+                                    <td>{{number_format($cou_price)}} ₫</td>
+                                    @endif
+                                   
                                 </tr>
                                 <tr>
                                     <td colspan="4"><span>Tổng cộng</span></td>

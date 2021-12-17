@@ -23,7 +23,7 @@ class CartHelper
         $product=VariantProduct::find($id_variant);
          
         if($product->quantity < $quantity){
-            return redirect()->back()->with('error','Vui lòng đặt sô lượng nhỏ hơn '.$product->quantity);
+             return redirect()->back()->with('error','Vui lòng đặt sô lượng nhỏ hơn '.$product->quantity);
         }else{
           
                $item = [

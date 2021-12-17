@@ -75,7 +75,7 @@
                                 <div class="col-md-8 col-sm-12">
                                     <div class="buttons-cart">
 
-                                        <a href="#">Tiếp tục mua sắm</a>
+                                        <a href="{{route('client.index')}}">Tiếp tục mua sắm</a>
                                     </div>
                                 </div>
                                 <!-- Cart Button Start -->

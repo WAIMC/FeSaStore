@@ -87,11 +87,23 @@
                                                     @csrf @method('PUT')
                                                     <label>Trạng thái đơn hàng: </label>
                                                     <select name="status" class="form-control bdata[0]-success status">
-                                                        <option @if ($data[0]->status == 0) selected @endif value="0">Đang Xử lý</option>
-                                                        <option @if ($data[0]->status == 1) selected @endif value="1">Đã Tiếp nhận-Đang giao
-                                                        </option>
+                                                        @if ($data[0]->status == 0)
+                                                        <option @if ($data[0]->status == 0) selected  @endif disabled  value="0">Đang Xử lý</option>
+                                                        <option @if ($data[0]->status == 1) selected  @endif  value="1">Đã Tiếp nhận-Đang giao</option>
                                                         <option @if ($data[0]->status == 2) selected @endif value="2">Đã Thanh toán</option>
                                                         <option @if ($data[0]->status == 3) selected @endif value="3">Đã Hủy</option>
+                                                        @elseif ($data[0]->status == 1) 
+                                                        <option @if ($data[0]->status == 0) selected  @endif disabled  value="0">Đang Xử lý</option>
+                                                        <option @if ($data[0]->status == 1) selected  @endif  value="1">Đã Tiếp nhận-Đang giao</option>
+                                                        <option @if ($data[0]->status == 2) selected @endif value="2">Đã Thanh toán</option>
+                                                        <option @if ($data[0]->status == 3) selected @endif disabled value="3">Đã Hủy</option>
+                                                        @elseif ($data[0]->status == 2 ||$data[0]->status == 3 ) 
+                                                        <option @if ($data[0]->status == 0) selected  @endif disabled  value="0">Đang Xử lý</option>
+                                                        <option @if ($data[0]->status == 1) selected  @endif disabled  value="1">Đã Tiếp nhận-Đang giao</option>
+                                                        <option @if ($data[0]->status == 2) selected @endif disabled value="2">Đã Thanh toán</option>
+                                                        <option @if ($data[0]->status == 3) selected @endif disabled value="3">Đã Hủy</option>
+                                                        @endif
+                                                        
                                                     </select>
                                                 </form> <br>
                                                 {{-- <b>Account:</b> 968-34567 --}}
@@ -117,6 +129,7 @@
                                                     <tbody>
                                                         @php
                                                             $total_price = 0;
+                                                            $cou_price=0;
                                                         @endphp
                                                         @foreach ($data as $key => $bill)
 
@@ -128,10 +141,24 @@
                                                                 <td>{{ $bill->quantity }}</td>
                                                                 <td>{{ number_format($bill->price) }} VNĐ</td>
                                                             </tr>
+                                                           
                                                             @php
                                                                 $total_price += $bill->quantity * $bill->price;
                                                             @endphp
+
                                                         @endforeach
+                                                        @php
+                                                        if (count($data_cou->getCoupon) > 0) {
+                                                            $cou_code=$data_cou->getCoupon[0]->coupon_name;
+                                                            if ($data_cou->getCoupon[0]->feature_coupon == 1) {
+                                                                $cou_price = ($total_price * $data_cou->getCoupon[0]->coupon_number) / 100;
+                                                                $total_price -= $cou_price;
+                                                            } else {
+                                                                $cou_price = $data_cou->getCoupon[0]->coupon_number;
+                                                                $total_price -= $cou_price;
+                                                            }
+                                                        }
+                                                        @endphp
 
                                                     </tbody>
                                                 </table>
@@ -173,8 +200,11 @@
                                                                 <td>{{ number_format($total_price) }} VNĐ</td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Shipping:</th>
-                                                                <td></td>
+                                                                @if (isset($cou_code))
+                                                                <th>Giảm giá: ({{$cou_code}})</th>
+                                                                <td>{{number_format($cou_price)}} VND</td>
+                                                                @endif
+                                                                
                                                             </tr>
                                                             <tr>
                                                                 <th>Tổng thanh toán:</th>
