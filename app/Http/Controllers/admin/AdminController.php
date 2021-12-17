@@ -15,6 +15,7 @@ use App\Repositories\Contracts\CustomerInterface;
 use App\Repositories\Contracts\OrderDetailInterface;
 use App\Repositories\Contracts\ProductInterface;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 
 class AdminController extends Controller
@@ -90,14 +91,12 @@ class AdminController extends Controller
         $get = $this->order_detail_repo->get_date_between($from_date, $to_date);
         foreach ($get as $key => $value) {
             $chartData[] = array(
-                'name' => $value->name,
                 'quantity' => $value->quantity,
-                'price' => $value->price,
-                'created_at' => $value->created_at->format('Y-m-d'),
-                'sales' => $value->quantity*$value->price,
-                'profit' => ($value->quantity*$value->price)*0.3
+                'date' => Carbon::parse($value->date)->format('d-m-Y'),
+                'sales' => $value->sales,
+                'profit' => $value->profit
             ); 
         }
-        echo $data = json_encode($chartData);
+        return $data = json_encode($chartData);
     }
 }
