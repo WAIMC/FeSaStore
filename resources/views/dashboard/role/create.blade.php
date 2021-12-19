@@ -79,6 +79,8 @@
                                             $name_managerment = 'Đánh Giá';
                                         }elseif ($route == 'commentblog') {
                                             $name_managerment = 'Bình Luận Bài Viết';
+                                        }elseif ($route == 'coupon') {
+                                            $name_managerment = 'Mã Giảm Giá';
                                         }
                                     @endphp
                                         <div class="card card-dark col-4 card_{{$route}}">

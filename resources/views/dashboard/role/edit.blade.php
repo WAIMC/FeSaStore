@@ -22,7 +22,7 @@
                                 <div class="form-group">
                                     <label for="name">Tên Vai Trò</label>
                                     <input type="text" class="form-control @error('name')
-                                          is-invalid
+                                        is-invalid
                                     @enderror" name="name" id="name" aria-describedby="nameRole" placeholder="Tên Vai Trò" value="{{ $role->name }}" required>
                                     @error('name')
                                         <small id="nameRole" class="form-text text-danger">{{ $message }}</small>
@@ -77,6 +77,8 @@
                                                 $name_managerment = 'Đánh Giá';
                                             }elseif ($route == 'commentblog') {
                                                 $name_managerment = 'Bình Luận Bài Viết';
+                                            }elseif ($route == 'coupon') {
+                                                $name_managerment = 'Mã Giảm Giá';
                                             }
                                         @endphp
                                         <div class="card card-dark col-4 card_{{$route}}">
