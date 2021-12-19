@@ -344,6 +344,7 @@
     <!-- Main activaion js -->
     <script src="{{url('public/client')}}/js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
     @yield('js')
 
     <script>
@@ -618,11 +619,14 @@
             $.ajax({
                 type: 'get',
                 url:  '{{url('')}}/cart/removelist/'+$(this).data('id'),
-                success: function(response) {
+                success: function(res) {
+                 
                     $('#cart-box-width').empty();
-                    $('#cart-box-width').html(response);
+                    $('#cart-box-width').html(res);
                     $('.total-pro').text($('#quantity_cart').val());
+                    $( "#change-cart" ).load(window.location.href + " #change-cart" )
                     alertify.success('Đã xóa khỏi giỏ hàng');
+                   
                 },
                 error: (error) => {
                     console.log(JSON.stringify(error));
