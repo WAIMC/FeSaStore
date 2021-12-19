@@ -98,7 +98,7 @@ class RoleController extends Controller
         $routes = array();
         foreach ($all_route as $rou) {
             $get_name = $rou->getName();
-            if(strpos($get_name, 'ignition') === false && strpos($get_name, 'client') === false){
+            if(strpos($get_name, 'ignition') === false && strpos($get_name, 'client') === false && strpos($get_name, 'cart') === false && strpos($get_name, 'wishlist') === false){
                 if(!in_array(substr($rou->getName(), 0, strpos($rou->getName(), '.')), $routes) && $rou->getName() !== null){
                     array_push($routes, substr($rou->getName(), 0, strpos($rou->getName(), '.')));
                 }
