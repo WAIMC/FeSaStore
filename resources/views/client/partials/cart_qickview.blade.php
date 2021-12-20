@@ -1,7 +1,7 @@
 <li>
                                       
     @foreach ($cart->items as $item)
-    <div class="single-cart-box cartqickview{{$item['id']}}">
+    <div class="single-cart-box">
       <div class="cart-img">
           <a href="#"><img src="{{url('public/uploads')}}/{{$item['image']}}" alt="{{$item['name']}}"></a>
           <span class="pro-quantity">X{{$item['quantity']}}</span>
@@ -12,7 +12,7 @@
           <span>Thuộc tính: {{$item['attr']}}</span>
          
       </div>
-      <a class="del-icone" href="#"><i class="ion-close"data-id="{{$item['id']}}"></i></a>
+      <a class="del-icone" href="#"><i class="ion-close" data-id="{{$item['id']}}"></i></a>
   </div>
     @endforeach  
 

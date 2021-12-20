@@ -20,7 +20,7 @@
                 <th class="product-remove"></th>
             </tr>
         </thead>
-        <tbody id="change-cart">
+        <tbody>
            
             @if (isset($cart))
                @foreach ($cart->items as $item)
@@ -88,3 +88,4 @@
 </div>
 <!-- Row End -->
 <input type="hidden" value="{{ number_format($cart->total_price) }}" id="amount_price">
+{{-- <input type="hidden" value="{{$cart->items }}" id="carts"> --}}
