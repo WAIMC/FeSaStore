@@ -95,8 +95,9 @@ class CartController extends Controller
     public function check_coupon(Request $request){
         $data = $request ->all();
         $coupon =Coupon::where('coupon_code',$data['coupon'])->first();
-        if($coupon -> quantity_coupon>0){
-            $count_coupon = $coupon->count();
+        if($coupon){
+            if($coupon -> quantity_coupon>0){
+                $count_coupon = $coupon->count();
             if($count_coupon>0){
                 $coupon_session = Session::get('coupon');
                 if($coupon_session==true){
@@ -107,7 +108,6 @@ class CartController extends Controller
                             'id' => $coupon -> id,
                             'coupon_code' => $coupon -> coupon_code,
                             'coupon_number' => $coupon -> coupon_number,
-                            'quantity_coupon' => $coupon -> quantity_coupon,
                         );
                         Session::put('coupon',$cou);
                     }
@@ -117,16 +117,20 @@ class CartController extends Controller
                         'id' => $coupon -> id,
                         'coupon_code' => $coupon -> coupon_code,
                         'coupon_number' => $coupon -> coupon_number,
-                        'quantity_coupon' => $coupon -> quantity_coupon,
                     );
                     Session::put('coupon',$cou);
                 }
                 Session::save();
                 return redirect()->back()->with('success','Đã thêm mã giảm giá!');
             }
+            }
+            else{
+                return redirect()->back()->with('error','Mã giảm giá đã hết hạn!');
+            }
+            
         }
         else{
-            return redirect()->back()->with('error','Mã giảm giá đã hết hạn!');
+            return redirect()->back()->with('error','Mã giảm giá không tồn tại!');
         }
     }
 

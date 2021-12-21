@@ -131,7 +131,7 @@
                                         @foreach ($cart->items as $item)
                                             <tr class="cart_item">
                                                 <td class="product-name">
-                                                    {{ $item['name'] }} <span class="product-quantity"> ×
+                                                    {{ $item['name'] }} <span class="product-quantity">
                                                         {{ $item['quantity'] }}</span>
                                                 </td>
                                                 <td class="product-total">
