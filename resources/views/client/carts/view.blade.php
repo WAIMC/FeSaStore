@@ -35,7 +35,7 @@
                                             <th class="product-remove"></th>
                                         </tr>
                                     </thead>
-                                    <tbody id="change-cart">
+                                    <tbody>
 
 
                                         {{-- {{dd($cart)}} --}}
@@ -136,11 +136,14 @@
                     id: id
                 },
                 function(res) {
-                    Render(res)
-                    alertify.success('Cập nhật thành công');
+                    Render(res);
+             
+                    $( ".cart-box" ).load(window.location.href + " .cart-box" )
+                    $('.total-pro').text($('#quantity_cart').val());
+                    // alertify.success('Cập nhật thành công');
                 }
             ).fail(function() {
-                alertify.error('Xóa thất bại');;
+                alertify.error('Cập nhật thất bai');;
             });;
 
         }
@@ -153,7 +156,7 @@
                 function(res) {
                     Render(res);
                     alertify.success('Xóa thành công');
-                    location.reload();
+                    $( "#cart-box-width" ).load(window.location.href + " #cart-box-width" )
                 }
             ).fail(function() {
                 alertify.error('Xóa thất bại');;

@@ -24,13 +24,12 @@
                                     <label for="name">Tên Sản Phẩm</label>
                                     <input type="text" name="name" id="name" aria-describedby="name" placeholder="Tên Sản Phẩm"
                                         value="{{ old('name') }}" class="form-control @error('name')
-                                              is-invalid
+                                            is-invalid
                                         @enderror">
                                     @error('name')
                                         <small id="name" class="invalid-feedback form-text text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-
 
                                 <div class="form-inline">
                                     <label for="">Trạng Thái :  &nbsp;</label>
@@ -48,7 +47,7 @@
                                     <label for="short_description">Mô Tả Ngắn</label>
                                     <textarea name="short_description" id="short_description" aria-describedby="short_description" class="form-control 
                                         @error('short_description')
-                                              is-invalid
+                                            is-invalid
                                         @enderror">{{ old('short_description') }}</textarea>
                                     @error('short_description')
                                         <small id="short_description"
@@ -81,8 +80,8 @@
                                         <div class="col-9 m-0 p-0">
                                             <div class="form-group">
                                                 <input type="text" value="" name="image" id="image" aria-describedby="image" placeholder="Nhập Ảnh"
-                                                 class="form-control @error('image')
-                                                          is-invalid
+                                                    class="form-control @error('image')
+                                                        is-invalid
                                                     @enderror">
                                                 @error('image')
                                                     <small id="image"
@@ -101,9 +100,6 @@
                                         <img src="" id="show_image" width="100px" height="100px" alt="">
                                     </div>
                                 </div>
-                                
-                               
-    
                             </div>
                         </div>
 
@@ -112,7 +108,7 @@
                                 <label for="description">Mô Tả Chi Tiết</label>
                                 <textarea name="description" id="description" aria-describedby="description" class="form-control 
                                     @error('description')
-                                          is-invalid
+                                        is-invalid
                                     @enderror">{{ old('description') }}</textarea>
                                 @error('description')
                                     <small id="description"
@@ -130,17 +126,17 @@
                                 <div class="row m-auto attribute">
                                     <div class="col-5">
                                         <div class="form-group">
-                                          <label for="name_att">Tên Thuộc Tính</label>
-                                          <input type="text" name="name_att[]" required id="name_att" placeholder="Tên Thuộc Tính vd: Kích Cỡ nhập -> size" 
-                                          class="form-control @error('name_att')
-                                                is-invalid
-                                            @enderror">
-                                        @error('name_att')
-                                            <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
-                                        @enderror
+                                            <label for="name_att">Tên Thuộc Tính</label>
+                                            <input type="text" name="name_att[]" required id="name_att" placeholder="Tên Thuộc Tính vd: Kích Cỡ nhập -> size" 
+                                                class="form-control @error('name_att')
+                                                    is-invalid
+                                                @enderror">
+                                            @error('name_att')
+                                                <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
+                                            @enderror
                                         </div>
                                     </div>
-                                   <div class="col-5">
+                                <div class="col-5">
                                     <div class="form-group">
                                         <label for="attri">Thuộc Tính</label>
                                         <input type="text" name="attri[]" id="attri" required placeholder="Nhâp Thuộc Tính vd: sm, md, lg -> sm|md|lg" class="form-control 
@@ -150,11 +146,11 @@
                                         @error('attri')
                                             <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
                                         @enderror
-                                      </div>
-                                   </div>
-                                   <div class="col-2">
-                                       <a href="javascript:void(0);" class="add_button" title="Thêm Thuộc Tính"> <i class="fa fa-plus-circle" style="font-size: 30px;line-height: 86px" aria-hidden="true"></i></a>
-                                   </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <a href="javascript:void(0);" class="add_button" title="Thêm Thuộc Tính"> <i class="fa fa-plus-circle" style="font-size: 30px;line-height: 86px" aria-hidden="true"></i></a>
+                                </div>
                                 </div>
                             </div>
                             <div class="row m-2">
@@ -220,9 +216,15 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {{-- load crud js for project --}}
     <script src="{{ url('public/dashboard') }}/setup-project/setup-crud.js"></script>
+    <!-- jquery-validation -->
+    <script src="{{ url('public/dashboard') }}/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="{{ url('public/dashboard') }}/plugins/jquery-validation/additional-methods.min.js"></script>
     <script>
         $(document).ready(function () {
-            //  summernote description
+
+            /*
+            * summernote description start
+            */  
             $(function() {
                 // short description
                 $('#short_description').summernote({
@@ -235,15 +237,21 @@
                     placeholder: 'Mô Tả Chi Tiết'
                 });
             })
+            /*
+            * summernote description end
+            */ 
 
-            // modal image
+            // modal image start
             $('#upload_image').on('hide.bs.modal', function(e) {
                 var _link = $('input#image').val();
                 var _image = "{{ url('public/uploads') }}" + "/" + _link;
                 $('#show_image').attr('src', _image);
             });
+            // modal image end
 
-            // insert variant product
+            /*
+            * insert variant product start
+            */ 
             var maxField = 2;
             var addButton = $('.add_button');
             var wrapper = $('.field_wrapper'); 
@@ -261,21 +269,21 @@
                                     </div>
                                 </div>
                                 <div class="col-5">
-                                <div class="form-group">
-                                    <label for="attri">Thuộc Tính</label>
-                                    <input type="text" name="attri[]" required id="attri" placeholder="Nhâp Thuộc Tính vd: sm, md, lg -> sm|md|lg" class="form-control
+                                    <div class="form-group">
+                                        <label for="attri">Thuộc Tính</label>
+                                        <input type="text" name="attri[]" required id="attri" placeholder="Nhâp Thuộc Tính vd: sm, md, lg -> sm|md|lg" class="form-control
+                                                @error('attri')
+                                                    is-invalid
+                                                @enderror">
                                             @error('attri')
-                                                is-invalid
-                                            @enderror">
-                                        @error('attri')
-                                            <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
-                                        @enderror
+                                                <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-2">
-                                    <a href="javascript:void(0);" class="remove_button" title="Xóa Thuộc Tính"> <i class="fa fa-minus-circle" style="font-size: 30px;line-height: 86px" aria-hidden="true"></i></a>
-                                </div>
-                            </div>`; 
+                                    <div class="col-2">
+                                        <a href="javascript:void(0);" class="remove_button" title="Xóa Thuộc Tính"> <i class="fa fa-minus-circle" style="font-size: 30px;line-height: 86px" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>`; 
             var x = 1; 
             
             //Once add button is clicked
@@ -293,23 +301,29 @@
                 $(this).closest("div .attribute").remove();
                 x--;
             });
+            /*
+            * insert variant product end
+            */ 
 
-            var arr_attri = [];
-
+            /*
+            * merge attribute start
+            */
+            
             $('.btnMerge').click(function (e) { 
                 e.preventDefault();
-                $(".variant_product div").empty();
-
+                $('.variant_product').empty();
+                var arr_attri = [];
                 // get all value name attribute
                 var name_attribute = $('input[name^=name_att]').map(function(idx, elem) {
                     return $(elem).val();
                 }).get();
+
                 // get all value attribute
                 var attri = $('input[name^=attri]').map(function(idx, elem) {
                     return $(elem).val();
                 }).get();
 
-                // check value vull
+                // validate check and alert value null
                 if (name_attribute.includes('') == true || attri.includes('') == true) {
                     alert("Vui lòng điền đủ thông tin thuộc tính.");
                 } else {
@@ -321,8 +335,7 @@
                     });
                 }
                 
-
-                
+                // fill variant
                 var i = 0;
                 var fill_variant = '';
                 if(arr_attri.length == 1 && arr_attri !== ''){
@@ -334,46 +347,22 @@
 
                                         <div class="form-group">
                                             <label for="variant_attribute">Biến Thể</label>
-                                            <input type="text"  name="variant_attribute[]" id="variant_attribute" value="${attr_one}" placeholder="" required class="form-control 
-                                            @error('variant_attribute')
-                                            is-invalid
-                                            @enderror">
-                                            @error('variant_attribute')
-                                                <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
-                                            @enderror
+                                            <input readonly type="text" name="variant_attribute[]" id="variant_attribute" value="${attr_one}" required class="form-control">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="price">Giá</label>
-                                            <input type="number" name="price[]" id="price" placeholder="Giá" required class="form-control
-                                            @error('price')
-                                            is-invalid
-                                            @enderror">
-                                            @error('price')
-                                                <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
-                                            @enderror
+                                            <input type="number" name="price[]" id="price" placeholder="Giá" required class="form-control">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="discount">Giảm Giá</label>
-                                            <input type="number" name="discount[]" id="discount" placeholder="Giảm Giá" required class="form-control 
-                                            @error('discount')
-                                            is-invalid
-                                            @enderror">
-                                            @error('discount')
-                                                <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
-                                            @enderror
+                                            <input type="number" name="discount[]" id="discount" placeholder="Giảm Giá" required class="form-control">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="quantity">Số Lượng</label>
-                                            <input type="number" name="quantity[]" id="quantity" placeholder="Số Lượng" required class="form-control
-                                            @error('quantity')
-                                            is-invalid
-                                            @enderror">
-                                            @error('quantity')
-                                                <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
-                                            @enderror
+                                            <input type="number" name="quantity[]" id="quantity" placeholder="Số Lượng" required class="form-control">
                                         </div>
 
                                     </div>
@@ -396,13 +385,7 @@
                                             <div class="row">
                                                 <div class="col-9 m-0 p-0">
                                                     <div class="form-group">
-                                                        <input type="text" value="" name="gallery[]" id="list_modal_gallery_${i}" placeholder="Nhập Ít Nhất 2 Ảnh"
-                                                            class="form-control @error('gallery')
-                                                                    is-invalid
-                                                            @enderror">
-                                                        @error('gallery')
-                                                            <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
-                                                        @enderror
+                                                        <input type="text" value="" name="gallery[]" id="list_modal_gallery_${i}" placeholder="Nhập Ít Nhất 2 Ảnh" required class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col-3 m-0 p-0">
@@ -468,7 +451,7 @@
                                         let _url = "{{ url('public/uploads') }}" + "/" + _links;
                                         _html += "<div class='col-sm-4'>";
 
-                                        _html += "<img src='" + _url + "' alt='' width='100%' height='100px' >";
+                                        _html += "<img src='" + _url + "' alt='' width='100%' height='200px' >";
 
                                         _html += "</div>";
                                     }
@@ -488,48 +471,22 @@
 
                                             <div class="form-group">
                                                 <label for="variant_attribute">Biến Thể</label>
-                                                <input type="text" name="variant_attribute[]" id="variant_attribute" value="${one}|${two}" placeholder="" required 
-                                                    class="form-control @error('image')
-                                                        is-invalid
-                                                @enderror">
-                                                @error('name')
-                                                    <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
-                                                @enderror
+                                                <input readonly type="text" name="variant_attribute[]" id="variant_attribute" value="${one}|${two}" required class="form-control">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="price">Giá</label>
-                                                <input type="number" name="price[]" id="price" placeholder="Giá" required 
-                                                    class="form-control @error('price')
-                                                            is-invalid
-                                                    @enderror">
-                                                @error('name')
-                                                    <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
-                                                @enderror   
+                                                <input type="number" name="price[]" id="price" placeholder="Giá" required class="form-control"> 
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="discount">Giảm Giá</label>
-                                                <input type="number"  name="discount[]" id="discount" placeholder="Giảm Giá" required 
-                                                    class="form-control @error('discount')
-                                                            is-invalid
-                                                        @enderror">
-                                                @error('discount')
-                                                    <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
-                                                @enderror
+                                                <input type="number" name="discount[]" id="discount" placeholder="Giảm Giá" required class="form-control">
                                             </div>
-
 
                                             <div class="form-group">
                                                 <label for="quantity">Số Lượng</label>
-                                                <input type="number" name="quantity[]" id="quantity" placeholder="Số Lượng" required
-                                                    class="form-control @error('quantity')
-                                                        is-invalid
-                                                    @enderror">
-                                                    @error('gallery')
-                                                        <small id="quantity"
-                                                            class="invalid-feedback form-text text-danger">{{ $message }}</small>
-                                                    @enderror
+                                                <input type="number" name="quantity[]" id="quantity" placeholder="Số Lượng" required class="form-control">
                                             </div>
 
                                         </div>
@@ -552,13 +509,7 @@
                                                 <div class="row">
                                                     <div class="col-9 m-0 p-0">
                                                         <div class="form-group">
-                                                            <input type="text" value="" name="gallery[]" id="list_modal_gallery_${i}" placeholder="Nhập Ảnh"
-                                                                class="form-control @error('gallery')
-                                                                        is-invalid
-                                                                @enderror">
-                                                            @error('gallery')
-                                                                <small class="invalid-feedback form-text text-danger">{{ $message }}</small>
-                                                            @enderror
+                                                            <input type="text" value="" name="gallery[]" id="list_modal_gallery_${i}" placeholder="Nhập ít nhất 2 ảnh" required class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-3 m-0 p-0">
@@ -638,6 +589,93 @@
                 }
                     
             }); 
+
+            /*
+            * merge attribute end
+            */
+
+            /*
+            * form insert validate start
+            */ 
+            $.validator.addMethod(
+                "regex",
+                function(value, element, regexp) {
+                    var re = new RegExp(regexp);
+                    var test_value = re.test(value);
+                    return this.optional(element) || /^[\],:{}\s]*$/.test(value.replace(/\\["\\\/bfnrtu]/g, '@').
+                                                    replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
+                                                    replace(/(?:^|:|,)(?:\s*\[)+/g, ''));
+                },
+                "Nhập ít nhất 2 ảnh !."
+            );
+
+            $.validator.prototype.checkForm = function() {
+                //overriden in a specific page
+                this.prepareForm();
+                for (var i = 0, elements = (this.currentElements = this.elements()); elements[i]; i++) {
+                    if (this.findByName(elements[i].name).length !== undefined && this.findByName(elements[i].name).length > 1) {
+                        for (var cnt = 0; cnt < this.findByName(elements[i].name).length; cnt++) {
+                            this.check(this.findByName(elements[i].name)[cnt]);
+                        }
+                    } else {
+                        this.check(elements[i]);
+                    }
+                }
+                return this.valid();
+            };
+
+            $('#formInsert').validate({
+                rules : {
+                    'price[]':{
+                        required: true,
+                        number: true
+                    },
+                    'discount[]':{
+                        required: true,
+                        number: true
+                    },
+                    'quantity[]':{
+                        required: true,
+                        number: true
+                    },
+                    'gallery[]':{
+                        required: true,
+                        regex: true
+                    },
+                },
+                messages : {
+                    'price[]':{
+                        required: "Vui lòng không bỏ trống !",
+                        number: "Vui lòng nhập số !"
+                    },
+                    'discount[]':{
+                        required: "Vui lòng không bỏ trống !",
+                        number: "Vui lòng nhập số !"
+                    },
+                    'quantity[]':{
+                        required: "Vui lòng không bỏ trống !",
+                        number: "Vui lòng nhập số !"
+                    },
+                    'gallery[]':{
+                        required: "Vui lòng không bỏ trống !"
+                    },
+                },
+                errorElement: 'span',
+                errorPlacement: function (error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+            })
+            
+            /*
+            * form insert validate end
+            */ 
         });
     </script>
 @endsection

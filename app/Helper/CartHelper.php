@@ -62,16 +62,15 @@ class CartHelper
         $product=VariantProduct::find($id);
         if($product->quantity < $quantity){
             if($product->quantity>0){ 
-                return redirect()->back()->with('error','Vui lòng đặt sô lượng nhỏ hơn '.$product->quantity);}
-            else{
-                return redirect()->back()->with('error','Chỉ còn 1 sản phẩm trong kho! ');
+                return redirect()->back()->with('error','Vui lòng đặt sô lượng nhỏ hơn '.$product->quantity);   
             }
-           
+        }else if($quantity<=0){
+            return redirect()->back()->with('error','Số lượng phải lớn hơn 0! ');
         }else{
         if (isset($this->items[$id])) {
             $this->items[$id]['quantity'] = $quantity;
         }
-        session(['cart' => $this->items]);
+     return   session(['cart' => $this->items]);
     }
 }
 

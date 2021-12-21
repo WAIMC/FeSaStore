@@ -6,9 +6,9 @@
 
     interface OrderInterface extends RepositoryInterface{
 
-     public function showOrderDetail($id);
-     public function updateStatus($order);
-     public function showCustomerOrder($id);
+        public function showOrderDetail($id);
+        public function updateStatus($order);
+        public function showCustomerOrder($id);
     }
 
 ?>
