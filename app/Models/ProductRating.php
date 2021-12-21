@@ -28,4 +28,8 @@ class ProductRating extends Model
         'updated_at'
     ];
 
+    public function cus(){
+        return $this->hasOne(Customer::class,'id','customer_id');
+    }
+
 }
