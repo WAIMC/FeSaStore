@@ -49,7 +49,7 @@
                         <div class="thubnail-desc fix">
                             <h3 class="product-header">{{ $data_product_detail->name }}</h3>
                             <div class="rating-summary fix mtb-10">
-                                <div class="rating">
+                                <div class="rating" id="avg_rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star-o"></i>
@@ -155,16 +155,18 @@
                                             @endif
                                             <br>
                                             <p class="number_rating">{{$number_rating}} đánh giá</p>
-                                            <ul class="review-list">
-                                                <!-- Single Review List Start -->
-                                                <li>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </li>
-                                            </ul>
+                                            <div class="rating" id="avg_rating_2">
+                                                <ul class="review-list">
+                                                    <!-- Single Review List Start -->
+                                                    <li>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                         <div class="col-sm-7">
                                         <p class="star">Bạn chấm sản phẩm này bao nhiêu sao ?</p>
@@ -621,10 +623,29 @@
         });
 
         $(function () {
- 
+            var star_rating = {!! $avg_rating !!};
+            // show star rating customer has choose
             $("#rateYo").rateYo({
-                rating: 5,
+                rating: star_rating,
                 fullStar: true
+            }).on("rateyo.set",function(e,data){
+                $('#rating_star').val(data.rating);
+            });
+
+            // show star rating product
+            $("#avg_rating").rateYo({
+                rating: star_rating,
+                fullStar: true,
+                readOnly : true
+            }).on("rateyo.set",function(e,data){
+                $('#rating_star').val(data.rating);
+            });
+
+            // show star rating product 2
+            $("#avg_rating_2").rateYo({
+                rating: star_rating,
+                fullStar: true,
+                readOnly : true
             }).on("rateyo.set",function(e,data){
                 $('#rating_star').val(data.rating);
             });
@@ -661,6 +682,10 @@
                     console.log(response);
                     $('#rating_product').empty();
                     $('#rating_product').html(response);
+                    // load div
+                    $( "#avg_rating" ).load(window.location.href + " #avg_rating" );
+                    $( "#rateYo" ).load(window.location.href + " #rateYo" );
+                    $( "#avg_rating_2" ).load(window.location.href + " #avg_rating_2" );
                 },
                 error: (error) => {
                     console.log(JSON.stringify(error));

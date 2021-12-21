@@ -81,8 +81,8 @@
                                     <td>{{ $slider->title }}</td>
                                     <td>{{ $slider->link }}</td>
                                     <td>
-                                        <span class="badge badge-{{$slider->status==0 ? 'success' : 'danger'}}">
-                                            {{ $slider->status==0 ? 'Hiển thị' : 'Ẩn' }}
+                                        <span class="badge badge-{{$slider->status==0 ?  'danger' : 'success'}}">
+                                            {{ $slider->status==0 ? 'Ẩn' : 'Hiển thị'}}
                                         </span>
                                     </td>
                                     <td>

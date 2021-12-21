@@ -22,7 +22,7 @@
 
                         </div>
                     </div>
-                 
+                
 
                     {{-- select by choose --}}
                     <div class="row mt-4 justify-content-between">
@@ -66,7 +66,7 @@
                                 <th>Số sao</th>
                                 <th>Ngày đánh giá</th>
                                 <th>Hành Động</th>
-                              
+                            
                             </tr>
                         </thead>
                         <tbody>
@@ -74,7 +74,7 @@
                                 <tr>
                                     <td scope="row">{{ $rating->id }}</td>      
                                     <td>{{ $rating->cus->name}}</td>
-                                    <td>{{ $rating->star }}</td>
+                                    <td>{{ $rating->star_rating }}</td>
                                     <td>{{ $rating->created_at->format('d-m-Y') }}</td>
                                     <td>
                                         <a href="{{ route('rating.destroy', $rating->id) }}"
