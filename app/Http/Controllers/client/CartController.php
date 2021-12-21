@@ -126,7 +126,7 @@ class CartController extends Controller
             }
         }
         else{
-            return redirect()->back()->with('error','Mã giảm giá không tồn tại!');
+            return redirect()->back()->with('error','Mã giảm giá đã hết hạn!');
         }
     }
 
@@ -135,7 +135,7 @@ class CartController extends Controller
         if($coupon == true){
             Session::forget('coupon');
         }
-        return redirect()->back()->with('success','Đã xóa mã giảm giá');
+        return redirect()->back()->with('error','Đã xóa mã giảm giá');
     }
 
 }
