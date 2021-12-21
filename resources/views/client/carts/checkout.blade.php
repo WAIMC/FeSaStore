@@ -262,6 +262,12 @@
                 },
             });
         });
+        @if (Session::has('success'))
+       alertify.success('  {{ Session::get('success') }}');
+       @endif
+       @if (Session::has('error'))
+       alertify.error('  {{ Session::get('error') }}');
+       @endif
     </script>
     <style>
         .lds-dual-ring.hidden {
