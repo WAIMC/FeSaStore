@@ -33,8 +33,8 @@
                                           <label for="parent_id">Tính năng</label>
                                           <select class="form-control" name="feature_coupon" id="parent_id">
                                             <option value="0">-----chọn-----</option>
-                                              <option value="1"> Giảm theo số tiền</option>
-                                              <option value="2"> Giảm theo phần trăm</option>
+                                              <option value="1">Giảm theo phần trăm </option>
+                                              <option value="2"> Giảm theo số tiền</option>
                                           </select>
                                         </div>
                                         <div class="form-group">
