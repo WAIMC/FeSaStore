@@ -83,7 +83,7 @@ class RatingController extends Controller
      * @param  \App\Models\Rating  $rating
      * @return \Illuminate\Http\Response
      */
-    public function edit(Rating $rating)
+    public function edit(ProductRating $rating)
     {
         //
     }
@@ -95,7 +95,7 @@ class RatingController extends Controller
      * @param  \App\Models\Rating  $rating
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rating $rating)
+    public function update(Request $request, ProductRating $rating)
     {
         //
     }
@@ -106,7 +106,7 @@ class RatingController extends Controller
      * @param  \App\Models\Rating  $rating
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rating $rating)
+    public function destroy(ProductRating $rating)
     {
         $result=$this->rating->destroy($rating);
         if($result){

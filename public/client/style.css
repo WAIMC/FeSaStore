@@ -4623,3 +4623,11 @@ a.shipping-calculator-button:hover {
     width: 38px;
     color: rgb(255, 255, 255);
 }
+.review-mini-title-comment {
+    font-size: 15px;
+    font-weight: 200;
+    margin: 10px 0 0px 0;
+}
+.answer-comment{
+    padding: 5px 0px 5px 20px;
+}

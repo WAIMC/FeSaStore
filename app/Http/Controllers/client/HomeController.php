@@ -123,12 +123,13 @@ class HomeController extends Controller
 
     public function productDetail($slug){
         $data_product_detail = $this->product_repo->findBySlug($slug);
-        $data_comment = $this->comment->FindComment($data_product_detail->id);
+        $data_comment = $this->comment->FindCommentClient($data_product_detail->id);
+        $data_answer_comment = $this->comment->FindAnswerComment($data_product_detail->id);
         $data_rating = $this->rating_repo->FindRating($data_product_detail->id);
         $avg_rating = $this->rating_repo->AvgRating($data_product_detail->id);
         $number_rating = $this->rating_repo->CountRating($data_product_detail->id);
         
-        return view('client.products.productDetail', compact('data_product_detail','data_comment','avg_rating','number_rating','data_rating'));
+        return view('client.products.productDetail', compact('data_product_detail','data_comment','avg_rating','number_rating','data_rating','data_answer_comment'));
     }
     public function blog(){
         $blogs=$this->blogs->paginate(10);
@@ -168,8 +169,9 @@ class HomeController extends Controller
         ];
 
         if($this->comment->create($attribute)){
+            $data_answer_comment = $this->comment->FindAnswerComment($request->product_id);
             $data_comment=$this->comment->FindComment($request->product_id);
-            return view('client.products.comment_list',compact('data_comment'));
+            return view('client.products.comment_list',compact('data_comment','data_answer_comment'));
         }else{
             return redirect()->back()->with('error','Bình luận thất bại!');
         }

@@ -22,6 +22,10 @@
             return $this->getModel()::where('blog_id',$id)->orderBy('id', 'desc')->paginate(10);
         }
 
+        public function FindCommentBlogById($id){
+            return $this->getModel()::where('blog_id',$id)->get();
+        }
+
         public function GetListCommentBlog(){
             $data = $this->getModel()::join('blog','comment_blog.blog_id','=','blog.id')
             ->select(DB::raw('count(*) as soluong,blog.title,blog.image,blog.id,
