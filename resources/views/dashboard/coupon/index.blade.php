@@ -98,6 +98,10 @@
                                     </td>
                                     <td>{{ $show_coupon->quantity_coupon }}</td>
                                     <td>
+                                        <a href="{{ route('coupon.edit', $show_coupon->id) }}" 
+                                            class="btn btn-info">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
                                         <a href="{{ route('coupon.destroy', $show_coupon->id) }}" 
                                             class="btn btn-danger btnDelete">
                                             <i class="fa fa-trash" aria-hidden="true"></i>

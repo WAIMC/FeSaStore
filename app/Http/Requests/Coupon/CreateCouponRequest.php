@@ -24,8 +24,10 @@ class CreateCouponRequest extends FormRequest
     public function rules()
     {
         return [
-            'coupon_name'=>'required',
-            'coupon_code'=>'required',
+            'coupon_name'=>'required|unique:coupon',
+            'coupon_code'=>'required|unique:coupon',
+            'coupon_number'=>'required|numeric',
+            'quantity_coupon'=>'required|numeric'
         ];
     }
 
@@ -33,7 +35,14 @@ class CreateCouponRequest extends FormRequest
     {
         return [
             'coupon_name.required' =>'Tên mã giảm giá không được để trống !',
+            'coupon_name.unique' =>'Tên mã giảm giá đã tồn tại !',
             'coupon_code.required' =>'Mã không được để trống !',
+            'coupon_code.unique' =>'Mã giảm giá đã tồn tại !',
+            'coupon_number.required' =>'Số tiền hoặc số phần trăm không được để trống !',
+            'coupon_number.numeric' =>'Số tiền hoặc số phần trăm phải là số !',
+            'quantity_coupon.required' =>'Số lượng không được để trống !',
+            'quantity_coupon.numeric' =>'Số lượng phải là số !',
+
             
         ];
     }

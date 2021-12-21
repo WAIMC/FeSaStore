@@ -49,17 +49,20 @@ class CouponController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCouponRequest $request)
     {
-        $data = $request -> all();
-        $coupon = new coupon;
-        $coupon -> coupon_name = $data['coupon_name'];
-        $coupon -> feature_coupon = $data['feature_coupon'];
-        $coupon -> coupon_code = $data['coupon_code'];
-        $coupon -> coupon_number = $data['coupon_number'];
-        $coupon -> quantity_coupon = $data['quantity_coupon'];
-        $coupon ->save();
-        return redirect()->route('coupon.create')->with('success', 'Thêm mới thành công!');
+        $attributes = [
+            'coupon_name' => $request->coupon_name,
+            'feature_coupon' => $request->feature_coupon,
+            'coupon_code' =>  $request->coupon_code,
+            'coupon_number' =>  $request->coupon_number,
+            'quantity_coupon' => $request->quantity_coupon,
+        ];
+        if($this->coupons->create($attributes)){
+            return redirect()->route('coupon.create')->with('success', 'Thêm mới thành công!');
+        }else{
+            return redirect()->route('coupon.create')->with('error', 'Thêm mới thất bại !');
+        }
     }
 
     /**
@@ -80,7 +83,7 @@ class CouponController extends Controller
      */
     public function edit(Coupon $coupon)
     {
-        
+        return view('dashboard.coupon.edit', compact('coupon'));
     }
 
     /**
@@ -90,9 +93,22 @@ class CouponController extends Controller
      * @param  \App\Models\Coupon  $coupon
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Coupon $coupon)
+    public function update(UpdateCouponRequest $request, Coupon $coupon)
     {
-        
+        $attributes = [
+            'coupon_name' => $request->coupon_name,
+            'feature_coupon' => $request->feature_coupon,
+            'coupon_code' =>  $request->coupon_code,
+            'coupon_number' =>  $request->coupon_number,
+            'quantity_coupon' => $request->quantity_coupon,
+        ];
+        // dd($attributes);
+
+        if($this->coupons->update($coupon, $attributes)){
+            return redirect()->route('coupon.edit',$coupon->id)->with('success', 'Cập nhật thành công!');
+        }else{
+            return redirect()->route('coupon.edit',$coupon->id)->with('error', 'Cập nhật thất bại !');
+        }
     }
 
     /**
