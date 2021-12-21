@@ -10,11 +10,10 @@
                     
                 </ul>
                 <ul>                                          
-                    <li><span>Ngôn Ngữ</span> <a href="#">English<i class="lnr lnr-chevron-down"></i></a>
+                    <li><span>Ngôn Ngữ</span> <a href="#">Việt Nam<i class="lnr lnr-chevron-down"></i></a>
                         <!-- Dropdown Start -->
                         <ul class="ht-dropdown">
-                            <li><a href="#"><img src="{{url('public/client')}}/img/header\1.jpg" alt="language-selector">English</a></li>
-                            <li><a href="#"><img src="{{url('public/client')}}/img/header\2.jpg" alt="language-selector">Francis</a></li>
+                            <li><a href="#"><img src="{{url('public/client')}}/img/header\3.jpg" width="18px" height="18px" alt="language-selector">Việt Nam</a></li>
                         </ul>
                         <!-- Dropdown End -->
                     </li>

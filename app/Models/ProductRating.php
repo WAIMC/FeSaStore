@@ -32,4 +32,8 @@ class ProductRating extends Model
         return $this->hasOne(Customer::class,'id','customer_id');
     }
 
+    public function pro(){
+        return $this->hasOne(Product::class,'id','product_id');
+    }
+
 }
