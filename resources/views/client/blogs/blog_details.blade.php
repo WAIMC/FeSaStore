@@ -98,25 +98,25 @@
                                         </div>
                                     </form>
                                 @else
-                                <p>Vui lòng đăng nhập để bình luận</p>
+                                <p style="color:red;">Vui lòng đăng nhập để bình luận</p>
                                 @endif
                                 </div><br>
 
                                 <div class="review border-default universal-padding" id="comment_blogdetail" >
-                                @if($data_commentblog)
+                                @if($data_commentblog && $data_commentblog->count() > 0)
                                 @foreach($data_commentblog as $commentblog)
                                 <div class="row iconcustomer">
-                                    <div class="col-2">
-                                        <img src="{{url('public/client')}}/img/icon/iconcustomer.jpg" alt="" style="width:60%">
-                                    </div>
-                                    <div class="col-10">
-                                    <h4 class="review-mini-title">{{$commentblog->cus->name}} <span class="time">{{ date('\V\à\o \l\ú\c H:i d-m-Y ',strtotime($commentblog->created_at))}}</span></h4> 
-                                        <p>{{$commentblog->comment}}</p>
-                                    </div>
-                                </div>
+                                            <div class="col-1">
+                                                <img src="{{url('public/client')}}/img/icon/iconcustomer.jpg" alt="" style="width:150%">
+                                            </div>
+                                            <div class="col-11">
+                                                <p class="review-mini-title-comment">{{$commentblog->cus->name}} <span class="time"> bình luận vào lúc {{ date('H:i d-m-Y ',strtotime($commentblog->created_at))}}</span></p> 
+                                                <p>{{$commentblog->comment}}</p>
+                                            </div>
+                                        </div>
                                 @endforeach
                                 @else
-                                    <p>Chưa có bình luận cho bài viết này !</p>
+                                    <h4>Chưa có bình luận cho bài viết này !</h4>
                                 @endif
                                 </div>
 

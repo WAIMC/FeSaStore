@@ -10,6 +10,7 @@ use App\Repositories\Contracts\BrandInterface;
 use App\Repositories\Contracts\CategoryInterface;
 use App\Repositories\Contracts\ProductInterface;
 use App\Repositories\Contracts\VariantProductInterface;
+use App\Repositories\Contracts\CommentInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -23,13 +24,15 @@ class ProductController extends Controller
     protected $variant_product_repo;
     protected $cate_repo;
     protected $brand_repo;  
+    protected $comment_repo;
     
-    public function __construct(ProductInterface $product_repo, VariantProductInterface $variant_product_repo ,CategoryInterface $cate_repo, BrandInterface $brand_repo)
+    public function __construct(ProductInterface $product_repo, VariantProductInterface $variant_product_repo ,CategoryInterface $cate_repo, BrandInterface $brand_repo, CommentInterface $comment_repo)
     {
         $this->product_repo = $product_repo;
         $this->variant_product_repo = $variant_product_repo;
         $this->cate_repo = $cate_repo;
         $this->brand_repo = $brand_repo;
+        $this->comment_repo = $comment_repo;
     }
     
     /**
@@ -183,13 +186,24 @@ class ProductController extends Controller
      */
     public function destroy(product $product)
     {
-        if($product->product_variantProduct()->count() > 0)
+        if($product->product_variantProduct()->count() > 0){
             return redirect()->route('product.index')->with('error', 'Xóa Các Biến thể Thuộc Sản Phẩm Này Trước!');
-        else
-            if($this->product_repo->destroy($product))
-                return redirect()->route('product.index')->with('access', 'Xóa Sản Phẩm Thành Công!');
-            else
-                return redirect()->route('product.index')->with('error', 'Xóa Sản Phẩm Không Thành Công!');
+        }else{
+                $comments = $this->comment_repo->FindCommentByProductId($product->id);
+                if($comments->count() > 0){
+                    foreach($comments as $cm){
+                        $this->comment_repo->destroy($cm);
+                    }
+                }
+                if($this->product_repo->destroy($product)){
+                    return redirect()->route('product.index')->with('access', 'Xóa Sản Phẩm Thành Công!');
+                }else{
+                    return redirect()->route('product.index')->with('error', 'Xóa Sản Phẩm Không Thành Công!');
+
+                }  
+               
+        }
+            
 
     }
 }

@@ -167,10 +167,9 @@
                                             </ul>
                                         </div>
                                         <div class="col-sm-7">
-                                            @if(isset(Auth::guard('cus')->user()->id))
-                                            
-                                                <p class="star">Bạn chấm sản phẩm này bao nhiêu sao ?</p>
+                                        <p class="star">Bạn chấm sản phẩm này bao nhiêu sao ?</p>
                                                 <div id="rateYo" style="margin:0 auto"></div>
+                                                @if(isset(Auth::guard('cus')->user()->id))
                                                     <form>
                                                         <input type="hidden" name="rating_star" value="5" id="rating_star">
                                                         <input type="hidden" name="product_id" value="{{$data_product_detail->id}}" >
@@ -197,9 +196,9 @@
                                                     @endif
                                                 </div>
                                             @else
-                                                <div class="col-sm-3">
+                                                <!-- <div class="col-sm-3">
                                                     <button class="customer-btn" disablded> Đăng nhập để đánh giá</button>
-                                                </div>
+                                                </div> -->
                                             @endif
                                         </div>
                                     </div>
@@ -218,29 +217,43 @@
                                         </div>
                                     </form>
                                 @else
-                                    <p>Vui lòng đăng nhập để bình luận</p>
+                                    <p style="color:red;">Vui lòng đăng nhập để bình luận</p>
                                 @endif
                                 </div>
-                                <!-- Reviews Field Start -->
-                            </div>
-                            <!-- Reviews Start -->
-                            <div class="review border-default universal-padding" id="comment_product">
-                                @if($data_comment)
+                                <!--Show bình luận -->
+                                <div class="review border-default universal-padding" id="comment_product">
+                                @if($data_comment && $data_comment->count() > 0)
                                     @foreach($data_comment as $comment)
                                         <div class="row iconcustomer">
-                                            <div class="col-2">
-                                                <img src="{{url('public/client')}}/img/icon/iconcustomer.jpg" alt="" style="width:60%">
+                                            <div class="col-1">
+                                                <img src="{{url('public/client')}}/img/icon/iconcustomer.jpg" alt="" style="width:135%">
                                             </div>
-                                            <div class="col-10">
-                                                <h4 class="review-mini-title">{{$comment->cus->name}} <span class="time">{{ date('\V\à\o \l\ú\c H:i d-m-Y ',strtotime($comment->created_at))}}</span></h4> 
+                                            <div class="col-11">
+                                                <p class="review-mini-title-comment"><b>{{$comment->cus->name}}</b> <span class="time"> bình luận vào lúc {{ date('H:i d-m-Y ',strtotime($comment->created_at))}}</span></p> 
                                                 <p>{{$comment->comment}}</p>
+                                                 <!--Phần trả lời comment -->
+                                                    @if($data_answer_comment != null)
+                                                            @foreach($data_answer_comment as $answer_comment)
+                                                                @if($answer_comment->parent_id == $comment->id)
+                                                            
+                                                                    <div class="col-10">
+                                                                    <p class="answer-comment">{{$answer_comment->comment}} - <i> được trả lời bởi FESA Store vào lúc <span class="time">{{ date('H:i d-m-Y ',strtotime($answer_comment->created_at))}}</span></i> </p>
+                                                                    </div>
+                                                                @endif
+                                                            @endforeach
+                                                    @endif
                                             </div>
                                         </div>
                                     @endforeach
                                 @else
-                                    <p>Chưa có bình luận cho sản phẩm này!</p>
+                                    <h4>Chưa có bình luận cho sản phẩm này!</h4>
                                 @endif
+                                </div>
+                                <!--End  bình luận -->
+                                <!-- Reviews Field Start -->
                             </div>
+                            <!-- Reviews Start -->
+                            
                             <!-- Reviews End -->
                         </div>
                     </div>
