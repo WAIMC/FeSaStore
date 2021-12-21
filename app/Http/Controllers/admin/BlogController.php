@@ -8,16 +8,19 @@ use App\Http\Requests\Blog\CreateBlogRequest;
 use App\Http\Requests\Blog\UpdateBlogRequest;
 use App\Repositories\Contracts\BlogInterface;
 use App\Repositories\Contracts\CategoryBlogInterface;
+use App\Repositories\Contracts\CommentBlogInterface;
 use Illuminate\Support\Str;
 class BlogController extends Controller
 {
 
     protected $blogs;
     protected $categoryblog;
-    public function __construct(BlogInterface $blogs, CategoryBlogInterface $categoryblog)
+    protected $commentblog;
+    public function __construct(BlogInterface $blogs, CategoryBlogInterface $categoryblog, CommentBlogInterface $commentblog)
     {
         $this->blogs = $blogs;
         $this->categoryblog = $categoryblog;
+        $this->commentblog = $commentblog;
     }
     /**
      * Display a listing of the resource.
@@ -121,6 +124,13 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
+        $commentblogs = $this->commentblog->FindCommentBlogById($blog->id);
+        if($commentblogs->count() > 0){
+            foreach($commentblogs as $cmb){
+                $this->commentblog->destroy($cmb);
+            }
+        }
+
         if($this->blogs->destroy($blog)){
             return redirect()->route('blog.index')->with('success','Xóa dữ liệu thành công!');
         }else{

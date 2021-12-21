@@ -41,17 +41,18 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateCommentRequest $request)
+    public function store(Request $request)
     {
         $attribute=[
             'comment'=>$request->comment,
             'product_id'=>$request->product_id,
-            'customer_id'=>$request->customer_id
+            'customer_id'=>$request->customer_id,
+            'parent_id' => $request->parent_id
         ];
 
         if($this->comment->create($attribute)){
             $data_comment=$this->comment->FindComment($request->product_id);
-            return view('client.products.comment_list',compact('data_comment'));
+            return redirect()->route('comment.show',$request->product_id)->with('success','Cập nhật thành công !');
         }else{
             return redirect()->back()->with('error','Bình luận thất bại!');
         }
@@ -76,8 +77,16 @@ class CommentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(comment $comment)
-    {
-        return view('dashboard.comment.edit',compact('comment'));
+    { 
+        $check_answer_comment=$this->comment->CheckAnswerComment($comment->product_id, $comment->id);
+        $answer_comment = null;
+        if($check_answer_comment == false){
+            $data = $this->comment->GetAnswerComment($comment->id);
+            foreach($data as $dt){
+                $answer_comment = $dt;
+            }
+        }               
+        return view('dashboard.comment.edit',compact('comment','check_answer_comment','answer_comment'));
     }
 
     /**
@@ -104,6 +113,7 @@ class CommentController extends Controller
         }
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -113,6 +123,10 @@ class CommentController extends Controller
     public function destroy(comment $comment)
     {
         $result=$this->comment->destroy($comment);
+        $answer_comment = $this->comment->GetAnswerComment($comment->id);
+        foreach($answer_comment as $cm){
+            $this->comment->destroy($cm);
+        }
         if($result){
             return redirect()->route('comment.show',$comment->product_id)->with('success','Xóa bình luận thành công !');
         }else{
