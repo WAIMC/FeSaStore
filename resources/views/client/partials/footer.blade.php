@@ -7,7 +7,7 @@
             <div class="row mb-60">
                  <div class="col-xl-7 col-lg-7 ml-auto mr-auto col-md-8">
                     <div class="news-desc text-center mb-30">
-                         <h3>Đăng ký Bản tin</h3>
+                         <h3>Đăng ký bản tin</h3>
                          <p>Hãy là người đầu tiên biết. Đăng ký nhận bản tin ngay hôm nay</p>
                      </div>
                      <div class="newsletter-box">

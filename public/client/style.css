@@ -1650,7 +1650,7 @@ li.megamenu-img a {
     line-height: 34px;
     margin: 0 0 15px;
     position: relative;
-    text-transform: capitalize;
+    text-transform: none;
 }
 
 .footer-list li a {
@@ -1659,7 +1659,7 @@ li.megamenu-img a {
   font-size: 14px;
   font-weight: 400;
   position: relative;
-  text-transform: capitalize;
+  text-transform: none;
 }
 
 .footer-list li {
