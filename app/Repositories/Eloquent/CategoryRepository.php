@@ -101,7 +101,13 @@
                 }
             }
             return $list_menu_mobile;
-        }     
+        }  
+        
+        
+        public function sortCategoryASC()
+        {
+            return $this->getModel()::orderBy('created_at','ASC')->get();
+        }
     
     }
 ?>

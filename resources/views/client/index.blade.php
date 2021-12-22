@@ -6,10 +6,10 @@
         <div class="slider-wrapper theme-default">
             <!-- Slider Background  Image Start-->
             <div id="slider" class="nivoSlider">
-             @foreach($all_slider as $sl)
-                <a href="shop.html"><img src="{{url('public/uploads')}}/{{$sl->image}}" data-thumb="{{url('public/uploads')}}/{{$sl->image}}" alt="" title="#htmlcaption"></a>
-                <a href="shop.html"><img src="{{url('public/uploads')}}/{{$sl->image}}" data-thumb="{{url('public/uploads')}}/{{$sl->image}}" alt="" title="#htmlcaption2"></a>
-             @endforeach
+            @foreach($all_slider as $sl)
+                <a href="{{ $sl->link}}"><img src="{{url('public/uploads')}}/{{$sl->image}}" data-thumb="{{url('public/uploads')}}/{{$sl->image}}" alt="" title="#htmlcaption"></a>
+                <a href="{{ $sl->link}}"><img src="{{url('public/uploads')}}/{{$sl->image}}" data-thumb="{{url('public/uploads')}}/{{$sl->image}}" alt="" title="#htmlcaption2"></a>
+            @endforeach
             </div>
             <!-- Slider Background  Image Start-->
         </div>
@@ -21,13 +21,13 @@
     <div class="image-banner pb-50 off-white-bg">
         <div class="container">
             <div class="col-img">
-             <a href="#">
                 @foreach($all_banner as $bn)
                 @if($bn->position == "brand_banner")
-                 <img src="{{url('public/uploads')}}/{{$bn->image}}" data-thumb="{{url('public/uploads')}}/{{$bn->image}}" >
-                 @endif
+                    <a href="{{ $bn->link }}">
+                        <img src="{{url('public/uploads')}}/{{$bn->image}}" data-thumb="{{url('public/uploads')}}/{{$bn->image}}" >
+                    </a> 
+                @endif
                 @endforeach
-            </a> 
             </div>
         </div>
         <!-- Container End -->
@@ -36,11 +36,11 @@
     <!-- Hot Deal Products Start Here -->
     <div class="hot-deal-products off-white-bg pb-90 pb-sm-50">
         <div class="container">
-           <!-- Product Title Start -->
-           <div class="post-title pb-30">
-               <h2>SẢN PHẨM HOT</h2>
-           </div>
-           <!-- Product Title End -->
+            <!-- Product Title Start -->
+            <div class="post-title pb-30">
+                <h2>SẢN PHẨM HOT</h2>
+            </div>
+            <!-- Product Title End -->
             <!-- Hot Deal Product Activation Start -->
             <div class="hot-deal-active owl-carousel">
                 @foreach ($all_product as $item_pro)
@@ -90,71 +90,63 @@
         <div class="container banner-2">
             <div class="banner-box">
                 @foreach($all_banner as $bn)
-                @if($bn->position == "big_banner1")
-                <div class="col-img">
-                        <img src="{{url('public/uploads')}}/{{$bn->image}}"  alt="">
-                </div>
-                @endif
+                    @if($bn->position == "big_banner1")
+                    <div class="col-img">
+                        <a href="{{$bn->link}}">
+                            <img src="{{url('public/uploads')}}/{{$bn->image}}"  alt="">
+                        </a>
+                    </div>
+                    @endif
                 @endforeach
                 @foreach($all_banner as $bn)
-                @if($bn->position == "big_banner2")
-                <div class="col-img">
-                        <img src="{{url('public/uploads')}}/{{$bn->image}}"  alt="">
-                </div>
-                @endif
-                @endforeach
-            </div>
-            <div class="banner-box">
-            @foreach($all_banner as $bn)
-                <!-- @if($bn->position == "big_banner3")
-                <div class="col-img">
-                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
-                </div>
-                @endif -->
-               
+                    @if($bn->position == "big_banner2")
+                        <div class="col-img">
+                            <a href="{{ $bn->link }}">
+                                <img src="{{url('public/uploads')}}/{{$bn->image}}"  alt="">
+                            </a>
+                        </div>
+                    @endif
                 @endforeach
             </div>
             <div class="banner-box">
             @foreach($all_banner as $bn)
                 @if($bn->position == "big_banner4")
-                <div class="col-img">
-                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
-                </div>
+                    <div class="col-img">
+                        <a href="{{ $bn->link }}">
+                            <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
+                        </a>
+                    </div>
                 @endif
-                @endforeach
-                @foreach($all_banner as $bn)
-                @if($bn->position == "big_banner5")
-                <div class="col-img">
-                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
-                </div>
-                @endif
-                @endforeach
-            </div>
-            <div class="banner-box">
+            @endforeach
             @foreach($all_banner as $bn)
-                <!-- @if($bn->position == "big_banner6")
-                <div class="col-img">
-                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
-                </div>
-                @endif -->
-               
-                @endforeach
+                @if($bn->position == "big_banner5")
+                    <div class="col-img">
+                        <a href="{{ $bn->link }}">
+                            <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
+                        </a>
+                    </div>
+                @endif
+            @endforeach
             </div>
             <div class="banner-box">
             @foreach($all_banner as $bn)
                 @if($bn->position == "big_banner7")
-                <div class="col-img">
-                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
-                </div>
+                    <div class="col-img">
+                        <a href="{{ $bn->link }}">
+                            <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
+                        </a>
+                    </div>
                 @endif
-                @endforeach
-                @foreach($all_banner as $bn)
+            @endforeach
+            @foreach($all_banner as $bn)
                 @if($bn->position == "big_banner8")
                 <div class="col-img">
+                    <a href="{{ $bn->link }}">
                         <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
+                    </a>
                 </div>
                 @endif
-                @endforeach
+            @endforeach
             </div>
         </div>
         <!-- Container End -->
@@ -167,7 +159,7 @@
                 <div class="tab-menu mb-25">
                     <div class="section-ttitle">
                         <h2>Danh Mục Tiêu Biểu</h2>
-                   </div>
+                    </div>
                     <!-- Nav tabs -->
                     <ul class="nav tabs-area" role="tablist">
                         @php
@@ -181,10 +173,8 @@
                                 <a class="nav-link {{ $num_list_arrival == 1 ? 'show active' : '' }}" data-toggle="tab" href="#arivals_{{$list_arrival->id}}">{{$list_arrival->name}}</a>
                             </li>
                         @endforeach
-                    </ul>                       
-
+                    </ul>     
                 </div> 
-
                 <!-- Tab Contetn Start -->
                 <div class="tab-content">
                     @php
@@ -199,21 +189,22 @@
                                 <div class="col-lg-5 order-2 order-lg-1">
                                     <div class="banner-site-box mt-10">
                                         @foreach($all_banner as $bn)
-                                        <div class="col-img">
-                                            @if($bn->position == "tab_content")
-                                            <a href="#"><img src="{{url('public/uploads')}}/{{$bn->image}}" data-thumb="{{url('public/uploads')}}/{{$bn->image}}" alt=""></a>
-                                            @endif
-                                        </div>
+                                            <div class="col-img">
+                                                @if($bn->position == "tab_content")
+                                                <a href="{{ $bn->link }}"><img src="{{url('public/uploads')}}/{{$bn->image}}" data-thumb="{{url('public/uploads')}}/{{$bn->image}}" alt=""></a>
+                                                @endif
+                                            </div>
                                         @endforeach
                                         <!-- Single Product Start -->
                                         <div class="single-product mt-0">
                                             <!-- Product Image Start -->
-                                               <img src="{{url('public/client')}}/img/banner\sanphamtieubieu.png" style="width:100%;" alt="">
+                                            <a href="{{ route('client.shop') }}">
+                                                <img src="{{url('public/client')}}/img/banner\sanphamtieubieu.png" style="width:100%;" alt="">
+                                            </a>
                                             <!-- Product Image End -->
                                             <!-- Product Content Start -->
                                             <div class="pro-content">
-                                                <div class="pro-info">
-                                                   
+                                                <div class="pro-info">       
                                                 </div>
                                             </div>
                                             <!-- Product Content End -->
@@ -260,7 +251,6 @@
                                                         <div class="actions-primary">
                                                             <a href="#" class="quick_view" data-toggle="modal" data-target="{{$single_pro_first->id}}" title="Thêm vào giỏ hàng"> + Thêm vào giỏ hàng</a>
                                                         </div>
-                                            
                                                     </div>
                                                 </div>
                                                 <!-- Product Content End -->
@@ -268,11 +258,11 @@
                                             </div>
                                             <!-- Single Product End -->
                                             @if (isset($single_pro_secound))
-                                                 <!-- Single Product Start -->
+                                                <!-- Single Product Start -->
                                                 <div class="single-product">
                                                     <!-- Product Image Start -->
                                                     <div class="pro-img">
-                                                        <a href="{{ route('client.productDetail', $item_pro->slug)}}">
+                                                        <a href="{{ route('client.productDetail', $single_pro_secound->slug)}}">
                                                             <img class="primary-img" src="{{url('public/uploads/'.$single_pro_secound->image)}}" alt="single-product">
                                                             <img class="secondary-img" src="{{url('public/uploads/'.$single_pro_secound->image)}}" alt="single-product">
                                                         </a>
@@ -282,7 +272,7 @@
                                                     <!-- Product Content Start -->
                                                     <div class="pro-content">
                                                         <div class="pro-info">
-                                                            <h4><a href="{{ route('client.productDetail', $item_pro->slug)}}">{{$single_pro_secound->name}}</a></h4>
+                                                            <h4><a href="{{ route('client.productDetail', $single_pro_secound->slug)}}">{{$single_pro_secound->name}}</a></h4>
                                                             @if ($single_pro_secound->product_variantProduct->first()->price > $single_pro_secound->product_variantProduct->first()->discount)
                                                                 <p><span class="price">{{number_format($single_pro_secound->product_variantProduct->first()->discount)}} <u>đ</u> </span><del class="prev-price">{{number_format($single_pro_secound->product_variantProduct->first()->price)}} <u>đ</u> </del></p>
                                                                 <div class="label-product l_sale">{{ round((($single_pro_secound->product_variantProduct->first()->price - $single_pro_secound->product_variantProduct->first()->discount )/$single_pro_secound->product_variantProduct->first()->price)*100,0)}}<span class="symbol-percent">%</span></div>    
@@ -363,7 +353,7 @@
                                     <div class="single-product">
                                         <!-- Product Image Start -->
                                         <div class="pro-img">
-                                            <a href="{{ route('client.productDetail', $tab_best->slug)}}">
+                                            <a href="{{ route('client.productDetail', $best_pro->slug)}}">
                                                 <img class="primary-img" src="{{url('public/uploads/'.$best_pro->image)}}" alt="single-product">
                                                 <img class="secondary-img" src="{{url('public/uploads/'.$best_pro->image)}}" alt="single-product">
                                             </a>
@@ -373,7 +363,7 @@
                                         <!-- Product Content Start -->
                                         <div class="pro-content">
                                             <div class="pro-info">
-                                                <h4><a href="{{ route('client.productDetail', $tab_best->slug)}}">{{ $best_pro->name }}</a></h4>
+                                                <h4><a href="{{ route('client.productDetail', $best_pro->slug)}}">{{ $best_pro->name }}</a></h4>
                                                 <p><span class="price">{{ number_format($best_pro->product_variantProduct->first()->discount) }} <u>đ</u> </span> <del class="prev-price">{{number_format($best_pro->product_variantProduct->first()->price)}} <u>đ</u> </del></p>
                                                 <div class="label-product l_sale">{{ round((($best_pro->product_variantProduct->first()->price - $best_pro->product_variantProduct->first()->discount )/$best_pro->product_variantProduct->first()->price)*100,0)}}<span class="symbol-percent">%</span></div>
                                             </div>
@@ -457,7 +447,9 @@
                 @foreach($all_banner as $bn)
                     <div class="col-img">
                         @if($bn->position == "hot_brand1")
-                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
+                        <a href="{{ $bn->link }}">
+                            <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
+                        </a>
                         @endif
                     </div>
                 @endforeach
@@ -480,7 +472,9 @@
                 @foreach($all_banner as $bn)
                     <div class="col-img">
                         @if($bn->position == "hot_brand2")
-                        <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
+                            <a href="{{ $bn->link }}">
+                                <img src="{{url('public/uploads')}}/{{$bn->image}}" alt="">
+                            </a>
                         @endif
                     </div>
                 @endforeach
@@ -495,14 +489,18 @@
         @foreach($all_banner as $bn)
                     <div class="col-img">
                         @if($bn->position == "brand_banner1")
-                        <img src="{{url('public/uploads')}}/{{$bn->image}}" style="width:99%" alt="">
+                        <a href="{{ $bn->link }}">
+                            <img src="{{url('public/uploads')}}/{{$bn->image}}" style="width:99%" alt="">
+                        </a>
                         @endif
                     </div>
                 @endforeach
                 @foreach($all_banner as $bn)
                     <div class="col-img">
                         @if($bn->position == "brand_banner2")
-                        <img src="{{url('public/uploads')}}/{{$bn->image}}" style="width:99%" alt="">
+                        <a href="{{ $bn->link }}">
+                            <img src="{{url('public/uploads')}}/{{$bn->image}}" style="width:99%" alt="">
+                        </a>
                         @endif
                     </div>
                 @endforeach

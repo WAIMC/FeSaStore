@@ -10,6 +10,8 @@
         public function showMenuDesktop($menus, $parent_id = 0);
         public function showMenuMobile($menus, $parent_id = 0);
         public function showSearchCategory($menus, $parent_id = 0);
+        public function sortCategoryASC();
+
     }
 
 ?>

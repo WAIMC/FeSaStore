@@ -73,13 +73,13 @@ use Illuminate\Support\Facades\Route;
     Start route client
 */ 
     Route::get('/',[App\Http\Controllers\client\HomeController::class,'index'])->name('client.index');
-    Route::get('/Cua-Hang',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
+    Route::get('/shop',[App\Http\Controllers\client\HomeController::class,'shop'])->name('client.shop');
     Route::get('/productDetail/{slug}',[App\Http\Controllers\client\HomeController::class,'productDetail'])->name('client.productDetail');
     Route::post('/productDetail/{slug}',[App\Http\Controllers\client\HomeController::class,'post_comment_product'])->name('client.productDetail');
     Route::get('/productDetail/rating/{slug}',[App\Http\Controllers\client\HomeController::class,'post_rating'])->name('client.rating');
-    Route::get('/Gioi-Thieu',[App\Http\Controllers\client\HomeController::class,'about'])->name('client.about');
-    Route::get('/Lien-He',[App\Http\Controllers\client\HomeController::class,'contact'])->name('client.contact');
-    Route::post('/Lien-He',[App\Http\Controllers\client\HomeController::class,'post_contact'])->name('client.post_contact');
+    Route::get('/about',[App\Http\Controllers\client\HomeController::class,'about'])->name('client.about');
+    Route::get('/contact',[App\Http\Controllers\client\HomeController::class,'contact'])->name('client.contact');
+    Route::post('/contact',[App\Http\Controllers\client\HomeController::class,'post_contact'])->name('client.post_contact');
     
     // route user
     Route::get('/register',[App\Http\Controllers\client\Auth\RegisterController::class,'register'])->name('client.register');
