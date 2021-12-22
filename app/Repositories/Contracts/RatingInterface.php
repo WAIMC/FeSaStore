@@ -10,6 +10,8 @@
 
         public function GetListRating();
 
+        public function FindRatingByProductId($id);
+
         public function CountRating($id);
 
         public function AvgRating($id);

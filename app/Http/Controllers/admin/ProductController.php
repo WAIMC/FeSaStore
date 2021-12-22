@@ -11,6 +11,7 @@ use App\Repositories\Contracts\CategoryInterface;
 use App\Repositories\Contracts\ProductInterface;
 use App\Repositories\Contracts\VariantProductInterface;
 use App\Repositories\Contracts\CommentInterface;
+use App\Repositories\Contracts\RatingInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -25,14 +26,16 @@ class ProductController extends Controller
     protected $cate_repo;
     protected $brand_repo;  
     protected $comment_repo;
+    protected $rating_repo;
     
-    public function __construct(ProductInterface $product_repo, VariantProductInterface $variant_product_repo ,CategoryInterface $cate_repo, BrandInterface $brand_repo, CommentInterface $comment_repo)
+    public function __construct(ProductInterface $product_repo, VariantProductInterface $variant_product_repo ,CategoryInterface $cate_repo, BrandInterface $brand_repo, CommentInterface $comment_repo, RatingInterface $rating_repo)
     {
         $this->product_repo = $product_repo;
         $this->variant_product_repo = $variant_product_repo;
         $this->cate_repo = $cate_repo;
         $this->brand_repo = $brand_repo;
         $this->comment_repo = $comment_repo;
+        $this->rating_repo = $rating_repo;
     }
     
     /**
@@ -195,6 +198,14 @@ class ProductController extends Controller
                         $this->comment_repo->destroy($cm);
                     }
                 }
+
+                $ratings = $this->rating_repo->FindRatingByProductId($product->id);
+                if($ratings->count() > 0){
+                    foreach($ratings as $r){
+                        $this->comment_repo->destroy($r);
+                    }
+                }
+
                 if($this->product_repo->destroy($product)){
                     return redirect()->route('product.index')->with('access', 'Xóa Sản Phẩm Thành Công!');
                 }else{

@@ -135,8 +135,8 @@ return [
                     'route'=>'banner.create',
                     'icon'=>'fa-circle nav-icon'
                 ]
-            ]
-        ],
+             ]
+      ],       
         [
             'label'=>'Quản lý đơn hàng ',
             'route'=>'order.index',

@@ -63,8 +63,8 @@
                 </div>
                 {{-- card body --}}
                 <div class="card-body">
-                    <table class="table table-striped table-bordered table-hover text-center">
-                        <thead class="">
+                    <table id="example2" class="table table-striped table-bordered table-hover text-center">
+                        <thead>
                             <tr>
                                 <th>Hình ảnh</th>
                                 <th>Tên slider</th>
@@ -89,45 +89,40 @@
                                     <a href="{{ route('slider.edit', $slider->id) }}" class="btn btn-info">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="{{ route('slider.destroy', $slider->id) }}" class="btn btn-danger btndelete">
+                                        <a href="{{ route('slider.destroy', $slider->id) }}" class="btn btn-danger btnDelete">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                          </a>
                                     </td>
                                 </tr>
                             @endforeach           
-                        </tbody>  
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Hình ảnh</th>
+                                <th>Tên slider</th>
+                                <th>Liên kết</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </tfoot>  
                     </table>
-                    <form method="POST" action="" id="form-delete">
-                                    @csrf @method('DELETE')
-                    </form>
-                </div>
-                <div class="card-footer text-muted">
-                    <div class="row">
-                        <div class="col-5">
-                            {{-- <h6>Showing 1 to 10 of {{ $data->count() }} entries</h6> --}}
-                        </div>
-                        <div class="col-7">
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-<hr>
- <div class="">
-    {{$data->appends(request()->all())->links()}}
-</div>
+
+    {{-- form action --}}
+    <form action="" method="post" id="formAction">
+        @csrf @method('DELETE')
+    </form>
 @endsection
 @section('js')
-<script>
-    $('.btndelete').click(function(ev){
-        ev.preventDefault();
-        var _href = $(this).attr('href');
-        $('form#form-delete').attr('action',_href);
-         if(confirm('bạn có chắc chắn muốn xóa nó không?')){
-            $('form#form-delete').submit();
-        }
-    })
-</script>
+    {{-- load sweet alert --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- load data table js --}}
+    <script src="{{ url('public/dashboard') }}/setup-project/setup-data-table.js"></script>
+    {{-- load crud js for project --}}
+    <script src="{{ url('public/dashboard') }}/setup-project/setup-crud.js"></script>
+
 @endsection
 

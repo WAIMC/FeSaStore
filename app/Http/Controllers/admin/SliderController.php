@@ -124,7 +124,7 @@ class SliderController extends Controller
      */
     public function destroy(Slider $slider)
     {
-        $slider->delete();
+        $result=$this->sliders->destroy($slider);
         return redirect()->route('slider.index')->with('success','xóa thành công');
     }
 }

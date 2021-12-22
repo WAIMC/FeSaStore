@@ -1,22 +1,16 @@
+<input type="hidden" name="avg_rating_header" value="{{$avg_rating}}">
 <div class="col-sm-2">
-    @if($avg_rating)
-        <p class="point">{{$avg_rating}}/5</p>
-    @else
-        <p class="point1">Chưa có</p>
-    @endif
-    <br>
-    <p class="number_rating">{{$number_rating}} đánh giá</p>
-    <ul class="review-list">
-        <!-- Single Review List Start -->
-        <li>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-        </li>
-    </ul>
-</div>
+                                            @if($avg_rating)
+                                                <p class="point">{{$avg_rating}}/5</p>
+                                            @else
+                                                <p class="point1">Chưa có</p>
+                                            @endif
+                                            <br>
+                                            <p class="number_rating">{{$number_rating}} đánh giá</p>
+                                            <div class="rating" id="avg_rating_2">
+                                               
+                                            </div>
+                                        </div>
     <div class="col-sm-7">
     @if(isset(Auth::guard('cus')->user()->id))
         <p class="star">Bạn chấm sản phẩm này bao nhiêu sao ?</p>
@@ -58,13 +52,16 @@
 <script>
 
 $(function () {
- 
- $("#rateYo").rateYo({
-     rating: 5,
-     fullStar: true
- }).on("rateyo.set",function(e,data){
-     $('#rating_star').val(data.rating);
- });
+            var star_rating = {!! $avg_rating !!};
+            // show star rating product 2
+            $("#avg_rating_2").rateYo({
+                rating: star_rating,
+                fullStar: true,
+                readOnly : true
+            }).on("rateyo.set",function(e,data){
+                $('#rating_star').val(data.rating);
+            });
 
- });
+            });
+
 </script>
