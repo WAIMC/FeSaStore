@@ -26,7 +26,7 @@
                         <h3 class="footer-title"><span style="font-size:30px;">FASA STORE</span></h3>
                         <div class="footer-content">
                             <ul class="footer-list">
-                            <li><a href="contact.html">Thương hiệu thời trang FESA Store đã trở thành một trong những hệ thống kinh doanh uy tín, được đông đảo giới trẻ Đà Nẵng yêu thích và lựa chọn</a></li>
+                            <li><a href="#">Thương hiệu thời trang FESA Store đã trở thành một trong những hệ thống kinh doanh uy tín, được đông đảo giới trẻ Đà Nẵng yêu thích và lựa chọn</a></li>
                                 <div class="footer-line"></div>
                                 <div class="footer-content">
                                     <ul class="footer-list address-content">
@@ -48,10 +48,10 @@
                         <h3 class="footer-title">Chính sách khách hàng</h3>
                         <div class="footer-content">
                             <ul class="footer-list">
-                                <li><a href="contact.html">Chính sách bảo mật</a></li>
+                                <li><a href="#">Chính sách bảo mật</a></li>
                                 <li><a href="#">Ưu đãi khách hàng thân thiết</a></li>
                                 <li><a href="#">Chính sách bảo hành</a></li>
-                                <li><a href="wishlist.html">Chính sách giao nhận</a></li>
+                                <li><a href="#">Chính sách giao nhận</a></li>
                                 <li><a href="#">Chính sách đổi trả sản phẩm</a></li>
                             </ul>
                         </div>
@@ -66,7 +66,7 @@
                         <h3 class="footer-title">Hỗ trợ khách hàng</h3>
                         <div class="footer-content">
                             <ul class="footer-list">
-                                <li><a href="contact.html">Hướng dẫn mua hàng</a></li>
+                                <li><a href="#">Hướng dẫn mua hàng</a></li>
                                 <li><a href="#">Tra cứu bảo hành</a></li>
                                 <li><a href="#">Quy định về phiếu quà tặng</a></li>
                                 <li><a href="#">Điều khoản sử dụng</a></li>
