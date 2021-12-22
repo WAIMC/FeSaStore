@@ -1650,7 +1650,7 @@ li.megamenu-img a {
     line-height: 34px;
     margin: 0 0 15px;
     position: relative;
-    text-transform: none;
+    text-transform: capitalize;
 }
 
 .footer-list li a {
@@ -1961,7 +1961,7 @@ li.megamenu-img a {
   padding-left: 0;
   position: static;
   transform: scale(1);
-}}
+}
 .hot-product2 .actions-primary a {
   transform: scale(1);
   width: 163px;
