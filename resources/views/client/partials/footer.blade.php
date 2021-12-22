@@ -1,22 +1,22 @@
 <!-- Footer Area Start Here -->
 <footer class="off-white-bg2 pt-95 bdr-top pt-sm-55">    
     <!-- Footer Top Start -->
-     <div class="footer-top">
+    <div class="footer-top">
         <div class="container">
             <!-- Signup Newsletter Start -->
             <div class="row mb-60">
-                 <div class="col-xl-7 col-lg-7 ml-auto mr-auto col-md-8">
+                <div class="col-xl-7 col-lg-7 ml-auto mr-auto col-md-8">
                     <div class="news-desc text-center mb-30">
-                         <h3>Đăng ký bản tin</h3>
-                         <p>Hãy là người đầu tiên biết. Đăng ký nhận bản tin ngay hôm nay</p>
-                     </div>
-                     <div class="newsletter-box">
-                         <form action="#">
-                              <input class="subscribe" placeholder="Địa Chỉ Email Của Bạn..." name="email" id="subscribe" type="text">
-                              <button type="submit" class="submit">Đăng Ký!</button>
-                         </form>
-                     </div>
-                 </div>
+                        <h3>Đăng ký bản tin</h3>
+                        <p>Hãy là người đầu tiên biết. Đăng ký nhận bản tin ngay hôm nay</p>
+                    </div>
+                    <div class="newsletter-box">
+                        <form action="#">
+                            <input class="subscribe" placeholder="Địa Chỉ Email Của Bạn..." name="email" id="subscribe" type="text">
+                            <button type="submit" class="submit">Đăng Ký!</button>
+                        </form>
+                    </div>
+                </div>
             </div> 
             <!-- Signup-Newsletter End -->                   
             <div class="row">
@@ -48,11 +48,11 @@
                         <h3 class="footer-title">Chính sách khách hàng</h3>
                         <div class="footer-content">
                             <ul class="footer-list">
-                                <li><a href="#">Chính sách bảo mật</a></li>
-                                <li><a href="#">Ưu đãi khách hàng thân thiết</a></li>
-                                <li><a href="#">Chính sách bảo hành</a></li>
-                                <li><a href="#">Chính sách giao nhận</a></li>
-                                <li><a href="#">Chính sách đổi trả sản phẩm</a></li>
+                                <li><a href="{{ route('client.about')}}">Chính sách bảo mật</a></li>
+                                <li><a href="{{ route('client.about')}}">Ưu đãi khách hàng thân thiết</a></li>
+                                <li><a href="{{ route('client.about')}}">Chính sách bảo hành</a></li>
+                                <li><a href="{{ route('client.about')}}">Chính sách giao nhận</a></li>
+                                <li><a href="{{ route('client.about')}}">Chính sách đổi trả sản phẩm</a></li>
                             </ul>
                         </div>
                     </div>
@@ -66,10 +66,10 @@
                         <h3 class="footer-title">Hỗ trợ khách hàng</h3>
                         <div class="footer-content">
                             <ul class="footer-list">
-                                <li><a href="#">Hướng dẫn mua hàng</a></li>
-                                <li><a href="#">Tra cứu bảo hành</a></li>
-                                <li><a href="#">Quy định về phiếu quà tặng</a></li>
-                                <li><a href="#">Điều khoản sử dụng</a></li>
+                                <li><a href="{{ route('client.about')}}">Hướng dẫn mua hàng</a></li>
+                                <li><a href="{{ route('client.about')}}">Tra cứu bảo hành</a></li>
+                                <li><a href="{{ route('client.about')}}">Quy định về phiếu quà tặng</a></li>
+                                <li><a href="{{ route('client.about')}}">Điều khoản sử dụng</a></li>
                             </ul>
                         </div>
                     </div>
@@ -81,7 +81,6 @@
                         <h3 class="footer-title">Theo dõi Fanpage</h3>
                         <div class="footer-content">
                         <div class="fb-page" data-href="https://www.facebook.com/FesaStoreDaNang/" data-tabs="time" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/FesaStoreDaNang/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/FesaStoreDaNang/">Fesa Store</a></blockquote></div>
-                         
                         </div>
                     </div>
                 </div>
@@ -109,10 +108,9 @@
     <!-- Footer Bottom Start -->
     <div class="footer-bottom pb-30">
         <div class="container">
-
-             <div class="copyright-text text-center">                    
-                <p>Bản Quyền © 2021 <a target="_blank" href="#">FeSa Shop</a> Đã đăng ký Bản quyền..</p>
-             </div>
+            <div class="copyright-text text-center">                    
+                <p>Bản Quyền © 2021 <a target="_blank" href="{{ route('client.contact') }}">FeSa Shop</a> Đã đăng ký Bản quyền..</p>
+            </div>
         </div>
         <!-- Container End -->
     </div>

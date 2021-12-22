@@ -82,7 +82,7 @@ class HomeController extends Controller
         $all_order = $this->order_repo->getAll();
         $get_category_children = []; 
         // get category children haven't children
-        foreach ($this->category_repo->getAll() as $cat) {
+        foreach ($this->category_repo->sortCategoryASC() as $cat) {
             if($cat->categoryChildren()->count() == 0){
                 array_push($get_category_children, $cat);
             }
