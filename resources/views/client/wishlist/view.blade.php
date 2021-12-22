@@ -59,7 +59,7 @@
                                                 <input type="hidden" class="quantity mr-15 " name="quantity" type="number" value="{{$item['quantity'] }}">
                                                 <input type="hidden" value="{{$item['id'] }}" name="id_variant" id="id_variant">
                                                     <div class="actions-primary">
-                                                        <a href="#" id="add_cart_detail" title="thêm" data-original-title="Thêm vào giỏ hàng">
+                                                        <a href="#" class="add_cart_detail" data-id="{{$item['id']}}" title="thêm" data-original-title="Thêm vào giỏ hàng">
                                                             + Thêm vào giỏ</a>
                                                     </div>
                                             {{-- </form> --}}
@@ -136,7 +136,7 @@
 </script>
 
 <script>
-     $('#add_cart_detail').click(function(e) {
+     $('.add_cart_detail').click(function(e) {
             e.preventDefault();
           console.log($("input[name=id_variant]").val());
             $.ajaxSetup({
@@ -147,10 +147,10 @@
 
             $.ajax({
                 type: 'get',
-                url:  '{{url('')}}/cart/add/'+$("input[name=id_variant]").val(),
+                url:  '{{url('')}}/cart/add/'+ $(this).data('id'),
                 data: {
                     quantity: $("input[name=quantity]").val(),
-                    id: $("input[name=id_variant]").val()
+                    id: $(this).data('id')
                 },
                 success: function(response) {
                     $('#cart-box-width').empty();

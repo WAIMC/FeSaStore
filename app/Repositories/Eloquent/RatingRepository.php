@@ -21,6 +21,10 @@
             return $this->getModel()::where('product_id',$id)->paginate(10);
         }
 
+        public function FindRatingByProductId($id){
+            return $this->getModel()::where('product_id',$id)->get();
+        }
+
         public function GetListRating(){
             $data = $this->getModel()::join('product','product_rating.product_id','=','product.id')
             ->select(DB::raw('count(*) as soluong,product.name,product.image,product.id,

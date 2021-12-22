@@ -49,16 +49,12 @@
                         <div class="thubnail-desc fix">
                             <h3 class="product-header">{{ $data_product_detail->name }}</h3>
                             <div class="rating-summary fix mtb-10">
+                                <div class="avg_rating_header">
                                 <div class="rating" id="avg_rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
+                                   
+                                </div>
                                 </div>
                                 <div class="rating-feedback">
-                                    <a href="#">(1 review)</a>
-                                    <a href="#">thêm đánh giá của bạn</a>
                                 </div>
                             </div>
                             <div class="pro-price mtb-30">
@@ -156,16 +152,7 @@
                                             <br>
                                             <p class="number_rating">{{$number_rating}} đánh giá</p>
                                             <div class="rating" id="avg_rating_2">
-                                                <ul class="review-list">
-                                                    <!-- Single Review List Start -->
-                                                    <li>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </li>
-                                                </ul>
+                                               
                                             </div>
                                         </div>
                                         <div class="col-sm-7">
@@ -683,9 +670,13 @@
                     $('#rating_product').empty();
                     $('#rating_product').html(response);
                     // load div
-                    $( "#avg_rating" ).load(window.location.href + " #avg_rating" );
-                    $( "#rateYo" ).load(window.location.href + " #rateYo" );
-                    $( "#avg_rating_2" ).load(window.location.href + " #avg_rating_2" );
+                    // show star rating product
+                    $("#avg_rating").rateYo({
+                        rating: $("input[name=avg_rating_header]").val(),
+                        readOnly : true
+                    }).on("rateyo.set",function(e,data){
+                        $('#rating_star').val(data.rating);
+                    });
                 },
                 error: (error) => {
                     console.log(JSON.stringify(error));
