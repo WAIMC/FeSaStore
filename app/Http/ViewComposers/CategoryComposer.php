@@ -51,7 +51,7 @@ class CategoryComposer
             [
             'cate_repo' => $this->cate_repo,
             'all_category' => $this->cate_repo->getAll(),
-            'menus_desktop' => $this->cate_repo->showMenuDesktop($this->cate_repo->paginate(10)),
+            'menus_desktop' => $this->cate_repo->showMenuDesktop($this->cate_repo->paginate(12)),
             'menus_mobile' => $this->cate_repo->showMenuMobile($this->cate_repo->paginate(10)),
             'all_product' => $this->product_repo->getAll(), 
             'all_variant_pro' => $this->variant_product_repo->getAll(),
