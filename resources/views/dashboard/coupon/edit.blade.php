@@ -19,16 +19,17 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-8 m-auto">
-                                    <form action="{{ route('coupon.store') }}" id="formInsert" method="POST">
+                                    <form action="{{ route('coupon.update',$coupon->id) }}" id="formInsert" method="POST">
                                         @csrf
-
+                                        @method("put")
+                                        <input type="hidden" name="id" value="{{$coupon->id}}">
                                         <div class="form-group">
                                             <label for="name">Tên mã giảm giá</label>
                                             <input type="text" class="form-control 
                                                 @error('coupon_name')
                                                   is-invalid
                                                 @enderror" 
-                                                name="coupon_name" id="name" aria-describedby="namecoupon" placeholder="Tên mã giảm giá" value="{{ old('coupon_name')}}" required>
+                                                name="coupon_name" id="name" aria-describedby="namecoupon" placeholder="Tên mã giảm giá" value="{{$coupon->coupon_name}}" required>
                                                 @error('coupon_name')
                                                     <small class="form-text text-danger">{{ $message }}</small>
                                                 @enderror
@@ -38,13 +39,13 @@
                                           <label for="parent_id">Tính năng</label>
                                           <select class="form-control" name="feature_coupon" id="parent_id">
                                             <option value="0">-----chọn-----</option>
-                                              <option value="1">Giảm theo phần trăm </option>
-                                              <option value="2"> Giảm theo số tiền</option>
+                                              <option value="1" @if($coupon->feature_coupon==1) selected @endif>Giảm theo phần trăm </option>
+                                              <option value="2" @if($coupon->feature_coupon==2) selected @endif> Giảm theo số tiền</option>
                                           </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Mã giảm giá</label>
-                                            <input type="text" name="coupon_code" id="name" placeholder="Mã giảm giá" value="{{ old('coupon_code')}}" required class="form-control  
+                                            <input type="text" name="coupon_code" id="name" placeholder="Mã giảm giá" value="{{$coupon->coupon_code}}" required class="form-control  
                                                 @error('coupon_code')
                                                     is-invalid
                                                 @enderror">
@@ -54,7 +55,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Nhập số % hoặc số tiền</label>
-                                            <input type="text" name="coupon_number" id="name" placeholder="Số % hoặc tiền" value="{{ old('coupon_number')}}" required  class="form-control
+                                            <input type="text" name="coupon_number" id="name" placeholder="Số % hoặc tiền" value="{{$coupon->coupon_number}}" required  class="form-control
                                                 @error('coupon_number')
                                                     is-invalid
                                                 @enderror">
@@ -64,7 +65,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Số lượng</label>
-                                            <input type="number" name="quantity_coupon" id="name" placeholder="Số lượng mã giảm giá" value="{{ old('quantity_coupon')}}" required  class="form-control
+                                            <input type="number" name="quantity_coupon" id="name" placeholder="Số lượng mã giảm giá" value="{{$coupon->quantity_coupon}}" required  class="form-control
                                                 @error('quantity_coupon')
                                                     is-invalid
                                                 @enderror">
@@ -72,7 +73,7 @@
                                                 <small class="form-text text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
-                                        <button type="button" name="add_coupon" class="btn btn-outline-dark btnInsert">Thêm</button>
+                                        <button type="submit" name="add_coupon" class="btn btn-outline-dark ">Cập nhật</button>
                                     </form>
                                 </div>
                             </div>

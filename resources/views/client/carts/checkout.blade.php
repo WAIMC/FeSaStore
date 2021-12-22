@@ -37,8 +37,7 @@
                                         <input type="text" name="coupon" class="code" placeholder="Mã giảm giá">
                                         <input type="submit" class="check_coupon" name="check_coupon" value="Áp dụng">
                                         @if (Session::get('coupon'))
-                                            <a class="btn btn-default delete-coupon"
-                                                style="background:#00483d; border-radius: 0; text-decoration: none; corlor:#fff"
+                                            <a class="btn btn-md btn-dark delete-coupon"
                                                 href="{{ url('/cart/delete-coupon') }}">Xóa mã giảm giá</a>
                                         @endif
                                     </p>
@@ -132,7 +131,7 @@
                                         @foreach ($cart->items as $item)
                                             <tr class="cart_item">
                                                 <td class="product-name">
-                                                    {{ $item['name'] }} <span class="product-quantity"> ×
+                                                    {{ $item['name'] }} <span class="product-quantity">
                                                         {{ $item['quantity'] }}</span>
                                                 </td>
                                                 <td class="product-total">
@@ -263,6 +262,12 @@
                 },
             });
         });
+        @if (Session::has('success'))
+       alertify.success('  {{ Session::get('success') }}');
+       @endif
+       @if (Session::has('error'))
+       alertify.error('  {{ Session::get('error') }}');
+       @endif
     </script>
     <style>
         .lds-dual-ring.hidden {
