@@ -33,10 +33,10 @@ class UpdateBannerRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' =>'Tên thương hiệu không được để trống !',
+            'title.required' =>'Tên hình ảnh không được để trống !',
             'image.required' =>'Hình ảnh  không được để trống !',
             'link.required' =>'Liên kết không được để trống !',
-            'name.unique' =>'Tên thương hiệu đã tồn tại !',
+            'name.unique' =>'Tên hình ảnh đã tồn tại !',
             
         ];
     }

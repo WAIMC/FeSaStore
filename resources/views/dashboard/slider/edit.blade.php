@@ -4,7 +4,7 @@
 {{-- define item for master layout --}}
 @section('title','Bảng Điều Khiển Quản Trị')
 @section('directory', 'Banner ')
-@section('action', 'Chỉnh sửa Banner')
+@section('action', 'Chỉnh sửa Slider')
 
 {{-- main section for master layout --}}
 @section('main')
@@ -18,74 +18,72 @@
                     {{-- header Setting Link --}}
                     <div class="row justify-content-between">
                         <div class="col-4">
-                            <h4>Chỉnh sửa banner</h4>
+                            <h4>Chỉnh sửa Slider</h4>
                         </div>
                         <div class="col-4 d-flex justify-content-end">
                             <a href="{{ route('slider.index') }}" class="btn btn-outline-dark">
                                 <i class="fa fa-list" aria-hidden="true"></i>
-                                <span>Danh sách liên kết</span>
+                                <span>Danh sách Slider</span>
                             </a>
                         </div>
                     </div>
                        
                     {{-- select by choose --}}
                   
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12">
-                        <form action="{{route('slider.update', $slider)}}" method="post" id="formEdit">
-                            @csrf @method('PUT')
-                            <div class="form-group">
-                              <label for="">title</label>
-                              <input type="text" name="title" value="{{$slider->title}}" class="form-control @error('link')   is-invalid  @enderror" placeholder="Nhập đường dẫn trỏ đến" aria-describedby="helpId">
-                                  @error('link')
-                                <small  class="text-danger">{{$message}}</small> 
-                                @enderror
-                            </div>
-                          <div class="form-group">
-                              <label for="">Liên kết</label>
-                              <input type="text" name="link" value="{{$slider->link}}" class="form-control @error('link')   is-invalid  @enderror" placeholder="Nhập đường dẫn trỏ đến" aria-describedby="helpId">
-                                  @error('link')
-                                <small  class="text-danger">{{$message}}</small> 
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Trạng thái</label>
-                                <div class="form-control">
-                                    <input type="radio" id="inlineRadio1" @if ($slider->status == 1)checked="" @endif value="1" name="status">
-                                    <label for="inlineRadio1"> Ẩn </label>
-                                    <input @if ($slider->status == 0)checked="" @endif type="radio" id="inlineRadio2" value="0" name="status">
-                                    <label for="inlineRadio2"> Hiện </label>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <form action="{{route('slider.update', $slider)}}" method="post" id="formEdit">
+                                @csrf @method('PUT')
+                                <div class="form-group">
+                                    <label for="">title</label>
+                                    <input type="text" name="title" value="{{$slider->title}}" class="form-control @error('link')   is-invalid  @enderror" placeholder="Nhập đường dẫn trỏ đến" aria-describedby="helpId">
+                                        @error('link')
+                                        <small  class="text-danger">{{$message}}</small> 
+                                        @enderror
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Hình ảnh</label>
-                                <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <button type="button" data-toggle="modal" data-target="#model_file" class="btn btn-primary"><i
-                                                class="fas fa-folder-open"></i></i></button>
-                                    </span>
-                                    <input type="text" readonly name="image" value="{{$slider->image}}" id="image" class="form-control @error('image')   is-invalid  @enderror">
-                                
+                                <div class="form-group">
+                                    <label for="">Liên kết</label>
+                                        <input type="text" name="link" value="{{$slider->link}}" class="form-control @error('link')   is-invalid  @enderror" placeholder="Nhập đường dẫn trỏ đến" aria-describedby="helpId">
+                                            @error('link')
+                                            <small  class="text-danger">{{$message}}</small> 
+                                            @enderror
                                 </div>
-                                @error('image')
-                                <small  class="text-danger">{{$message}}</small> 
-                                @enderror
-                                <div class="col-4 mt-3">
-                                    <img class="img w-100" src="{{ url('public/uploads') }}/{{$slider->image}}" id="show_img" class="mt-2" >
+                                <div class="form-group">
+                                    <label>Trạng thái</label>
+                                    <div class="form-control">
+                                        <input type="radio" id="inlineRadio1" @if ($slider->status == 1)checked="" @endif value="1" name="status">
+                                            <label for="inlineRadio1"> Ẩn </label>
+                                        <input @if ($slider->status == 0)checked="" @endif type="radio" id="inlineRadio2" value="0" name="status">
+                                            <label for="inlineRadio2"> Hiện </label>
+                                    </div>
                                 </div>
-                            </div>
-                            <input type="hidden" name="id" value="{{$slider->id}}">
-                            <button type="button" class="btn btn-outline-dark btnEdit">Cập Nhật</button>
-                        </form>
+                                <div class="form-group">
+                                    <label for="">Hình ảnh</label>
+                                    <div class="input-group">
+                                        <span class="input-group-prepend">
+                                            <button type="button" data-toggle="modal" data-target="#model_file" class="btn btn-primary"><i
+                                                    class="fas fa-folder-open"></i></i></button>
+                                        </span>
+                                        <input type="text" readonly name="image" value="{{$slider->image}}" id="image" class="form-control @error('image')   is-invalid  @enderror">                               
+                                    </div>
+                                    @error('image')
+                                    <small  class="text-danger">{{$message}}</small> 
+                                    @enderror
+                                    <div class="col-4 mt-3">
+                                        <img class="img w-100" src="{{ url('public/uploads') }}/{{$slider->image}}" id="show_img" class="mt-2" >
+                                    </div>
+                                </div>
+                                <input type="hidden" name="id" value="{{$slider->id}}">
+                                <button type="button" class="btn btn-outline-dark btnEdit">Cập Nhật</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-            </div>
         </div>
     </div>
-
     <div class="modal fade " id="model_file" role="dialog" tabindex="-1" role="dialog"
     aria-labelledby="myExtraLargeModalLabel">
     <div class="modal-dialog modal-xl">

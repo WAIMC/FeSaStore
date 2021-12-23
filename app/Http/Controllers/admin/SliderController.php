@@ -109,7 +109,7 @@ class SliderController extends Controller
        // dd($attribute);
         $result=$this->sliders->update( $slider, $attribute);
         if($result){
-            return redirect()->route('slider.edit',$slider)->with('success','Cập nhật thành công!');
+            return redirect()->route('slider.index',$slider)->with('success','Cập nhật thành công!');
         }{
           return redirect()->route('slider.edit',$slider)->with('error','Cập nhật thất bại thất bại!');
         }

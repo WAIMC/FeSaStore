@@ -20,7 +20,7 @@
                         <div class="col-4 d-flex justify-content-end">
                             <a href="{{ route('banner.index') }}" class="btn btn-outline-dark">
                                 <i class="fa fa-list" aria-hidden="true"></i>
-                                <span>Danh sách liên kết</span>
+                                <span>Danh sách banner</span>
                             </a>
                         </div>
                     </div>

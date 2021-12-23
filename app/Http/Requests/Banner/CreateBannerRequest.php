@@ -26,6 +26,7 @@ class CreateBannerRequest extends FormRequest
         return [
             'title'=>'required|unique:banner,title',
             'image'=>'required',
+            'position'=>'required',
             'link'=>'required',
            
         ];
@@ -33,11 +34,11 @@ class CreateBannerRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' =>'Tên thương hiệu không được để trống !',
+            'title.required' =>'Tên banner không được để trống !',
             'image.required' =>'Hình ảnh  không được để trống !',
             'link.required' =>'Liên kết không được để trống !',
-            'name.unique' =>'Tên thương hiệu đã tồn tại !',
-            
+            'position.required'=>'vị trí không được để trống',
+            'position.unique' =>'Tên hình ảnh đã tồn tại !',
         ];
     }
 }

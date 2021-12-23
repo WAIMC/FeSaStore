@@ -24,7 +24,18 @@ class CreateSliderRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'=>'required|unique:banner,title',
+            'image'=>'required',
+            'link'=>'required',
+           
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'title.required' =>'Tên banner không được để trống !',
+            'image.required' =>'Hình ảnh  không được để trống !',
+            'link.required' =>'Liên kết không được để trống !',          
         ];
     }
 }
