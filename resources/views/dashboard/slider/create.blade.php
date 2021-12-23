@@ -3,8 +3,8 @@
 
 {{-- define item for master layout --}}
 @section('title','Bảng Điều Khiển Quản Trị')
-@section('directory', 'Banner ')
-@section('action', 'Thêm mới Banner')
+@section('directory', 'Slider ')
+@section('action', 'Thêm mới Slider')
 
 {{-- main section for master layout --}}
 @section('main')
@@ -18,12 +18,12 @@
                     {{-- header Setting Link --}}
                     <div class="row justify-content-between">
                         <div class="col-4">
-                            <h4>Thêm mới banner</h4>
+                            <h4>Thêm mới slider</h4>
                         </div>
                         <div class="col-4 d-flex justify-content-end">
                             <a href="{{ route('slider.index') }}" class="btn btn-outline-dark">
                                 <i class="fa fa-list" aria-hidden="true"></i>
-                                <span>Danh sách banner</span>
+                                <span>Danh sách Slider</span>
                             </a>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                         @csrf
                         <div class="form-group">
                           <label for="">Tiêu đề</label>
-                          <input type="text" name="title" value="{{old("title")}}" class="form-control @error('title')   is-invalid @enderror"placeholder="Nhập tên banner" aria-describedby="helpId">
+                          <input type="text" name="title" value="{{old("title")}}" class="form-control @error('title')   is-invalid @enderror"placeholder="Nhập tên Slider" aria-describedby="helpId">
                               @error('title')
                             <small  class="text-danger">{{$message}}</small> 
                             @enderror

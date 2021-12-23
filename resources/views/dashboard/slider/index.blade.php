@@ -11,10 +11,8 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow">
-
                 {{-- card hearder --}}
                 <div class="card-header">
-
                     {{-- header Setting Link --}}
                     <div class="row justify-content-between">
                         <div class="col-4">
@@ -27,8 +25,6 @@
                             </a>
                         </div>
                     </div>
-                 
-
                     {{-- select by choose --}}
                     <div class="row mt-4 justify-content-between">
                         <div class="col-sm-12 col-md-6">
@@ -73,9 +69,8 @@
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            
-                                 @foreach ($data as $slider)
+                        <tbody>                
+                             @foreach ($data as $slider)
                                 <tr>
                                     <td> <img src="{{url('public/uploads')}}/{{ $slider->image }}" alt="{{ $slider->name }}" height="100" > </td>
                                     <td>{{ $slider->title }}</td>
@@ -86,7 +81,7 @@
                                         </span>
                                     </td>
                                     <td>
-                                    <a href="{{ route('slider.edit', $slider->id) }}" class="btn btn-info">
+                                        <a href="{{ route('slider.edit', $slider->id) }}" class="btn btn-info">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <a href="{{ route('slider.destroy', $slider->id) }}" class="btn btn-danger btnDelete">

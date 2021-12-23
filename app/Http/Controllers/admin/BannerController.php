@@ -106,7 +106,7 @@ class BannerController extends Controller
        // dd($attribute);
         $result=$this->banners->update( $banner, $attribute);
         if($result){
-            return redirect()->route('banner.edit',$banner)->with('success','Cập nhật thành công!');
+            return redirect()->route('banner.index',$banner)->with('success','Cập nhật thành công!');
         }{
           return redirect()->route('banner.edit',$banner)->with('error','Cập nhật thất bại thất bại!');
         }
