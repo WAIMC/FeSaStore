@@ -62,7 +62,7 @@
         */ 
         public function getAll()
         {
-          return $this->model->orderBy('created_at', 'DESC')->get();
+            return $this->model->orderBy('created_at', 'DESC')->get();
 
         }
     

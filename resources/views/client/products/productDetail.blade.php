@@ -226,7 +226,7 @@
                                                                 @if($answer_comment->parent_id == $comment->id)
                                                             
                                                                     <div class="col-10">
-                                                                    <p class="answer-comment">{{$answer_comment->comment}} - <i> được trả lời bởi FESA Store vào lúc <span class="time">{{ date('H:i d-m-Y ',strtotime($answer_comment->created_at))}}</span></i> </p>
+                                                                    <p class="answer-comment text-info font-italic"> <span class="font-weight-bold text-success">Quản trị phản hồi :</span> {{$answer_comment->comment}} - <i> được trả lời bởi FESA Store vào lúc <span class="time">{{ date('H:i d-m-Y ',strtotime($answer_comment->created_at))}}</span></i> </p>
                                                                     </div>
                                                                 @endif
                                                             @endforeach

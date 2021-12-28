@@ -121,7 +121,6 @@ class CouponController extends Controller
     {
         $this->coupons->destroy($coupon);
         return redirect()->route('coupon.index')->with('success', 'Xóa Thành Công!');
-        return view('dashboard.coupon.index');
     }
    
  

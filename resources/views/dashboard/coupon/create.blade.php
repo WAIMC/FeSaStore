@@ -26,7 +26,7 @@
                                             <label for="name">Tên mã giảm giá</label>
                                             <input type="text" class="form-control 
                                                 @error('coupon_name')
-                                                  is-invalid
+                                                    is-invalid
                                                 @enderror" 
                                                 name="coupon_name" id="name" aria-describedby="namecoupon" placeholder="Tên mã giảm giá" value="{{ old('coupon_name')}}" required>
                                                 @error('coupon_name')
@@ -35,12 +35,12 @@
                                         </div>
 
                                         <div class="form-group">
-                                          <label for="parent_id">Tính năng</label>
-                                          <select class="form-control" name="feature_coupon" id="parent_id">
+                                        <label for="parent_id">Tính năng</label>
+                                        <select class="form-control" name="feature_coupon" id="parent_id">
                                             <option value="0">-----chọn-----</option>
-                                              <option value="1">Giảm theo phần trăm </option>
-                                              <option value="2"> Giảm theo số tiền</option>
-                                          </select>
+                                            <option value="1">Giảm theo phần trăm </option>
+                                            <option value="2"> Giảm theo số tiền</option>
+                                        </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Mã giảm giá</label>
